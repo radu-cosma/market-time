@@ -17,12 +17,12 @@
 				http://www.springframework.org/schema/tx     
 				http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-	<import resource="application-context.xml"/>
-
     <mvc:annotation-driven />
     <tx:annotation-driven />
     <context:annotation-config />
     <context:component-scan base-package="com.markettime" />
+    <context:load-time-weaver />
+    
     
     <mvc:interceptors>
     	<bean class="com.markettime.interceptor.SessionContextInterceptor"/>
@@ -30,6 +30,24 @@
     
     <!-- <default-servlet-handler/> -->
     <!-- <mvc:resources mapping="/resources/**" location="/"/> -->
+    
+    <bean id="configProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+    	<property name="locations">
+    		<list>
+    			<value>classpath:config.properties</value>
+    		</list>
+    	</property>
+    </bean>
+    
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basenames">
+            <list>
+                <value>classpath:messages/messages</value>
+            </list>
+        </property>
+        <property name="fallbackToSystemLocale" value="false"/> 
+        <property name="defaultEncoding" value="UTF-8"/>
+    </bean>
     
 	<bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
 		<property name="templateLoaderPath" value="/WEB-INF/"/>
@@ -48,6 +66,17 @@
 		<property name="exposeSpringMacroHelpers" value="true"/>
 	</bean>
 	
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+	    <property name="entityManagerFactory" ref="entityManagerFactory"/>
+	</bean>
+	
+	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+    	<property name="persistenceUnitName" value="merket-time"/> 
+		<property name="dataSource" ref="dataSource"/>
+		<property name="jpaVendorAdapter" ref="jpaVendorAdapter"/>
+		<property name="packagesToScan" value="com.markettime.model.entity"/>
+	</bean>
+	
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
 		<property name="url" value="jdbc:mysql://localhost:3306/market_time"/>
@@ -55,14 +84,9 @@
 		<property name="password" value=""/>
 	</bean>
 	
-	<bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
-		<property name="dataSource" ref="dataSource"/>
-		<property name="packagesToScan" value="com.markettime.model.entity"/>
-		<property name="configLocation" value="classpath:spring/hibernate.cfg.xml" />
-	</bean>
-	
-	<bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
-		<property name="sessionFactory" ref="sessionFactory"/>
+	<bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+		<property name="databasePlatform" value="org.hibernate.dialect.MySQLDialect" />
+		<property name="showSql" value="false" />
 	</bean>
 	
 </beans>

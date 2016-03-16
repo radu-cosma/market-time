@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
@@ -18,7 +19,10 @@ import javax.persistence.UniqueConstraint;
  */
 @Entity
 @Table(name = "user", uniqueConstraints = { @UniqueConstraint(columnNames = "email") })
+@NamedQuery(name = UserEntity.FIND_BY_EMAIL, query = "SELECT u FROM UserEntity u WHERE u.email=:email")
 public class UserEntity {
+
+	public static final String FIND_BY_EMAIL = "UserEntity.findByEmail";
 
 	private Long id;
 	private String firstName;

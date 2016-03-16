@@ -35,7 +35,7 @@ public class RegistrationService {
 		company.setName(registrationDto.getCompanyName());
 		company.setAddress(registrationDto.getCompanyAddress());
 		company.setPhone(registrationDto.getCompanyPhone());
-		companyDao.save(company);
+		companyDao.persist(company);
 		return company;
 	}
 
@@ -46,7 +46,7 @@ public class RegistrationService {
 		user.setEmail(registrationDto.getEmail());
 		user.setPassword(registrationDto.getPassword());
 		user.setCompany(company);
-		userDao.save(user);
+		userDao.persist(user);
 		return user;
 	}
 }

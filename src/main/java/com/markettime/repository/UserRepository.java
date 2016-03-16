@@ -16,4 +16,8 @@ public class UserRepository extends AbstractRepository<UserEntity> {
 		super(UserEntity.class);
 	}
 
+	public UserEntity findByEmail(String email) {
+		return null;
+	}
+
 }
