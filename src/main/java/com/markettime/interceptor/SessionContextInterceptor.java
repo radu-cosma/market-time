@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.markettime.context.SessionContext;
-import com.markettime.model.Session;
+import com.markettime.model.dto.Session;
 import com.markettime.service.SessionService;
 
 /**

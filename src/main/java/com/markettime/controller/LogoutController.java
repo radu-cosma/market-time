@@ -4,7 +4,6 @@ import java.util.Arrays;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,7 +32,7 @@ public class LogoutController extends BaseController {
 	private SessionService sessionService;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public View logout(HttpServletRequest request, HttpServletResponse response) {
+	public View logout(HttpServletRequest request) {
 
 		sessionContext.setLoggedIn(false);
 		sessionContext.setUsername(null);

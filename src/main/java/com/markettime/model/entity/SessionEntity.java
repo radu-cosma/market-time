@@ -1,4 +1,4 @@
-package com.markettime.entity;
+package com.markettime.model.entity;
 
 import java.util.Date;
 
@@ -21,12 +21,14 @@ import javax.persistence.UniqueConstraint;
  *
  */
 @Entity
-@Table(name = "sessions", uniqueConstraints = { @UniqueConstraint(columnNames = "uuid") })
+@Table(name = "session", uniqueConstraints = { @UniqueConstraint(columnNames = "uuid") })
 public class SessionEntity {
 
 	private Long id;
 	private UserEntity user;
 	private String uuid;
+	private boolean active;
+	private Date creationTime;
 	private Date lastAccess;
 
 	@Id
@@ -60,7 +62,26 @@ public class SessionEntity {
 	}
 
 	@Column(nullable = false)
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+
 	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "creation_time", nullable = false)
+	public Date getCreationTime() {
+		return creationTime;
+	}
+
+	public void setCreationTime(Date creationTime) {
+		this.creationTime = creationTime;
+	}
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "last_access", nullable = false)
 	public Date getLastAccess() {
 		return lastAccess;
 	}
@@ -72,7 +93,8 @@ public class SessionEntity {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("SessionEntity [id=").append(id).append(",user=").append(user).append(", uuid=").append(uuid)
+		builder.append("SessionEntity [id=").append(id).append(", user=").append(user).append(", uuid=").append(uuid)
+				.append(", active=").append(active).append(", creationTime=").append(creationTime)
 				.append(", lastAccess=").append(lastAccess).append("]");
 		return builder.toString();
 	}

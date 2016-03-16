@@ -6,7 +6,7 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
-import com.markettime.model.Session;
+import com.markettime.model.dto.Session;
 
 /**
  *

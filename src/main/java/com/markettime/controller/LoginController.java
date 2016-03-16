@@ -1,7 +1,6 @@
 package com.markettime.controller;
 
 import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.markettime.model.User;
+import com.markettime.model.dto.User;
 import com.markettime.service.LoginService;
 
 /**
@@ -31,8 +30,7 @@ public class LoginController extends BaseController {
 	private LoginService loginService;
 
 	@RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-	public View login(HttpServletRequest request, HttpServletResponse response, RedirectAttributes redirectAttributes,
-			@ModelAttribute User user) {
+	public View login(HttpServletResponse response, RedirectAttributes redirectAttributes, @ModelAttribute User user) {
 
 		String uuid = loginService.doLogin(user);
 		if (uuid != null) {

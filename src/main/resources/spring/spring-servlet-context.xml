@@ -57,7 +57,7 @@
 	
 	<bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"/>
-		<property name="packagesToScan" value="com.markettime.entity"/>
+		<property name="packagesToScan" value="com.markettime.model.entity"/>
 		<property name="configLocation" value="classpath:spring/hibernate.cfg.xml" />
 	</bean>
 	

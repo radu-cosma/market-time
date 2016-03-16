@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.markettime.context.SessionContext;
-import com.markettime.model.User;
+import com.markettime.model.dto.User;
 
 /**
  *
