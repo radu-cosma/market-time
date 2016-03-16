@@ -1,5 +1,7 @@
 package com.markettime.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,15 +21,23 @@ import com.markettime.repository.UserRepository;
 @Transactional
 public class RegistrationService {
 
-	@Autowired
-	private UserRepository userDao;
+	private static final Logger LOGGER = LoggerFactory.getLogger(RegistrationService.class);
 
 	@Autowired
-	private CompanyRepository companyDao;
+	private UserRepository userRepository;
+
+	@Autowired
+	private CompanyRepository companyRepository;
 
 	public void registerUser(RegistrationDto registrationDto) {
-		CompanyEntity company = createCompany(registrationDto);
-		createUser(registrationDto, company);
+		UserEntity user = userRepository.findByEmail(registrationDto.getEmail());
+		if (user != null) {
+			LOGGER.error(
+					String.format("A user with email=%s already exists in the database!", registrationDto.getEmail()));
+		} else {
+			CompanyEntity company = createCompany(registrationDto);
+			createUser(registrationDto, company);
+		}
 	}
 
 	private CompanyEntity createCompany(RegistrationDto registrationDto) {
@@ -35,7 +45,7 @@ public class RegistrationService {
 		company.setName(registrationDto.getCompanyName());
 		company.setAddress(registrationDto.getCompanyAddress());
 		company.setPhone(registrationDto.getCompanyPhone());
-		companyDao.persist(company);
+		companyRepository.persist(company);
 		return company;
 	}
 
@@ -46,7 +56,7 @@ public class RegistrationService {
 		user.setEmail(registrationDto.getEmail());
 		user.setPassword(registrationDto.getPassword());
 		user.setCompany(company);
-		userDao.persist(user);
+		userRepository.persist(user);
 		return user;
 	}
 }

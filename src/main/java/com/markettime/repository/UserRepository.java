@@ -1,5 +1,7 @@
 package com.markettime.repository;
 
+import javax.persistence.NoResultException;
+
 import org.springframework.stereotype.Repository;
 
 import com.markettime.model.entity.UserEntity;
@@ -17,7 +19,12 @@ public class UserRepository extends AbstractRepository<UserEntity> {
 	}
 
 	public UserEntity findByEmail(String email) {
-		return null;
+		try {
+			return getEntityManager().createNamedQuery(UserEntity.FIND_BY_EMAIL, UserEntity.class)
+					.setParameter("email", email).getSingleResult();
+		} catch (NoResultException e) {
+			return null;
+		}
 	}
 
 }
