@@ -39,7 +39,6 @@ public class LoginService {
      * @return
      */
     public String login(LoginDto loginDto) {
-        // TODO: check if a user session already exists and use it instead of creating a new one
         String uuid = null;
         UserEntity userEntity = userRepository.find(loginDto.getEmail());
         if (userEntity.getPassword().equals(loginDto.getPassword())) {

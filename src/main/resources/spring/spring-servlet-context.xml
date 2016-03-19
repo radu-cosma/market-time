@@ -71,7 +71,7 @@
 	</bean>
 	
 	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-    	<property name="persistenceUnitName" value="merket-time"/> 
+    	<property name="persistenceUnitName" value="market-time"/> 
 		<property name="dataSource" ref="dataSource"/>
 		<property name="jpaVendorAdapter" ref="jpaVendorAdapter"/>
 		<property name="packagesToScan" value="com.markettime.model.entity"/>
