@@ -1,3 +1,3 @@
-<p>Hello, ${sessionContext.username}!</p>
+<p>Hello, ${sessionContext.email}!</p>
 
 <p><a href="/market-time/logout">Logout</a></p>

@@ -1,14 +1,19 @@
 package com.markettime.service;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Date;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.markettime.context.SessionContext;
-import com.markettime.model.dto.User;
+import com.markettime.model.dto.LoginDto;
+import com.markettime.model.entity.UserEntity;
+import com.markettime.model.entity.UserSessionEntity;
+import com.markettime.repository.UserRepository;
+import com.markettime.repository.UserSessionRepository;
+import com.markettime.util.DateUtil;
 
 /**
  *
@@ -19,28 +24,47 @@ import com.markettime.model.dto.User;
 @Transactional
 public class LoginService {
 
-	private static final Map<String, String> USERS;
+    @Autowired
+    private UserRepository userRepository;
 
-	static {
-		USERS = new HashMap<String, String>();
-		USERS.put("radu", "radu");
-	}
+    @Autowired
+    private UserSessionRepository userSessionRepository;
 
-	@Autowired
-	private SessionService sessionService;
+    @Autowired
+    private SessionContext sessionContext;
 
-	@Autowired
-	private SessionContext sessionContext;
+    /**
+     *
+     * @param loginDto
+     * @return
+     */
+    public String login(LoginDto loginDto) {
+        // TODO: check if a user session already exists and use it instead of creating a new one
+        String uuid = null;
+        UserEntity userEntity = userRepository.find(loginDto.getEmail());
+        if (userEntity.getPassword().equals(loginDto.getPassword())) {
+            sessionContext.setLoggedIn(true);
+            sessionContext.setEmail(userEntity.getEmail());
+            uuid = createUserSession(userEntity);
+        }
+        return uuid;
+    }
 
-	public String doLogin(User user) {
-		String password = USERS.get(user.getUsername());
-		String uuid = null;
-		if (password != null && password.equals(user.getPassword())) {
-			sessionContext.setLoggedIn(true);
-			sessionContext.setUsername(user.getUsername());
-			uuid = sessionService.createSession(user.getUsername(), user.getPassword().toCharArray());
-		}
-		return uuid;
-	}
+    private String createUserSession(UserEntity userEntity) {
+        Date currentDate = DateUtil.getCurrentDate();
+        String uuid = generateUuid();
+        UserSessionEntity sessionEntity = new UserSessionEntity();
+        sessionEntity.setActive(Boolean.TRUE);
+        sessionEntity.setCreationTime(currentDate);
+        sessionEntity.setLastAccess(currentDate);
+        sessionEntity.setUuid(uuid);
+        sessionEntity.setUser(userEntity);
+        userSessionRepository.persist(sessionEntity);
+        return uuid;
+    }
+
+    private String generateUuid() {
+        return UUID.randomUUID().toString();
+    }
 
 }

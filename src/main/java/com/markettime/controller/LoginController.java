@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.markettime.model.dto.User;
+import com.markettime.model.dto.LoginDto;
 import com.markettime.service.LoginService;
 
 /**
@@ -30,9 +30,10 @@ public class LoginController extends BaseController {
 	private LoginService loginService;
 
 	@RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-	public View login(HttpServletResponse response, RedirectAttributes redirectAttributes, @ModelAttribute User user) {
+	public View login(HttpServletResponse response, RedirectAttributes redirectAttributes,
+			@ModelAttribute LoginDto loginDto) {
 
-		String uuid = loginService.doLogin(user);
+		String uuid = loginService.login(loginDto);
 		if (uuid != null) {
 			createCookie(response, UUID_COOKIE_NAME, uuid);
 		} else {

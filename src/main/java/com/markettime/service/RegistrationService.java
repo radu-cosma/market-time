@@ -30,7 +30,7 @@ public class RegistrationService {
 	private CompanyRepository companyRepository;
 
 	public void registerUser(RegistrationDto registrationDto) {
-		UserEntity user = userRepository.findByEmail(registrationDto.getEmail());
+		UserEntity user = userRepository.find(registrationDto.getEmail());
 		if (user != null) {
 			LOGGER.error(
 					String.format("A user with email=%s already exists in the database!", registrationDto.getEmail()));

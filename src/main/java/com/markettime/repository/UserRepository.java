@@ -18,7 +18,12 @@ public class UserRepository extends AbstractRepository<UserEntity> {
 		super(UserEntity.class);
 	}
 
-	public UserEntity findByEmail(String email) {
+	/**
+	 *
+	 * @param email
+	 * @return
+	 */
+	public UserEntity find(String email) {
 		try {
 			return getEntityManager().createNamedQuery(UserEntity.FIND_BY_EMAIL, UserEntity.class)
 					.setParameter("email", email).getSingleResult();

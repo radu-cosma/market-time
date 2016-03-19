@@ -30,8 +30,8 @@ CREATE TABLE `user` (
 --
 -- Table structure for table `session`
 --
-DROP TABLE IF EXISTS `session`;
-CREATE TABLE `session` (
+DROP TABLE IF EXISTS `user_session`;
+CREATE TABLE `user_session` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `user_id` bigint(20) NOT NULL,
   `uuid` varchar(36) NOT NULL,
