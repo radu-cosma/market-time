@@ -1,6 +1,6 @@
 package com.markettime.model.dto;
 
-import javax.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  *
@@ -9,10 +9,10 @@ import javax.validation.constraints.NotNull;
  */
 public class LoginDto {
 
-    @NotNull
+    @NotEmpty
     private String email;
 
-    @NotNull
+    @NotEmpty
     private String password;
 
     public String getEmail() {

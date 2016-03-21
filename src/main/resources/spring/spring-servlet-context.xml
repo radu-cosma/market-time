@@ -59,7 +59,7 @@
    		</property>
 	</bean>
 	
-	<bean id="viewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+	<bean id="viewResolver" class="com.markettime.web.servlet.view.CustomFreeMarkerViewResolver">
 		<property name="cache" value="false"/>
 		<property name="prefix" value="pages/"/>
 		<property name="suffix" value=".ftl"/>
