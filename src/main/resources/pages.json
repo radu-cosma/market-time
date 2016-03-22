@@ -1,0 +1,22 @@
+{
+	"defaultCssResources": ["bootstrap", "bootstrap-theme"],
+	"defaultJsResources": ["bootstrap"],
+	"views": {
+		"home": {
+			"viewName": "home",
+			"headerName": "header",
+			"footerName": "footer",
+			"layoutName": "layout",
+			"cssResources": ["style", "header", "layout"],
+			"jsResources": ["script"]
+		},
+		"registration": {
+			"viewName": "registration",
+			"headerName": "header",
+			"footerName": "footer",
+			"layoutName": "layout",
+			"cssResources": ["style", "header", "layout"],
+			"jsResources": ["script"]
+		}
+	}
+}

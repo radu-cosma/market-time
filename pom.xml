@@ -21,6 +21,7 @@
 		<spring.data.jpa.version>1.9.4.RELEASE</spring.data.jpa.version>
 		<spring.version>4.2.5.RELEASE</spring.version>
 		<validation.api.version>1.1.0.Final</validation.api.version>
+		<jackson.version>2.7.3</jackson.version>
 	</properties>
 
 	<dependencies>
@@ -48,6 +49,13 @@
 			<artifactId>validation-api</artifactId>
 			<version>${validation.api.version}</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		
 		
 		<!-- Spring -->
 		<dependency>
