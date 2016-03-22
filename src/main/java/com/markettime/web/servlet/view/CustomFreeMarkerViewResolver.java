@@ -61,6 +61,8 @@ public class CustomFreeMarkerViewResolver extends FreeMarkerViewResolver {
         viewConfig.setFooterName("footer");
         List<String> cssResources = new ArrayList<>();
         cssResources.add("style");
+        cssResources.add("layout");
+        cssResources.add("header");
         viewConfig.setCssResources(cssResources);
         List<String> jsResources = new ArrayList<>();
         jsResources.add("script");

@@ -28,7 +28,7 @@ public class RegistrationController extends BaseController {
     private RegistrationService registrationService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public String getRegistrationPage() {
+    public String getRegistration() {
         return "registration";
     }
 
