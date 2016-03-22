@@ -1,14 +1,22 @@
 {
-	"defaultCssResources": ["bootstrap-theme", "bootstrap"],
+	"defaultCssResources": ["bootstrap", "bootstrap-theme"],
 	"defaultJsResources": ["bootstrap"],
-	"views": [
+	"views": {
 		"home": {
 			"viewName": "home",
 			"headerName": "header",
 			"footerName": "footer",
-			"layoutName: "layout",
+			"layoutName": "layout",
+			"cssResources": ["style"],
+			"jsResources": ["script"]
+		},
+		"register": {
+			"viewName": "register",
+			"headerName": "header",
+			"footerName": "footer",
+			"layoutName": "layout",
 			"cssResources": ["style"],
 			"jsResources": ["script"]
 		}
-	]
+	}
 }
