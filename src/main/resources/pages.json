@@ -17,6 +17,14 @@
 			"layoutName": "layout",
 			"cssResources": ["style", "header", "layout"],
 			"jsResources": ["script"]
+		},
+		"contact": {
+			"viewName": "contact",
+			"headerName": "header",
+			"footerName": "footer",
+			"layoutName": "layout",
+			"cssResources": ["style", "header", "layout"],
+			"jsResources": ["script"]
 		}
 	}
 }
