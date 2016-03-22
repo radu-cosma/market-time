@@ -4,16 +4,12 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.springframework.web.servlet.view.AbstractUrlBasedView;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
@@ -56,14 +52,11 @@ public class CustomFreeMarkerViewResolver extends FreeMarkerViewResolver {
     private PagesConfig readPagesConfig() {
     	InputStream is = getClass().getClassLoader().getResourceAsStream("pages.json");
         String json = new BufferedReader(new InputStreamReader(is)).lines()
-        		   .parallel().collect(Collectors.joining("\n"));
+        		   .collect(Collectors.joining("\n"));
         try {
 			return new ObjectMapper().readValue(json, PagesConfig.class);
-			
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new RuntimeException(e);
 		}
-        return null;
     }
 }
