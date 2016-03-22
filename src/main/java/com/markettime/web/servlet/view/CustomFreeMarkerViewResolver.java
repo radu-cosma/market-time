@@ -1,12 +1,16 @@
 package com.markettime.web.servlet.view;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.springframework.web.servlet.view.AbstractUrlBasedView;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  *
@@ -29,12 +33,12 @@ public class CustomFreeMarkerViewResolver extends FreeMarkerViewResolver {
         attributesMap.put("footerName", viewConfig.getFooterName());
         attributesMap.put("cssResources", viewConfig.getCssResources());
         attributesMap.put("jsResources", viewConfig.getJsResources());
-
+        
         return super.buildView(viewConfig.getLayoutName());
     }
 
     private ViewConfig getViewConfig(String viewName) {
-        PagesConfig pagesConfig = readPagesConfig(viewName);
+        PagesConfig pagesConfig = readPagesConfig();
         ViewConfig viewConfig = pagesConfig.getViews().get(viewName);
         if (viewConfig == null) {
             throw new RuntimeException(String.format("No config was found for view with name '%s'", viewName));
@@ -45,29 +49,14 @@ public class CustomFreeMarkerViewResolver extends FreeMarkerViewResolver {
         return viewConfig;
     }
 
-    private PagesConfig readPagesConfig(String viewName) {
-        PagesConfig pagesConfig = new PagesConfig();
-        List<String> defaultCssResources = new ArrayList<>();
-        defaultCssResources.add("bootstrap");
-        defaultCssResources.add("bootstrap-theme");
-        pagesConfig.setDefaultCssResources(defaultCssResources);
-        List<String> defaultJsResources = new ArrayList<>();
-        defaultJsResources.add("bootstrap");
-        pagesConfig.setDefaultJsResources(defaultJsResources);
-        ViewConfig viewConfig = new ViewConfig();
-        viewConfig.setLayoutName("layout");
-        viewConfig.setViewName(viewName);
-        viewConfig.setHeaderName("header");
-        viewConfig.setFooterName("footer");
-        List<String> cssResources = new ArrayList<>();
-        cssResources.add("style");
-        viewConfig.setCssResources(cssResources);
-        List<String> jsResources = new ArrayList<>();
-        jsResources.add("script");
-        viewConfig.setJsResources(jsResources);
-        Map<String, ViewConfig> views = new HashMap<>();
-        views.put(viewName, viewConfig);
-        pagesConfig.setViews(views);
-        return pagesConfig;
+    private PagesConfig readPagesConfig() {
+    	InputStream is = getClass().getClassLoader().getResourceAsStream("pages.json");
+        String json = new BufferedReader(new InputStreamReader(is)).lines()
+        		   .collect(Collectors.joining("\n"));
+        try {
+			return new ObjectMapper().readValue(json, PagesConfig.class);
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
     }
 }
