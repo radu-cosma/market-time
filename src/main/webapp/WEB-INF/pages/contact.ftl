@@ -10,22 +10,24 @@
       <p><span class="glyphicon glyphicon-phone"></span> 0040 747123123</p>
       <p><span class="glyphicon glyphicon-envelope"></span> office@markettime.com</p>      
     </div>
-    <div class="col-sm-7 slideanim">
-      <div class="row">
-        <div class="col-sm-6 form-group">
-          <input class="form-control" id="name" name="name" placeholder="Company name" type="text" required>
-        </div>
-        <div class="col-sm-6 form-group">
-          <input class="form-control" id="email" name="email" placeholder="Email address" type="email" required>
-        </div>
-      </div>
-      <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
-      <div class="row">
-        <div class="col-sm-12 form-group">
-          <button class="btn btn-default pull-left" type="submit">Send</button>
-        </div>
-      </div>    
-    </div>
+    <form name="contact" action="contact" method="POST">
+	    <div class="col-sm-7 slideanim">
+	      <div class="row">
+	        <div class="col-sm-6 form-group">
+	          <input class="form-control" id="companyName" name="companyName" placeholder="Company name" type="text" required>
+	        </div>
+	        <div class="col-sm-6 form-group">
+	          <input class="form-control" id="email" name="email" placeholder="Email address" type="email" required>
+	        </div>
+	      </div>
+	      <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
+	      <div class="row">
+	        <div class="col-sm-12 form-group">
+	          <button class="btn btn-default pull-left" type="submit">Send</button>
+	        </div>
+	      </div>    
+	    </div>
+    </form>
   </div>
   </div>
 </div>
