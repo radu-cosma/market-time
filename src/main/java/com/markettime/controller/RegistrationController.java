@@ -35,11 +35,11 @@ public class RegistrationController extends BaseController {
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public View register(@ModelAttribute @Valid RegistrationDto registrationDto, BindingResult bindingResult) {
 
-    	if (bindingResult.hasErrors()) {
-    		throw new ValidationErrorsException(bindingResult.getAllErrors(), "registration");
-    	} 
-    	registrationService.registerUser(registrationDto);
-    	return simpleRedirect("home");
+        if (bindingResult.hasErrors()) {
+            throw new ValidationErrorsException(bindingResult.getAllErrors(), "registration");
+        }
+        registrationService.registerUser(registrationDto);
+        return simpleRedirect("home");
     }
 
 }

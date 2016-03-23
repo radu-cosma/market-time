@@ -6,6 +6,8 @@ import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -21,6 +23,8 @@ import com.markettime.context.SessionContext;
  */
 @ControllerAdvice
 public class CustomExceptionHandler {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(CustomExceptionHandler.class);
 
     private static final String DOT_DELIMITER = ".";
     private static final String UPPERCASE_REGEX = "(?=\\p{Upper})";
@@ -43,6 +47,18 @@ public class CustomExceptionHandler {
             modelAndView.setViewName(e.getViewName());
         }
         return modelAndView;
+    }
+
+    @ExceptionHandler(value = ApplicationException.class)
+    public String handleApplicationException(HttpServletRequest request, ApplicationException e) {
+        LOGGER.error(e.getMessage());
+        return "error500";
+    }
+
+    @ExceptionHandler(value = Exception.class)
+    public String handleException(HttpServletRequest request, Exception e) {
+        LOGGER.error(e.getMessage());
+        return "error500";
     }
 
     private String buildErrorCodeMessageKey(FieldError fieldError) {

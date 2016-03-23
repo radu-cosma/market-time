@@ -6,9 +6,8 @@
 	  	<meta name="viewport" content="width=device-width, initial-scale=1">
 	  	<link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
 	 	<link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
-	  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-		<link rel="stylesheet" href="style/layout.css">	
- 		<#list cssResources as cssResource>
+		<link rel="stylesheet" href="style/layout.css">
+		<#list cssResources as cssResource>
  			<link rel="stylesheet" href="style/${cssResource}.css">	
  		</#list>
  		<#list jsResources as jsResource>

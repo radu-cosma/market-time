@@ -12,8 +12,8 @@
                     <br>
                 </div>
                 <form name="login" action="login" method="POST">
-	             	<@createFieldSection 'email' 'EMAIL' 'text'/>
-	             	<@createFieldSection 'passwprd' 'PASSWORD' 'password'/>
+	             	<@createInputSection 'email' 'EMAIL'/>
+	             	<@createInputSection 'password' 'PASSWORD' 'password'/>
 	             	<div class="checkbox">
 	               		<label><input type="checkbox"> Remember me</label>
 	             	</div>
@@ -31,7 +31,7 @@
 	<p><strong><@spring.message '${errorMessage}.LABEL'/></strong></p>
 </#if>
 
-<#macro createFieldSection fieldName fieldKey fieldType>
+<#macro createInputSection fieldName fieldKey fieldType='text'>
     <div class="form-group">
 		<label class=""><@spring.message '${fieldKey}.LABEL'/></label>
 		<input class="form-control" name="${fieldName}" type="${fieldType}" placeholder="<@spring.message '${fieldKey}.PLACEHOLDER'/>"/>

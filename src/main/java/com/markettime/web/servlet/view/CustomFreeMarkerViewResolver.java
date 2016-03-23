@@ -11,6 +11,7 @@ import org.springframework.web.servlet.view.AbstractUrlBasedView;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.markettime.exception.ApplicationException;
 
 /**
  *
@@ -41,7 +42,7 @@ public class CustomFreeMarkerViewResolver extends FreeMarkerViewResolver {
         PagesConfig pagesConfig = readPagesConfig();
         ViewConfig viewConfig = pagesConfig.getViews().get(viewName);
         if (viewConfig == null) {
-            throw new RuntimeException(String.format("No config was found for view with name '%s'", viewName));
+            throw new ApplicationException(String.format("No config was found for view with name '%s'", viewName));
         } else {
             viewConfig.getCssResources().addAll(0, pagesConfig.getDefaultCssResources());
             viewConfig.getJsResources().addAll(0, pagesConfig.getDefaultJsResources());
@@ -55,7 +56,7 @@ public class CustomFreeMarkerViewResolver extends FreeMarkerViewResolver {
         try {
             return new ObjectMapper().readValue(json, PagesConfig.class);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new ApplicationException(e);
         }
     }
 }

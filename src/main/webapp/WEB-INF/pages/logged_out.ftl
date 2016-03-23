@@ -13,7 +13,7 @@
 
 <section id="view2" class="aboutus-view">
 	<div id="aboutus" class="container-fluid text-center">
-    	<h2 class="main-title">About Us</h2><br> 
+    	<h2 id="about-us-title" class="main-title">About Us</h2><br> 
     	<div class="row">
    	 		<div class="col-sm-4 col-sm-push-8">
       			<span class="aboutus-icon"></span>

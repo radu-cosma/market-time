@@ -1,13 +1,13 @@
 {
-	"defaultCssResources": ["bootstrap", "bootstrap-theme"],
-	"defaultJsResources": ["bootstrap"],
+	"defaultCssResources": ["bootstrap-3.3.6.min", "bootstrap-theme"],
+	"defaultJsResources": ["jquery-1.12.0.min", "bootstrap-3.3.6.min"],
 	"views": {
 		"home": {
 			"viewName": "home",
 			"headerName": "header",
 			"footerName": "footer",
 			"layoutName": "layout",
-			"cssResources": ["style", "header", "layout"],
+			"cssResources": ["style", "header"],
 			"jsResources": ["script"]
 		},
 		"registration": {
@@ -15,7 +15,7 @@
 			"headerName": "header",
 			"footerName": "footer",
 			"layoutName": "layout",
-			"cssResources": ["style", "header", "layout"],
+			"cssResources": ["style", "header"],
 			"jsResources": ["script"]
 		},
 		"contact": {
@@ -23,7 +23,15 @@
 			"headerName": "header",
 			"footerName": "footer",
 			"layoutName": "layout",
-			"cssResources": ["style", "header", "layout"],
+			"cssResources": ["style", "header"],
+			"jsResources": ["script"]
+		},
+		"error500": {
+			"viewName": "error500",
+			"headerName": "header",
+			"footerName": "footer",
+			"layoutName": "layout",
+			"cssResources": ["style", "header"],
 			"jsResources": ["script"]
 		}
 	}
