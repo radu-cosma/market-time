@@ -10,6 +10,14 @@
 			"cssResources": ["style", "header"],
 			"jsResources": ["script"]
 		},
+		"login": {
+			"viewName": "login_form",
+			"headerName": "header",
+			"footerName": "footer",
+			"layoutName": "layout",
+			"cssResources": ["style", "header"],
+			"jsResources": ["script"]
+		},
 		"registration": {
 			"viewName": "registration",
 			"headerName": "header",
@@ -24,7 +32,7 @@
 			"footerName": "footer",
 			"layoutName": "layout",
 			"cssResources": ["style", "header"],
-			"jsResources": ["script"]
+			"jsResources": ["script", "google-maps"]
 		},
 		"error500": {
 			"viewName": "error500",

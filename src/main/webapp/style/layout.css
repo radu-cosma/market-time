@@ -29,8 +29,9 @@ p {
 }
 
 #view-container {
+	min-height: 500px;
 }
 
 #footer-container {
-
+	height: 75px;
 }

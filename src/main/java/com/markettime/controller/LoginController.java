@@ -33,8 +33,8 @@ public class LoginController extends BaseController {
     private LoginService loginService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public View getLogin() {
-        return simpleRedirect("home");
+    public String getLogin() {
+        return "login";
     }
 
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
