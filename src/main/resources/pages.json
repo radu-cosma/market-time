@@ -32,10 +32,18 @@
 			"footerName": "footer",
 			"layoutName": "layout",
 			"cssResources": ["style", "header"],
-			"jsResources": ["script", "google-maps"]
+			"jsResources": ["script", "google-maps", "contact"]
 		},
 		"error500": {
 			"viewName": "error500",
+			"headerName": "header",
+			"footerName": "footer",
+			"layoutName": "layout",
+			"cssResources": ["style", "header"],
+			"jsResources": ["script"]
+		},
+		"error404": {
+			"viewName": "error404",
 			"headerName": "header",
 			"footerName": "footer",
 			"layoutName": "layout",

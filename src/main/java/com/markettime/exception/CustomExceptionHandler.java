@@ -6,13 +6,12 @@ import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.NoHandlerFoundException;
 
 import com.markettime.context.SessionContext;
 
@@ -23,8 +22,6 @@ import com.markettime.context.SessionContext;
  */
 @ControllerAdvice
 public class CustomExceptionHandler {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(CustomExceptionHandler.class);
 
     private static final String DOT_DELIMITER = ".";
     private static final String UPPERCASE_REGEX = "(?=\\p{Upper})";
@@ -39,7 +36,7 @@ public class CustomExceptionHandler {
         Map<String, String> validationErrors = e.getErrors().stream()
                 .filter(error -> error instanceof FieldError)
                 .map(error -> (FieldError) error)
-                .collect(Collectors.toMap(FieldError::getField, fieldError ->  buildErrorCodeMessageKey(fieldError)));
+                .collect(Collectors.toMap(FieldError::getField, fieldError -> buildErrorCodeMessageKey(fieldError)));
         // @formatter:on
         modelAndView.addObject("validationErrors", validationErrors);
         modelAndView.addObject("sessionContext", sessionContext);
@@ -50,14 +47,20 @@ public class CustomExceptionHandler {
     }
 
     @ExceptionHandler(value = ApplicationException.class)
-    public String handleApplicationException(HttpServletRequest request, ApplicationException e) {
-        LOGGER.error(e.getMessage());
-        return "error500";
+    public ModelAndView handleApplicationException(HttpServletRequest request, ApplicationException e) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("generalError", e.getMessage());
+        modelAndView.setViewName(getOriginalViewName(request));
+        return modelAndView;
+    }
+
+    @ExceptionHandler(NoHandlerFoundException.class)
+    public String handleNoHandlerFoundException() {
+        return "error404";
     }
 
     @ExceptionHandler(value = Exception.class)
     public String handleException(HttpServletRequest request, Exception e) {
-        LOGGER.error(e.getMessage());
         return "error500";
     }
 
@@ -72,5 +75,9 @@ public class CustomExceptionHandler {
     private String splitAndCapitalize(String s) {
         return Arrays.stream(s.split(UPPERCASE_REGEX)).map(str -> str.toUpperCase())
                 .collect(Collectors.joining(DOT_DELIMITER));
+    }
+
+    private String getOriginalViewName(HttpServletRequest request) {
+        return request.getServletPath().substring(1);
     }
 }
