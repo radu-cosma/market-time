@@ -41,7 +41,9 @@ public class LoginService {
     public String login(LoginDto loginDto) {
         String uuid = null;
         UserEntity userEntity = userRepository.find(loginDto.getEmail());
-        if (userEntity.getPassword().equals(loginDto.getPassword())) {
+        if (userEntity == null) {
+            return null;
+        } else if (userEntity.getPassword().equals(loginDto.getPassword())) {
             sessionContext.setLoggedIn(true);
             sessionContext.setEmail(userEntity.getEmail());
             uuid = createUserSession(userEntity);
