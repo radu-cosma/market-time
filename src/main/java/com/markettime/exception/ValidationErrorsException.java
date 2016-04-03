@@ -1,6 +1,5 @@
 package com.markettime.exception;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.validation.ObjectError;
@@ -17,10 +16,6 @@ public class ValidationErrorsException extends RuntimeException {
     private List<ObjectError> errors;
     private String viewName;
 
-    public ValidationErrorsException() {
-        errors = new ArrayList<>();
-    }
-
     public ValidationErrorsException(List<ObjectError> errors) {
         this.errors = errors;
     }
@@ -34,16 +29,8 @@ public class ValidationErrorsException extends RuntimeException {
         return errors;
     }
 
-    public void setErrors(List<ObjectError> errors) {
-        this.errors = errors;
-    }
-
     public String getViewName() {
         return viewName;
-    }
-
-    public void setViewName(String viewName) {
-        this.viewName = viewName;
     }
 
 }

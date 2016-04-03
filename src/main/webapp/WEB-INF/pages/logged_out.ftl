@@ -1,5 +1,3 @@
-<#include "login_form.ftl">
-
 <section id="view1">
 	<div id="home" class="home-section-wrapper">
   		<div class="overlay-light">

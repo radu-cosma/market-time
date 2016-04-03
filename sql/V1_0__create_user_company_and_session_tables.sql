@@ -1,7 +1,6 @@
 --
 -- Table structure for table `company`
 --
-DROP TABLE IF EXISTS `company`;
 CREATE TABLE `company` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(30) NOT NULL,
@@ -13,7 +12,6 @@ CREATE TABLE `company` (
 --
 -- Table structure for table `user`
 --
-DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `first_name` varchar(30) NOT NULL,
@@ -30,7 +28,6 @@ CREATE TABLE `user` (
 --
 -- Table structure for table `session`
 --
-DROP TABLE IF EXISTS `user_session`;
 CREATE TABLE `user_session` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `user_id` bigint(20) NOT NULL,

@@ -4,6 +4,15 @@
 
 @import url(https://fonts.googleapis.com/css?family=Orbitron);
 
+body {
+	text-rendering: optimizeLegibility;
+	margin-top: 0.2em;
+	font-family: Courier New;
+	line-height: 1.375em;
+	color: #303030;
+	font-weight: 400;
+}
+
 #about-us-title {
 	margin-top: 70px;
 }

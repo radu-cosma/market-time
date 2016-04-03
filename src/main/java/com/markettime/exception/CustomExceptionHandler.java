@@ -13,6 +13,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.NoHandlerFoundException;
 
 import com.markettime.context.SessionContext;
 
@@ -32,32 +33,57 @@ public class CustomExceptionHandler {
     @Autowired
     private SessionContext sessionContext;
 
-    @ExceptionHandler(value = ValidationErrorsException.class)
-    public ModelAndView handleValidationException(HttpServletRequest request, ValidationErrorsException e) {
+    @ExceptionHandler(ValidationErrorsException.class)
+    public ModelAndView handleValidationErrorsException(HttpServletRequest request, ValidationErrorsException e) {
         ModelAndView modelAndView = new ModelAndView();
+        populateModel(modelAndView, request);
         // @formatter:off
         Map<String, String> validationErrors = e.getErrors().stream()
                 .filter(error -> error instanceof FieldError)
                 .map(error -> (FieldError) error)
-                .collect(Collectors.toMap(FieldError::getField, fieldError ->  buildErrorCodeMessageKey(fieldError)));
+                .collect(Collectors.toMap(FieldError::getField, fieldError -> buildErrorCodeMessageKey(fieldError)));
         // @formatter:on
-        modelAndView.addObject("validationErrors", validationErrors);
         modelAndView.addObject("sessionContext", sessionContext);
+        modelAndView.addObject("validationErrors", validationErrors);
         if (e.getViewName() != null) {
             modelAndView.setViewName(e.getViewName());
+        } else {
+            modelAndView.setViewName(getOriginalViewName(request));
         }
         return modelAndView;
     }
 
-    @ExceptionHandler(value = ApplicationException.class)
-    public String handleApplicationException(HttpServletRequest request, ApplicationException e) {
-        LOGGER.error(e.getMessage());
-        return "error500";
+    private void populateModel(ModelAndView modelAndView, HttpServletRequest request) {
+        Object dto = request.getAttribute("dto");
+        Arrays.stream(dto.getClass().getDeclaredFields()).forEach(field -> {
+            field.setAccessible(true);
+            try {
+                modelAndView.addObject(field.getName(), field.get(dto));
+            } catch (Exception e) {
+                LOGGER.warn("Could not add field with name '{}' to the model", field.getName());
+            }
+        });
     }
 
-    @ExceptionHandler(value = Exception.class)
+    @ExceptionHandler(ApplicationException.class)
+    public ModelAndView handleApplicationException(HttpServletRequest request, ApplicationException e) {
+        LOGGER.error("An exception occured!", e);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("sessionContext", sessionContext);
+        modelAndView.addObject("generalError", e.getMessage());
+        modelAndView.setViewName(getOriginalViewName(request));
+        return modelAndView;
+    }
+
+    @ExceptionHandler(NoHandlerFoundException.class)
+    public String handleNoHandlerFoundException(NoHandlerFoundException e) {
+        LOGGER.error("An exception occured!", e);
+        return "error404";
+    }
+
+    @ExceptionHandler(Exception.class)
     public String handleException(HttpServletRequest request, Exception e) {
-        LOGGER.error(e.getMessage());
+        LOGGER.error("An exception occured!", e);
         return "error500";
     }
 
@@ -72,5 +98,9 @@ public class CustomExceptionHandler {
     private String splitAndCapitalize(String s) {
         return Arrays.stream(s.split(UPPERCASE_REGEX)).map(str -> str.toUpperCase())
                 .collect(Collectors.joining(DOT_DELIMITER));
+    }
+
+    private String getOriginalViewName(HttpServletRequest request) {
+        return request.getServletPath().substring(1);
     }
 }

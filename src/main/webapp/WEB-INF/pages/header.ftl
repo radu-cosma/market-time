@@ -18,3 +18,4 @@
     	</div>
   	</div>
 </nav>
+<#include "login_form.ftl">
