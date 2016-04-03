@@ -2,12 +2,12 @@
 <html>
 	<head>
 		<title>Market Time</title>
-	  	<meta charset="utf-8">
-	  	<meta name="viewport" content="width=device-width, initial-scale=1">
-	  	<link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
-		<link rel="stylesheet" href="${baseURL}/style/layout.css">
+	  	<meta charset="utf-8"/>
+	  	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	  	<link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css"/>
+		<link rel="stylesheet" href="${baseURL}/style/layout.css"/>
 		<#list cssResources as cssResource>
- 			<link rel="stylesheet" href="${baseURL}/style/${cssResource}.css">	
+ 			<link rel="stylesheet" href="${baseURL}/style/${cssResource}.css"/>	
  		</#list>
 	</head>
 	<body>

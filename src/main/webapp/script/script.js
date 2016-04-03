@@ -16,10 +16,6 @@ $(function(){
 
 
 $("#log-in").click(function() {
-     var navMain = $("#myNavbar");
-    // navMain.on("click", "#user-login", null, function () {
-         navMain.collapse('hide');
-     //});
-     $("#forgot-password").modal('hide');
+     var navMain = $("#myNavbar").collapse('hide');
 });
 

@@ -1,5 +1,5 @@
 {
-	"defaultCssResources": ["bootstrap-3.3.6.min", "bootstrap-theme"],
+	"defaultCssResources": ["bootstrap-3.3.6.min"],
 	"defaultJsResources": ["jquery-1.12.0.min", "bootstrap-3.3.6.min"],
 	"views": {
 		"home": {
@@ -10,20 +10,12 @@
 			"cssResources": ["style", "header"],
 			"jsResources": ["script"]
 		},
-		"login": {
-			"viewName": "login_form",
-			"headerName": "header",
-			"footerName": "footer",
-			"layoutName": "layout",
-			"cssResources": ["style", "header"],
-			"jsResources": ["script"]
-		},
-		"registration": {
+		"register": {
 			"viewName": "registration",
 			"headerName": "header",
 			"footerName": "footer",
 			"layoutName": "layout",
-			"cssResources": ["style", "header"],
+			"cssResources": ["style", "header", "registration"],
 			"jsResources": ["script"]
 		},
 		"contact": {

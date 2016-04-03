@@ -9,10 +9,10 @@ import org.springframework.web.servlet.view.RedirectView;
  */
 public class BaseController {
 
-	protected RedirectView simpleRedirect(String view) {
-		RedirectView redirectView = new RedirectView(view);
-		redirectView.setExposeModelAttributes(false);
-		return redirectView;
-	}
+    protected RedirectView simpleRedirect(String view) {
+        RedirectView redirectView = new RedirectView(view);
+        redirectView.setExposeModelAttributes(false);
+        return redirectView;
+    }
 
 }

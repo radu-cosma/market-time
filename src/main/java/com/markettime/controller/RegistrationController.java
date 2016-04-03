@@ -1,5 +1,6 @@
 package com.markettime.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,14 +30,16 @@ public class RegistrationController extends BaseController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String getRegistration() {
-        return "registration";
+        return "register";
     }
 
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    public View register(@ModelAttribute @Valid RegistrationDto registrationDto, BindingResult bindingResult) {
+    public View register(HttpServletRequest request, @ModelAttribute @Valid RegistrationDto registrationDto,
+            BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
-            throw new ValidationErrorsException(bindingResult.getAllErrors(), "registration");
+            request.setAttribute("dto", registrationDto);
+            throw new ValidationErrorsException(bindingResult.getAllErrors());
         }
         registrationService.registerUser(registrationDto);
         return simpleRedirect("home");

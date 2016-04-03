@@ -14,6 +14,10 @@
         		</div>
       		</div> 
    		</div>  
+   		
+   		<#if generalError??>
+   			<label class="error-message">${generalError}</label>
+   		</#if>
 
 		<form name="register" action="register" method="POST">
 	  		<div class="row"> 
@@ -21,7 +25,7 @@
 	       			<div class="reg-form1">
 	         			<@createInputSection 'firstName' 'FIRST.NAME'/>    
 						<@createInputSection 'lastName' 'LAST.NAME'/>
-	         			<@createInputSection 'email' 'EMAIL' 'email'/>
+	         			<@createInputSection 'email' 'EMAIL'/>
 						<@createInputSection 'password' 'PASSWORD' 'password'/>
 						<@createInputSection 'repeatPassword' 'REPEAT.PASSWORD' 'password'/>
 	         		</div>    
@@ -47,11 +51,15 @@
 </div>  
 
 <#macro createInputSection fieldName fieldKey fieldType='text'>
+	<#assign hasError=false/>
+	<#if validationErrors?? && validationErrors["${fieldName}"]??>
+		<#assign hasError=true/>
+	</#if>
 	<div class="form-group">
 		<label class=""><@spring.message 'REGISTRATION.${fieldKey}.LABEL'/></label>
-		<input class="form-control" name="${fieldName}" id="${fieldName}" type="${fieldType}" placeholder="<@spring.message 'REGISTRATION.${fieldKey}.PLACEHOLDER'/>">
-		<#if validationErrors?? && validationErrors["${fieldName}"]??>
-			<td><label class=""><@spring.message '${validationErrors["${fieldName}"]}'/></label></td>
+		<input value="<#if !hasError && .data_model[fieldName]??>${.data_model[fieldName]}</#if>" class="form-control <#if hasError>error-input</#if>" name="${fieldName}" id="${fieldName}" type="${fieldType}" placeholder="<@spring.message 'REGISTRATION.${fieldKey}.PLACEHOLDER'/>">
+		<#if hasError>
+			<td><label class="error-message"><@spring.message '${validationErrors["${fieldName}"]}'/></label></td>
 		</#if>
 	</div>    
 </#macro>

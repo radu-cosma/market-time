@@ -16,6 +16,10 @@ public class ValidationErrorsException extends RuntimeException {
     private List<ObjectError> errors;
     private String viewName;
 
+    public ValidationErrorsException(List<ObjectError> errors) {
+        this.errors = errors;
+    }
+
     public ValidationErrorsException(List<ObjectError> errors, String viewName) {
         this.errors = errors;
         this.viewName = viewName;
