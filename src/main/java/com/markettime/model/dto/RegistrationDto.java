@@ -14,34 +14,34 @@ import com.markettime.validator.RegistrationValid;
 @RegistrationValid
 public class RegistrationDto {
 
-    @NotEmpty
-    @Size(max = 30)
+    @NotEmpty(message = "NotEmpty")
+    @Size(message = "Size", max = 30)
     private String firstName;
 
-    @NotEmpty
-    @Size(max = 30)
+    @NotEmpty(message = "NotEmpty")
+    @Size(message = "Size", max = 30)
     private String lastName;
 
-    @NotEmpty
-    @Size(max = 127)
+    @NotEmpty(message = "NotEmpty")
+    @Size(message = "Size", max = 127)
     private String email;
 
-    @Size(min = 8, max = 63)
+    @Size(message = "Size", min = 8, max = 63)
     private String password;
 
-    @Size(min = 8, max = 63)
+    @Size(message = "Size", min = 8, max = 63)
     private String repeatPassword;
 
-    @NotEmpty
-    @Size(max = 30)
+    @NotEmpty(message = "NotEmpty")
+    @Size(message = "Size", max = 30)
     private String companyName;
 
-    @NotEmpty
-    @Size(max = 100)
+    @NotEmpty(message = "NotEmpty")
+    @Size(message = "Size", max = 100)
     private String companyAddress;
 
-    @NotEmpty
-    @Size(max = 15)
+    @NotEmpty(message = "NotEmpty")
+    @Size(message = "Size", max = 15)
     private String companyPhone;
 
     public String getFirstName() {
