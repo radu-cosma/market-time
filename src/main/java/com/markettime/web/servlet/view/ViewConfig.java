@@ -9,12 +9,21 @@ import java.util.List;
  */
 public class ViewConfig {
 
+    private ViewCriteria criteria;
     private String viewName;
     private String headerName;
     private String footerName;
     private String layoutName;
     private List<String> cssResources;
     private List<String> jsResources;
+
+    public ViewCriteria getCriteria() {
+        return criteria;
+    }
+
+    public void setCriteria(ViewCriteria criteria) {
+        this.criteria = criteria;
+    }
 
     public String getViewName() {
         return viewName;
@@ -67,10 +76,10 @@ public class ViewConfig {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        builder.append("ViewConfig [viewName=").append(viewName).append(", headerName=").append(headerName)
-                .append(", footerName=").append(footerName).append(", layoutName=").append(layoutName)
-                .append(", cssResources=").append(cssResources).append(", jsResources=").append(jsResources)
-                .append("]");
+        builder.append("ViewConfig [criteria=").append(criteria).append(", viewName=").append(viewName)
+                .append(", headerName=").append(headerName).append(", footerName=").append(footerName)
+                .append(", layoutName=").append(layoutName).append(", cssResources=").append(cssResources)
+                .append(", jsResources=").append(jsResources).append("]");
         return builder.toString();
     }
 

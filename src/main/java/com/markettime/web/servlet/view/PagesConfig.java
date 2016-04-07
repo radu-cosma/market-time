@@ -1,7 +1,6 @@
 package com.markettime.web.servlet.view;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  *
@@ -12,7 +11,7 @@ public class PagesConfig {
 
     private List<String> defaultCssResources;
     private List<String> defaultJsResources;
-    private Map<String, ViewConfig> views;
+    private List<ViewConfig> views;
 
     public List<String> getDefaultCssResources() {
         return defaultCssResources;
@@ -30,11 +29,11 @@ public class PagesConfig {
         this.defaultJsResources = defaultJsResources;
     }
 
-    public Map<String, ViewConfig> getViews() {
+    public List<ViewConfig> getViews() {
         return views;
     }
 
-    public void setViews(Map<String, ViewConfig> views) {
+    public void setViews(List<ViewConfig> views) {
         this.views = views;
     }
 

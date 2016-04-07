@@ -8,6 +8,7 @@ import java.net.URI;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
@@ -17,6 +18,7 @@ import org.springframework.web.servlet.view.AbstractUrlBasedView;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.markettime.context.SessionContext;
 import com.markettime.exception.ApplicationException;
 
 /**
@@ -29,8 +31,24 @@ public class CustomFreeMarkerViewResolver extends FreeMarkerViewResolver {
     private static final Logger LOGGER = LoggerFactory.getLogger(CustomFreeMarkerViewResolver.class);
     private static final String ERROR_404_VIEW = "error404";
 
+    private PagesConfig pagesConfig;
+
     @Autowired
     private HttpServletRequest request;
+
+    @Autowired
+    private SessionContext sessionContext;
+
+    @PostConstruct
+    private void readPagesConfig() {
+        InputStream is = getClass().getClassLoader().getResourceAsStream("pages.json");
+        String json = new BufferedReader(new InputStreamReader(is)).lines().collect(Collectors.joining("\n"));
+        try {
+            pagesConfig = new ObjectMapper().readValue(json, PagesConfig.class);
+        } catch (IOException e) {
+            throw new ApplicationException(e);
+        }
+    }
 
     /**
      * Add custom attributes to the view
@@ -52,25 +70,26 @@ public class CustomFreeMarkerViewResolver extends FreeMarkerViewResolver {
     }
 
     private ViewConfig getViewConfig(String viewName) {
-        PagesConfig pagesConfig = readPagesConfig();
-        ViewConfig viewConfig = pagesConfig.getViews().get(viewName);
-        if (viewConfig == null) {
+        ViewConfig bestMatch = getBestMatch(viewName);
+        if (bestMatch == null) {
             LOGGER.error(String.format("No config was found for view with name '%s'", viewName));
-            viewConfig = pagesConfig.getViews().get(ERROR_404_VIEW);
+            bestMatch = getBestMatch(ERROR_404_VIEW);
         }
-        viewConfig.getCssResources().addAll(0, pagesConfig.getDefaultCssResources());
-        viewConfig.getJsResources().addAll(0, pagesConfig.getDefaultJsResources());
-        return viewConfig;
+        bestMatch.getCssResources().addAll(0, pagesConfig.getDefaultCssResources());
+        bestMatch.getJsResources().addAll(0, pagesConfig.getDefaultJsResources());
+        return bestMatch;
     }
 
-    private PagesConfig readPagesConfig() {
-        InputStream is = getClass().getClassLoader().getResourceAsStream("pages.json");
-        String json = new BufferedReader(new InputStreamReader(is)).lines().collect(Collectors.joining("\n"));
-        try {
-            return new ObjectMapper().readValue(json, PagesConfig.class);
-        } catch (IOException e) {
-            throw new ApplicationException(e);
+    private ViewConfig getBestMatch(String viewName) {
+        if (viewName == null) {
+            throw new IllegalArgumentException("viewName cannot be null");
         }
+        // @formatter:off
+        return pagesConfig.getViews().stream()
+                .filter(view -> view.getCriteria().getName().equals(viewName))
+                .filter(view -> view.getCriteria().isLoggedIn() != null && view.getCriteria().isLoggedIn().equals(sessionContext.isLoggedIn()))
+                .findFirst().get();
+        // @formatter:on
     }
 
     private String getBaseURL() {

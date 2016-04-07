@@ -93,7 +93,8 @@ public class CustomExceptionHandler {
         if (objectName.endsWith("Dto")) {
             objectName = objectName.substring(0, objectName.length() - 3);
         }
-        return splitAndCapitalize(String.format("%s.%s%s", objectName, fieldError.getField(), fieldError.getCode()));
+        return splitAndCapitalize(
+                String.format("%s.%s%s", objectName, fieldError.getField(), fieldError.getDefaultMessage()));
     }
 
     private String splitAndCapitalize(String s) {

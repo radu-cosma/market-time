@@ -19,15 +19,16 @@ public class RegistrationValidator implements ConstraintValidator<RegistrationVa
     @Override
     public boolean isValid(RegistrationDto registrationDto, ConstraintValidatorContext context) {
         if (!isEmailValid(registrationDto.getEmail())) {
-            replaceDefaultConstraintViolation(context, "INVALID.EMAIL");
+            replaceDefaultConstraintViolation(context, "email", "Invalid");
             return false;
         }
         if (!isPasswordValid(registrationDto.getPassword())) {
-            replaceDefaultConstraintViolation(context, "WEAK.PASSWORD");
+            replaceDefaultConstraintViolation(context, "password", "TooWeak");
             return false;
         }
         if (!registrationDto.getPassword().equals(registrationDto.getRepeatPassword())) {
-            replaceDefaultConstraintViolation(context, "PASSWORDS.MUST.MATCH");
+            replaceDefaultConstraintViolation(context, "password", "MustMatch");
+            replaceDefaultConstraintViolation(context, "repeatPassword", "MustMatch");
             return false;
         }
         return true;
@@ -41,8 +42,9 @@ public class RegistrationValidator implements ConstraintValidator<RegistrationVa
         return true;
     }
 
-    private void replaceDefaultConstraintViolation(ConstraintValidatorContext context, String errorMessage) {
+    private void replaceDefaultConstraintViolation(ConstraintValidatorContext context, String field,
+            String errorMessage) {
         context.disableDefaultConstraintViolation();
-        context.buildConstraintViolationWithTemplate(errorMessage).addConstraintViolation();
+        context.buildConstraintViolationWithTemplate(errorMessage).addPropertyNode(field).addConstraintViolation();
     }
 }

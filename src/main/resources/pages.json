@@ -1,8 +1,12 @@
 {
 	"defaultCssResources": ["bootstrap-3.3.6.min"],
 	"defaultJsResources": ["jquery-1.12.0.min", "bootstrap-3.3.6.min"],
-	"views": {
-		"home": {
+	"views": [   
+		{
+			"criteria": {
+				"name": "home",
+				"loggedIn": false
+			},
 			"viewName": "home",
 			"headerName": "header",
 			"footerName": "footer",
@@ -10,7 +14,11 @@
 			"cssResources": ["style", "header"],
 			"jsResources": ["script", "login"]
 		},
-		"register": {
+		{
+			"criteria": {
+				"name": "register",
+				"loggedIn": false
+			},
 			"viewName": "registration",
 			"headerName": "header",
 			"footerName": "footer",
@@ -18,7 +26,11 @@
 			"cssResources": ["style", "header", "registration"],
 			"jsResources": ["script"]
 		},
-		"contact": {
+		{
+			"criteria": {
+				"name": "contact",
+				"loggedIn": false
+			},
 			"viewName": "contact",
 			"headerName": "header",
 			"footerName": "footer",
@@ -26,7 +38,11 @@
 			"cssResources": ["style", "header"],
 			"jsResources": ["script", "google-maps", "contact"]
 		},
-		"error500": {
+		{
+			"criteria": {
+				"name": "error500",
+				"loggedIn": false
+			},
 			"viewName": "error500",
 			"headerName": "header",
 			"footerName": "footer",
@@ -34,7 +50,11 @@
 			"cssResources": ["style", "header"],
 			"jsResources": ["script"]
 		},
-		"error404": {
+		{
+			"criteria": {
+				"name": "error404",
+				"loggedIn": false
+			},
 			"viewName": "error404",
 			"headerName": "header",
 			"footerName": "footer",
@@ -42,5 +62,5 @@
 			"cssResources": ["style", "header"],
 			"jsResources": ["script"]
 		}
-	}
+	]
 }
