@@ -36,11 +36,10 @@ public class RestLoginController {
     @Autowired
     private LoginService loginService;
 
-    @RequestMapping(method = RequestMethod.GET)
-    public String login(HttpServletResponse response) {
-        createCookie(response, "COOKIEZZZZZ", "yummy");
-        return "Hello!";
-    }
+    /*
+     * @RequestMapping(method = RequestMethod.GET) public String login(HttpServletResponse response) {
+     * createCookie(response, "COOKIEZZZZZ", "yummy"); return "Hello!"; }
+     */
 
     @RequestMapping(method = RequestMethod.POST)
     public LoginResponse login(HttpServletResponse response, @Valid @RequestBody LoginDto loginDto,
