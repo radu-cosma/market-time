@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.markettime.exception.ApplicationException;
-import com.markettime.model.dto.RegistrationDto;
+import com.markettime.model.dto.request.RegistrationRequestDto;
 import com.markettime.model.entity.CompanyEntity;
 import com.markettime.model.entity.UserEntity;
 import com.markettime.repository.CompanyRepository;
@@ -26,34 +26,34 @@ public class RegistrationService {
     @Autowired
     private CompanyRepository companyRepository;
 
-    public void registerUser(RegistrationDto registrationDto) {
-        UserEntity user = userRepository.find(registrationDto.getEmail());
+    public void registerUser(RegistrationRequestDto registrationRequestDto) {
+        UserEntity user = userRepository.find(registrationRequestDto.getEmail());
         if (user != null) {
-            throw new ApplicationException(
-                    String.format("A user with email=%s already exists in the database!", registrationDto.getEmail()));
+            throw new ApplicationException(String.format("A user with email=%s already exists in the database!",
+                    registrationRequestDto.getEmail()));
         } else {
-            CompanyEntity company = createCompany(registrationDto);
-            createUser(registrationDto, company);
+            CompanyEntity companyEntity = createCompany(registrationRequestDto);
+            createUser(registrationRequestDto, companyEntity);
         }
     }
 
-    private CompanyEntity createCompany(RegistrationDto registrationDto) {
-        CompanyEntity company = new CompanyEntity();
-        company.setName(registrationDto.getCompanyName());
-        company.setAddress(registrationDto.getCompanyAddress());
-        company.setPhone(registrationDto.getCompanyPhone());
-        companyRepository.persist(company);
-        return company;
+    private CompanyEntity createCompany(RegistrationRequestDto registrationRequestDto) {
+        CompanyEntity companyEntity = new CompanyEntity();
+        companyEntity.setName(registrationRequestDto.getCompanyName());
+        companyEntity.setAddress(registrationRequestDto.getCompanyAddress());
+        companyEntity.setPhone(registrationRequestDto.getCompanyPhone());
+        companyRepository.persist(companyEntity);
+        return companyEntity;
     }
 
-    private UserEntity createUser(RegistrationDto registrationDto, CompanyEntity company) {
-        UserEntity user = new UserEntity();
-        user.setFirstName(registrationDto.getFirstName());
-        user.setLastName(registrationDto.getLastName());
-        user.setEmail(registrationDto.getEmail());
-        user.setPassword(registrationDto.getPassword());
-        user.setCompany(company);
-        userRepository.persist(user);
-        return user;
+    private UserEntity createUser(RegistrationRequestDto registrationRequestDto, CompanyEntity companyEntity) {
+        UserEntity userEntity = new UserEntity();
+        userEntity.setFirstName(registrationRequestDto.getFirstName());
+        userEntity.setLastName(registrationRequestDto.getLastName());
+        userEntity.setEmail(registrationRequestDto.getEmail());
+        userEntity.setPassword(registrationRequestDto.getPassword());
+        userEntity.setCompany(companyEntity);
+        userRepository.persist(userEntity);
+        return userEntity;
     }
 }

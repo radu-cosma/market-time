@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.markettime.context.SessionContext;
-import com.markettime.model.dto.LoginDto;
+import com.markettime.model.dto.request.LoginRequestDto;
 import com.markettime.model.entity.UserEntity;
 import com.markettime.model.entity.UserSessionEntity;
 import com.markettime.repository.UserRepository;
@@ -38,10 +38,12 @@ public class LoginService {
      * @param loginDto
      * @return
      */
-    public String login(LoginDto loginDto) {
+    public String login(LoginRequestDto loginDto) {
         String uuid = null;
         UserEntity userEntity = userRepository.find(loginDto.getEmail());
-        if (userEntity.getPassword().equals(loginDto.getPassword())) {
+        if (userEntity == null) {
+            return null;
+        } else if (userEntity.getPassword().equals(loginDto.getPassword())) {
             sessionContext.setLoggedIn(true);
             sessionContext.setEmail(userEntity.getEmail());
             uuid = createUserSession(userEntity);

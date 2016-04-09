@@ -11,8 +11,20 @@
 			"headerName": "header",
 			"footerName": "footer",
 			"layoutName": "layout",
-			"cssResources": ["style", "header"],
-			"jsResources": ["script"]
+			"cssResources": ["style", "header", "login"],
+			"jsResources": ["script", "login"]
+		},
+		{
+			"criteria": {
+				"name": "home",
+				"loggedIn": true
+			},
+			"viewName": "home",
+			"headerName": "header",
+			"footerName": "footer",
+			"layoutName": "layout",
+			"cssResources": ["style", "header", "login"],
+			"jsResources": ["script", "login"]
 		},
 		{
 			"criteria": {
@@ -23,7 +35,7 @@
 			"headerName": "header",
 			"footerName": "footer",
 			"layoutName": "layout",
-			"cssResources": ["style", "header", "registration"],
+			"cssResources": ["style", "header", "registration", "login"],
 			"jsResources": ["script"]
 		},
 		{
@@ -35,31 +47,29 @@
 			"headerName": "header",
 			"footerName": "footer",
 			"layoutName": "layout",
-			"cssResources": ["style", "header"],
+			"cssResources": ["style", "header", "login"],
 			"jsResources": ["script", "google-maps", "contact"]
 		},
 		{
 			"criteria": {
-				"name": "error500",
-				"loggedIn": false
+				"name": "error500"
 			},
 			"viewName": "error500",
 			"headerName": "header",
 			"footerName": "footer",
 			"layoutName": "layout",
-			"cssResources": ["style", "header"],
+			"cssResources": ["style", "header", "login"],
 			"jsResources": ["script"]
 		},
 		{
 			"criteria": {
-				"name": "error404",
-				"loggedIn": false
+				"name": "error404"
 			},
 			"viewName": "error404",
 			"headerName": "header",
 			"footerName": "footer",
 			"layoutName": "layout",
-			"cssResources": ["style", "header"],
+			"cssResources": ["style", "header", "login"],
 			"jsResources": ["script"]
 		}
 	]

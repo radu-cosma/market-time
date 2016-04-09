@@ -84,6 +84,7 @@ public class CustomExceptionHandler {
     @ExceptionHandler(Exception.class)
     public String handleException(HttpServletRequest request, Exception e) {
         LOGGER.error("An exception occured!", e);
+        e.printStackTrace();
         return "error500";
     }
 

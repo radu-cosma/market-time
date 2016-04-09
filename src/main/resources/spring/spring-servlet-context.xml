@@ -24,7 +24,11 @@
     <context:load-time-weaver />
     
     <mvc:interceptors>
-    	<bean class="com.markettime.interceptor.SessionContextInterceptor"/>
+    	<mvc:interceptor>
+	        <mvc:mapping path="/**"/>
+    		<mvc:exclude-mapping path="/rest/**"/>
+	    	<bean class="com.markettime.interceptor.SessionContextInterceptor"/>	
+   		</mvc:interceptor>
     </mvc:interceptors>
     
     <!-- <default-servlet-handler/> -->

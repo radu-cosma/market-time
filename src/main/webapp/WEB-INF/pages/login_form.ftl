@@ -6,20 +6,23 @@
                 <h4 class="modal-title">Existing User</h4>
            	</div>
             <div class="modal-body">
-	        	<div>
+	        	<div id="modal-header">
     	            <p>Have a MarketTime Account?</p>
                     <p>Sign in to manage your products.</p>
                     <br>
                 </div>
-                <form name="login" action="login" method="POST">
+                <label id="general-error-message" class="error-message hidden""></label>
+                <div id="email-div">
 	             	<@createInputSection 'email' 'EMAIL'/>
+	            </div>
+	            <div id="password-div">
 	             	<@createInputSection 'password' 'PASSWORD' 'password'/>
+	            </div>
 	             	<div class="checkbox">
 	               		<label><input type="checkbox"> Remember me</label>
 	             	</div>
 					<p>Not a member? <a href="/market-time/register">Register</a></p>
-	               	<button type="submit" class="btn btn-default">Submit</button>
-               	</form>
+	               	<button id="login-button" type="submit" class="btn btn-default">Submit</button>
                	<br>
                	<br>
 			</div>
@@ -27,16 +30,10 @@
 	</div>
 </div>
 
-<#if !sessionContext.loggedIn && errorMessage?? && errorMessage != ''> 
-	<p><strong><@spring.message '${errorMessage}.LABEL'/></strong></p>
-</#if>
-
 <#macro createInputSection fieldName fieldKey fieldType='text'>
     <div class="form-group">
 		<label class=""><@spring.message '${fieldKey}.LABEL'/></label>
-		<input class="form-control" name="${fieldName}" type="${fieldType}" placeholder="<@spring.message '${fieldKey}.PLACEHOLDER'/>"/>
-		<#if validationErrors?? && validationErrors["${fieldName}"]??>
-			<label class=""><@spring.message '${validationErrors["${fieldName}"]}'/></label>
-		</#if>
+		<input class="form-control" id="${fieldName}" type="${fieldType}" placeholder="<@spring.message '${fieldKey}.PLACEHOLDER'/>"/>
+		<label id="${fieldName}-error-message" class="error-message hidden"></label>
 	</div>
 </#macro>

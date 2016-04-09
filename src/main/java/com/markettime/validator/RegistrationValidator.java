@@ -3,21 +3,21 @@ package com.markettime.validator;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-import com.markettime.model.dto.RegistrationDto;
+import com.markettime.model.dto.request.RegistrationRequestDto;
 
 /**
  *
  * @author Radu Cosma
  *
  */
-public class RegistrationValidator implements ConstraintValidator<RegistrationValid, RegistrationDto> {
+public class RegistrationValidator implements ConstraintValidator<RegistrationValid, RegistrationRequestDto> {
 
     @Override
     public void initialize(RegistrationValid registrationValid) {
     }
 
     @Override
-    public boolean isValid(RegistrationDto registrationDto, ConstraintValidatorContext context) {
+    public boolean isValid(RegistrationRequestDto registrationDto, ConstraintValidatorContext context) {
         if (!isEmailValid(registrationDto.getEmail())) {
             replaceDefaultConstraintViolation(context, "email", "Invalid");
             return false;

@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URI;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -45,9 +46,19 @@ public class CustomFreeMarkerViewResolver extends FreeMarkerViewResolver {
         String json = new BufferedReader(new InputStreamReader(is)).lines().collect(Collectors.joining("\n"));
         try {
             pagesConfig = new ObjectMapper().readValue(json, PagesConfig.class);
+            prepareViews();
         } catch (IOException e) {
             throw new ApplicationException(e);
         }
+    }
+
+    private void prepareViews() {
+        final List<String> defaultCssResources = pagesConfig.getDefaultCssResources();
+        final List<String> defaultJsResources = pagesConfig.getDefaultJsResources();
+        pagesConfig.getViews().forEach(viewConfig -> {
+            viewConfig.getCssResources().addAll(0, defaultCssResources);
+            viewConfig.getJsResources().addAll(0, defaultJsResources);
+        });
     }
 
     /**
@@ -75,8 +86,6 @@ public class CustomFreeMarkerViewResolver extends FreeMarkerViewResolver {
             LOGGER.error(String.format("No config was found for view with name '%s'", viewName));
             bestMatch = getBestMatch(ERROR_404_VIEW);
         }
-        bestMatch.getCssResources().addAll(0, pagesConfig.getDefaultCssResources());
-        bestMatch.getJsResources().addAll(0, pagesConfig.getDefaultJsResources());
         return bestMatch;
     }
 
@@ -87,8 +96,8 @@ public class CustomFreeMarkerViewResolver extends FreeMarkerViewResolver {
         // @formatter:off
         return pagesConfig.getViews().stream()
                 .filter(view -> view.getCriteria().getName().equals(viewName))
-                .filter(view -> view.getCriteria().isLoggedIn() != null && view.getCriteria().isLoggedIn().equals(sessionContext.isLoggedIn()))
-                .findFirst().get();
+                .filter(view -> view.getCriteria().isLoggedIn() == null || view.getCriteria().isLoggedIn().equals(sessionContext.isLoggedIn()))
+                .findFirst().orElse(null);
         // @formatter:on
     }
 
