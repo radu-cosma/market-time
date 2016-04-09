@@ -1,4 +1,4 @@
-package com.markettime.model.dto;
+package com.markettime.model.dto.request;
 
 /**
  * 

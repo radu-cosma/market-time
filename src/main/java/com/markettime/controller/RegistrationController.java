@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.View;
 
 import com.markettime.exception.ValidationErrorsException;
-import com.markettime.model.dto.RegistrationDto;
+import com.markettime.model.dto.request.RegistrationRequestDto;
 import com.markettime.service.RegistrationService;
 
 /**
@@ -34,14 +34,14 @@ public class RegistrationController extends BaseController {
     }
 
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    public View register(HttpServletRequest request, @ModelAttribute @Valid RegistrationDto registrationDto,
+    public View register(HttpServletRequest request, @ModelAttribute @Valid RegistrationRequestDto registrationRequestDto,
             BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
-            request.setAttribute("dto", registrationDto);
+            request.setAttribute("dto", registrationRequestDto);
             throw new ValidationErrorsException(bindingResult.getAllErrors());
         }
-        registrationService.registerUser(registrationDto);
+        registrationService.registerUser(registrationRequestDto);
         return simpleRedirect("home");
     }
 

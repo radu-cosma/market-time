@@ -1,7 +1,6 @@
 package com.markettime.controller.rest;
 
 import java.util.Arrays;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 import javax.servlet.http.Cookie;
@@ -16,7 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.markettime.model.dto.LoginDto;
+import com.markettime.model.dto.request.LoginRequestDto;
+import com.markettime.model.dto.response.LoginResponseDto;
 import com.markettime.service.LoginService;
 
 /**
@@ -36,43 +36,39 @@ public class RestLoginController {
     @Autowired
     private LoginService loginService;
 
-    /*
-     * @RequestMapping(method = RequestMethod.GET) public String login(HttpServletResponse response) {
-     * createCookie(response, "COOKIEZZZZZ", "yummy"); return "Hello!"; }
-     */
-
     @RequestMapping(method = RequestMethod.POST)
-    public LoginResponse login(HttpServletResponse response, @Valid @RequestBody LoginDto loginDto,
+    public LoginResponseDto login(HttpServletResponse response, @Valid @RequestBody LoginRequestDto loginRequestDto,
             BindingResult bindingResult) {
 
-        LoginResponse loginResponse = new LoginResponse();
+        LoginResponseDto loginResponseDto = new LoginResponseDto();
         if (bindingResult.hasErrors()) {
-            loginResponse.setLoggedIn(false);
+            loginResponseDto.setLoggedIn(false);
             // @formatter:off
-            loginResponse.setValidationErrors(bindingResult.getAllErrors().stream()
+            loginResponseDto.setValidationErrors(bindingResult.getAllErrors().stream()
                     .filter(error -> error instanceof FieldError)
                     .map(error -> (FieldError) error)
                     .collect(Collectors.toMap(FieldError::getField, fieldError ->  buildErrorCodeMessageKey(fieldError))));
             // @formatter:on
-            return loginResponse;
+            return loginResponseDto;
         }
 
-        String uuid = loginService.login(loginDto);
+        String uuid = loginService.login(loginRequestDto);
         if (uuid != null) {
-            loginResponse.setLoggedIn(true);
+            loginResponseDto.setLoggedIn(true);
             createCookie(response, UUID_COOKIE_NAME, uuid);
-            return loginResponse;
+            return loginResponseDto;
         }
 
-        loginResponse.setLoggedIn(false);
-        loginResponse.setGeneralError(LOGIN_FAILED);
+        loginResponseDto.setLoggedIn(false);
+        loginResponseDto.setGeneralError(LOGIN_FAILED);
 
-        return loginResponse;
+        return loginResponseDto;
     }
 
     private void createCookie(HttpServletResponse response, String name, String value) {
         Cookie cookie = new Cookie(name, value);
         cookie.setMaxAge(600);
+        cookie.setPath("/");
         response.addCookie(cookie);
     }
 
@@ -89,39 +85,4 @@ public class RestLoginController {
                 .collect(Collectors.joining(DOT_DELIMITER));
     }
 
-    private class LoginResponse {
-        private Map<String, String> validationErrors;
-        private String generalError;
-        private boolean loggedIn;
-
-        public Map<String, String> getValidationErrors() {
-            return validationErrors;
-        }
-
-        public void setValidationErrors(Map<String, String> validationErrors) {
-            this.validationErrors = validationErrors;
-        }
-
-        public String getGeneralError() {
-            return generalError;
-        }
-
-        public void setGeneralError(String generalError) {
-            this.generalError = generalError;
-        }
-
-        public boolean isLoggedIn() {
-            return loggedIn;
-        }
-
-        public void setLoggedIn(boolean loggedIn) {
-            this.loggedIn = loggedIn;
-        }
-
-        @Override
-        public String toString() {
-            return "LoginResponse [validationErrors=" + validationErrors + ", generalError=" + generalError
-                    + ", loggedIn=" + loggedIn + "]";
-        }
-    }
 }

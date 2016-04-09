@@ -11,6 +11,7 @@
                     <p>Sign in to manage your products.</p>
                     <br>
                 </div>
+                <label id="general-error-message" class="error-message hidden""></label>
                 <div id="email-div">
 	             	<@createInputSection 'email' 'EMAIL'/>
 	            </div>
@@ -33,8 +34,6 @@
     <div class="form-group">
 		<label class=""><@spring.message '${fieldKey}.LABEL'/></label>
 		<input class="form-control" id="${fieldName}" type="${fieldType}" placeholder="<@spring.message '${fieldKey}.PLACEHOLDER'/>"/>
-		<#if validationErrors?? && validationErrors["${fieldName}"]??>
-			<label class=""><@spring.message '${validationErrors["${fieldName}"]}'/></label>
-		</#if>
+		<label id="${fieldName}-error-message" class="error-message hidden"></label>
 	</div>
 </#macro>

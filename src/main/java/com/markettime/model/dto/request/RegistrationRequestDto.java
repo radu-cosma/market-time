@@ -1,4 +1,7 @@
-package com.markettime.model.dto;
+package com.markettime.model.dto.request;
+
+import static com.markettime.util.Constants.VALIDATION_NOT_EMPTY;
+import static com.markettime.util.Constants.VALIDATION_SIZE;
 
 import javax.validation.constraints.Size;
 
@@ -12,36 +15,36 @@ import com.markettime.validator.RegistrationValid;
  *
  */
 @RegistrationValid
-public class RegistrationDto {
+public class RegistrationRequestDto {
 
-    @NotEmpty(message = "NotEmpty")
-    @Size(message = "Size", max = 30)
+    @NotEmpty(message = VALIDATION_NOT_EMPTY)
+    @Size(message = VALIDATION_SIZE, max = 30)
     private String firstName;
 
-    @NotEmpty(message = "NotEmpty")
-    @Size(message = "Size", max = 30)
+    @NotEmpty(message = VALIDATION_NOT_EMPTY)
+    @Size(message = VALIDATION_SIZE, max = 30)
     private String lastName;
 
-    @NotEmpty(message = "NotEmpty")
-    @Size(message = "Size", max = 127)
+    @NotEmpty(message = VALIDATION_NOT_EMPTY)
+    @Size(message = VALIDATION_SIZE, max = 127)
     private String email;
 
-    @Size(message = "Size", min = 8, max = 63)
+    @Size(message = VALIDATION_SIZE, min = 8, max = 63)
     private String password;
 
-    @Size(message = "Size", min = 8, max = 63)
+    @Size(message = VALIDATION_SIZE, min = 8, max = 63)
     private String repeatPassword;
 
-    @NotEmpty(message = "NotEmpty")
-    @Size(message = "Size", max = 30)
+    @NotEmpty(message = VALIDATION_NOT_EMPTY)
+    @Size(message = VALIDATION_SIZE, max = 30)
     private String companyName;
 
-    @NotEmpty(message = "NotEmpty")
-    @Size(message = "Size", max = 100)
+    @NotEmpty(message = VALIDATION_NOT_EMPTY)
+    @Size(message = VALIDATION_SIZE, max = 100)
     private String companyAddress;
 
-    @NotEmpty(message = "NotEmpty")
-    @Size(message = "Size", max = 15)
+    @NotEmpty(message = VALIDATION_NOT_EMPTY)
+    @Size(message = VALIDATION_SIZE, max = 15)
     private String companyPhone;
 
     public String getFirstName() {

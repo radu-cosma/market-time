@@ -1,4 +1,6 @@
-package com.markettime.model.dto;
+package com.markettime.model.dto.request;
+
+import static com.markettime.util.Constants.VALIDATION_NOT_EMPTY;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -7,12 +9,12 @@ import org.hibernate.validator.constraints.NotEmpty;
  * @author Radu Cosma
  *
  */
-public class LoginDto {
+public class LoginRequestDto {
 
-    @NotEmpty
+    @NotEmpty(message = VALIDATION_NOT_EMPTY)
     private String email;
 
-    @NotEmpty
+    @NotEmpty(message = VALIDATION_NOT_EMPTY)
     private String password;
 
     public String getEmail() {

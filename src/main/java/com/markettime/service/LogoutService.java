@@ -30,7 +30,6 @@ public class LogoutService {
 
     private void invalidateSession(String uuid) {
         UserSessionEntity userSessionEntity = userSessionRepository.find(uuid);
-        // userSessionRepository.remove(userSessionEntity);
         userSessionEntity.setActive(Boolean.FALSE);
     }
 
