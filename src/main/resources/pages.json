@@ -1,7 +1,9 @@
 {
 	"defaultCssResources": ["bootstrap-3.3.6.min", "font-awesome.min", "ionicons.min"],
 	"defaultJsResources": ["jquery-2.2.3.min", "bootstrap-3.3.6.min", "plugins/fastclick.min", "plugins/jquery.slimscroll.min"],
-	"views": [   
+	# individual config for each page from the aplication
+	"views": [ 
+	    # home page - logged out
 		{
 			"criteria": {
 				"name": "home",
@@ -15,6 +17,7 @@
 			"cssResources": ["layout-presentation", "presentation", "header-presentation", "login"],
 			"jsResources": ["presentation", "login"]
 		},
+		# home page - logged in
 		{
 			"criteria": {
 				"name": "dashboard",
@@ -29,6 +32,7 @@
 			"cssResources": ["layout", "skin-blue"],
 			"jsResources": ["app"]
 		},
+		# registration page - logged out
 		{
 			"criteria": {
 				"name": "register",
@@ -42,6 +46,7 @@
 			"cssResources": ["layout-presentation", "presentation", "header-presentation", "registration", "login"],
 			"jsResources": ["presentation", "login"]
 		},
+		# registration page - logged in
 		{
 			"criteria": {
 				"name": "register",
@@ -56,6 +61,7 @@
 			"cssResources": ["layout", "skin-blue"],
 			"jsResources": ["app"]
 		},
+		# contact page - logged out
 		{
 			"criteria": {
 				"name": "contact",
@@ -69,6 +75,7 @@
 			"cssResources": ["layout-presentation", "presentation", "header-presentation", "login"],
 			"jsResources": ["presentation", "google-maps", "contact"]
 		},
+		# profile page - logged in
 		{
 			"criteria": {
 				"name": "profile",
@@ -83,6 +90,7 @@
 			"cssResources": ["layout", "skin-blue"],
 			"jsResources": ["app"]
 		},
+		# error 500 page - logged in
 		{
 			"criteria": {
 				"name": "error500",
@@ -97,6 +105,7 @@
 			"cssResources": ["layout", "skin-blue", "header"],
 			"jsResources": ["app"]
 		},
+		# error 500 page - logged out
 		{
 			"criteria": {
 				"name": "error500",
@@ -110,6 +119,7 @@
 			"cssResources": ["layout-presentation", "presentation", "header-presentation", "login"],
 			"jsResources": ["presentation", "login"]
 		},
+		# error 404 page - logged in
 		{
 			"criteria": {
 				"name": "error404",
@@ -124,6 +134,7 @@
 			"cssResources": ["layout", "skin-blue", "header"],
 			"jsResources": ["app"]
 		},
+		# error 404 page - logged out
 		{
 			"criteria": {
 				"name": "error404",

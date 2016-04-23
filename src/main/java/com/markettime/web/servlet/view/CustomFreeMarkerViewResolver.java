@@ -43,7 +43,12 @@ public class CustomFreeMarkerViewResolver extends FreeMarkerViewResolver {
     @PostConstruct
     private void readPagesConfig() {
         InputStream is = getClass().getClassLoader().getResourceAsStream("pages.json");
-        String json = new BufferedReader(new InputStreamReader(is)).lines().collect(Collectors.joining("\n"));
+        // @formatter:off
+        String json = new BufferedReader(new InputStreamReader(is)).lines()
+                .map(String::trim)
+                .filter(line -> !line.startsWith("#"))
+                .collect(Collectors.joining("\n"));
+        // @formatter:on
         try {
             pagesConfig = new ObjectMapper().readValue(json, PagesConfig.class);
             prepareViews();
