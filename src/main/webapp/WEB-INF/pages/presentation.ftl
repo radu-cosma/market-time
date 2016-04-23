@@ -1,4 +1,4 @@
-<section id="view1">
+<section>
 	<div id="home" class="home-section-wrapper">
   		<div class="overlay-light">
     		<div class="jumbotron text-center">
@@ -9,8 +9,8 @@
 	</div>
 </section>
 
-<section id="view2" class="aboutus-view">
-	<div id="aboutus" class="container-fluid text-center">
+<section>
+	<div id="about-us" class="container-fluid text-center">
     	<h2 id="about-us-title" class="main-title">About Us</h2><br> 
     	<div class="row">
    	 		<div class="col-sm-4 col-sm-push-8">
@@ -25,7 +25,7 @@
 	</div>
 </section>
 
-<section id="view3">
+<section>
 	<div class="inovation-section-wrapper">
     	<div class="overlay-light">
         	<div class="jumbotron text-center">
@@ -36,7 +36,7 @@
  	</div>
 </section>
 
-<section id="view4">
+<section>
  	<div id="services" class="container-fluid text-center">
     	<h2 class="main-title">SERVICES</h2>
       	<h4 class="sub-title">What we offer</h4><br>
@@ -78,7 +78,6 @@
  	</div>
 </section>  
   
-<!-- Container (Portfolio Section) -->
 <div id="portfolio" class="container-fluid text-center bg-grey">
   	<h2>Portfolio</h2><br>
   	<h4>What we have created</h4>
@@ -118,7 +117,6 @@
   	</div>
 </div>
 
-<!-- Container (Pricing Section) -->
 <div id="pricing" class="container-fluid">
   	<div class="text-center">
     	<h2>Pricing</h2>

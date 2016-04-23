@@ -1,7 +1,4 @@
-@import
-	url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800|Roboto+Slab:400,100,300,700)
-	;
-
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800|Roboto+Slab:400,100,300,700);
 @import url(https://fonts.googleapis.com/css?family=Orbitron);
 
 body {
@@ -151,134 +148,26 @@ footer .glyphicon {
 	visibility: visible;
 }
 
-@
-keyframes slide { 0% {
-	opacity: 0;
-	-webkit-transform: translateY(70%);
-}
-
-100%
-{
-opacity
-:
- 
-1;
--webkit-transform
-:
- 
-translateY
-(0%);
-
-    
-}
-}
-@
--webkit-keyframes slide { 0% {
-	opacity: 0;
-	-webkit-transform: translateY(70%);
-}
-
-100%
-{
-opacity
-:
- 
-1;
--webkit-transform
-:
- 
-translateY
-(0%);
-
-    
-}
-}
-
-/*User-login*/
-label {
-	font-weight: 400;
-}
-
-.modal-header {
-	background-color: #bee4f4;
-	text-align: left;
-	font-size: 30px;
-	font-weight: 500px;
-}
-
-.close {
-	font-size: 50px;
-}
-
-.modal-header, .modal-body {
-	padding: 20px 40px;
-}
-
-.modal-dialog {
-	margin-top: 90px;
-}
-
-.modal-footer {
-	padding: 15px 40px;
-	text-align: left;
-}
-
-.modal-title, .form-title {
-	color: #0077b3;
-	font-size: 35px;
-	font-weight: 500;
-}
-
-.btn-default:hover {
-	color: #333;
-	background-color: #80d4ff;
-	border-color: #0077b3;
-}
-
-.btn-default {
-	color: #333;
-	background-color: #e6f7ff;
-	border-color: #0077b3;
-}
-
-/*User-Register*/
-@media screen and (max-width: 768px) {
-	.col-sm-4 {
-		text-align: center;
-		margin: 5px 0;
+@keyframes slide { 
+	0% {
+		opacity: 0;
+		-webkit-transform: translateY(70%);
 	}
-	.col-sm-6 {
-		margin-bottom: 30px;
-	}
-	.cont-style {
-		padding: 60px 30px;
-	}
-	.aboutus-icon {
-		width: 90%;
-		height: 130px;
-	}
-	.btn-lg {
-		width: 100%;
-		margin-bottom: 35px;
-	}
-	h4 {
-		font-size: 25px;
-	}
-	h2 {
-		font-size: 35px;
-	}
-	p {
-		font-size: 16px;
-	}
-	.services-icon {
-		width: 25%;
-		height: 25%;
+
+	100% {
+		opacity: 1;
+		-webkit-transform: translateY(0%);
 	}
 }
 
-@media screen and (max-width: 480px) {
-	.services-icon {
-		width: 50%;
-		height: 50%;
+@-webkit-keyframes slide { 
+	0% {
+		opacity: 0;
+		-webkit-transform: translateY(70%);
+	}
+
+	100% {
+		opacity: 1;
+		-webkit-transform: translateY(0%);
 	}
 }

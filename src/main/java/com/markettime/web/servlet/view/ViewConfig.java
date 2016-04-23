@@ -1,6 +1,7 @@
 package com.markettime.web.servlet.view;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -10,10 +11,7 @@ import java.util.List;
 public class ViewConfig {
 
     private ViewCriteria criteria;
-    private String viewName;
-    private String headerName;
-    private String footerName;
-    private String layoutName;
+    private Map<String, String> sections;
     private List<String> cssResources;
     private List<String> jsResources;
 
@@ -25,36 +23,12 @@ public class ViewConfig {
         this.criteria = criteria;
     }
 
-    public String getViewName() {
-        return viewName;
+    public Map<String, String> getSections() {
+        return sections;
     }
 
-    public void setViewName(String viewName) {
-        this.viewName = viewName;
-    }
-
-    public String getHeaderName() {
-        return headerName;
-    }
-
-    public void setHeaderName(String headerName) {
-        this.headerName = headerName;
-    }
-
-    public String getFooterName() {
-        return footerName;
-    }
-
-    public void setFooterName(String footerName) {
-        this.footerName = footerName;
-    }
-
-    public String getLayoutName() {
-        return layoutName;
-    }
-
-    public void setLayoutName(String layoutName) {
-        this.layoutName = layoutName;
+    public void setSections(Map<String, String> sections) {
+        this.sections = sections;
     }
 
     public List<String> getCssResources() {
@@ -76,10 +50,9 @@ public class ViewConfig {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        builder.append("ViewConfig [criteria=").append(criteria).append(", viewName=").append(viewName)
-                .append(", headerName=").append(headerName).append(", footerName=").append(footerName)
-                .append(", layoutName=").append(layoutName).append(", cssResources=").append(cssResources)
-                .append(", jsResources=").append(jsResources).append("]");
+        builder.append("ViewConfig [criteria=").append(criteria).append(", sections=").append(sections)
+                .append(", cssResources=").append(cssResources).append(", jsResources=").append(jsResources)
+                .append("]");
         return builder.toString();
     }
 

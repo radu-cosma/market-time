@@ -1,6 +1,3 @@
-<footer class="container-fluid text-center">
-  	<a href="#" title="To Top">
-    	<span class="glyphicon glyphicon-chevron-up"></span>
-  	</a>
-  	<p>Copyright © 2016 MarketTime. All rights reserved.</p>       
+<footer>
+    <strong>Copyright &copy; 2016 <a href="/market-time/home">MarketTime</a>.</strong> All rights reserved.
 </footer>

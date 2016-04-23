@@ -70,14 +70,12 @@ public class CustomFreeMarkerViewResolver extends FreeMarkerViewResolver {
         ViewConfig viewConfig = getViewConfig(viewName);
 
         Map<String, Object> attributesMap = getAttributesMap();
-        attributesMap.put("headerName", viewConfig.getHeaderName());
-        attributesMap.put("viewName", viewConfig.getViewName());
-        attributesMap.put("footerName", viewConfig.getFooterName());
+        attributesMap.put("sections", viewConfig.getSections());
         attributesMap.put("cssResources", viewConfig.getCssResources());
         attributesMap.put("jsResources", viewConfig.getJsResources());
         attributesMap.put("baseURL", getBaseURL());
 
-        return super.buildView(viewConfig.getLayoutName());
+        return super.buildView("layout");
     }
 
     private ViewConfig getViewConfig(String viewName) {

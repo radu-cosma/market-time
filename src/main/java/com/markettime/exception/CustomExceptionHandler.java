@@ -1,21 +1,20 @@
 package com.markettime.exception;
 
 import java.util.Arrays;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
 import com.markettime.context.SessionContext;
+import com.markettime.service.SessionContextService;
+import com.markettime.util.ValidationUtil;
 
 /**
  *
@@ -27,24 +26,24 @@ public class CustomExceptionHandler {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CustomExceptionHandler.class);
 
-    private static final String DOT_DELIMITER = ".";
-    private static final String UPPERCASE_REGEX = "(?=\\p{Upper})";
-
     @Autowired
     private SessionContext sessionContext;
 
+    @Autowired
+    private SessionContextService sessionContextService;
+
+    /**
+     *
+     * @param request
+     * @param e
+     * @return
+     */
     @ExceptionHandler(ValidationErrorsException.class)
     public ModelAndView handleValidationErrorsException(HttpServletRequest request, ValidationErrorsException e) {
         ModelAndView modelAndView = new ModelAndView();
         populateModel(modelAndView, request);
-        // @formatter:off
-        Map<String, String> validationErrors = e.getErrors().stream()
-                .filter(error -> error instanceof FieldError)
-                .map(error -> (FieldError) error)
-                .collect(Collectors.toMap(FieldError::getField, fieldError -> buildErrorCodeMessageKey(fieldError)));
-        // @formatter:on
         modelAndView.addObject("sessionContext", sessionContext);
-        modelAndView.addObject("validationErrors", validationErrors);
+        modelAndView.addObject("validationErrors", ValidationUtil.extractValidationErrors(e.getErrors()));
         if (e.getViewName() != null) {
             modelAndView.setViewName(e.getViewName());
         } else {
@@ -65,6 +64,12 @@ public class CustomExceptionHandler {
         });
     }
 
+    /**
+     *
+     * @param request
+     * @param e
+     * @return
+     */
     @ExceptionHandler(ApplicationException.class)
     public ModelAndView handleApplicationException(HttpServletRequest request, ApplicationException e) {
         LOGGER.error("An exception occured!", e);
@@ -75,31 +80,36 @@ public class CustomExceptionHandler {
         return modelAndView;
     }
 
+    /**
+     *
+     * @param request
+     * @param e
+     * @return
+     */
     @ExceptionHandler(NoHandlerFoundException.class)
-    public String handleNoHandlerFoundException(NoHandlerFoundException e) {
+    public ModelAndView handleNoHandlerFoundException(HttpServletRequest request, NoHandlerFoundException e) {
         LOGGER.error("An exception occured!", e);
-        return "error404";
+        sessionContextService.initializeSessionContext(request);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("sessionContext", sessionContext);
+        modelAndView.setViewName("error404");
+        return modelAndView;
     }
 
+    /**
+     *
+     * @param request
+     * @param e
+     * @return
+     */
     @ExceptionHandler(Exception.class)
-    public String handleException(HttpServletRequest request, Exception e) {
+    public ModelAndView handleException(HttpServletRequest request, Exception e) {
         LOGGER.error("An exception occured!", e);
         e.printStackTrace();
-        return "error500";
-    }
-
-    private String buildErrorCodeMessageKey(FieldError fieldError) {
-        String objectName = fieldError.getObjectName();
-        if (objectName.endsWith("Dto")) {
-            objectName = objectName.substring(0, objectName.length() - 3);
-        }
-        return splitAndCapitalize(
-                String.format("%s.%s%s", objectName, fieldError.getField(), fieldError.getDefaultMessage()));
-    }
-
-    private String splitAndCapitalize(String s) {
-        return Arrays.stream(s.split(UPPERCASE_REGEX)).map(str -> str.toUpperCase())
-                .collect(Collectors.joining(DOT_DELIMITER));
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("sessionContext", sessionContext);
+        modelAndView.setViewName("error500");
+        return modelAndView;
     }
 
     private String getOriginalViewName(HttpServletRequest request) {

@@ -1,76 +1,141 @@
 {
-	"defaultCssResources": ["bootstrap-3.3.6.min"],
-	"defaultJsResources": ["jquery-1.12.0.min", "bootstrap-3.3.6.min"],
+	"defaultCssResources": ["bootstrap-3.3.6.min", "font-awesome.min", "ionicons.min"],
+	"defaultJsResources": ["jquery-2.2.3.min", "bootstrap-3.3.6.min", "plugins/fastclick.min", "plugins/jquery.slimscroll.min"],
 	"views": [   
 		{
 			"criteria": {
 				"name": "home",
 				"loggedIn": false
 			},
-			"viewName": "home",
-			"headerName": "header",
-			"footerName": "footer",
-			"layoutName": "layout",
-			"cssResources": ["style", "header", "login"],
-			"jsResources": ["script", "login"]
+			"sections": {
+				"header": "header-presentation",
+				"main": "presentation",
+				"footer": "footer-presentation"
+			},
+			"cssResources": ["layout-presentation", "presentation", "header-presentation", "login"],
+			"jsResources": ["presentation", "login"]
 		},
 		{
 			"criteria": {
-				"name": "home",
+				"name": "dashboard",
 				"loggedIn": true
 			},
-			"viewName": "home",
-			"headerName": "header",
-			"footerName": "footer",
-			"layoutName": "layout",
-			"cssResources": ["style", "header", "login"],
-			"jsResources": ["script", "login"]
+			"sections": {
+				"header": "header",
+				"menu": "menu",
+				"main": "dashboard",
+				"footer": "footer"
+			},
+			"cssResources": ["layout", "skin-blue"],
+			"jsResources": ["app"]
 		},
 		{
 			"criteria": {
 				"name": "register",
 				"loggedIn": false
 			},
-			"viewName": "registration",
-			"headerName": "header",
-			"footerName": "footer",
-			"layoutName": "layout",
-			"cssResources": ["style", "header", "registration", "login"],
-			"jsResources": ["script"]
+			"sections": {
+				"header": "header-presentation",
+				"main": "registration",
+				"footer": "footer-presentation"
+			},
+			"cssResources": ["layout-presentation", "presentation", "header-presentation", "registration", "login"],
+			"jsResources": ["presentation", "login"]
+		},
+		{
+			"criteria": {
+				"name": "register",
+				"loggedIn": true
+			},
+			"sections": {
+				"header": "header",
+				"menu": "menu",
+				"main": "registration",
+				"footer": "footer"
+			},
+			"cssResources": ["layout", "skin-blue"],
+			"jsResources": ["app"]
 		},
 		{
 			"criteria": {
 				"name": "contact",
 				"loggedIn": false
 			},
-			"viewName": "contact",
-			"headerName": "header",
-			"footerName": "footer",
-			"layoutName": "layout",
-			"cssResources": ["style", "header", "login"],
-			"jsResources": ["script", "google-maps", "contact"]
+			"sections": {
+				"header": "header-presentation",
+				"main": "contact",
+				"footer": "footer-presentation"
+			},
+			"cssResources": ["layout-presentation", "presentation", "header-presentation", "login"],
+			"jsResources": ["presentation", "google-maps", "contact"]
 		},
 		{
 			"criteria": {
-				"name": "error500"
+				"name": "profile",
+				"loggedIn": true
 			},
-			"viewName": "error500",
-			"headerName": "header",
-			"footerName": "footer",
-			"layoutName": "layout",
-			"cssResources": ["style", "header", "login"],
-			"jsResources": ["script"]
+			"sections": {
+				"header": "header",
+				"menu": "menu",
+				"main": "profile",
+				"footer": "footer"
+			},
+			"cssResources": ["layout", "skin-blue"],
+			"jsResources": ["app"]
 		},
 		{
 			"criteria": {
-				"name": "error404"
+				"name": "error500",
+				"loggedIn": true
 			},
-			"viewName": "error404",
-			"headerName": "header",
-			"footerName": "footer",
-			"layoutName": "layout",
-			"cssResources": ["style", "header", "login"],
-			"jsResources": ["script"]
+			"sections": {
+				"header": "header",
+				"menu": "menu",
+				"main": "error500",
+				"footer": "footer"
+			},
+			"cssResources": ["layout", "skin-blue", "header"],
+			"jsResources": ["app"]
+		},
+		{
+			"criteria": {
+				"name": "error500",
+				"loggedIn": false
+			},
+			"sections": {
+				"header": "header-presentation",
+				"main": "error500",
+				"footer": "footer-presentation"
+			},
+			"cssResources": ["layout-presentation", "presentation", "header-presentation", "login"],
+			"jsResources": ["presentation", "login"]
+		},
+		{
+			"criteria": {
+				"name": "error404",
+				"loggedIn": true
+			},
+			"sections": {
+				"header": "header",
+				"menu": "menu",
+				"main": "error404",
+				"footer": "footer"
+			},
+			"cssResources": ["layout", "skin-blue", "header"],
+			"jsResources": ["app"]
+		},
+		{
+			"criteria": {
+				"name": "error404",
+				"loggedIn": false
+			},
+			"sections": {
+				"header": "header-presentation",
+				"main": "error404",
+				"footer": "footer-presentation"
+			},
+			"cssResources": ["layout-presentation", "presentation", "header-presentation", "login"],
+			"jsResources": ["presentation", "login"]
 		}
 	]
 }

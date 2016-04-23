@@ -1,1 +1,1 @@
-<h2>Internal Server Error</p>
+Internal Server Error

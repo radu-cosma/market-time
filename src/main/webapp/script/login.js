@@ -11,7 +11,7 @@ $('#login-button').click(function() {
         data: JSON.stringify(loginData),
         success: function(response){  
         	if (response.loggedIn) {
-        		window.location = '/market-time/home';
+        		window.location = '/market-time/dashboard';
 			} else {
 				var generalErrorMessage = $('#general-error-message');
 				var emailErrorMessage = $('#email-error-message');
@@ -47,7 +47,7 @@ $('#login-button').click(function() {
           },  
           error: function(e){  
         	  var generalErrorMessage = $('#general-error-message');
-        	  generalErrorMessage.html.html('Login failed. Please try again later.')
+        	  generalErrorMessage.html('Login failed. Please try again later.')
         	  if (generalErrorMessage.hasClass('hidden')) {
         			generalErrorMessage.removeClass('hidden');
         		}

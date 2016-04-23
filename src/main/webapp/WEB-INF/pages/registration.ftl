@@ -1,5 +1,5 @@
 <#if sessionContext.loggedIn?? && sessionContext.loggedIn> 
-	<p>You must <a href="/market-time/logout">logout</a> first!</p>
+	You must <a href="/market-time/logout">logout</a> first...
 <#else> 
-	<#include "registration_form.ftl">
+	<#include "registration-form.ftl">
 </#if>

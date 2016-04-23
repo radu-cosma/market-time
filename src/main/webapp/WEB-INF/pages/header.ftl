@@ -1,21 +1,56 @@
-<nav class="navbar navbar-default navbar-fixed-top">
-  	<div class="container">
-    	<div class="navbar-header">
-      		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-	    		<span class="icon-bar"></span>
-	        	<span class="icon-bar"></span>
-	        	<span class="icon-bar"></span>                        
-      		</button>
-      		<a class="navbar-brand" href="home">MarketTime</a>
-    	</div>
-    	<div class="collapse navbar-collapse" id="myNavbar">
-      		<ul class="nav navbar-nav navbar-right">
-        		<li><a href="home#aboutus" class="active">ABOUT US</a></li>
-		        <li><a href="portofolio">PORTFOLIO</a></li>
-		        <li><a id="log-in" href="#user-login" data-toggle="modal">LOGIN</a></li>
-		        <li><a href="contact">CONTACT</a></li>
-      		</ul>
-    	</div>
-  	</div>
-</nav>
-<#include "login_form.ftl">
+<header>
+    <a href="/market-time/home" class="logo">
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <span class="logo-mini"><b>MT</b></span>
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg"><b>MarketTime</b></span>
+    </a>
+    <nav class="navbar navbar-static-top" role="navigation">
+        <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+            <span class="sr-only">Toggle navigation</span>
+        </a>
+        <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+                <li class="dropdown messages-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-envelope-o"></i>
+                        <span class="label label-success">4</span>
+                    </a>
+                </li>
+                <li class="dropdown notifications-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-bell-o"></i>
+                        <span class="label label-warning">10</span>
+                    </a>
+                </li>
+                <li class="dropdown tasks-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-flag-o"></i>
+                        <span class="label label-danger">9</span>
+                    </a>
+                </li>
+                <li class="dropdown user user-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <span class="hidden-xs">Hello, ${sessionContext.email}</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="user-header">
+                            <p>
+                                Hello, ${sessionContext.email}
+                                <small>Member since Mar. 2016</small>
+                            </p>
+                        </li>
+                        <li class="user-footer">
+                            <div class="pull-left">
+                                <a href="/market-time/profile" class="btn btn-default btn-flat">Profile</a>
+                            </div>
+                            <div class="pull-right">
+                                <a href="/market-time/logout" class="btn btn-default btn-flat">Sign out</a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
