@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.markettime.context.SessionContext;
+import com.markettime.context.UserContext;
 
 /**
  *
@@ -16,11 +16,11 @@ import com.markettime.context.SessionContext;
 public class DashboardController {
 
     @Autowired
-    private SessionContext sessionContext;
+    private UserContext userContext;
 
     @RequestMapping(value = "dashboard", method = RequestMethod.GET)
     public String getDashboard() {
-        if (!sessionContext.isLoggedIn()) {
+        if (!userContext.isLoggedIn()) {
             return "redirect:home";
         }
         return "dashboard";

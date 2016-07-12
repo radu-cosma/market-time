@@ -1,0 +1,47 @@
+.has-error {
+	border: 1px solid red;
+}
+
+.error-message {
+	color: red;
+}
+
+.success-message {
+	color: green;
+}
+
+.tooltip-wrapper {
+	position: relative;
+}
+
+.error-tooltip {
+	display: none;
+	position: absolute;
+	bottom: 44px;
+	z-index: 1;
+	width: 100%;
+	padding: 5px;
+	border: 1px solid red;
+	border-radius: 5px;
+	color: rgb(255, 0, 0);
+	font-weight: 600;
+	font-size: 14px;
+	background-color: rgba(255, 255, 255, 0.9);
+	text-align: center;
+}
+
+.error-tooltip:after {
+	content: "";
+	position: absolute;
+	width: 0;
+	height: 0;
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-top: 10px solid #f00;
+	right: calc(50% - 10px);
+	bottom: -10px;
+}
+
+.has-error:hover+.tooltip-wrapper .error-tooltip {
+	display: block;
+}

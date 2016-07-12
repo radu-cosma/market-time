@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.markettime.exception.ValidationErrorsException;
 import com.markettime.model.dto.request.LoginRequestDto;
 import com.markettime.model.dto.response.LoginResponseDto;
 import com.markettime.service.LoginService;
-import com.markettime.util.ValidationUtil;
 
 /**
  *
@@ -26,7 +26,6 @@ import com.markettime.util.ValidationUtil;
 public class RestLoginController {
 
     private static final String UUID_COOKIE_NAME = "uuid";
-    private static final String LOGIN_FAILED = "LOGIN.FAILED";
 
     @Autowired
     private LoginService loginService;
@@ -39,26 +38,17 @@ public class RestLoginController {
      * @return
      */
     @RequestMapping(method = RequestMethod.POST)
-    public LoginResponseDto login(HttpServletResponse response, @Valid @RequestBody LoginRequestDto loginRequestDto,
+    public Object login(HttpServletResponse response, @Valid @RequestBody LoginRequestDto loginRequestDto,
             BindingResult bindingResult) {
 
-        LoginResponseDto loginResponseDto = new LoginResponseDto();
         if (bindingResult.hasErrors()) {
-            loginResponseDto.setLoggedIn(false);
-            loginResponseDto.setValidationErrors(ValidationUtil.extractValidationErrors(bindingResult.getAllErrors()));
-            return loginResponseDto;
+            throw new ValidationErrorsException(bindingResult.getAllErrors());
         }
-
         String uuid = loginService.login(loginRequestDto);
-        if (uuid != null) {
-            loginResponseDto.setLoggedIn(true);
-            createCookie(response, UUID_COOKIE_NAME, uuid);
-            return loginResponseDto;
-        }
+        createCookie(response, UUID_COOKIE_NAME, uuid);
 
-        loginResponseDto.setLoggedIn(false);
-        loginResponseDto.setGeneralError(LOGIN_FAILED);
-
+        LoginResponseDto loginResponseDto = new LoginResponseDto();
+        loginResponseDto.setLoggedIn(true);
         return loginResponseDto;
     }
 

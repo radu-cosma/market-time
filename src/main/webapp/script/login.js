@@ -1,56 +1,56 @@
 $('#login-button').click(function() {
-	var loginData = {
-			'email': $('#email').val(),
-			'password': $('#password').val()
-		}
+	var generalErrorMessage = $('#general-error-message'),
+		emailErrorMessage = $('#email-error-message'),
+		passwordErrorMessage = $('#password-error-message'), 
+		loginData = {
+			'email': $('#login-email').val(),
+			'password': $('#login-password').val()
+		};
+	
     $.ajax({
     	type: 'POST',
         url: '/market-time/rest/login',
         dataType: 'json',
         contentType: 'application/json',
         data: JSON.stringify(loginData),
-        success: function(response){  
-        	if (response.loggedIn) {
-        		window.location = '/market-time/dashboard';
-			} else {
-				var generalErrorMessage = $('#general-error-message');
-				var emailErrorMessage = $('#email-error-message');
-				var passwordErrorMessage = $('#password-error-message');
-				if (!generalErrorMessage.hasClass('hidden')) {
-					generalErrorMessage.addClass('hidden');
-				}
-				if (!emailErrorMessage.hasClass('hidden')) {
-					emailErrorMessage.addClass('hidden');
-				}
-				if (!passwordErrorMessage.hasClass('hidden')) {
-					passwordErrorMessage.addClass('hidden');
-				}
-				if (response.generalError) {
-					generalErrorMessage.html('Login failed. Please check that your email and password are correct.')
-					if (generalErrorMessage.hasClass('hidden')) {
-						generalErrorMessage.removeClass('hidden');
-					}
-				}
-				if (response.validationErrors && response.validationErrors.email) {
+        success: function(response) {  
+        	hide(generalErrorMessage);
+        	hide(emailErrorMessage);
+        	hide(passwordErrorMessage);
+
+        	if (response.generalError) {
+        		generalErrorMessage.html('Login failed. Please check that your email and password are correct.')
+        		show(generalErrorMessage);
+        	} else if (response.validationErrors) {
+				if (response.validationErrors.email) {
 					emailErrorMessage.html('The email cannot be empty.');
-					if (emailErrorMessage.hasClass('hidden')) {
-						emailErrorMessage.removeClass('hidden');
-					}
+					show(emailErrorMessage);
 				}
-				if (response.validationErrors && response.validationErrors.password) {
+				if (response.validationErrors.password) {
 					passwordErrorMessage.html('The password cannot be empty.');
-					if (passwordErrorMessage.hasClass('hidden')) {
-						passwordErrorMessage.removeClass('hidden');
-					}
+					show(passwordErrorMessage);
 				}
+        	} else if (response.result != undefined && response.result.loggedIn) {
+        		window.location = '/market-time/dashboard';
 			}
-          },  
-          error: function(e){  
-        	  var generalErrorMessage = $('#general-error-message');
-        	  generalErrorMessage.html('Login failed. Please try again later.')
-        	  if (generalErrorMessage.hasClass('hidden')) {
-        			generalErrorMessage.removeClass('hidden');
-        		}
-          }  
+        },  
+        error: function(e) {  
+        	hide(emailErrorMessage);
+        	hide(passwordErrorMessage);
+        	generalErrorMessage.html('Login failed. Please try again later.')
+        	show(generalErrorMessage);
+        }  
     })
 });
+
+function show(element) {
+	if (element.hasClass('hidden')) {
+		element.removeClass('hidden');
+	}
+}
+
+function hide(element) {
+	if (!element.hasClass('hidden')) {
+		element.addClass('hidden');
+	}
+}

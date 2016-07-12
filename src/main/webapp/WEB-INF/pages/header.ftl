@@ -31,12 +31,12 @@
                 </li>
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <span class="hidden-xs">Hello, ${sessionContext.email}</span>
+                        <span class="hidden-xs">Hello, ${userContext.email}</span>
                     </a>
                     <ul class="dropdown-menu">
                         <li class="user-header">
                             <p>
-                                Hello, ${sessionContext.email}
+                                Hello, ${userContext.email}
                                 <small>Member since Mar. 2016</small>
                             </p>
                         </li>

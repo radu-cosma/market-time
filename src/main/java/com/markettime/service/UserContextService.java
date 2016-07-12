@@ -6,11 +6,13 @@ import java.util.Date;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.markettime.context.SessionContext;
+import com.markettime.context.UserContext;
 import com.markettime.model.entity.UserEntity;
 import com.markettime.model.entity.UserSessionEntity;
 import com.markettime.repository.UserSessionRepository;
@@ -23,14 +25,16 @@ import com.markettime.util.DateUtil;
  */
 @Service
 @Transactional
-public class SessionContextService {
+public class UserContextService {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(UserContextService.class);
 
     private static final int SESSION_LIFETIME_SECONDS = 600;
     private static final int SESSION_LIFETIME_MILLIS = SESSION_LIFETIME_SECONDS * 1000;
     private static final String UUID_COOKIE_NAME = "uuid";
 
     @Autowired
-    private SessionContext sessionContext;
+    private UserContext userContext;
 
     @Autowired
     private UserSessionRepository userSessionRepository;
@@ -39,7 +43,7 @@ public class SessionContextService {
      *
      * @param request
      */
-    public void initializeSessionContext(HttpServletRequest request) {
+    public void initializeUserContext(HttpServletRequest request) {
         Cookie[] cookies = request.getCookies();
         if (cookies != null) {
             Arrays.stream(cookies).filter(cookie -> UUID_COOKIE_NAME.equals(cookie.getName()))
@@ -56,9 +60,12 @@ public class SessionContextService {
                 UserEntity userEntity = userSessionEntity.getUser();
                 renewUserSession(userSessionEntity, currentDate);
                 updateCookie(cookie, SESSION_LIFETIME_SECONDS);
-                sessionContext.setLoggedIn(Boolean.TRUE);
-                sessionContext.setEmail(userEntity.getEmail());
+                userContext.setUserId(userEntity.getId());
+                userContext.setLoggedIn(Boolean.TRUE);
+                userContext.setEmail(userEntity.getEmail());
             } else {
+                LOGGER.info("Invalid session: lastAccess={}, currentTime={}", userSessionEntity.getLastAccess(),
+                        currentDate);
                 userSessionEntity.setActive(Boolean.FALSE);
                 updateCookie(cookie, 0);
             }

@@ -29,8 +29,8 @@
 				"main": "dashboard",
 				"footer": "footer"
 			},
-			"cssResources": ["layout", "skin-blue"],
-			"jsResources": ["app"]
+			"cssResources": ["layout", "skin-blue", "header"],
+			"jsResources": ["market-time"]
 		},
 		# registration page - logged out
 		{
@@ -43,8 +43,8 @@
 				"main": "registration",
 				"footer": "footer-presentation"
 			},
-			"cssResources": ["layout-presentation", "presentation", "header-presentation", "registration", "login"],
-			"jsResources": ["presentation", "login"]
+			"cssResources": ["layout-presentation", "presentation", "header-presentation", "registration", "validation", "login"],
+			"jsResources": ["presentation", "registration", "validation", "login"]
 		},
 		# registration page - logged in
 		{
@@ -58,8 +58,8 @@
 				"main": "registration",
 				"footer": "footer"
 			},
-			"cssResources": ["layout", "skin-blue"],
-			"jsResources": ["app"]
+			"cssResources": ["layout", "skin-blue", "header"],
+			"jsResources": ["market-time"]
 		},
 		# contact page - logged out
 		{
@@ -72,7 +72,7 @@
 				"main": "contact",
 				"footer": "footer-presentation"
 			},
-			"cssResources": ["layout-presentation", "presentation", "header-presentation", "login"],
+			"cssResources": ["layout-presentation", "presentation", "header-presentation", "contact", "login"],
 			"jsResources": ["presentation", "google-maps", "contact"]
 		},
 		# profile page - logged in
@@ -87,8 +87,8 @@
 				"main": "profile",
 				"footer": "footer"
 			},
-			"cssResources": ["layout", "skin-blue"],
-			"jsResources": ["app"]
+			"cssResources": ["layout", "skin-blue", "header", "validation", "profile"],
+			"jsResources": ["market-time", "validation", "profile"]
 		},
 		# error 500 page - logged in
 		{
@@ -103,7 +103,7 @@
 				"footer": "footer"
 			},
 			"cssResources": ["layout", "skin-blue", "header"],
-			"jsResources": ["app"]
+			"jsResources": ["market-time"]
 		},
 		# error 500 page - logged out
 		{
@@ -132,7 +132,7 @@
 				"footer": "footer"
 			},
 			"cssResources": ["layout", "skin-blue", "header"],
-			"jsResources": ["app"]
+			"jsResources": ["market-time"]
 		},
 		# error 404 page - logged out
 		{

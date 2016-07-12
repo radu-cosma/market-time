@@ -32,4 +32,4 @@
   </div>
 </div>
 
-<div id="googleMap" style="width:100%;height:300px;"></div>
+<div id="google-map"/>

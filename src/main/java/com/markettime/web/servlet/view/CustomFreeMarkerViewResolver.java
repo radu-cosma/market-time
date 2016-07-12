@@ -19,7 +19,7 @@ import org.springframework.web.servlet.view.AbstractUrlBasedView;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.markettime.context.SessionContext;
+import com.markettime.context.UserContext;
 import com.markettime.exception.ApplicationException;
 
 /**
@@ -38,7 +38,7 @@ public class CustomFreeMarkerViewResolver extends FreeMarkerViewResolver {
     private HttpServletRequest request;
 
     @Autowired
-    private SessionContext sessionContext;
+    private UserContext userContext;
 
     @PostConstruct
     private void readPagesConfig() {
@@ -79,6 +79,7 @@ public class CustomFreeMarkerViewResolver extends FreeMarkerViewResolver {
         attributesMap.put("cssResources", viewConfig.getCssResources());
         attributesMap.put("jsResources", viewConfig.getJsResources());
         attributesMap.put("baseURL", getBaseURL());
+        attributesMap.put("userContext", userContext);
 
         return super.buildView("layout");
     }
@@ -99,7 +100,7 @@ public class CustomFreeMarkerViewResolver extends FreeMarkerViewResolver {
         // @formatter:off
         return pagesConfig.getViews().stream()
                 .filter(view -> view.getCriteria().getName().equals(viewName))
-                .filter(view -> view.getCriteria().isLoggedIn() == null || view.getCriteria().isLoggedIn().equals(sessionContext.isLoggedIn()))
+                .filter(view -> view.getCriteria().isLoggedIn() == null || view.getCriteria().isLoggedIn().equals(userContext.isLoggedIn()))
                 .findFirst().orElse(null);
         // @formatter:on
     }

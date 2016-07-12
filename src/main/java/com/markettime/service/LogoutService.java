@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.markettime.context.SessionContext;
+import com.markettime.context.UserContext;
 import com.markettime.model.entity.UserSessionEntity;
 import com.markettime.repository.UserSessionRepository;
 
@@ -18,14 +18,14 @@ import com.markettime.repository.UserSessionRepository;
 public class LogoutService {
 
     @Autowired
-    private SessionContext sessionContext;
+    private UserContext userContext;
 
     @Autowired
     private UserSessionRepository userSessionRepository;
 
     public void logout(String uuid) {
         invalidateSession(uuid);
-        invalidateSessionContext();
+        invalidateUserContext();
     }
 
     private void invalidateSession(String uuid) {
@@ -33,9 +33,10 @@ public class LogoutService {
         userSessionEntity.setActive(Boolean.FALSE);
     }
 
-    private void invalidateSessionContext() {
-        sessionContext.setLoggedIn(false);
-        sessionContext.setEmail(null);
-        sessionContext.setUuid(null);
+    private void invalidateUserContext() {
+        userContext.setUserId(null);
+        userContext.setLoggedIn(false);
+        userContext.setEmail(null);
+        userContext.setUuid(null);
     }
 }

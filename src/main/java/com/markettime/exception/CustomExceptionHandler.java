@@ -1,7 +1,5 @@
 package com.markettime.exception;
 
-import java.util.Arrays;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
@@ -12,8 +10,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
-import com.markettime.context.SessionContext;
-import com.markettime.service.SessionContextService;
+import com.markettime.context.RequestContext;
+import com.markettime.context.UserContext;
+import com.markettime.service.UserContextService;
 import com.markettime.util.ValidationUtil;
 
 /**
@@ -27,10 +26,13 @@ public class CustomExceptionHandler {
     private static final Logger LOGGER = LoggerFactory.getLogger(CustomExceptionHandler.class);
 
     @Autowired
-    private SessionContext sessionContext;
+    private UserContext userContext;
 
     @Autowired
-    private SessionContextService sessionContextService;
+    private RequestContext requestContext;
+
+    @Autowired
+    private UserContextService userContextService;
 
     /**
      *
@@ -41,27 +43,12 @@ public class CustomExceptionHandler {
     @ExceptionHandler(ValidationErrorsException.class)
     public ModelAndView handleValidationErrorsException(HttpServletRequest request, ValidationErrorsException e) {
         ModelAndView modelAndView = new ModelAndView();
-        populateModel(modelAndView, request);
-        modelAndView.addObject("sessionContext", sessionContext);
+        modelAndView.addObject("userContext", userContext);
         modelAndView.addObject("validationErrors", ValidationUtil.extractValidationErrors(e.getErrors()));
-        if (e.getViewName() != null) {
-            modelAndView.setViewName(e.getViewName());
-        } else {
-            modelAndView.setViewName(getOriginalViewName(request));
-        }
+        modelAndView.addObject(requestContext.getModelObjectName(), requestContext.getModelObject());
+        modelAndView.setViewName(
+                requestContext.getReturnToViewName() != null ? requestContext.getReturnToViewName() : "error500");
         return modelAndView;
-    }
-
-    private void populateModel(ModelAndView modelAndView, HttpServletRequest request) {
-        Object dto = request.getAttribute("dto");
-        Arrays.stream(dto.getClass().getDeclaredFields()).forEach(field -> {
-            field.setAccessible(true);
-            try {
-                modelAndView.addObject(field.getName(), field.get(dto));
-            } catch (Exception e) {
-                LOGGER.warn("Could not add field with name '{}' to the model", field.getName());
-            }
-        });
     }
 
     /**
@@ -74,9 +61,10 @@ public class CustomExceptionHandler {
     public ModelAndView handleApplicationException(HttpServletRequest request, ApplicationException e) {
         LOGGER.error("An exception occured!", e);
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("sessionContext", sessionContext);
-        modelAndView.addObject("generalError", e.getMessage());
-        modelAndView.setViewName(getOriginalViewName(request));
+        modelAndView.addObject("userContext", userContext);
+        modelAndView.addObject("generalErrorMessage", e.getMessage());
+        modelAndView.setViewName(
+                requestContext.getReturnToViewName() != null ? requestContext.getReturnToViewName() : "error500");
         return modelAndView;
     }
 
@@ -89,9 +77,9 @@ public class CustomExceptionHandler {
     @ExceptionHandler(NoHandlerFoundException.class)
     public ModelAndView handleNoHandlerFoundException(HttpServletRequest request, NoHandlerFoundException e) {
         LOGGER.error("An exception occured!", e);
-        sessionContextService.initializeSessionContext(request);
+        userContextService.initializeUserContext(request);
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("sessionContext", sessionContext);
+        modelAndView.addObject("userContext", userContext);
         modelAndView.setViewName("error404");
         return modelAndView;
     }
@@ -107,12 +95,9 @@ public class CustomExceptionHandler {
         LOGGER.error("An exception occured!", e);
         e.printStackTrace();
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("sessionContext", sessionContext);
+        modelAndView.addObject("userContext", userContext);
         modelAndView.setViewName("error500");
         return modelAndView;
     }
 
-    private String getOriginalViewName(HttpServletRequest request) {
-        return request.getServletPath().substring(1);
-    }
 }

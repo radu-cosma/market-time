@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.markettime.context.SessionContext;
+import com.markettime.context.UserContext;
 
 /**
  *
@@ -16,11 +16,11 @@ import com.markettime.context.SessionContext;
 public class MainController extends BaseController {
 
     @Autowired
-    private SessionContext sessionContext;
+    private UserContext userContext;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String getRoot() {
-        if (sessionContext.isLoggedIn()) {
+        if (userContext.isLoggedIn()) {
             return "redirect:dashboard";
         }
         return "redirect:home";
@@ -28,7 +28,7 @@ public class MainController extends BaseController {
 
     @RequestMapping(value = "home", method = RequestMethod.GET)
     public String getHome() {
-        if (sessionContext.isLoggedIn()) {
+        if (userContext.isLoggedIn()) {
             return "redirect:dashboard";
         }
         return "home";

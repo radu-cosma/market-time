@@ -33,7 +33,7 @@ public class RegistrationRequestDto {
     private String password;
 
     @Size(message = VALIDATION_SIZE, min = 8, max = 63)
-    private String repeatPassword;
+    private String confirmPassword;
 
     @NotEmpty(message = VALIDATION_NOT_EMPTY)
     @Size(message = VALIDATION_SIZE, max = 30)
@@ -79,12 +79,12 @@ public class RegistrationRequestDto {
         this.password = password;
     }
 
-    public String getRepeatPassword() {
-        return repeatPassword;
+    public String getConfirmPassword() {
+        return confirmPassword;
     }
 
-    public void setRepeatPassword(String repeatPassword) {
-        this.repeatPassword = repeatPassword;
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
     }
 
     public String getCompanyName() {
@@ -115,8 +115,8 @@ public class RegistrationRequestDto {
     public String toString() {
         StringBuilder builder = new StringBuilder();
         builder.append("RegistrationDto [firstName=").append(firstName).append(", lastName=").append(lastName)
-                .append(", email=").append(email).append(", password=").append(password).append(", repeatPassword=")
-                .append(repeatPassword).append(", companyName=").append(companyName).append(", companyAddress=")
+                .append(", email=").append(email).append(", password=").append(password).append(", confirmPassword=")
+                .append(confirmPassword).append(", companyName=").append(companyName).append(", companyAddress=")
                 .append(companyAddress).append(", companyPhone=").append(companyPhone).append("]");
         return builder.toString();
     }

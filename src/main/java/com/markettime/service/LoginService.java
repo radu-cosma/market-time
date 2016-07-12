@@ -7,7 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.markettime.context.SessionContext;
+import com.markettime.context.UserContext;
+import com.markettime.exception.AuthenticationException;
 import com.markettime.model.dto.request.LoginRequestDto;
 import com.markettime.model.entity.UserEntity;
 import com.markettime.model.entity.UserSessionEntity;
@@ -31,7 +32,7 @@ public class LoginService {
     private UserSessionRepository userSessionRepository;
 
     @Autowired
-    private SessionContext sessionContext;
+    private UserContext userContext;
 
     /**
      *
@@ -39,16 +40,17 @@ public class LoginService {
      * @return
      */
     public String login(LoginRequestDto loginDto) {
-        String uuid = null;
         UserEntity userEntity = userRepository.find(loginDto.getEmail());
-        if (userEntity == null) {
-            return null;
-        } else if (userEntity.getPassword().equals(loginDto.getPassword())) {
-            sessionContext.setLoggedIn(true);
-            sessionContext.setEmail(userEntity.getEmail());
-            uuid = createUserSession(userEntity);
+        if (userEntity == null || !userEntity.getPassword().equals(loginDto.getPassword())) {
+            throw new AuthenticationException("LOGIN.FAILED");
+        } else {
+            userContext.setLoggedIn(true);
+            userContext.setUserId(userEntity.getId());
+            userContext.setEmail(userEntity.getEmail());
+            String uuid = createUserSession(userEntity);
+            userContext.setUuid(uuid);
+            return uuid;
         }
-        return uuid;
     }
 
     private String createUserSession(UserEntity userEntity) {

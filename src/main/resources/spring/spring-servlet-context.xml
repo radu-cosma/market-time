@@ -17,6 +17,7 @@
 				http://www.springframework.org/schema/tx     
 				http://www.springframework.org/schema/tx/spring-tx.xsd">
 
+	<aop:aspectj-autoproxy />
     <mvc:annotation-driven />
     <tx:annotation-driven />
     <context:annotation-config />
@@ -26,8 +27,7 @@
     <mvc:interceptors>
     	<mvc:interceptor>
 	        <mvc:mapping path="/**"/>
-    		<mvc:exclude-mapping path="/rest/**"/>
-	    	<bean class="com.markettime.interceptor.SessionContextInterceptor"/>	
+    		<bean class="com.markettime.interceptor.UserContextInterceptor"/>	
    		</mvc:interceptor>
     </mvc:interceptors>
     

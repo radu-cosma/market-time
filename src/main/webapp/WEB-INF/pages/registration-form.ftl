@@ -15,26 +15,26 @@
       		</div> 
    		</div>  
    		
-   		<#if generalError??>
-   			<label class="error-message">${generalError}</label>
+   		<#if generalErrorMessage??>
+   			<label class="error-message">${generalErrorMessage}</label>
    		</#if>
 
 		<form name="register" action="register" method="POST">
 	  		<div class="row"> 
 	      		<div class="col-sm-5 reg-form"> 
 	       			<div class="reg-form1">
-	         			<@createInputSection 'firstName' 'FIRST.NAME'/>    
-						<@createInputSection 'lastName' 'LAST.NAME'/>
-	         			<@createInputSection 'email' 'EMAIL'/>
-						<@createInputSection 'password' 'PASSWORD' 'password'/>
-						<@createInputSection 'repeatPassword' 'REPEAT.PASSWORD' 'password'/>
+	         			<@createInputSection 'first-name' />    
+						<@createInputSection 'last-name' />
+	         			<@createInputSection 'email' />
+						<@createInputSection 'password' 'password'/>
+						<@createInputSection 'confirm-password' 'password'/>
 	         		</div>    
 	       		</div> 
 	      		<div class="col-sm-5">
 		        	<div class="reg-form2">
-						<@createInputSection 'companyName' 'COMPANY.NAME'/>
-						<@createInputSection 'companyAddress' 'COMPANY.ADDRESS'/>
-						<@createInputSection 'companyPhone' 'COMPANY.PHONE'/>
+						<@createInputSection 'company-name' />
+						<@createInputSection 'company-address' />
+						<@createInputSection 'company-phone' />
 		          	</div>  
 		    	</div> 
 		    </div>
@@ -50,16 +50,34 @@
 	</div>
 </div>  
 
-<#macro createInputSection fieldName fieldKey fieldType='text'>
+<#macro createInputSection fieldId fieldType='text'>
 	<#assign hasError=false/>
-	<#if validationErrors?? && validationErrors["${fieldName}"]??>
+	<#if validationErrors?? && validationErrors["${fieldId}"]??>
 		<#assign hasError=true/>
 	</#if>
+	<#local fieldName = buildName(fieldId) >
+	<#local fieldKey = buildKey(fieldId) >
+	<#if registration??>
+		<@'<#assign fieldValue = ${"registration." + "${fieldId}"}!"">'?interpret />
+	</#if>
 	<div class="form-group">
-		<label class=""><@spring.message 'REGISTRATION.${fieldKey}.LABEL'/></label>
-		<input value="<#if !hasError && .data_model[fieldName]??>${.data_model[fieldName]}</#if>" class="form-control <#if hasError>error-input</#if>" name="${fieldName}" id="${fieldName}" type="${fieldType}" placeholder="<@spring.message 'REGISTRATION.${fieldKey}.PLACEHOLDER'/>">
+		<label><@spring.message 'REGISTRATION.${fieldKey}.LABEL'/></label>
+		<div>
+			<input value="<#if !hasError && fieldValue??>${fieldValue}</#if>" class="form-control <#if hasError>has-error</#if>" name="${fieldName}" id="${fieldId}" type="${fieldType}" placeholder="<@spring.message 'REGISTRATION.${fieldKey}.PLACEHOLDER'/>">
+			<div class="tooltip-wrapper">
+	    		<span class="error-tooltip"></span>
+	    	</div>
+    	</div>
 		<#if hasError>
-			<td><label class="error-message"><@spring.message '${validationErrors["${fieldName}"]}'/></label></td>
+			<td><label class="error-message"><@spring.message '${validationErrors["${fieldId}"]}'/></label></td>
 		</#if>
 	</div>    
 </#macro>
+
+<#function buildName fieldId>
+  	<#return fieldId?replace('-', ' ')?capitalize?replace(' ', '')?uncap_first >
+</#function>
+
+<#function buildKey fieldId>
+  	<#return fieldId?replace('-', '.')?upper_case >
+</#function>

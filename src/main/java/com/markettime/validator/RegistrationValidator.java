@@ -26,9 +26,9 @@ public class RegistrationValidator implements ConstraintValidator<RegistrationVa
             replaceDefaultConstraintViolation(context, "password", "TooWeak");
             return false;
         }
-        if (!registrationDto.getPassword().equals(registrationDto.getRepeatPassword())) {
+        if (!registrationDto.getPassword().equals(registrationDto.getConfirmPassword())) {
             replaceDefaultConstraintViolation(context, "password", "MustMatch");
-            replaceDefaultConstraintViolation(context, "repeatPassword", "MustMatch");
+            replaceDefaultConstraintViolation(context, "confirmPassword", "MustMatch");
             return false;
         }
         return true;
