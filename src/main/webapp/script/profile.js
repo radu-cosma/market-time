@@ -157,10 +157,9 @@ $('#customer-profile-form').on('submit', function(evt) {
 		var profileData = {},
 			generalErrorMessage = $('#general-error-message'),
 			successMessage = $('#success-message'), 
-			spinner = $('#update-profile-spinner'),
 			button = $('#update-profile-button');
 		button.prop('disabled', true);
-		show(spinner);
+		loadingScreen.display();
 
 		$(this).find(':input:not(button)').each(function(i, el) {
 			profileData[$(el).attr('name')] = $(el).val();
@@ -198,13 +197,13 @@ $('#customer-profile-form').on('submit', function(evt) {
 	        		hide($('#customer-profile-form'));
 	        		show($('#customer-profile-info'));
 	        	}
-	        	hide(spinner);
+	        	loadingScreen.destroy();
 	        	button.prop('disabled', false);
 	        },  
 	        error: function(e) {  
 	        	generalErrorMessage.html('Something went wrong. Please try again later.')
 	        	show(generalErrorMessage);
-	        	hide(spinner);
+	        	loadingScreen.destroy();
 	        	button.prop('disabled', false);
 	        }  
 	    })
@@ -223,10 +222,9 @@ $('#customer-email-form').on('submit', function(evt) {
 		var emailData = {},
 			generalErrorMessage = $('#general-error-message'),
 			successMessage = $('#success-message'), 
-			spinner = $('#update-email-spinner'),
 			button = $('#update-email-button');
 		button.prop('disabled', true);
-		show(spinner);
+		loadingScreen.display();
 
 		$(this).find(':input:not(button)').each(function(i, el) {
 			profileData[$(el).attr('name')] = $(el).val();
@@ -260,13 +258,13 @@ $('#customer-email-form').on('submit', function(evt) {
 	        		hide($('#customer-email-form'));
 	        		show($('#customer-email-info'));
 	        	}
-	        	hide(spinner);
+	        	loadingScreen.destroy();
 	        	button.prop('disabled', false);
 	        },  
 	        error: function(e) {  
 	        	generalErrorMessage.html('Something went wrong. Please try again later.')
 	        	show(generalErrorMessage);
-	        	hide(spinner);
+	        	loadingScreen.destroy();
 	        	button.prop('disabled', false);
 	        }  
 	    })
@@ -285,10 +283,9 @@ $('#customer-password-form').on('submit', function(evt) {
 		var passwordData = {},
 			generalErrorMessage = $('#general-error-message'),
 			successMessage = $('#success-message'), 
-			spinner = $('#update-password-spinner'),
 			button = $('#update-password-button');
 		button.prop('disabled', true);
-		show(spinner);
+		loadingScreen.display();
 
 		$(this).find(':input:not(button)').each(function(i, el) {
 			profileData[$(el).attr('name')] = $(el).val();
@@ -322,13 +319,13 @@ $('#customer-password-form').on('submit', function(evt) {
 	        		hide($('#customer-profile-form'));
 	        		show($('#customer-profile-info'));
 	        	}
-	        	hide(spinner);
+	        	loadingScreen.destroy();
 	        	button.prop('disabled', false);
 	        },  
 	        error: function(e) {  
 	        	generalErrorMessage.html('Something went wrong. Please try again later.')
 	        	show(generalErrorMessage);
-	        	hide(spinner);
+	        	loadingScreen.destroy();
 	        	button.prop('disabled', false);
 	        }  
 	    })
