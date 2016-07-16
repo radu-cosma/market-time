@@ -51,26 +51,23 @@
 </div>  
 
 <#macro createInputSection fieldId fieldType='text'>
-	<#assign hasError=false/>
-	<#if validationErrors?? && validationErrors["${fieldId}"]??>
-		<#assign hasError=true/>
-	</#if>
 	<#local fieldName = buildName(fieldId) >
 	<#local fieldKey = buildKey(fieldId) >
+	<#assign hasError=false/>
+	<#if validationErrors?? && validationErrors["${fieldName}"]??>
+		<#assign hasError=true/>
+	</#if>
 	<#if registration??>
-		<@'<#assign fieldValue = ${"registration." + "${fieldId}"}!"">'?interpret />
+		<@'<#assign fieldValue = ${"registration." + "${fieldName}"}!"">'?interpret />
 	</#if>
 	<div class="form-group">
 		<label><@spring.message 'REGISTRATION.${fieldKey}.LABEL'/></label>
 		<div>
 			<input value="<#if !hasError && fieldValue??>${fieldValue}</#if>" class="form-control <#if hasError>has-error</#if>" name="${fieldName}" id="${fieldId}" type="${fieldType}" placeholder="<@spring.message 'REGISTRATION.${fieldKey}.PLACEHOLDER'/>">
 			<div class="tooltip-wrapper">
-	    		<span class="error-tooltip"></span>
+	    		<span id="${fieldId}-tooltip" class="error-tooltip"><#if hasError><@spring.message '${validationErrors["${fieldName}"]}'/></#if></span>
 	    	</div>
     	</div>
-		<#if hasError>
-			<td><label class="error-message"><@spring.message '${validationErrors["${fieldId}"]}'/></label></td>
-		</#if>
 	</div>    
 </#macro>
 
