@@ -83,7 +83,7 @@
 	<#local fieldName = buildName(fieldId) >
 	<#local fieldKey = buildKey(fieldId) >
 	<div class="form-group form-icon-poz">
-        <label for="${fieldId}"<@spring.message 'ADD.PRODUCT.${fieldKey}.LABEL' />*</label>
+        <label for="${fieldId}"><@spring.message 'ADD.PRODUCT.${fieldKey}.LABEL' />*</label>
         <input type="${fieldType}" class="form-control" id="${fieldId}" name="${fieldName}" <#if fieldValue?? && fieldValue != "">value="${fieldValue}"</#if> placeholder="<@spring.message 'ADD.PRODUCT.${fieldKey}.PLACEHOLDER'/>">
       <div class="tooltip-wrapper"><span class="error-tooltip"></span></div>
         <a class="form-control-icon" data-toggle="tooltip" title="<@spring.message 'ADD.PRODUCT.${fieldKey}.INFO'/>"><span class="ion-ios-information-outline"></span></a>
