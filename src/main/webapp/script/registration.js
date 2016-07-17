@@ -100,9 +100,9 @@ $('form').on('submit', function(evt) {
 		return this.id;
 	}).get();
 
-	var valid = validator.validateForm(inputIds, validationConfig);
+	var isValid = validator.validateForm(inputIds, validationConfig);
 
-	if (!valid) {
+	if (!isValid) {
 		evt.preventDefault();
 	}
 });

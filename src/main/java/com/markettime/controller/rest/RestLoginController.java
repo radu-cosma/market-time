@@ -54,7 +54,7 @@ public class RestLoginController {
 
     private void createCookie(HttpServletResponse response, String name, String value) {
         Cookie cookie = new Cookie(name, value);
-        cookie.setMaxAge(600);
+        cookie.setMaxAge(3600);
         cookie.setPath("/");
         response.addCookie(cookie);
     }

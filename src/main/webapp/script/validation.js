@@ -64,8 +64,7 @@ var validator = {
 	},
 	
 	markValidation : function (inputId, validationResponse) {
-		var inputConfig = this.validationConfig[inputId], 
-			input = $('#' + inputId);
+		var inputConfig = this.validationConfig[inputId];
 		
 		$('#' + inputId).toggleClass('has-error', !validationResponse.valid);
 		if (!validationResponse.valid) {

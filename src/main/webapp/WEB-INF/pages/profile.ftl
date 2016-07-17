@@ -144,7 +144,6 @@
         <div class="col-sm-offset-4 col-sm-8">
             <button id="update-${what}-button" type="submit" class="btn btn-default">
             	<span><@spring.message 'PROFILE.SAVE.BUTTON'/></span>
-            	<div id="update-${what}-spinner" class="loading hidden"></div>
             </button>
             <a id="cancel-${what}-button"><@spring.message 'PROFILE.CANCEL.BUTTON'/></a>
         </div>

@@ -87,8 +87,8 @@
 				"main": "profile",
 				"footer": "footer"
 			},
-			"cssResources": ["layout", "skin-blue", "header", "validation", "profile"],
-			"jsResources": ["market-time", "validation", "profile"]
+			"cssResources": ["layout", "skin-blue", "header", "validation", "loading-screen", "profile"],
+			"jsResources": ["market-time", "validation", "loading-screen", "profile"]
 		},
 		# add product page - logged in
 		{

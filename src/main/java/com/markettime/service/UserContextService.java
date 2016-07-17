@@ -29,7 +29,7 @@ public class UserContextService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(UserContextService.class);
 
-    private static final int SESSION_LIFETIME_SECONDS = 600;
+    private static final int SESSION_LIFETIME_SECONDS = 3600;
     private static final int SESSION_LIFETIME_MILLIS = SESSION_LIFETIME_SECONDS * 1000;
     private static final String UUID_COOKIE_NAME = "uuid";
 

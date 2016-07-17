@@ -30,37 +30,3 @@
     border: 1px solid #f4f5f6;
     box-shadow: inset 0 0 1px rgba(0, 0, 0, .075);
 }
-
-@-webkit-keyframes spin {
-  0% {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-  }
-}
-@keyframes spin {
-  0% {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-  }
-}
-
-.loading {
-	display: inherit;
-	margin-left: 6px;
-	margin-bottom: -2px;
-    border-radius: 50%;
-    width: 14px;
-    height: 14px;
-    border: 0.25rem solid rgba(0, 77, 64, .2);
-    border-top-color: rgba(0, 77, 64, 1);
-    -webkit-animation: spin 1s infinite linear;
-    animation: spin 1s infinite linear;
-}
