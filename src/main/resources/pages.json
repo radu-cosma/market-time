@@ -105,6 +105,21 @@
 			"cssResources": ["layout", "skin-blue", "header", "validation", "add-product"],
 			"jsResources": ["market-time", "validation", "add-product"]
 		},
+		# products list page - logged in
+		{
+			"criteria": {
+				"name": "products",
+				"loggedIn": true
+			},
+			"sections": {
+				"header": "header",
+				"menu": "menu",
+				"main": "products",
+				"footer": "footer"
+			},
+			"cssResources": ["layout", "skin-blue", "header", "products"],
+			"jsResources": ["market-time", "products"]
+		},
 		# error 500 page - logged in
 		{
 			"criteria": {

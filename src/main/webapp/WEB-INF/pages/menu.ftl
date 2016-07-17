@@ -17,8 +17,8 @@
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="/market-time/products/published"><i class="fa fa-circle-o"></i> Published products</a></li>
-                    <li><a href="/market-time/products/unpublished"><i class="fa fa-circle-o"></i> Unpublished products</a></li>
+                    <li><a href="/market-time/products?status=published"><i class="fa fa-circle-o"></i> Published products</a></li>
+                    <li><a href="/market-time/products?status=unpublished"><i class="fa fa-circle-o"></i> Unpublished products</a></li>
                 </ul>
             </li>
             <li>
