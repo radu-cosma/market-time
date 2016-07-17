@@ -38,3 +38,7 @@
 		height: 50%;
 	}
 }
+
+#general-error-message {
+	background-color: #dd4b39;
+}

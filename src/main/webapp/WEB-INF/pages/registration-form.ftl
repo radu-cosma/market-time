@@ -9,16 +9,20 @@
            			<div>
              			<p>Get easy access to your products</p>
              			<br>
-             			<br>
            			</div>  
         		</div>
       		</div> 
    		</div>  
-   		
    		<#if generalErrorMessage??>
-   			<label class="error-message">${generalErrorMessage}</label>
+   			<div class="row">
+	   			<div class="col-xs-10 col-sm-10 col-md-10">
+					<div id="general-error-message" class="error-message alert alert-danger hidden">
+						<a href="#" class="close-message close">&times;</a>
+						<strong>!</strong>${generalErrorMessage}
+					</div>
+				</div>
+			</div>
    		</#if>
-
 		<form name="register" action="register" method="POST">
 	  		<div class="row"> 
 	      		<div class="col-sm-5 reg-form"> 
@@ -41,7 +45,7 @@
 	    	<div class="row">   
 	    		<div class="col-sm-11">
 	         		<div class="checkbox">
-	           			<label><input type="checkbox"> Yes, I would like to receive informations, discounts from MartTime</label>
+	           			<label><input type="checkbox"> Yes, I would like to receive informations, discounts from MarkettTime</label>
 	         		</div>
 	       			<button type="submit" class="btn btn-default">Submit</button>
 	    		</div>

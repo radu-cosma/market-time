@@ -174,7 +174,7 @@ $('#customer-profile-form').on('submit', function(evt) {
 	        success: function(response) {
 	        	if (response.generalError) {
 	        		hide(successMessage);
-	        		generalErrorMessage.html(response.generalError);
+	        		generalErrorMessage.append(response.generalError);
 	        		show(generalErrorMessage);
 	        	} else if (response.validationErrors) {
 	        		hide(successMessage);
@@ -185,7 +185,7 @@ $('#customer-profile-form').on('submit', function(evt) {
 	        		}
 	        	} else {
 	        		hide(generalErrorMessage);
-	        		successMessage.html('Profile data updated successfully.');
+	        		successMessage.append('Profile data updated successfully.');
 	        		show(successMessage);
 	        		
 	        		$('#first-name-info').text($('#first-name').val());
@@ -201,7 +201,7 @@ $('#customer-profile-form').on('submit', function(evt) {
 	        	button.prop('disabled', false);
 	        },  
 	        error: function(e) {  
-	        	generalErrorMessage.html('Something went wrong. Please try again later.')
+	        	generalErrorMessage.append('Something went wrong. Please try again later.')
 	        	show(generalErrorMessage);
 	        	loadingScreen.destroy();
 	        	button.prop('disabled', false);
@@ -239,7 +239,7 @@ $('#customer-email-form').on('submit', function(evt) {
 	        success: function(response) {
 	        	if (response.generalError) {
 	        		hide(successMessage);
-	        		generalErrorMessage.html(response.generalError);
+	        		generalErrorMessage.append(response.generalError);
 	        		show(generalErrorMessage);
 	        	} else if (response.validationErrors) {
 	        		hide(successMessage);
@@ -250,7 +250,7 @@ $('#customer-email-form').on('submit', function(evt) {
 	        		}
 	        	} else {
 	        		hide(generalErrorMessage);
-	        		successMessage.html('Email updated successfully.');
+	        		successMessage.append('Email updated successfully.');
 	        		show(successMessage);
 	        		
 	        		$('#email-info').text($('#email').val());
@@ -262,7 +262,7 @@ $('#customer-email-form').on('submit', function(evt) {
 	        	button.prop('disabled', false);
 	        },  
 	        error: function(e) {  
-	        	generalErrorMessage.html('Something went wrong. Please try again later.')
+	        	generalErrorMessage.append('Something went wrong. Please try again later.')
 	        	show(generalErrorMessage);
 	        	loadingScreen.destroy();
 	        	button.prop('disabled', false);
@@ -300,7 +300,7 @@ $('#customer-password-form').on('submit', function(evt) {
 	        success: function(response) {
 	        	if (response.generalError) {
 	        		hide(successMessage);
-	        		generalErrorMessage.html(response.generalError);
+	        		generalErrorMessage.append(response.generalError);
 	        		show(generalErrorMessage);
 	        	} else if (response.validationErrors) {
 	        		hide(successMessage);
@@ -311,7 +311,7 @@ $('#customer-password-form').on('submit', function(evt) {
 	        		}
 	        	} else {
 	        		hide(generalErrorMessage);
-	        		successMessage.html('Password updated successfully.');
+	        		successMessage.append('Password updated successfully.');
 	        		show(successMessage);
 	        		
 	        		$('#password-info').text($('#password-current-password').val());
@@ -323,7 +323,7 @@ $('#customer-password-form').on('submit', function(evt) {
 	        	button.prop('disabled', false);
 	        },  
 	        error: function(e) {  
-	        	generalErrorMessage.html('Something went wrong. Please try again later.')
+	        	generalErrorMessage.append('Something went wrong. Please try again later.')
 	        	show(generalErrorMessage);
 	        	loadingScreen.destroy();
 	        	button.prop('disabled', false);
@@ -345,7 +345,7 @@ function validateForm(form, evt) {
 	return validator.validateForm(inputIds, validationConfig);
 } 
 
-$('.my-profile-tab-container li').on('click', function(evt, el) {
+$('.my-profile-tab-container li').on('click', function(evt) {
 	// Close all opened forms (in edit mode) when clicking on a tab which is not active.
 	if (!$(this).hasClass('active')) {
 		//clearInputFields();
@@ -358,12 +358,12 @@ $('.my-profile-tab-container li').on('click', function(evt, el) {
 	}
 });
 
-$('#edit-profile-button, #cancel-profile-button').on('click', function(evt, el) {
+$('#edit-profile-button, #cancel-profile-button').on('click', function(evt) {
 	toggle($('#customer-profile-info'));
 	toggle($('#customer-profile-form'));
 });
 
-$('#edit-email-button, #cancel-email-button').on('click', function(evt, el) {
+$('#edit-email-button, #cancel-email-button').on('click', function(evt) {
 	//clearInputFields();
 	hide($('#customer-password-form'));
 	show($('#customer-password-info'));
@@ -371,12 +371,17 @@ $('#edit-email-button, #cancel-email-button').on('click', function(evt, el) {
 	toggle($('#customer-email-form'));
 });
 
-$('#edit-password-button, #cancel-password-button').on('click', function(evt, el) {
+$('#edit-password-button, #cancel-password-button').on('click', function(evt) {
 	//clearInputFields();
 	hide($('#customer-email-form'));
 	show($('#customer-email-info'));
 	toggle($('#customer-password-info'));
 	toggle($('#customer-password-form'));
+});
+
+$('.close').on('click', function(evt) {
+	evt.preventDefault();
+	$(this).parent().addClass('hidden');
 });
 
 function clearInputFields() {

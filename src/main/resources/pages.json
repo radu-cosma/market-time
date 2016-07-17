@@ -43,8 +43,8 @@
 				"main": "registration",
 				"footer": "footer-presentation"
 			},
-			"cssResources": ["layout-presentation", "presentation", "header-presentation", "registration", "validation", "login"],
-			"jsResources": ["presentation", "registration", "validation", "login"]
+			"cssResources": ["layout-presentation", "presentation", "header-presentation", "validation", "registration", "login"],
+			"jsResources": ["presentation", "validation", "registration", "login"]
 		},
 		# registration page - logged in
 		{
