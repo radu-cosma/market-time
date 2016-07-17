@@ -106,3 +106,8 @@ $('form').on('submit', function(evt) {
 		evt.preventDefault();
 	}
 });
+
+$('.close').on('click', function(evt) {
+	evt.preventDefault();
+	$(this).parent().addClass('hidden');
+});
