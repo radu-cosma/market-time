@@ -1,4 +1,382 @@
-#products-test {
-	font-size: 20px;
-	color: red;
+.prod-list-title {
+    color: #3C8DBC;
 }
+
+.clickable {
+    cursor: pointer;
+}
+
+.panel-heading span {
+    margin-top: -20px;
+    font-size: 16px;
+}
+
+.panel-details {
+    margin-bottom: 10px;
+    box-shadow: none;
+}
+
+.panel-heading {
+    background-color: #3C8DBC;
+    color: #FFFFFF;
+    padding: 5px 15px;
+}
+
+.panel-title {
+    font-size: 14pt;
+    font-weight: 600;
+}
+
+.list-prod-details {
+    list-style: none;
+    padding-left: 5px;
+}
+
+.prod-desc-title {
+    padding: .4rem 1.25rem .3rem;
+    background-color: #3C8DBC;
+    border-bottom: 3px solid #367FA9;
+    color: #FFFFFF;
+}
+
+.divToToggle {
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: left;
+}
+
+@media (max-width: 360px) {
+    .divToToggle {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+}
+
+.products-img {
+    float: left;
+    width: 110px;
+    height: 120px;
+    margin: 0 5px 5px;
+}
+
+@media (max-width: 360px) {
+    .products-img {
+        width: 80px;
+        height: 90px;
+    }
+}
+
+.column,
+.columns {
+    box-sizing: border-box;
+}
+
+.event-list {
+    margin: 0px;
+    padding: 0px;
+    padding-top: 10px;
+    list-style-type: none;
+}
+
+.event-list > li {
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 0px 5px rgb(51, 51, 51);
+    box-shadow: 0px 0px 5px rgba(51, 51, 51, 0.7);
+    padding: 0px;
+    margin: 0px 0px 10px;
+    clear: both;
+    position: relative;
+    display: block;
+    width: 100%;
+}
+
+.event-list > li > img {
+    width: 100%;
+}
+
+.event-list > li > .info {
+    padding-top: 5px;
+    text-align: left;
+}
+
+.event-list > li > .info > .title {
+    font-size: 16pt;
+    font-weight: 700;
+    margin: 0px;
+}
+
+.event-list > li > .info > .desc {
+    font-size: 12pt;
+    font-weight: 400;
+    margin: 0px;
+}
+
+.event-list > li > .info > ul,
+.event-list > li > .product-edit-delete > ul {
+    display: table;
+    list-style: none;
+    padding: 0px;
+    width: 100%;
+    text-align: center;
+}
+
+.event-list > li > .product-edit-delete > ul {
+    margin: 0px;
+}
+
+.event-list > li > .info > ul > li,
+.event-list > li > .product-edit-delete > ul > li {
+    display: table-cell;
+    cursor: pointer;
+    color: rgb(30, 30, 30);
+    font-size: 11pt;
+    font-weight: 300;
+}
+
+.event-list > li > .info > ul > li > a {
+    display: block;
+    width: 100%;
+    color: rgb(30, 30, 30);
+    text-decoration: none;
+}
+
+.event-list > li > .product-edit-delete > ul > li {
+    padding: 0px;
+}
+
+.event-list > li > .product-edit-delete > ul > li > a {
+    padding: 3px 0px;
+}
+
+.event-list > li > .info > ul > li:hover,
+.event-list > li > .product-edit-delete > ul > li:hover {
+    color: rgb(30, 30, 30);
+    background-color: rgb(200, 200, 200);
+}
+
+.product-edit a,
+.product-delete a {
+    display: block;
+    color: rgb(75, 110, 168) !important;
+}
+
+.product-edit a {
+    color: rgb(255, 140, 26) !important;
+}
+
+.product-delete a {
+    color: rgb(221, 75, 57) !important;
+}
+
+.product-edit:hover a {
+    color: rgb(255, 255, 255) !important;
+    background-color: rgb(255, 140, 26) !important;
+}
+
+.product-delete:hover a {
+    color: rgb(255, 255, 255) !important;
+    background-color: rgb(221, 75, 57) !important;
+}
+
+@media (min-width: 768px) {
+    .event-list > li > img {
+        display: inline-block;
+    }
+    .event-list > li > img {
+        float: left;
+        width: 100px;
+        height: 120px;
+        padding: 0px;
+        margin: 0px;
+    }
+    .event-list > li > .info {
+        background-color: #FFFFFF;
+        position: relative;
+        overflow: hidden;
+        text-align: left;
+        padding-right: 40px;
+    }
+    .event-list > li > .info > .title,
+    .event-list > li > .info > .desc {
+        padding: 0px 10px;
+    }
+    .event-list > li > .info > ul {
+        position: absolute;
+        left: 0px;
+        bottom: 0px;
+    }
+    .event-list > li > .product-edit-delete {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        display: block;
+        width: 40px;
+    }
+    .event-list > li > .product-edit-delete > ul > li {
+        display: block;
+        padding: 0px;
+    }
+    .event-list > li > .product-edit-delete > ul > li > a {
+        display: block;
+        width: 40px;
+        padding: 50% 0 50%;
+    }
+}
+
+@media (max-width: 768px) {
+    .event-list > li > img {
+        float: left;
+        width: 20%;
+    }
+    .event-list > li > .product-edit-delete > ul > li > a {
+        font-size: 20px;
+    }
+    .event-list > li > .info > .title {
+        font-size: 16pt;
+        font-weight: 600;
+        text-align: left;
+    }
+    .event-list > li > .info > .desc {
+        text-align: left;
+    }
+}
+
+
+/* Makes images fully responsive */
+
+.img-responsive,
+.thumbnail > img,
+.thumbnail a > img,
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+    display: block;
+    width: 300px;
+    height: 200px;
+    padding: 0 30px 20px 30px;
+}
+
+
+/* ------------------- Carousel Styling ------------------- */
+
+
+.carousel-indicators {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    z-index: 15;
+    margin: 0;
+    padding: 0 5px 2px 0;
+    text-align: right;
+}
+
+.carousel-indicators li {
+    border: 1px solid #367FA9;
+}
+
+.carousel-indicators .active {
+    background-color: #367FA9;
+}
+
+.carousel-control.left,
+.carousel-control.right {
+    background-image: none;
+}
+
+.carousel-control {
+    position: absolute;
+    top: 45%;
+    margin-left: -25px;
+    margin-right: -25px;
+    width: 50px;
+    height: 50px;
+    margin-top: -20px;
+    font-size: 20px;
+    font-weight: 100;
+    line-height: 30px;
+    color: #3C8DBC;
+    text-align: center;
+    background: #ffffff;
+    border: 2px solid #367FA9;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 25px;
+    border-radius: 25px;
+    opacity: 0.9;
+    filter: alpha(opacity=10);
+}
+
+@media (max-width: 768px) {
+    .carousel-control {
+        margin-left: -10px;
+        margin-right: -10px;
+    }
+}
+
+.carousel-control:focus,
+.carousel-control:hover {
+    background: #3C8DBC;
+}
+
+@media screen and (min-width: 992px) {
+    .img-carousel-container {
+        max-width: 300px;
+    }
+}
+
+.img-container {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@media (max-width: 360px) {
+    .img-container {
+        width: 100%;
+    }
+}
+
+@media (min-width: 568px) {
+    .img-container {
+        width: 50%;
+    }
+}
+
+
+ /* ---- Delete Modal --- */
+
+.modal-header {
+    background-color: #3C8DBC;
+    color: #FFFFFF;
+    text-align: left;
+    font-size: 20px;
+    font-weight: 700px;
+}
+
+.close {
+    font-size: 40px;
+    color: #FFFFFF;
+    opacity: .7;
+}
+
+.modal-header,
+.modal-body {
+    padding: 10px 20px;
+}
+
+.modal-dialog {
+    margin-top: 90px;
+}
+
+.form-btn.red {
+    color: #ff0000;
+    border: 1px solid #ff0000;
+    margin-left: 15px;
+}
+
+.form-btn.red:hover {
+    color: #fff;
+    background: #ff0000;
+}
+.fade {
+    background-color: rgba(60, 141, 188, 0.5);

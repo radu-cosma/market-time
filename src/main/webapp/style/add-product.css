@@ -18,55 +18,6 @@ input[id="unpub-btn"] {
     -webkit-appearance: checkbox;
 }
 
-.btn-default:hover {
-    color: #FFFFFF;
-    background-color: #519cc8;
-    border-color: #367fa9;
-}
-
-.btn-default {
-    color: #FFFFFF;
-    background-color: #367fa9;
-    ;
-    border-color: #367fa9;
-    margin-bottom: 20px;
-    margin-top: 20px;
-    text-transform: uppercase;
-    font-weight: 700;
-    font-family: Montserrat, Arial, sans-serif;
-}
-
-.form-btn.blue {
-    color: #367fa9;
-    border: 1px solid #367fa9;
-}
-
-.form-btn {
-    display: inline-block;
-    padding: 8px 14px;
-    outline: none;
-    cursor: pointer;
-    text-decoration: none;
-    text-align: center;
-    white-space: nowrap;
-    font-size: 12px;
-    font-weight: bold;
-    color: #8d9496;
-    border-radius: 3px;
-    border: 1px solid #c6c6c6;
-    vertical-align: middle;
-    background-color: #fff;
-    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.05);
-    -webkit-transition: all 0.2s;
-    -moz-transition: all 0.2s;
-    transition: all 0.2s;
-}
-
-.form-btn:hover {
-    color: #fff;
-    background: #519cc8;
-}
-
 .drop-area {
     width: 100px;
     height: 25px;
@@ -86,7 +37,7 @@ input[id="unpub-btn"] {
     border: 1px solid red;
 }
 
-. .image-preview-input {
+.image-preview-input {
     padding: 0 0;
     float: left;
 }
@@ -190,4 +141,19 @@ input[type=radio] {
 
 .form-control-icon-img {
     padding-right: 7px;
+}
+
+
+.form-control-icon + .tooltip > .tooltip-inner {
+    background-color: #bee4f4;
+    color: #0077b3;
+    border: 1px solid #bee4f4;
+    padding: 2px;
+    width: 350px;
+    text-align: left;
+    opacity: 8;
+}
+
+.form-control-icon + .tooltip.top > .tooltip-arrow {
+    border-top: 5px solid #bee4f4;
 }
