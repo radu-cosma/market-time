@@ -76,6 +76,7 @@ public class ProductController {
         product.setColor("color 3");
         product.setInventory("inventory 3");
         product.setPrice("price 3");
+        product.setSize("size 3");
         product.setBrand("brand 3");
         product.setLandingPageUrl("landing page url 3");
         product.setUpc("upc 3");
