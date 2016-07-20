@@ -134,3 +134,22 @@
             </div>
         </div>
     </div>
+
+
+<#if products??>
+	<#list products as product>
+    	<#if product.name??>
+    		${product.name}</br>
+    	</#if>
+    	<#if product.description??>
+    		${product.description}</br>
+    	</#if>
+    	<#if product.color??>
+    		${product.color}</br>
+    	</#if>
+    	<#if product.size??>
+    		${product.size}</br>
+    	</#if>
+    	</br>
+	</#list>
+</#if>
