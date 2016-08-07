@@ -23,20 +23,21 @@ $('.aTag').click(function(e){
 
 // view collapse details sections
 $(document)
-    .on('click', '.panel-heading span.clickable', function(e){
+    .on('click', '.panel-heading', function(e){
         $(this).parents('.panel').find('.panel-collapse').collapse('toggle');
     })
     .on('show.bs.collapse', '.panel-collapse', function () {
-        var $span = $(this).parents('.panel').find('.panel-heading span.clickable');
+        var $span = $(this).parents('.panel').find('.panel-heading');
         $span.find('i').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
     })
     .on('hide.bs.collapse', '.panel-collapse', function () {
-        var $span = $(this).parents('.panel').find('.panel-heading span.clickable');
+        var $span = $(this).parents('.panel').find('.panel-heading');
         $span.find('i').removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
     })
+ 
     
-    // modal delete product
-
+    
+// modal delete product
 $(".delete-product-modal").click(function() {
     $("#delete-product-modal").modal('hide');
     $("#delete-product-modal").show();

@@ -14,6 +14,7 @@ public class ProductDto {
     private String brand;
     private String landingPageUrl;
     private String upc;
+    private String marketplace;
 
     public String getName() {
         return name;
@@ -110,6 +111,14 @@ public class ProductDto {
     public void setUpc(String upc) {
         this.upc = upc;
     }
+    
+    public String getMarketplace() {
+        return marketplace;
+    }
+    
+    public void setMarketplace(String marketplace) {
+        this.marketplace = marketplace;
+    }
 
     @Override
     public String toString() {
@@ -118,7 +127,8 @@ public class ProductDto {
                 .append(tags).append(", shipping=").append(shipping).append(", shippingTime=").append(shippingTime)
                 .append(", color=").append(color).append(", size=").append(size).append(", inventory=")
                 .append(inventory).append(", price=").append(price).append(", brand=").append(brand)
-                .append(", landingPageUrl=").append(landingPageUrl).append(", upc=").append(upc).append("]");
+                .append(", landingPageUrl=").append(landingPageUrl).append(", upc=").append(upc).append("]")
+                .append(", marketplace=");
         return builder.toString();
     }
 

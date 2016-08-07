@@ -50,6 +50,7 @@ public class ProductController {
         product.setBrand("brand 1");
         product.setLandingPageUrl("landing page url 1");
         product.setUpc("upc 1");
+        product.setMarketplace("marketplace 1 ");
         products.add(product);
 
         product = new ProductDto();
@@ -65,6 +66,7 @@ public class ProductController {
         product.setBrand("brand 2");
         product.setLandingPageUrl("landing page url 2");
         product.setUpc("upc 2");
+        product.setMarketplace("marketplace 2 ");
         products.add(product);
 
         product = new ProductDto();
@@ -80,6 +82,7 @@ public class ProductController {
         product.setBrand("brand 3");
         product.setLandingPageUrl("landing page url 3");
         product.setUpc("upc 3");
+        product.setMarketplace("marketplace 3 ");
         products.add(product);
         return products;
     }
