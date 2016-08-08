@@ -97,10 +97,16 @@
     padding: 5px;
 }
 
-@media (max-width: 360px) {
 .title {
-	padding-top: 25px;
-	padding-bottom: 30px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+   }
+
+
+@media (max-width: 420px) {
+.title {
+	padding-top: 0;
+	padding-bottom: 10px;
  }
 }
 
@@ -248,11 +254,6 @@
         text-align: left;
     }
 }
-
-.title {
-	padding-top: 10px;
-	padding-bottom: 10px;
-   }
 
 .product-btn {
     margin-top: 10px;
