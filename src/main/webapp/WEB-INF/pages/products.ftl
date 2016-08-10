@@ -200,12 +200,12 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h2 class="modal-title">Please confirm</h4>
+                <h2 class="modal-title"><@spring.message 'PRODUCTS.DETAILS.DELETE.MODAL.HEADER'/></h4>
                     </div>
                     <div class="modal-body">
-                        <p>Are you sure you want to delete this product?</p>
-                        <button type="button" class="btn form-btn blue btn-img-style" data-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn form-btn red btn-img-style">Delete</button>
+                        <p><@spring.message 'PRODUCTS.DETAILS.DELETE.MODAL.CONTENT'/></p>
+                        <button type="button" class="btn form-btn blue btn-img-style" data-dismiss="modal"><@spring.message 'PRODUCTS.DETAILS.DELETE.MODAL.BUTTON.CANCEL'/></button>
+                        <button type="button" class="btn form-btn red btn-img-style"><@spring.message 'PRODUCTS.DETAILS.DELETE.MODAL.BUTTON.DELETE'/></button>
                     </div>
                 </div>
             </div>
