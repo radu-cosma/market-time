@@ -6,8 +6,7 @@ var validationConfig = {
 		'messages' : {
 			'required' : 'This field is required.',
 			'lessThan' : 'First name should have at least 3 characters.',
-			'moreThan' : 'First name should have at most 30 characters',
-			'invalidRegexp' : 'Invalid format.'
+			'moreThan' : 'First name should have at most 30 characters.',
 		}
 	},
 	'last-name' : {
@@ -17,8 +16,7 @@ var validationConfig = {
 		'messages' : {
 			'required' : 'This field is required.',
 			'lessThan' : 'Last name should have at least 3 characters.',
-			'moreThan' : 'Last name should have at most 30 characters',
-			'invalidRegexp' : 'Invalid format.'
+			'moreThan' : 'Last name should have at most 30 characters.',
 		}
 	},
 	'company-name' : {
@@ -28,8 +26,7 @@ var validationConfig = {
 		'messages' : {
 			'required' : 'This field is required.',
 			'lessThan' : 'Company name should have at least 3 characters.',
-			'moreThan' : 'Company name should have at most 30 characters',
-			'invalidRegexp' : 'Invalid format.'
+			'moreThan' : 'Company name should have at most 30 characters.',
 		}
 	},
 	'company-address' : {
@@ -39,8 +36,7 @@ var validationConfig = {
 		'messages' : {
 			'required' : 'This field is required.',
 			'lessThan' : 'Company address should have at least 3 characters.',
-			'moreThan' : 'Company address should have at most 100 characters',
-			'invalidRegexp' : 'Invalid format.'
+			'moreThan' : 'Company address should have at most 100 characters.',
 		}
 	},
 	'company-phone' : {
@@ -51,7 +47,7 @@ var validationConfig = {
 		'messages' : {
 			'required' : 'This field is required.',
 			'lessThan' : 'Company phone should have at least 10 characters.',
-			'moreThan' : 'Company phone should have at most 15 characters',
+			'moreThan' : 'Company phone should have at most 15 characters.',
 			'invalidRegexp' : 'Invalid format.'
 		}
 	},
@@ -63,7 +59,7 @@ var validationConfig = {
 		'messages' : {
 			'required' : 'This field is required.',
 			'lessThan' : 'Email should have at least 7 characters.',
-			'moreThan' : 'Email should have at most 127 characters',
+			'moreThan' : 'Email should have at most 127 characters.',
 			'invalidRegexp' : 'Invalid email format.'
 		}
 	},
@@ -76,7 +72,7 @@ var validationConfig = {
 		'messages' : {
 			'required' : 'This field is required.',
 			'lessThan' : 'Email should have at least 7 characters.',
-			'moreThan' : 'Email should have at most 127 characters',
+			'moreThan' : 'Email should have at most 127 characters.',
 			'invalidRegexp' : 'Invalid email format.',
 			'mirror' : 'Emails should match.'
 		}
@@ -89,7 +85,7 @@ var validationConfig = {
 		'messages' : {
 			'required' : 'This field is required.',
 			'lessThan' : 'Password should have at least 8 characters.',
-			'moreThan' : 'Password should have at most 63 characters',
+			'moreThan' : 'Password should have at most 63 characters.',
 			'invalidRegexp' : 'Invalid format.'
 		}
 	},
@@ -101,7 +97,7 @@ var validationConfig = {
 		'messages' : {
 			'required' : 'This field is required.',
 			'lessThan' : 'Password should have at least 8 characters.',
-			'moreThan' : 'Password should have at most 63 characters',
+			'moreThan' : 'Password should have at most 63 characters.',
 			'invalidRegexp' : 'Invalid format.'
 		}
 	},
@@ -113,7 +109,7 @@ var validationConfig = {
 		'messages' : {
 			'required' : 'This field is required.',
 			'lessThan' : 'Password should have at least 8 characters.',
-			'moreThan' : 'Password should have at most 63 characters',
+			'moreThan' : 'Password should have at most 63 characters.',
 			'invalidRegexp' : 'Invalid format.'
 		}
 	},
@@ -125,7 +121,7 @@ var validationConfig = {
 		'messages' : {
 			'required' : 'This field is required.',
 			'lessThan' : 'Password should have at least 8 characters.',
-			'moreThan' : 'Password should have at most 63 characters',
+			'moreThan' : 'Password should have at most 63 characters.',
 			'invalidRegexp' : 'Invalid format.'
 		}
 	},
@@ -138,7 +134,7 @@ var validationConfig = {
 		'messages' : {
 			'required' : 'This field is required.',
 			'lessThan' : 'Password should have at least 8 characters.',
-			'moreThan' : 'Password should have at most 63 characters',
+			'moreThan' : 'Password should have at most 63 characters.',
 			'invalidRegexp' : 'Invalid format.',
 			'mirror' : 'Passwords should match.'
 		}

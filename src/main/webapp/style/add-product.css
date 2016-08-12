@@ -1,0 +1,207 @@
+form {
+	margin-top: 15px;	
+}
+
+input[type="file" i] {
+    display: flex;
+    align-items: flex-end;
+    color: inherit;
+    text-align: right;
+}
+
+input[type="file"] {
+    height: 32px;
+    width: 320px;
+}
+
+#publish-checkbox, #unpublish-checkbox {
+    -webkit-appearance: checkbox;
+}
+
+.btn-default:hover {
+    color: #FFFFFF;
+    background-color: #519cc8;
+    border-color: #367fa9;
+}
+
+.btn-default {
+    color: #FFFFFF;
+    background-color: #367fa9;
+    ;
+    border-color: #367fa9;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-family: Montserrat, Arial, sans-serif;
+}
+
+.form-btn.blue {
+    color: #367fa9;
+    border: 1px solid #367fa9;
+}
+
+.form-btn {
+    display: inline-block;
+    padding: 8px 14px;
+    outline: none;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    white-space: nowrap;
+    font-size: 12px;
+    font-weight: bold;
+    color: #8d9496;
+    border-radius: 3px;
+    border: 1px solid #c6c6c6;
+    vertical-align: middle;
+    background-color: #fff;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.05);
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+.form-btn:hover {
+    color: #fff;
+    background: #519cc8;
+}
+
+.drop-area {
+    width: 100px;
+    height: 25px;
+    border: 1px solid #999;
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
+}
+
+#thumbnail img {
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+}
+
+.canvas {
+    border: 1px solid red;
+}
+
+.image-preview-input {
+    padding: 0 0;
+    float: left;
+}
+
+.browse-group-btn {
+    top: -34px;
+}
+
+.upload-drop-zone {
+    height: 200px;
+    border-width: 2px;
+}
+
+.upload-drop-zone {
+    color: #ccc;
+    border-style: dashed;
+    border-color: #ccc;
+    line-height: 200px;
+    text-align: center;
+    font-size: xx-large;
+}
+
+.upload-drop-zone.drop {
+    color: #222;
+    border-color: #222;
+}
+
+.image-preview-input {
+    position: relative;
+    overflow: hidden;
+    margin: 0px;
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+}
+
+.image-preview-input input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-left: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    filter: alpha(opacity=0);
+}
+
+.input-group-btn {
+    width: 0;
+}
+
+.image-preview-input-title {
+    margin-left: 2px;
+}
+
+.row,
+.form-pad {
+    margin-right: -5px;
+    margin-left: -5px;
+}
+
+input[type=checkbox],
+input[type=radio] {
+    margin-right: 10px;
+    margin-bottom: 10px;
+    width: 15px;
+    height: 15px;
+}
+
+.form-control-icon {
+    position: absolute;
+    top: 29px;
+    right: 10px;
+}
+
+.ion-ios-information-outline {
+    font-size: 20px;
+}
+
+.form-icon-poz {
+    position: relative;
+}
+
+.form-icon-poz .form-control {
+    padding-right: 35px;
+}
+
+.data-original-title {
+    background-color: white;
+    text-decoration-color: black;
+}
+
+.btn-img-style {
+    margin-top: 5px;
+}
+
+.inp-img-style {
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+.form-control-icon-img {
+    padding-right: 7px;
+}
+
+.form-control-icon + .tooltip > .tooltip-inner {
+    background-color: #bee4f4;
+    color: #0077b3;
+    border: 1px solid #bee4f4;
+    padding: 2px;
+    width: 350px;
+    text-align: left;
+    opacity: 8;
+}
+
+.form-control-icon + .tooltip.top > .tooltip-arrow {
+    border-top: 5px solid #bee4f4;
+}

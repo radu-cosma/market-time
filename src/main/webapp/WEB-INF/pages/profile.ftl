@@ -1,3 +1,5 @@
+<#include "commons.ftl">
+
 <section class="content-header">
     <h1><@spring.message 'PROFILE.HEADER.TITLE'/></h1>
     <ol class="breadcrumb">
@@ -161,11 +163,3 @@
         </div>
     </div>
 </#macro>
-
-<#function buildName fieldId>
-  	<#return fieldId?replace('-', ' ')?capitalize?replace(' ', '')?uncap_first >
-</#function>
-
-<#function buildKey fieldId>
-  	<#return fieldId?replace('-', '.')?upper_case >
-</#function>

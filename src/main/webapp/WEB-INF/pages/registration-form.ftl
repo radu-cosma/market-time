@@ -67,7 +67,7 @@
 	<div class="form-group">
 		<label><@spring.message 'REGISTRATION.${fieldKey}.LABEL'/></label>
 		<div>
-			<input value="<#if !hasError && fieldValue??>${fieldValue}</#if>" class="form-control <#if hasError>has-error</#if>" name="${fieldName}" id="${fieldId}" type="${fieldType}" placeholder="<@spring.message 'REGISTRATION.${fieldKey}.PLACEHOLDER'/>">
+			<input <#if !hasError && fieldValue?? && fieldValue != "">value="${fieldValue}"</#if> class="form-control <#if hasError>has-error</#if>" name="${fieldName}" id="${fieldId}" type="${fieldType}" placeholder="<@spring.message 'REGISTRATION.${fieldKey}.PLACEHOLDER'/>">
 			<div class="tooltip-wrapper">
 	    		<span id="${fieldId}-tooltip" class="error-tooltip"><#if hasError><@spring.message '${validationErrors["${fieldName}"]}'/></#if></span>
 	    	</div>
