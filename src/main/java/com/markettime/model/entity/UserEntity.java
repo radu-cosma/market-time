@@ -1,5 +1,7 @@
 package com.markettime.model.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
@@ -29,6 +32,7 @@ public class UserEntity {
     private String email;
     private String password;
     private CompanyEntity company;
+    private List<ProductEntity> products;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -85,6 +89,15 @@ public class UserEntity {
 
     public void setCompany(CompanyEntity company) {
         this.company = company;
+    }
+
+    @OneToMany(mappedBy = "user")
+    public List<ProductEntity> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<ProductEntity> products) {
+        this.products = products;
     }
 
     @Override

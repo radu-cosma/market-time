@@ -1,3 +1,7 @@
+form {
+	margin-top: 15px;	
+}
+
 input[type="file" i] {
     display: flex;
     align-items: flex-end;
@@ -10,11 +14,7 @@ input[type="file"] {
     width: 320px;
 }
 
-input[id="pub-btn"] {
-    -webkit-appearance: checkbox;
-}
-
-input[id="unpub-btn"] {
+#publish-checkbox, #unpublish-checkbox {
     -webkit-appearance: checkbox;
 }
 
@@ -86,7 +86,7 @@ input[id="unpub-btn"] {
     border: 1px solid red;
 }
 
-. .image-preview-input {
+.image-preview-input {
     padding: 0 0;
     float: left;
 }
@@ -190,4 +190,18 @@ input[type=radio] {
 
 .form-control-icon-img {
     padding-right: 7px;
+}
+
+.form-control-icon + .tooltip > .tooltip-inner {
+    background-color: #bee4f4;
+    color: #0077b3;
+    border: 1px solid #bee4f4;
+    padding: 2px;
+    width: 350px;
+    text-align: left;
+    opacity: 8;
+}
+
+.form-control-icon + .tooltip.top > .tooltip-arrow {
+    border-top: 5px solid #bee4f4;
 }

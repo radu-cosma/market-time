@@ -10,6 +10,8 @@
     border: 0px;
     border-top: 3px solid #008046; 
     padding: 10px;
+    margin-left: -15px;
+    margin-right: -15px;
 }
 
 .error-message {
@@ -24,6 +26,8 @@
 
 .close-message {
     font-size: 30px;
+	color: #fff;
+    font-weight: 600;
     opacity: .7;
     line-height: 0.6;
 }
