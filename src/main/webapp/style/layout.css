@@ -260,7 +260,7 @@ a:hover {
     border-color: transparent;
 }
 
-.user- {
+.user-panel {
     position: relative;
     width: 100%;
     padding: 10px;
@@ -1459,6 +1459,12 @@ a:hover {
 @media (max-width: 360px) {
     .dropdown-select {
         width: 100%;
+    }
+}
+
+@media (min-width: 568px) {
+    .dropdown-select {
+        width: 50%;
     }
 }
 

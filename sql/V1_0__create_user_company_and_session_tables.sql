@@ -1,42 +1,45 @@
 --
--- Table structure for table `company`
+-- Structure for `company` table.
 --
-CREATE TABLE `company` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `name` varchar(30) NOT NULL,
-  `address` varchar(100) NOT NULL,
-  `phone` varchar(15) NOT NULL,
-  PRIMARY KEY (`id`)
+DROP TABLE IF EXISTS `company`;
+CREATE TABLE IF NOT EXISTS `company` (
+  	`id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+  	`name` VARCHAR(30) NOT NULL,
+  	`address` VARCHAR(100) NOT NULL,
+  	`phone` VARCHAR(15) NOT NULL,
+  	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Table structure for table `user`
+-- Structure for `user` table.
 --
-CREATE TABLE `user` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `first_name` varchar(30) NOT NULL,
-  `last_name` varchar(30) NOT NULL,
-  `email` varchar(127) NOT NULL,
-  `password` varchar(63) NOT NULL,
-  `company_id` bigint(20) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `email_unique` (`email`),
-  KEY `company_id` (`company_id`),
-  CONSTRAINT `company_id_fk` FOREIGN KEY (`company_id`) REFERENCES `company` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE IF NOT EXISTS `user` (
+  	`id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+  	`first_name` VARCHAR(30) NOT NULL,
+  	`last_name` VARCHAR(30) NOT NULL,
+  	`email` VARCHAR(127) NOT NULL,
+  	`password` VARCHAR(63) NOT NULL,
+  	`company_id` BIGINT(20) NOT NULL,
+  	PRIMARY KEY (`id`),
+  	UNIQUE KEY `email_unique` (`email`),
+  	KEY `user_company_id_idx` (`company_id`),
+  	CONSTRAINT `user_company_id_fk` FOREIGN KEY (`company_id`) REFERENCES `company` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Table structure for table `session`
+-- Structure for `session` table.
 --
-CREATE TABLE `user_session` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `user_id` bigint(20) NOT NULL,
-  `uuid` varchar(36) NOT NULL,
-  `active` tinyint(1) NOT NULL,
-  `creation_time` datetime NOT NULL,
-  `last_access` datetime NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `uuid_unique` (`uuid`),
-  KEY `user_id` (`user_id`),
-  CONSTRAINT `user_id_fk` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+DROP TABLE IF EXISTS `user_session`;
+CREATE TABLE IF NOT EXISTS `user_session` (
+  	`id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+  	`user_id` BIGINT(20) NOT NULL,
+  	`uuid` VARCHAR(36) NOT NULL,
+  	`active` TINYINT(1) NOT NULL,
+  	`creation_time` DATETIME NOT NULL,
+  	`last_access` DATETIME NOT NULL,
+  	PRIMARY KEY (`id`),
+  	UNIQUE KEY `user_session_uuid_unique` (`uuid`),
+  	KEY `user_session_user_id_idx` (`user_id`),
+  	CONSTRAINT `user_session_user_id_fk` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

@@ -1,3 +1,5 @@
+<#include "commons.ftl">
+
 <section class="content-header">
     <h1><@spring.message 'PROFILE.HEADER.TITLE'/></h1>
     <ol class="breadcrumb">
@@ -12,8 +14,20 @@
         <div class="container">
             <div class="col-md-1 "> </div>
             <div class="my-profile-tab-container col-md-8 tab-content">
-            	<label id="general-error-message" class="error-message hidden"></label>
-	   			<label id="success-message" class="success-message hidden"></label>
+            	<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12">
+     					<div id="success-message" class="success-message alert alert-success hidden">
+       						<a href="#" class="close-message close">&times;</a>
+       						<strong>!</strong>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-12">
+						<div id="general-error-message" class="error-message alert alert-danger hidden">
+							<a href="#" class="close-message close">&times;</a>
+							<strong>!</strong>
+						</div>
+					</div>
+				</div>
                 <ul class="nav nav-tabs">
                     <li id="profile-tab" class="active"><a data-toggle="tab" href="#profile"><@spring.message 'PROFILE.PROFILE.TAB.TITLE'/></a></li>
                     <li id="email-password-tab"><a data-toggle="tab" href="#emailpassword"><@spring.message 'PROFILE.EMAIL.PASSWORD.TAB.TITLE'/></a></li>
@@ -149,11 +163,3 @@
         </div>
     </div>
 </#macro>
-
-<#function buildName fieldId>
-  	<#return fieldId?replace('-', ' ')?capitalize?replace(' ', '')?uncap_first >
-</#function>
-
-<#function buildKey fieldId>
-  	<#return fieldId?replace('-', '.')?upper_case >
-</#function>

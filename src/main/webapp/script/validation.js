@@ -36,15 +36,19 @@ var validator = {
 			return {valid : false, reason : 'required'};
 		}
 		
-		if (inputConfig.minLength !== undefined && inputValue.length < inputConfig.minLength) {
+		if (inputConfig.exactLength !== undefined && inputValue !== '' && inputValue.length !== inputConfig.exactLength) {
+			return {valid : false, reason : 'lessOrMoreThan'};
+		}
+		
+		if (inputConfig.minLength !== undefined && inputValue !== '' && inputValue.length < inputConfig.minLength) {
 			return {valid : false, reason : 'lessThan'};
 		}
 		
-		if (inputConfig.maxLength !== undefined && inputValue.length > inputConfig.maxLength) {
+		if (inputConfig.maxLength !== undefined && inputValue !== '' && inputValue.length > inputConfig.maxLength) {
 			return {valid : false, reason : 'moreThan'};
 		}
 		
-		if (inputConfig.regexp !== undefined && !inputValue.match(inputConfig.regexp)) {
+		if (inputConfig.regexp !== undefined && inputValue !== '' && !inputValue.match(inputConfig.regexp)) {
 			return {valid : false, reason : 'invalidRegexp'};
 		}
 		
