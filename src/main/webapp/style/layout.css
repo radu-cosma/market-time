@@ -260,7 +260,7 @@ a:hover {
     border-color: transparent;
 }
 
-.user-panel {
+.user- {
     position: relative;
     width: 100%;
     padding: 10px;
@@ -1462,13 +1462,7 @@ a:hover {
     }
 }
 
-@media (min-width: 568px) {
-    .dropdown-select {
-        width: 50%;
-    }
-}
-
-@media (min-width: 768px) {
+@media only screen and (min-width: 361px) and (max-width: 768px) {
     .dropdown-select {
         width: 50%;
     }
@@ -1534,7 +1528,7 @@ a:hover {
 
 /* ---- General classes ----*/
 .box-header {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .container {
@@ -1542,8 +1536,21 @@ a:hover {
     line-height: 1.2;
 }
 
-.row {
-    margin: 0px;
+.content {
+	padding-left: 0px;
+    padding-right: 0px;
+}
+
+.row-style {
+	margin-right: 10px;
+    margin-left: 10px; 
+}
+
+@media (max-width: 768px) {
+   .row-style {
+	   margin-right: 5px;
+       margin-left: 5px; 
+   }
 }
 
 .padding-5 {
