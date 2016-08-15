@@ -46,6 +46,10 @@ public class ProductController extends BaseController {
     @Autowired
     private ProductService productService;
 
+    /**
+     *
+     * @return
+     */
     @RequestMapping(value = "add", method = RequestMethod.GET)
     public String getAddProduct() {
         return "add-product";
@@ -83,8 +87,13 @@ public class ProductController extends BaseController {
         binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
     }
 
+    /**
+     *
+     * @param productStatus
+     * @return
+     */
     @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView getUnpublishedProducts(@RequestParam("status") String productStatus) {
+    public ModelAndView getProducts(@RequestParam("status") String productStatus) {
         LOGGER.info("product status: {}", productStatus);
         return new ModelAndView("products", "products", createProductsList());
     }

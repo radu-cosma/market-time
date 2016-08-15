@@ -120,6 +120,41 @@
 			"cssResources": ["layout", "skin-blue", "header", "products"],
 			"jsResources": ["market-time", "products"]
 		},
+		
+		
+		# orders list page - logged in
+		{
+			"criteria": {
+				"name": "orders",
+				"loggedIn": true
+			},
+			"sections": {
+				"header": "header",
+				"menu": "menu",
+				"main": "orders",
+				"footer": "footer"
+			},
+			"cssResources": ["layout", "skin-blue", "header", "orders"],
+			"jsResources": ["market-time", "orders"]
+		},
+		# order details page - logged in
+		{
+			"criteria": {
+				"name": "order-details",
+				"loggedIn": true
+			},
+			"sections": {
+				"header": "header",
+				"menu": "menu",
+				"main": "order-details",
+				"footer": "footer"
+			},
+			"cssResources": ["layout", "skin-blue", "header", "order-details"],
+			"jsResources": ["market-time", "orders"]
+		},
+		
+		
+		
 		# error 500 page - logged in
 		{
 			"criteria": {
