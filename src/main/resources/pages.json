@@ -134,8 +134,8 @@
 				"main": "orders",
 				"footer": "footer"
 			},
-			"cssResources": ["layout", "skin-blue", "header", "orders"],
-			"jsResources": ["market-time", "orders"]
+			"cssResources": ["layout", "skin-blue", "header", "validation", "orders"],
+			"jsResources": ["market-time", "validation", "orders"]
 		},
 		# order details page - logged in
 		{
