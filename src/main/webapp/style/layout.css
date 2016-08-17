@@ -1563,6 +1563,10 @@ a:hover {
     padding: 5px;
 }
 
+.padding-0 {
+	padding: 0;
+}
+
 .no-padding-left {
     padding-left: 0px;
 }
