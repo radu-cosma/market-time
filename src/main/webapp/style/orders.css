@@ -61,71 +61,10 @@
     float: right;
 }
 
-.delete-order {
-     position: absolute;
-     bottom: 5px;
-     right: 10px;
-     display: block;
-     width: 25px;
-     height: 30px;
-     text-align: center;
-     margin-left: 10px;
+.edit-shipping-padding {
+	padding-left: 15px;
 }
 
-.delete-order a {
-    padding: 5px;
-    display: block;
-    color: rgb(75, 110, 168) !important;
+.edit-shipping-button-padding {
+	padding-left: 30px;
 }
-
-.delete-order a {
-    color: rgb(221, 75, 57) !important;
-}
-
-.delete-order:hover a {
-    color: rgb(255, 255, 255) !important;
-    background-color: rgb(221, 75, 57) !important;
-}
-
-/* ---- Delete Modal --- */
-
-.delete-modal-header {
-    background-color: #3C8DBC;
-    color: #FFFFFF;
-    text-align: left;
-}
-
-.delete-modal-title {
-	font-size: 25px;
-	font-weight: 600;
-}
-
-.close {
-    font-size: 40px;
-    color: #FFFFFF;
-    opacity: .7;
-}
-
-.modal-header,
-.modal-body {
-    padding: 10px 20px;
-}
-
-.modal-dialog {
-    margin-top: 90px;
-}
-
-.form-btn.red {
-    color: #ff0000;
-    border: 1px solid #ff0000;
-    margin-left: 15px;
-}
-
-.form-btn.red:hover {
-    color: #fff;
-    background: #ff0000;
-}
-.fade {
-    background-color: rgba(60, 141, 188, 0.5);
-}
-

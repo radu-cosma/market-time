@@ -1,0 +1,132 @@
+.subtitle {
+    color: #3C8DBC;
+    font-size: 16pt;
+    margin-bottom: 2px;
+}
+
+.order-separator-order-details {
+    border-bottom: 1px solid #cecece;
+    margin-bottom: 10px;
+}
+
+.total-order-details {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.ship-details {
+    padding-left: 0px;
+}
+
+.order-details {
+    padding-left: 0px;
+}
+
+.trans-info {
+    padding-right: 0px;
+    padding-left:0px;
+}
+
+@media (max-width: 768px) {
+    .left-order-width50-section {
+        padding: 0px;
+    }
+}
+
+@media (max-width: 650px) {
+    .right-order-width50-section {
+        padding-top: 20px;
+        padding-left: 0px;
+    }
+}
+
+@media (min-width: 768px) {
+    .right-order-width50-section {
+        padding-left: 10px;
+    }
+}
+
+.nav-pills>li.active>a,
+.nav-pills>li.active>a:focus,
+.nav-pills>li.active>a:hover {
+    background-color: #367fa9;
+}
+
+.action-details {
+    padding-top: 20px;
+    padding-left: 15px;
+}
+
+@media (max-width: 650px) {
+    .action-details {
+        padding-left: 0px;
+        padding-top: 10px;
+    }
+}
+
+.country-shipping-action {
+    width: 100%
+}
+
+.no-padding-left {
+    padding-left: 0px;
+}
+
+.subtitle-black {
+    color: #000000;
+    font-size: 16pt;
+    margin: 0px;
+}
+
+.box-header {
+    margin-bottom: 15px;
+}
+
+.container {
+    padding: 0px;
+    line-height: 1.2;
+}
+
+.order-success-message {
+	margin-left: -15px;
+	margin-right: -15px
+}
+
+.order-error-message {
+	margin-left: -15px;
+	margin-right: -15px
+}
+
+@media (max-width: 750px) {
+    .order-success-message {
+	margin-left: 0px;
+	margin-right: 0px
+   }
+
+   .order-error-message {
+	margin-left: 0px;
+	margin-right: 0px
+   }
+}
+
+@media (max-width: 750px) {
+    .mobile-row-padding {
+	padding-left: 10px;
+	padding-right: 10px
+   }
+}
+
+	.order-product-padding {
+	    padding-left: 0px;
+	    padding-right: 0px
+	    }
+	
+	.product-img-order {
+		max-width: 70%;
+	}
+
+@media only screen and (min-width: 450px) and (max-width: 745px) {
+    .product-img-order {
+	max-width: 40%;
+    }
+}

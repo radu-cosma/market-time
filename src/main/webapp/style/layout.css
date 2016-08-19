@@ -22,6 +22,7 @@ body {
     font-weight: 400;
     overflow-x: hidden;
     overflow-y: auto;
+    line-height:1.2;
 }
 
 label {
@@ -1564,7 +1565,7 @@ a:hover {
 }
 
 .padding-0 {
-	padding: 0;
+	padding: 0px;
 }
 
 .no-padding-left {
@@ -1595,4 +1596,8 @@ a:hover {
     .textarea-style {
         width: 70%;
     }
+}
+
+strong {
+    font-weight: 600;
 }

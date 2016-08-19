@@ -9,13 +9,9 @@
 <section class="content">
   <div class="box box-success">
     <div class="box-header with-border"></div>
-    <div id="publish-oredrs-id" class="row-style row">
+    <div id="orders-id" class="row-style row">
       <div class="padding-0 col-xs-12 col-sm-offset-1 col-sm-10">
 	    <div id="success-message" class="success-message alert alert-success hidden">
-		  <a href="#" class="close-message close">&times;</a>
-		  <strong>!</strong>
-		</div>
-		<div id="general-error-message" class="error-message alert alert-danger hidden">
 		  <a href="#" class="close-message close">&times;</a>
 		  <strong>!</strong>
 		</div>
@@ -64,8 +60,6 @@
 	              <#if order.status??>
 	    		    <p class="order-status">${order.status}</p>
 	    	      </#if>
-	              <div class="delete-order"><a href=#delete-order-modal data-toggle="modal"><span class="fa fa-trash-o"></span></a>
-			    </div>
 			  </li>
 	        </ul>
 		  </#list>
@@ -75,19 +69,4 @@
   </div>
 </section>
 
-<div class="modal fade" id="delete-order-modal" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="delete-modal-header modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h2 class="delete-modal-title modal-title"><@spring.message 'ORDERS.DETAILS.DELETE.MODAL.HEADER'/></h2>
-      </div>
-      <div class="modal-body">
-        <p><@spring.message 'ORDERS.DETAILS.DELETE.MODAL.CONTENT'/></p>
-        <button type="button" class="btn form-btn blue btn-img-style" data-dismiss="modal"><@spring.message 'ORDERS.DETAILS.DELETE.MODAL.BUTTON.CANCEL'/></button>
-        <button type="button" class="btn form-btn red btn-img-style"><@spring.message 'ORDERS.DETAILS.DELETE.MODAL.BUTTON.DELETE'/></button>
-      </div>
-    </div>
-  </div>
-</div>
                            
