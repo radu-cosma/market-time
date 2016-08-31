@@ -16,24 +16,24 @@
         <form name="addProduct" action="add" method="POST">
             <div class="row">
                 <div class="col-md-1"></div>
-            	<#if successMessage??>
-            		<div class="col-xs-10 col-sm-10 col-md-10">
-     					<div id="success-message" class="success-message alert alert-success">
-       						<a href="#" class="close-message close">&times;</a>
-       						<strong>!</strong>
-       						<@spring.message successMessage/>
-						</div>
-					</div>
-            	</#if>
-            	<#if generalErrorMessage??>
-            		<div class="col-xs-10 col-sm-10 col-md-10">
-     					<div id="general-error-message" class="error-message alert alert-danger">
-       						<a href="#" class="close-message close">&times;</a>
-       						<strong>!</strong>
-       						${generalErrorMessage}
-						</div>
-					</div>
-            	</#if>
+                <#if successMessage??>
+                    <div class="col-xs-10 col-sm-10 col-md-10">
+                         <div id="success-message" class="success-message alert alert-success">
+                            <a href="#" class="close-message close">&times;</a>
+                            <strong>!</strong>
+                            <@spring.message successMessage/>
+                        </div>
+                    </div>
+                </#if>
+                <#if generalErrorMessage??>
+                    <div class="col-xs-10 col-sm-10 col-md-10">
+                         <div id="general-error-message" class="error-message alert alert-danger">
+                            <a href="#" class="close-message close">&times;</a>
+                            <strong>!</strong>
+                            ${generalErrorMessage}
+                        </div>
+                    </div>
+                </#if>
             </div>
             <div class="row">
                 <div class="col-md-1"></div>
@@ -101,23 +101,23 @@
 </#macro>
 
 <#macro createInputSection fieldId mandatory=true>
-	<#local fieldName = buildName(fieldId) >
-	<#local fieldKey = buildKey(fieldId) >
-	<#assign hasError=false/>
-	<#if validationErrors?? && validationErrors["${fieldName}"]??>
-		<#assign hasError=true/>
-	</#if>
-	<#if addProduct??>
-		<@'<#assign fieldValue = ${"addProduct." + "${fieldName}"}!"">'?interpret />
-	</#if>
-	<div class="form-group form-icon-poz">
+    <#local fieldName = buildName(fieldId) >
+    <#local fieldKey = buildKey(fieldId) >
+    <#assign hasError=false/>
+    <#if validationErrors?? && validationErrors["${fieldName}"]??>
+        <#assign hasError=true/>
+    </#if>
+    <#if addProduct??>
+        <@'<#assign fieldValue = ${"addProduct." + "${fieldName}"}!"">'?interpret />
+    </#if>
+    <div class="form-group form-icon-poz">
         <label for="${fieldId}"><@spring.message 'ADD.PRODUCT.${fieldKey}.LABEL' /><#if mandatory>*</#if></label>
         <input <#if !hasError && fieldValue?? && fieldValue != "">value="${fieldValue}"</#if> class="form-control <#if hasError>has-error</#if>" name="${fieldName}" id="${fieldId}" type="text" placeholder="<@spring.message 'ADD.PRODUCT.${fieldKey}.PLACEHOLDER'/>">
-		<div class="tooltip-wrapper">
-    		<span id="${fieldId}-tooltip" class="error-tooltip"><#if hasError><@spring.message '${validationErrors["${fieldName}"]}'/></#if></span>
-    	</div>
+        <div class="tooltip-wrapper">
+            <span id="${fieldId}-tooltip" class="error-tooltip"><#if hasError><@spring.message '${validationErrors["${fieldName}"]}'/></#if></span>
+        </div>
         <a class="form-control-icon" data-toggle="tooltip" title="<@spring.message 'ADD.PRODUCT.${fieldKey}.INFO'/>">
-        	<span class="ion-ios-information-outline"></span>
+            <span class="ion-ios-information-outline"></span>
         </a>
     </div>
 </#macro>
