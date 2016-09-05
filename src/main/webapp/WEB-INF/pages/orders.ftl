@@ -42,16 +42,16 @@
                                         <h2 class="order-nr-title"><@spring.message 'ORDERS.DETAILS.NUMBER'/>: ${order.id}</h2> 
                                     </#if>
                                       <#if order.date??>
-                                        <p class="desc"><@spring.message 'ORDERS.DETAILS.DATE'/>: ${order.date?date}</p>
+                                        <p><@spring.message 'ORDERS.DETAILS.DATE'/>: ${order.date?date}</p>
                                       </#if>
                                 </div>
                                 <div class="order-separator"></div>
                                 <div class="order-body">  
                                       <#if order.marketplace??>
-                                        <p class="desc"><@spring.message 'ORDERS.DETAILS.MARKETPLACE'/>: ${order.marketplace}</p>
+                                        <p>${order.marketplace}</p>
                                       </#if>
                                       <#if order.total??>
-                                        <p class="desc"><@spring.message 'ORDERS.DETAILS.TOTAL'/>: ${order.total}</p>
+                                        <strong><@spring.message 'ORDERS.DETAILS.TOTAL'/>: ${order.total}</strong>
                                       </#if>
                                       <#if order.status??>
                                         <p class="order-status">${order.status}</p>
