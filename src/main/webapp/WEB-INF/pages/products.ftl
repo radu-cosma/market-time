@@ -94,15 +94,13 @@
                         <h2 class="title ">${product.name}</h2>
                     </#if>
                     <#if product.price??>
-                        <div class="product-label col-md-2 col-xs-3 col-sm-3 ">
-                        <@spring.message 'PRODUCTS.DETAILS.PRICE'/>:</div><div class="product-desc col-md-7 col-xs-5 col-sm-5 "> ${product.price}</div>
+                        <strong><@spring.message 'PRODUCTS.DETAILS.PRICE'/>: ${product.price}</strong>
                     </#if>
                     <#if product.inventory??>
-                        <div class="product-label col-md-2 col-xs-3 col-sm-3 ">
-                        <@spring.message 'PRODUCTS.DETAILS.INVENTORY'/>:</div><div class="product-desc col-md-7 col-xs-5 col-sm-5 "> ${product.inventory}</div>
+                        <p><@spring.message 'PRODUCTS.DETAILS.INVENTORY'/>: ${product.inventory}</p>
                     </#if>
                     <#if product.marketplace??>
-                        <div class="product-desc col-md-9 col-xs-8 col-sm-9 "> ${product.marketplace}</div>
+                        <p>${product.marketplace}</p>
                     </#if>
                     <a class="form-btn blue product-btn aTag " href="# ">details &#9660</a>
                     <div class="divToToggle " style="display: none; ">
