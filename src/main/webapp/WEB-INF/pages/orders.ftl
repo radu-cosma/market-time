@@ -9,7 +9,7 @@
 <section class="content">
       <div class="box box-success">
         <div class="box-header with-border"></div>
-        <div id="orders-id" class="row-stylhe row">
+        <div id="orders-id" class="row-style row">
               <div class="padding-0 col-xs-12 col-sm-offset-1 col-sm-10">
                 <div id="success-message" class="success-message alert alert-success hidden">
                       <a href="#" class="close-message close">&times;</a>
