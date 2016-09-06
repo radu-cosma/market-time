@@ -22,6 +22,7 @@ body {
     font-weight: 400;
     overflow-x: hidden;
     overflow-y: auto;
+    line-height:1.2;
 }
 
 label {
@@ -197,7 +198,7 @@ a:focus {
 }
 
 a:hover {
-	cursor: pointer;
+    cursor: pointer;
 }
 
 /*
@@ -1543,24 +1544,28 @@ a:hover {
 }
 
 .content {
-	padding-left: 0px;
+    padding-left: 0px;
     padding-right: 0px;
 }
 
 .row-style {
-	margin-right: 10px;
+    margin-right: 10px;
     margin-left: 10px; 
 }
 
 @media (max-width: 768px) {
    .row-style {
-	   margin-right: 5px;
+       margin-right: 5px;
        margin-left: 5px; 
    }
 }
 
 .padding-5 {
     padding: 5px;
+}
+
+.padding-0 {
+    padding: 0px;
 }
 
 .no-padding-left {
@@ -1591,4 +1596,8 @@ a:hover {
     .textarea-style {
         width: 70%;
     }
+}
+
+strong {
+    font-weight: 600;
 }

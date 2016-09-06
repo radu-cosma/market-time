@@ -14,27 +14,27 @@
         <div class="container">
             <div class="col-md-1 "> </div>
             <div class="my-profile-tab-container col-md-8 tab-content">
-            	<div class="row">
-					<div class="col-xs-12 col-sm-12 col-md-12">
-     					<div id="success-message" class="success-message alert alert-success hidden">
-       						<a href="#" class="close-message close">&times;</a>
-       						<strong>!</strong>
-						</div>
-					</div>
-					<div class="col-xs-12 col-sm-12 col-md-12">
-						<div id="general-error-message" class="error-message alert alert-danger hidden">
-							<a href="#" class="close-message close">&times;</a>
-							<strong>!</strong>
-						</div>
-					</div>
-				</div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                         <div id="success-message" class="success-message alert alert-success hidden">
+                               <a href="#" class="close-message close">&times;</a>
+                               <strong>!</strong>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div id="general-error-message" class="error-message alert alert-danger hidden">
+                            <a href="#" class="close-message close">&times;</a>
+                            <strong>!</strong>
+                        </div>
+                    </div>
+                </div>
                 <ul class="nav nav-tabs">
                     <li id="profile-tab" class="active"><a data-toggle="tab" href="#profile"><@spring.message 'PROFILE.PROFILE.TAB.TITLE'/></a></li>
                     <li id="email-password-tab"><a data-toggle="tab" href="#emailpassword"><@spring.message 'PROFILE.EMAIL.PASSWORD.TAB.TITLE'/></a></li>
                 </ul>
-            	<div id="profile" class="tab-pane active">
+                <div id="profile" class="tab-pane active">
                     <div class="panel-body">
-	                    <@customerProfileInfo />
+                        <@customerProfileInfo />
                         <@customerProfileForm />
                     </div>
                 </div>
@@ -42,7 +42,7 @@
                     <div class="panel-body">
                         <@customerEmailInfo />
                         <@customerEmailForm />
-                    	<div class="panel-separator"></div>
+                        <div class="panel-separator"></div>
                         <@customerPasswordInfo />
                         <@customerPasswordForm />
                     </div>
@@ -53,57 +53,57 @@
 </section>
 
 <#macro customerProfileInfo>
-	<div id="customer-profile-info" class="form-horizontal">
-	    <@createInfoSection 'first-name' />
-	    <@createInfoSection 'last-name' />
-	    <@createInfoSection 'company-name' />
-	    <@createInfoSection 'company-address' />
-	    <@createInfoSection 'company-phone' />
-	    <@createEditButton 'edit-profile' />
-	</div>
+    <div id="customer-profile-info" class="form-horizontal">
+        <@createInfoSection 'first-name' />
+        <@createInfoSection 'last-name' />
+        <@createInfoSection 'company-name' />
+        <@createInfoSection 'company-address' />
+        <@createInfoSection 'company-phone' />
+        <@createEditButton 'edit-profile' />
+    </div>
 </#macro>
 
 <#macro customerProfileForm>
-	<div id="customer-profile-form" class="form-horizontal hidden">
-	    <form role="form" autocomplete="off">
-	        <@createInputSection 'first-name' />
-	        <@createInputSection 'last-name' />
-	        <@createInputSection 'company-name' />
-	        <@createInputSection 'company-address' />
-	        <@createInputSection 'company-phone' />
-	        <@createInputSection 'profile-current-password' 'password' />
-	        <@createSaveAndCancelButtons 'profile' />
-	    </form>
+    <div id="customer-profile-form" class="form-horizontal hidden">
+        <form role="form" autocomplete="off">
+            <@createInputSection 'first-name' />
+            <@createInputSection 'last-name' />
+            <@createInputSection 'company-name' />
+            <@createInputSection 'company-address' />
+            <@createInputSection 'company-phone' />
+            <@createInputSection 'profile-current-password' 'password' />
+            <@createSaveAndCancelButtons 'profile' />
+        </form>
     </div>
 </#macro>
 
 <#macro customerEmailInfo>
-	<div id="customer-email-info" class="form-horizontal">
+    <div id="customer-email-info" class="form-horizontal">
         <@createInfoSection 'email' />
         <@createEditButton 'edit-email' />
     </div>
 </#macro>
 
 <#macro customerEmailForm>
-	<div id="customer-email-form" class="form-horizontal hidden">
-	    <form role="form" autocomplete="off">
-	        <@createInputSection 'email' />
-	        <@createInputSection 'confirm-email' />
-	        <@createInputSection 'email-current-password' 'password' />
-	        <@createSaveAndCancelButtons 'email' />
-	    </form>
-	</div>
+    <div id="customer-email-form" class="form-horizontal hidden">
+        <form role="form" autocomplete="off">
+            <@createInputSection 'email' />
+            <@createInputSection 'confirm-email' />
+            <@createInputSection 'email-current-password' 'password' />
+            <@createSaveAndCancelButtons 'email' />
+        </form>
+    </div>
 </#macro>
 
 <#macro customerPasswordInfo>
-	<div id="customer-password-info" class="form-horizontal">
-	    <@createInfoSection 'password' />
-	    <@createEditButton 'edit-password' />
-	</div>
+    <div id="customer-password-info" class="form-horizontal">
+        <@createInfoSection 'password' />
+        <@createEditButton 'edit-password' />
+    </div>
 </#macro>
 
 <#macro customerPasswordForm>
-	<div id="customer-password-form" class="form-horizontal hidden">
+    <div id="customer-password-form" class="form-horizontal hidden">
         <form role="form" autocomplete="off">
             <@createInputSection 'password-current-password' 'password' />  
             <@createInputSection 'new-password' 'password' />  
@@ -114,12 +114,12 @@
 </#macro>
 
 <#macro createInfoSection fieldId>
-	<#local fieldName = buildName(fieldId) >
-	<#local fieldKey = buildKey(fieldId) >
-	<#if profile??>
-		<@'<#assign fieldValue = ${"profile." + "${fieldName}"}!"">'?interpret />
-	</#if>
-	<div class="form-group">
+    <#local fieldName = buildName(fieldId) >
+    <#local fieldKey = buildKey(fieldId) >
+    <#if profile??>
+        <@'<#assign fieldValue = ${"profile." + "${fieldName}"}!"">'?interpret />
+    </#if>
+    <div class="form-group">
         <label class="control-label col-sm-4"><@spring.message 'PROFILE.${fieldKey}.LABEL'/></label>
         <div class="col-sm-8">
             <span id="${fieldId}-info" class="col-md-8 columns-view"><#if fieldValue??>${fieldValue}</#if></span>
@@ -128,25 +128,25 @@
 </#macro>
 
 <#macro createInputSection fieldId fieldType="text" >
-	<#local fieldName = buildName(fieldId) >
-	<#local fieldKey = buildKey(fieldId) >
-	<#if profile??>
-		<@'<#assign fieldValue = ${"profile." + "${fieldName}"}!"">'?interpret />
-	</#if>
-	<div class="form-group">
+    <#local fieldName = buildName(fieldId) >
+    <#local fieldKey = buildKey(fieldId) >
+    <#if profile??>
+        <@'<#assign fieldValue = ${"profile." + "${fieldName}"}!"">'?interpret />
+    </#if>
+    <div class="form-group">
         <label class="control-label col-sm-4" for="${fieldId}"><@spring.message 'PROFILE.${fieldKey}.LABEL'/>*</label>
         <div class="col-sm-8">
             <input type="${fieldType}" class="form-control" id="${fieldId}" name="${fieldName}" <#if fieldValue?? && fieldValue != "">value="${fieldValue}"</#if> placeholder="<@spring.message 'PROFILE.${fieldKey}.PLACEHOLDER'/>" >
-        	<div class="tooltip-wrapper">
-        		<span id="${fieldId}-tooltip" class="error-tooltip"></span>
-        	</div>
+            <div class="tooltip-wrapper">
+                <span id="${fieldId}-tooltip" class="error-tooltip"></span>
+            </div>
         </div>
     </div>
 </#macro>
 
 <#macro createEditButton buttonId >
-	<#local buttonKey = buildKey(buttonId) >
-	<div class="form-group">
+    <#local buttonKey = buildKey(buttonId) >
+    <div class="form-group">
         <div class="col-sm-offset-4 col-sm-8">
             <a id="${buttonId}-button" class="btn btn-default"><@spring.message 'PROFILE.${buttonKey}.BUTTON'/></a>
         </div>
@@ -154,10 +154,10 @@
 </#macro>
 
 <#macro createSaveAndCancelButtons what>
-	<div class="form-group">
+    <div class="form-group">
         <div class="col-sm-offset-4 col-sm-8">
             <button id="update-${what}-button" type="submit" class="btn btn-default">
-            	<span><@spring.message 'PROFILE.SAVE.BUTTON'/></span>
+                <span><@spring.message 'PROFILE.SAVE.BUTTON'/></span>
             </button>
             <a id="cancel-${what}-button"><@spring.message 'PROFILE.CANCEL.BUTTON'/></a>
         </div>

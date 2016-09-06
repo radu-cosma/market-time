@@ -1,15 +1,13 @@
 $('.details-btn').on('click', function(e) {
     e.preventDefault();
-    // ??? hide all other products' details ???
     var detailsContainer = $(this).parent().find('.details-container');
-    //$('.details-btn .details-container').not(detailsContainer).addClass('hidden');
 
     if (detailsContainer.hasClass('hidden')) {
-    	detailsContainer.removeClass('hidden');
-    	$(this).html('close details &#9650');
+        detailsContainer.removeClass('hidden');
+        $(this).html('close details &#9650');
     } else {
-    	detailsContainer.addClass('hidden');
-    	$(this).html('details &#9660');
+        detailsContainer.addClass('hidden');
+        $(this).html('details &#9660');
     }
 });
 
@@ -26,10 +24,3 @@ $(document)
         var $span = $(this).parents('.panel').find('.panel-heading');
         $span.find('i').removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
     })
-  
-// ???
-// delete product modal
-//$('.delete-product-modal').on('click', function(e) {
-//    $('#delete-product-modal').modal('hide');
-//    $('#delete-product-modal').show();
-//});

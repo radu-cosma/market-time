@@ -1,37 +1,37 @@
 body {
-	text-rendering: optimizeLegibility;
-	margin-top: 0.2em;
-	font-family: Courier New;
-	line-height: 1.375em;
-	color: #303030;
-	font-weight: 400;
+    text-rendering: optimizeLegibility;
+    margin-top: 0.2em;
+    font-family: Courier New;
+    line-height: 1.375em;
+    color: #303030;
+    font-weight: 400;
 }
 
 h2 {
-	font-size: 50px;
-	text-transform: uppercase;
-	margin-bottom: 15px;
-	margin-top: 0.2em;
+    font-size: 50px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    margin-top: 0.2em;
 }
 
 h4 {
-	font-size: 25px;
-	margin-bottom: 15px;
-	margin-top: 0.2em;
+    font-size: 25px;
+    margin-bottom: 15px;
+    margin-top: 0.2em;
 }
 
 p {
-	font-size: 18px;
+    font-size: 18px;
 }
 
 #header-container {
-	height: 60px;
+    height: 60px;
 }
 
 #view-container {
-	min-height: 500px;
+    min-height: 500px;
 }
 
 #footer-container {
-	height: 75px;
+    height: 75px;
 }

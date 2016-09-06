@@ -134,8 +134,8 @@
 				"main": "orders",
 				"footer": "footer"
 			},
-			"cssResources": ["layout", "skin-blue", "header", "orders"],
-			"jsResources": ["market-time", "orders"]
+			"cssResources": ["layout", "skin-blue", "header", "validation", "orders"],
+			"jsResources": ["market-time", "validation", "orders"]
 		},
 		# order details page - logged in
 		{
@@ -149,8 +149,8 @@
 				"main": "order-details",
 				"footer": "footer"
 			},
-			"cssResources": ["layout", "skin-blue", "header", "order-details"],
-			"jsResources": ["market-time", "orders"]
+			"cssResources": ["layout", "skin-blue", "header","validation", "order-details"],
+			"jsResources": ["market-time", "validation", "orders"]
 		},
 		
 		
