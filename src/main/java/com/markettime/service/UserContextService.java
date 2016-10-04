@@ -5,6 +5,7 @@ import java.util.Date;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,6 +35,9 @@ public class UserContextService {
     private static final String UUID_COOKIE_NAME = "uuid";
 
     @Autowired
+    private HttpServletResponse response;
+
+    @Autowired
     private UserContext userContext;
 
     @Autowired
@@ -53,24 +57,24 @@ public class UserContextService {
 
     private void processUuidCookie(Cookie cookie) {
         String uuid = cookie.getValue();
-        UserSessionEntity userSessionEntity = userSessionRepository.find(uuid);
+        UserSessionEntity userSessionEntity = userSessionRepository.findActive(uuid);
         Date currentDate = DateUtil.getCurrentDate();
         if (userSessionEntity != null) {
             if (isSessionValid(userSessionEntity, currentDate)) {
                 UserEntity userEntity = userSessionEntity.getUser();
                 renewUserSession(userSessionEntity, currentDate);
-                updateCookie(cookie, SESSION_LIFETIME_SECONDS);
+                updateCookie(cookie, cookie.getValue(), cookie.getPath(), SESSION_LIFETIME_SECONDS);
                 userContext.setUserId(userEntity.getId());
                 userContext.setLoggedIn(Boolean.TRUE);
                 userContext.setEmail(userEntity.getEmail());
             } else {
-                LOGGER.info("Invalid session: lastAccess={}, currentTime={}", userSessionEntity.getLastAccess(),
+                LOGGER.debug("Invalid session: lastAccess={}, currentTime={}", userSessionEntity.getLastAccess(),
                         currentDate);
                 userSessionEntity.setActive(Boolean.FALSE);
-                updateCookie(cookie, 0);
+                updateCookie(cookie, "", "/", 0);
             }
         } else {
-            updateCookie(cookie, 0);
+            updateCookie(cookie, "", "/", 0);
         }
     }
 
@@ -82,7 +86,10 @@ public class UserContextService {
         userSessionEntity.setLastAccess(currentDate);
     }
 
-    private void updateCookie(Cookie cookie, int maxAge) {
+    private void updateCookie(Cookie cookie, String value, String path, int maxAge) {
         cookie.setMaxAge(maxAge);
+        cookie.setValue(value);
+        cookie.setPath(path);
+        response.addCookie(cookie);
     }
 }

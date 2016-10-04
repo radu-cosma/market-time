@@ -23,9 +23,9 @@ public class UserSessionRepository extends AbstractRepository<UserSessionEntity>
      * @param uuid
      * @return
      */
-    public UserSessionEntity find(String uuid) {
+    public UserSessionEntity findActive(String uuid) {
         try {
-            return getEntityManager().createNamedQuery(UserSessionEntity.FIND_BY_UUID, UserSessionEntity.class)
+            return getEntityManager().createNamedQuery(UserSessionEntity.FIND_ACTIVE_BY_UUID, UserSessionEntity.class)
                     .setParameter("uuid", uuid).getSingleResult();
         } catch (NoResultException e) {
             return null;
