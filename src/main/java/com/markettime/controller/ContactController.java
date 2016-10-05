@@ -1,5 +1,7 @@
 package com.markettime.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,13 +18,28 @@ import com.markettime.model.dto.request.MessageDto;
 @RequestMapping("contact")
 public class ContactController extends BaseController {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(ContactController.class);
+
+    /**
+     *
+     * @return
+     */
     @RequestMapping(method = RequestMethod.GET)
-    public String contact() {
-        return "contact";
+    public String getContact() {
+        LOGGER.info("started getContact[]");
+
+        String viewName = "contact";
+        LOGGER.info("completed getContact; returned: {}", viewName);
+        return viewName;
     }
 
+    /**
+     *
+     * @param messageDto
+     */
     @RequestMapping(method = RequestMethod.POST)
     public void sendEmail(@ModelAttribute MessageDto messageDto) {
-        System.out.println(messageDto);
+        LOGGER.info("started sendEmail[messageDto: {}]", messageDto);
+        LOGGER.info("completed sendEmail; returned: []");
     }
 }

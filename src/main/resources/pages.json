@@ -152,9 +152,6 @@
 			"cssResources": ["layout", "skin-blue", "header","validation", "order-details"],
 			"jsResources": ["market-time", "validation", "orders"]
 		},
-		
-		
-		
 		# error 500 page - logged in
 		{
 			"criteria": {

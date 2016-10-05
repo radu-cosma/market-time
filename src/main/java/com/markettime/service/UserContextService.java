@@ -17,6 +17,7 @@ import com.markettime.context.UserContext;
 import com.markettime.model.entity.UserEntity;
 import com.markettime.model.entity.UserSessionEntity;
 import com.markettime.repository.UserSessionRepository;
+import com.markettime.util.Constants;
 import com.markettime.util.DateUtil;
 
 /**
@@ -30,8 +31,6 @@ public class UserContextService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(UserContextService.class);
 
-    private static final int SESSION_LIFETIME_SECONDS = 3600;
-    private static final int SESSION_LIFETIME_MILLIS = SESSION_LIFETIME_SECONDS * 1000;
     private static final String UUID_COOKIE_NAME = "uuid";
 
     @Autowired
@@ -63,7 +62,7 @@ public class UserContextService {
             if (isSessionValid(userSessionEntity, currentDate)) {
                 UserEntity userEntity = userSessionEntity.getUser();
                 renewUserSession(userSessionEntity, currentDate);
-                updateCookie(cookie, cookie.getValue(), cookie.getPath(), SESSION_LIFETIME_SECONDS);
+                updateCookie(cookie, cookie.getValue(), cookie.getPath(), Constants.SESSION_LIFETIME_SECONDS);
                 userContext.setUserId(userEntity.getId());
                 userContext.setLoggedIn(Boolean.TRUE);
                 userContext.setEmail(userEntity.getEmail());
@@ -79,7 +78,7 @@ public class UserContextService {
     }
 
     private boolean isSessionValid(UserSessionEntity userSessionEntity, Date currentDate) {
-        return currentDate.getTime() - userSessionEntity.getLastAccess().getTime() < SESSION_LIFETIME_MILLIS;
+        return currentDate.getTime() - userSessionEntity.getLastAccess().getTime() < Constants.SESSION_LIFETIME_MILLIS;
     }
 
     private void renewUserSession(UserSessionEntity userSessionEntity, Date currentDate) {

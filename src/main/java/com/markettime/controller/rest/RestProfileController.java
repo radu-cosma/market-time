@@ -2,6 +2,8 @@ package com.markettime.controller.rest;
 
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,6 +26,8 @@ import com.markettime.service.ProfileService;
 @RequestMapping(value = "/rest/profile")
 public class RestProfileController {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(RestProfileController.class);
+
     @Autowired
     private ProfileService profileService;
 
@@ -36,10 +40,13 @@ public class RestProfileController {
     public Object updateProfile(@Valid @RequestBody UpdateProfileRequestDto updateProfileRequestDto,
             BindingResult bindingResult) {
 
+        LOGGER.info("started updateProfile[updateProfileRequestDto: {}]", updateProfileRequestDto);
+
         if (bindingResult.hasErrors()) {
             throw new ValidationErrorsException(bindingResult.getAllErrors());
         }
         profileService.updateProfile(updateProfileRequestDto);
+        LOGGER.info("completed updateProfile; returned: []");
         return null;
     }
 
@@ -52,10 +59,13 @@ public class RestProfileController {
     public Object updateEmail(@Valid @RequestBody UpdateEmailRequestDto updateEmailRequestDto,
             BindingResult bindingResult) {
 
+        LOGGER.info("started updateEmail[updateEmailRequestDto: {}]", updateEmailRequestDto);
+
         if (bindingResult.hasErrors()) {
             throw new ValidationErrorsException(bindingResult.getAllErrors());
         }
         profileService.updateEmail(updateEmailRequestDto);
+        LOGGER.info("completed updateEmail; returned: []");
         return null;
     }
 
@@ -68,10 +78,13 @@ public class RestProfileController {
     public Object updatePassword(@Valid @RequestBody UpdatePasswordRequestDto updatePasswordRequestDto,
             BindingResult bindingResult) {
 
+        LOGGER.info("started updatePassword[updatePasswordRequestDto: {}]", updatePasswordRequestDto);
+
         if (bindingResult.hasErrors()) {
             throw new ValidationErrorsException(bindingResult.getAllErrors());
         }
         profileService.updatePassword(updatePasswordRequestDto);
+        LOGGER.info("completed updatePassword, returned: []");
         return null;
     }
 }
