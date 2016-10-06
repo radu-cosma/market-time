@@ -14,3 +14,22 @@ $("#log-in").click(function() {
      var navMain = $("#myNavbar").collapse('hide');
 });
 
+/*alerts*/
+
+
+
+$("#success-alert").show();
+window.setTimeout(function () {
+    $("#success-alert").slideUp(500, function () {
+         $("#success-alert").hide();
+     });
+}, 5000);
+
+
+
+$("#danger-alert").show();
+window.setTimeout(function () {
+    $("#danger-alert").slideUp(400, function () {
+         $("#danger-alert").hide();
+     });
+}, 4000);

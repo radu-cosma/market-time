@@ -1,10 +1,11 @@
 body {
-    text-rendering: optimizeLegibility;
-    margin-top: 0.2em;
-    font-family: Courier New;
-    line-height: 1.375em;
-    color: #303030;
+        -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-weight: 400;
+    overflow-x: hidden;
+    overflow-y: auto;
+    line-height:1.2;
 }
 
 h2 {
@@ -24,6 +25,12 @@ p {
     font-size: 18px;
 }
 
+@media (max-width: 420px) {
+p {
+	font-size: 16px;
+  }
+}
+
 #header-container {
     height: 60px;
 }
@@ -35,3 +42,48 @@ p {
 #footer-container {
     height: 75px;
 }
+
+.stylish-btn {
+    color: rgb(248, 248, 248);
+    border-color: rgb(248, 248, 248);
+    background: transparent;
+    border-width: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-family: raleway !important;
+    letter-spacing: 0.2em;
+    border-radius: 0 !important;
+}
+
+.stylish-btn:hover {
+    background: #3c8dbc;
+    color: white;
+}
+
+.stylish-btn:focus {
+    color: white;
+}
+
+.stylish-pz-p-btn {
+ color: #367fa9;
+    border-color: #367fa9;
+    background: transparent;
+    border-width: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-family: raleway !important;
+    letter-spacing: 0.2em;
+    border-radius: 0 !important;
+    margin: 10px 0;
+}
+
+.stylish-pz-p-btn:hover {
+    background: #3c8dbc;
+    color: white;
+}
+
+.stylish-pz-p-btn:focus {
+    color: white;
+    background: #367fa9;
+}
+

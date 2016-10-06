@@ -11,7 +11,7 @@
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="/market-time/home#about-us" class="active">ABOUT US</a></li>
-                <li><a href="/market-time/portofolio">PORTFOLIO</a></li>
+                <li><a href="/market-time/integration">INTEGRATION</a></li>
                 <li><a id="log-in" href="#user-login" data-toggle="modal">LOGIN</a></li>
                 <li><a href="/market-time/contact">CONTACT</a></li>
             </ul>

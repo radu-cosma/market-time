@@ -61,6 +61,20 @@
 			"cssResources": ["layout", "skin-blue", "header"],
 			"jsResources": ["market-time"]
 		},
+		# integration page - logged out
+		{
+			"criteria": {
+				"name": "integration",
+				"loggedIn": false
+			},
+			"sections": {
+				"header": "header-presentation",
+				"main": "integration",
+				"footer": "footer-presentation"
+			},
+			"cssResources": ["layout-presentation", "presentation", "header-presentation", "integration", "login"],
+			"jsResources": ["presentation", "login"]
+		},
 		# contact page - logged out
 		{
 			"criteria": {
