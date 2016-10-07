@@ -9,13 +9,13 @@ label {
 }
 
 .mod-title {
-	font-size: 35px;
+	font-size: 28px;
     font-weight: 500;
 }
 
 @media (max-width: 750px) {
 .mod-title {
-	font-size: 32px;
+	font-size: 24px;
     }
 }
 
@@ -23,8 +23,12 @@ label {
     margin: 0px;	
 }
 
-#close-button {
-    font-size: 40px;
+.close-btn {
+    font-size: 30px;
+    color: #fff;
+    font-weight: 600;
+    opacity: .7;
+    line-height: 1;
 }
 
 .modal-header, .modal-body {

@@ -1,6 +1,6 @@
 .navbar {
     margin-bottom: 0;
-    background-color: #fff;
+    background-color: #367fa9;
     z-index: 9999;
     border: 0;
     font-size: 12px !important;
@@ -9,28 +9,107 @@
     border-radius: 0;
     font-family: Montserrat, sans-serif;
     min-height: 60px;
+    box-shadow: 0 1px 0 0 #3c8dbc,0 2px 5px 0 rgba(0,0,0,0.4);
 }
 
 .navbar li a, .navbar .navbar-brand {
-    color: #001a33 !important;
+    color: #fff !important;
     padding-top: 20px;
 }
 
+@media (max-width: 736px) {
+	.navbar li a {
+    padding-top: 5px;
+}
+}
+
 .navbar-nav li a:hover, .navbar-nav li.active a {
-    color: #3badde !important;
-    background-color: #fff !important;
+    border-bottom: 3px solid #fff;
 }
 
 .navbar-default .navbar-toggle {
     border-color: transparent;
-    color: #001a33 !important;
+    color: #fff !important;
 }
 
 .navbar-default .navbar-toggle .icon-bar {
-    background-color: #001a33;
+    background-color: #fff;
 }
 
-.navbar-nav li a:hover, .navbar-nav li.active a {
-    color: #3badde !important;
-    background-color: #fff !important;
+.navbar-default .navbar-toggle:hover {
+    background-color: transparent;
+    border: 1px solid #fff;  
+}
+
+.language {
+	color: #fff !important;
+	background-color: #367fa9;
+}
+
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {   
+	color: #fff !important;
+	background-color: #367fa9;
+}
+
+
+.dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover {
+	background-color: #3c8dbc;
+	border: none;	
+	width: 100%;
+	text-align: right;
+}
+
+@media (min-width: 737px) {
+nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
+	border: none;
+}
+}
+
+@media (max-width: 736px) {
+.nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
+    border-color: #fff;
+}
+}
+
+.dropdown-menu-ul {
+	color: #fff !important;
+	background-color: #367fa9;
+	min-width: auto;	
+}
+
+.country-flag {
+	width: 26px;
+	height: 22px;
+}
+
+.dropdown-menu>li>a {
+	float: right;
+	padding-right: 14px;
+	padding-top: 5px;
+}
+
+@media (max-width: 767px) {
+.dropdown-menu>li>a {
+	float: left;
+}
+}
+
+@media (max-width: 767px) {
+.country-mob-name {
+	position: absolute;
+	padding-left: 35px;
+}
+}
+
+@media (max-width: 767px){
+.navbar-nav .open .dropdown-menu .dropdown-header, .navbar-nav .open .dropdown-menu>li>a {
+    padding: 5px 15px 5px 15px;
+}
+}
+
+@media (max-width: 767px) {
+.navbar-default .navbar-nav .open .dropdown-menu>li>a:focus, .navbar-default .navbar-nav .open .dropdown-menu>li>a:hover {
+    background-color: #3c8dbc;
+    text-align: left;
+}
 }

@@ -188,12 +188,12 @@
   
 <section>
 	<div class="container container-style"> 
-	    <div id="success-alert" class="alert alert-success fade in alert-style">
-		    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+	    <div id="success-message" class="success-message alert alert-success fade in alert-style">
+            <a href="#" class="close-message close" data-dismiss="alert" aria-label="close">&times;</a>
 		    <strong>Success!</strong> This alert box could indicate a successful action.
 	    </div>
-	    <div id="danger-alert" class="alert alert-danger fade in alert-style">
-		    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+	    <div id="gen-error-message" class="error-message alert alert-danger fade in alert-style">
+            <a href="#" class="close-message close" data-dismiss="alert" aria-label="close">&times;</a>
 		    <strong>Danger!</strong> This alert box could indicate negative action.
    	 	</div>
 	</div>

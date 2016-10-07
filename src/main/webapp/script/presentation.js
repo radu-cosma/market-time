@@ -14,22 +14,23 @@ $("#log-in").click(function() {
      var navMain = $("#myNavbar").collapse('hide');
 });
 
+
+
 /*alerts*/
 
-
-
-$("#success-alert").show();
+$("#success-message").show();
 window.setTimeout(function () {
-    $("#success-alert").slideUp(500, function () {
-         $("#success-alert").hide();
+    $("#success-message").slideUp(500, function () {
+         $("#success-message").hide();
      });
-}, 5000);
+}, 9000);
 
 
 
-$("#danger-alert").show();
+$("#gen-error-message").show();
 window.setTimeout(function () {
-    $("#danger-alert").slideUp(400, function () {
-         $("#danger-alert").hide();
+    $("#gen-error-message").slideUp(400, function () {
+         $("#gen-error-message").hide();
      });
-}, 4000);
+}, 6000);
+

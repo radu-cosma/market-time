@@ -2,7 +2,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" id="close-button" class="close" data-dismiss="modal">&times;</button>
+                <button type="button" id="close-button" class="close-btn close" data-dismiss="modal">&times;</button>
                 <h2 class="mod-title">Existing User</h2>
             </div>
             <div class="modal-body">
@@ -21,7 +21,7 @@
                 <div class="checkbox">
                     <label><input type="checkbox">Remember me</label>
                 </div>
-                <p>Not a member? <a href="/market-time/register">Register</a></p>
+                <p>Not a member? <a href="/market-time/register">Register now</a></p>
                 <button id="login-button" type="submit" class="stylish-pz-p-btn btn button-default">Submit</button>
             </div>
         </div>

@@ -41,7 +41,7 @@
         <div class="row">   
             <div class="col-xs-12 col-md-10 col-md-offset-1">
                 <div class="checkbox">
-                    <label><input type="checkbox"> Yes, I would like to receive informations, discounts from MarkettTime</label>
+                    <label><input type="checkbox"> Yes, I would like to receive informations, discounts from MarketTime</label>
                 </div>
                 <button id="login-button" type="submit" class="stylish-pz-p-btn btn button-default">Submit</button>
             </div>
