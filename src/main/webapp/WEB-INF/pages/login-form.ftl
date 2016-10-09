@@ -2,8 +2,8 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" id="close-button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Existing User</h4>
+                <button type="button" id="close-button" class="close-btn close" data-dismiss="modal">&times;</button>
+                <h2 class="mod-title">Existing User</h2>
             </div>
             <div class="modal-body">
                 <div id="modal-header">
@@ -11,7 +11,7 @@
                     <p>Sign in to manage your products.</p>
                     <br>
                 </div>
-                <label id="general-error-message" class="error-message hidden""></label>
+                <label id="general-error-message" class="error-message alert-danger log-message hidden""></label>
                 <div id="email-div">
                     <@createInputSection 'login-email' 'EMAIL'/>
                 </div>
@@ -21,10 +21,8 @@
                 <div class="checkbox">
                     <label><input type="checkbox">Remember me</label>
                 </div>
-                <p>Not a member? <a href="/market-time/register">Register</a></p>
-                <button id="login-button" type="submit" class="btn btn-default">Submit</button>
-                <br>
-                <br>
+                <p>Not a member? <a href="/market-time/register">Register now</a></p>
+                <button id="login-button" type="submit" class="btn stylish-pz-p-btn">Login</button>
             </div>
         </div>
     </div>
