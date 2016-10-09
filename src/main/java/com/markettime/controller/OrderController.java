@@ -35,7 +35,13 @@ public class OrderController {
      */
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView getOrders() {
-        return new ModelAndView("orders", "orders", createOrdersList());
+
+        LOGGER.info("started getOrders[]");
+
+        List<OrderDto> orders = createOrdersList();
+
+        LOGGER.info("completed getOrders; returned: {}", orders);
+        return new ModelAndView("orders", "orders", orders);
     }
 
     /**
@@ -45,8 +51,12 @@ public class OrderController {
      */
     @RequestMapping(method = RequestMethod.GET, value = "{orderId}")
     public ModelAndView getOrder(@PathVariable("orderId") int orderId) {
-        LOGGER.info("order id: {}", orderId);
-        return new ModelAndView("order-details", "order", createOrder(orderId));
+
+        LOGGER.info("started getOrder[orderId: {}]", orderId);
+
+        DetailedOrderDto order = createOrder(orderId);
+        LOGGER.info("completed getOrder; returned: {}", order);
+        return new ModelAndView("order-details", "order", order);
     }
 
     private List<OrderDto> createOrdersList() {

@@ -223,7 +223,7 @@ $('#customer-email-form').on('submit', function(evt) {
         loadingScreen.display();
 
         $(this).find(':input:not(button)').each(function(i, el) {
-            profileData[$(el).attr('name')] = $(el).val();
+            emailData[$(el).attr('name')] = $(el).val();
         });
          
         $.ajax({
@@ -284,7 +284,7 @@ $('#customer-password-form').on('submit', function(evt) {
         loadingScreen.display();
 
         $(this).find(':input:not(button)').each(function(i, el) {
-            profileData[$(el).attr('name')] = $(el).val();
+        	passwordData[$(el).attr('name')] = $(el).val();
         });
          
         $.ajax({

@@ -87,7 +87,7 @@
 				"footer": "footer-presentation"
 			},
 			"cssResources": ["layout-presentation", "presentation", "header-presentation", "contact", "login"],
-			"jsResources": ["presentation", "google-maps", "contact"]
+			"jsResources": ["presentation", "google-maps", "contact", "login"]
 		},
 		# profile page - logged in
 		{
@@ -166,9 +166,6 @@
 			"cssResources": ["layout", "skin-blue", "header","validation", "order-details"],
 			"jsResources": ["market-time", "validation", "orders"]
 		},
-		
-		
-		
 		# error 500 page - logged in
 		{
 			"criteria": {

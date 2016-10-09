@@ -52,7 +52,12 @@ public class ProductController extends BaseController {
      */
     @RequestMapping(value = "add", method = RequestMethod.GET)
     public String getAddProduct() {
-        return "add-product";
+
+        LOGGER.info("started getAddProduct[]");
+
+        String viewName = "add-product";
+        LOGGER.info("completed getAddProduct; returned: {}", viewName);
+        return viewName;
     }
 
     /**
@@ -64,7 +69,8 @@ public class ProductController extends BaseController {
     @RequestMapping(value = "add", method = RequestMethod.POST)
     public View addProduct(@ModelAttribute @Valid AddProductRequestDto addProductRequestDto,
             BindingResult bindingResult, RedirectAttributes redirectAttributes) {
-        LOGGER.info("addProduct: {}", addProductRequestDto);
+
+        LOGGER.info("started addProduct[addProductRequestDto: {}]", addProductRequestDto);
 
         requestContext.setReturnToViewName("add-product");
         requestContext.setModelObjectName("addProduct");
@@ -74,7 +80,9 @@ public class ProductController extends BaseController {
         }
         productService.addProduct(addProductRequestDto);
         redirectAttributes.addFlashAttribute("successMessage", ADD_PRODUCT_SUCCESS_MESSAGE_KEY);
-        return simpleRedirect("add");
+        String viewName = "add";
+        LOGGER.info("completed addProduct; returned: {}", viewName);
+        return simpleRedirect(viewName);
     }
 
     /**
@@ -94,8 +102,12 @@ public class ProductController extends BaseController {
      */
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView getProducts(@RequestParam("status") String productStatus) {
-        LOGGER.info("product status: {}", productStatus);
-        return new ModelAndView("products", "products", createProductsList());
+
+        LOGGER.info("started getProducts[productStatus: {}]", productStatus);
+
+        List<ProductDto> products = createProductsList();
+        LOGGER.info("completed getProducts; returned: {}", products);
+        return new ModelAndView("products", "products", products);
     }
 
     private List<ProductDto> createProductsList() {
