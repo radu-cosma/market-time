@@ -117,6 +117,10 @@ body {
 }
 }
 
+.integ-img:hover {
+    box-shadow: 1px 0px 10px rgba(0,0,0, .3);
+}
+
 
 /*Save money*/
 
@@ -326,35 +330,6 @@ margin: 0 auto;
 
 
 /*alerts*/
-
-.success-message {
-    min-height: 15px;
-    font-size: 16px;
-    font-weight: 600;
-    color: #fff;
-    border: 0px;
-    border-top: 3px solid #008046; 
-    padding: 10px;
-}
-
-.error-message {
-    min-height: 15px;
-    font-size: 16px;
-    font-weight: 600;
-    color: #fff;
-    border: 0px;
-    border-top: 3px solid #c43421; 
-    padding: 10px;
-}
-
-.close-message {
-    font-size: 30px;
-    color: #fff;
-    font-weight: 600;
-    opacity: .7;
-    line-height: 0.6;
-}
-
 
 .alert-style {
 	position: fixed;

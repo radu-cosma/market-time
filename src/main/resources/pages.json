@@ -14,8 +14,8 @@
 				"main": "presentation",
 				"footer": "footer-presentation"
 			},
-			"cssResources": ["layout-presentation", "presentation", "header-presentation", "login"],
-			"jsResources": ["presentation", "login"]
+			"cssResources": ["layout-presentation", "presentation", "header-presentation", "login", "validation"],
+			"jsResources": ["presentation", "login", "validation"]
 		},
 		# home page - logged in
 		{

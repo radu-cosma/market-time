@@ -23,6 +23,10 @@ label {
     margin: 0px;	
 }
 
+.log-message {
+	width: 100%;
+}
+
 .close-btn {
     font-size: 30px;
     color: #fff;

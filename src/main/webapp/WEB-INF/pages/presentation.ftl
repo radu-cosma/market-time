@@ -1,10 +1,12 @@
+<#include "commons.ftl">
+
 <section>
     <div id="home" class="home-section-wrapper">
         <div class="overlay-light">
             <div class="jumbotron section-entry-content">
                 <h1>MarketTime</h1> 
                 <h4>We create bridges between people and technology</h4> 
-                <button type="submit" class="stylish-btn btn button-default btn-lg">More details</button>
+                 <a href="/market-time/home#about-us"><button type="submit" class="stylish-btn btn button-default btn-lg">More details</button></a>
             </div>
         </div>
     </div>
@@ -48,18 +50,19 @@
         	<br>
         	biggest in the world
 	    </div>
+	    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor <a href="/market-time/integ">see all integrated markets</a>.</p>
 		<div class="row">
     		<div class="col-sm-6 col-md-3">
-    			<img class="integ-img img-responsive" src="./images/amazon-logo.png">
+    			<a href="/market-time/integ"><img class="integ-img img-responsive" src="./images/amazon-logo.png"></a>
     		</div>
     		<div class="col-sm-6 col-md-3">
-    			<img class="integ-img img-responsive" src="./images/ebay-logo.png">
+    			<a href="/market-time/integ"><img class="integ-img img-responsive" src="./images/ebay-logo.png"></a>
     		</div>
     		<div class="col-sm-6 col-md-3">
-    			<img class="integ-img img-responsive" src="./images/spartoo-logo.png">
+    			<a href="/market-time/integ"><img class="integ-img img-responsive" src="./images/spartoo-logo.png"></a>
     		</div>
-    		<div class="col-sm-6 col-md-3">
-    			<img class="integ-img img-responsive" src="./images/wish-logo.png">
+    		<div class="col-sm-6 col-md-3 ">
+    			<a href="/market-time/integ"><img class="integ-img img-responsive" src="./images/wish-logo.png"></a>
     		</div>
 	    </div>
 	</div>
@@ -94,7 +97,7 @@
 		        </div>
 		        <div class="panel-footer">
 		          <h4>Standard</h4>
-			          <a href="/market-time/integ"><button type="submit" class="stylish-btn stylish-sav-btn btn button-default">More details</button></a>
+			          <a href="#user-login" data-toggle="modal"><button type="submit" class="stylish-btn stylish-sav-btn btn button-default">More details</button></a>
 		        </div>
 		      </div> 
 		    </div>  
@@ -112,7 +115,7 @@
 			        </div>
 			        <div class="panel-footer">
 			            <h4>Basic</h4>
-			            <a href="/market-time/integ"><button type="submit" class="stylish-btn stylish-sav-btn btn button-default">More details</button></a>
+			            <a href="#user-login" data-toggle="modal"><button type="submit" class="stylish-btn stylish-sav-btn btn button-default">More details</button></a>
 		        	</div>
 		        </div> 
 		    </div> 
@@ -130,7 +133,7 @@
 			        </div>
 			        <div class="panel-footer">
 			          <h4>Free for 30 days</h4>
-			          <a href="/market-time/integ"><button type="submit" class="stylish-btn stylish-sav-btn btn button-default">More details</button></a>
+			          <a href="#user-login" data-toggle="modal"><button type="submit" class="stylish-btn stylish-sav-btn btn button-default">More details</button></a>
 			        </div>
 		      	</div> 
 		    </div> 
@@ -167,34 +170,51 @@
 		    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 		    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>			    
 		</div>
-		<div class="row">
-			<div class="form-group">
-				<div class="col-xs-12 col-md-3 col-md-offset-1 text-center">
-					<input class="form-control form-f" id="name" name="name" placeholder="Name" type="text" required> 
-	            </div>
-	            <div class="col-md-4 text-center">
-	                <input class="form-control form-f" id="email" name="email" placeholder="Email address" type="email" required>
-				</div>    
-				<div class="col-md-3 text-center">    
-				    <input class="form-control form-f" id="phone" name="phone" placeholder="Phone number" type="tel" required>
-				</div>
-				<div class="col-md-4 col-md-offset-4 text-center">
-		    		<button type="submit" class="stylish-btn stylish-demo-btn btn button-default btn-lg">More details</button>			
-				</div>
+		<form>
+			<div class="row">
+				<div class="form-group">
+					<div class="col-md-3 col-md-offset-1 text-center">
+						<@createInputSection 'name' /> 
+		            </div>
+		            <div class="col-md-4 text-center">
+		                <@createInputSection 'email' />
+					</div>    
+					<div class="col-md-3 text-center">    
+					    <@createInputSection 'phone' />
+					</div>
+					<div class="col-md-4 col-md-offset-4 text-center">
+			    		<button type="submit" id="demobutton" class="stylish-btn stylish-demo-btn btn button-default btn-lg">More details</button>			
+					</div>
+			    </div>    
 		    </div>
-	    </div>
+	    </form>
 	</div>
 </section>
   
-<section>
-	<div class="container container-style"> 
-	    <div id="success-message" class="success-message alert alert-success fade in alert-style">
-            <a href="#" class="close-message close" data-dismiss="alert" aria-label="close">&times;</a>
-		    <strong>Success!</strong> This alert box could indicate a successful action.
-	    </div>
-	    <div id="gen-error-message" class="error-message alert alert-danger fade in alert-style">
-            <a href="#" class="close-message close" data-dismiss="alert" aria-label="close">&times;</a>
-		    <strong>Danger!</strong> This alert box could indicate negative action.
-   	 	</div>
-	</div>
-</section>
+<#macro createInputSection fieldId fieldType='text'>
+    <#local fieldName = buildName(fieldId) >
+    <#local fieldKey = buildKey(fieldId) >
+    <#assign hasError=false/>
+    <#if validationErrors?? && validationErrors["${fieldName}"]??>
+        <#assign hasError=true/>
+    </#if>  
+    <div class="form-group">
+        <div>
+            <input <#if !hasError && fieldValue?? && fieldValue != "">value="${fieldValue}"</#if> class="form-control <#if hasError>has-error</#if>" name="${fieldName}" id="${fieldId}" type="${fieldType}" placeholder="placeholder">
+            <div class="tooltip-wrapper">
+                <span id="${fieldId}-tooltip" class="error-tooltip"><#if hasError><@spring.message '${validationErrors["${fieldName}"]}'/></#if></span>
+            </div>
+        </div>
+    </div>    
+</#macro>
+
+<div class="container container-style"> 
+    <div id="agent-success-message" class="success-message alert alert-success fade in alert-style">
+        <a href="#" class="close-message close" data-dismiss="alert" aria-label="close">&times;</a>
+	    <strong>Success!</strong> This alert box could indicate a successful action.
+    </div>
+    <div id="agent-error-message" class="error-message alert alert-danger fade in alert-style">
+        <a href="#" class="close-message close" data-dismiss="alert" aria-label="close">&times;</a>
+	    <strong>Danger!</strong> This alert box could indicate negative action.
+ 	</div>
+</div>

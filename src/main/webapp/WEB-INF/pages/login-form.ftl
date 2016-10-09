@@ -11,7 +11,7 @@
                     <p>Sign in to manage your products.</p>
                     <br>
                 </div>
-                <label id="general-error-message" class="error-message hidden""></label>
+                <label id="general-error-message" class="error-message alert-danger log-message hidden""></label>
                 <div id="email-div">
                     <@createInputSection 'login-email' 'EMAIL'/>
                 </div>
