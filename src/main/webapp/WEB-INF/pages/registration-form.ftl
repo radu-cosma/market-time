@@ -1,6 +1,6 @@
 <#include "commons.ftl">
 
-<div class="container-fluid reg-container">
+<div id="registration-container" class="container-fluid">
     <div class="row">     
         <div class="col-xs-12 col-md-10 col-md-offset-1">
             <div class="md-title">
@@ -9,7 +9,7 @@
                 New User
             </div>
             <div class="xs-title">
-		        Get easy access to your products
+                Get easy access to your products
             </div> 
         </div> 
     </div>  

@@ -22,7 +22,7 @@
                     <label><input type="checkbox">Remember me</label>
                 </div>
                 <p>Not a member? <a href="/market-time/register">Register now</a></p>
-                <button id="login-button" type="submit" class="stylish-pz-p-btn btn button-default">Submit</button>
+                <button id="login-button" type="submit" class="btn stylish-pz-p-btn">Login</button>
             </div>
         </div>
     </div>

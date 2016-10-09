@@ -16,7 +16,7 @@ body {
 	margin: 0 0;
 }
 
-.about-desc{
+#about-description{
 	background-color: #3c8dbc;
 	height: auto;
 	padding: 20px 0px;
@@ -27,10 +27,10 @@ body {
 }
 
 @media (max-width: 420px) {
-.about-desc{
-	padding: 10px 0px;	
-    font-size: 16px;
-   }
+    #about-description{
+		padding: 10px 0px;	
+	    font-size: 16px;
+    }
 }
 
 .box-content {
@@ -44,21 +44,19 @@ body {
 }
 
 @media (max-width: 640px) {
-.box-content{
-	width: 90%;
+	.box-content {
+		width: 90%;
+    }
 }
-}
-
-
 
 .easy-sell-desc {
 	text-align: left;
 }
 
 @media (max-width: 760px) {
-.easy-sell-img {
-	margin-left: 10%;
-}
+	.easy-sell-img {
+		margin-left: 10%;
+	}
 }
 
 .md-title {
@@ -70,24 +68,23 @@ body {
 }
 
 @media (max-width: 420px) {
-.md-title{
-	font-size: 25px;
-    line-height: 30px;
-    margin-bottom: 20px;
-}
+	.md-title{
+		font-size: 25px;
+	    line-height: 30px;
+	    margin-bottom: 20px;
+	}
 }
 
 @media (min-width: 421px) and (max-width: 736px) {
-.md-title{
-	font-size: 30px;
-    line-height: 40px;
+	.md-title{
+		font-size: 30px;
+	    line-height: 40px;
+	}
 }
-}
-
 
 /*integration*/
 
-.integ-sec-desc {
+.integration-section-description {
 	background-color: #ecf0f1 !important;
 	height: auto;
     text-align: center;
@@ -95,50 +92,49 @@ body {
     padding: 40px 10px;
 }
 
-.integ-img {
+.integration-image {
 	width: 100%;
 	height: 150px;
 	padding: 20px;
 }
 
 @media (min-width: 421px) and (max-width: 736px) {
-.integ-img {
-	width: 45%;	
-	margin: 0 auto;
-}
+	.integration-image {
+		width: 45%;	
+		margin: 0 auto;
+	}
 }
 
 @media (max-width: 420px) {
-.integ-img {
-	width: 60%;	
-	height: 70px;
-	margin: 0 auto;
-	padding: 5px;
-}
+	.integration-image {
+		width: 60%;	
+		height: 70px;
+		margin: 0 auto;
+		padding: 5px;
+	}
 }
 
-.integ-img:hover {
+.integration-image:hover {
     box-shadow: 1px 0px 10px rgba(0,0,0, .3);
 }
 
-
 /*Save money*/
 
-.save-desc {
+#save-description {
 	text-align: left;
 	margin-top: 40px;
 }
 
 @media (max-width: 420px) {
-.save-desc {
-	margin: 40px 0 20px 0;
-}
+	#save-description {
+		margin: 40px 0 20px 0;
+	}
 }
 
 @media (min-width: 421px) and (max-width: 768px){
-.save-desc {
-	margin: 40px 0 0 0;
-}
+	#save-description {
+		margin: 40px 0 0 0;
+	}
 }
 
 .save-mod {
@@ -146,28 +142,27 @@ body {
 }
 
 .col-centered {
-display:inline-block;
-float: none;
-margin: 0 auto;
+	display:inline-block;
+	float: none;
+	margin: 0 auto;
 }
-
 
 @media (min-width: 992px) and (max-width: 1168px) {
-.col-centered {
-	width: 30%;		
-}
+	.col-centered {
+		width: 30%;		
+	}
 }
 
 @media (min-width: 421px) and (max-width: 736px) {
-.col-centered {
-	width: 45%;	
-}
+	.col-centered {
+		width: 45%;	
+	}
 }
 
 @media (max-width: 420px) {
-.col-centered {
-	width: 90%;	
-}
+	.col-centered {
+		width: 90%;	
+	}
 }
 
 .panel {
@@ -197,18 +192,21 @@ margin: 0 auto;
     text-align: center;
 }
 
-
-@media (max-width: 736px) {
-.panel-body {
-	padding: 5px;	
-}
+.price span {
+    font-size: 1.3em;
 }
 
 @media (max-width: 736px) {
-.panel {
-	width: 100%;	
-	margin: 20px auto;	
+	.panel-body {
+		padding: 5px;	
+	}
 }
+
+@media (max-width: 736px) {
+	.panel {
+		width: 100%;	
+		margin: 20px auto;	
+	}
 }
 
 .panel-footer {
@@ -227,66 +225,57 @@ margin: 0 auto;
     color: #fff important;
 }
 
-
-
 /*Demo*/
 
-.demo-sec {	
+#demo-section {	
 	padding: 40px 0;
 	background-color: #ecf0f1 !important;
 	text-align: left;	
 }
 
 @media (max-width: 420px) {
-.demo-img {	
-	width: 85%;	
-	margin: 0 auto;
-}
+	#demo-image {	
+		width: 85%;	
+		margin: 0 auto;
+	}
 }
 
 @media (min-width: 421px) and (max-width: 736px) {
-.demo-img {
-	width: 50%;	
-	margin: 0 auto;	
-}
+	#demo-image {
+		width: 50%;	
+		margin: 0 auto;	
+	}
 }
 
 @media (min-width: 737px) and (max-width: 1001px) {
-.demo-img {
-	width: 60%;	
-	margin: 0 auto;	
-}
+	#demo-image {
+		width: 60%;	
+		margin: 0 auto;	
+	}
 }
 
 @media (max-width: 420px) {
-.demo-con {	
-	margin: 25px 0 0 0;	
-}
+	#demo-container {	
+		margin: 25px 0 0 0;	
+	}
 }
 
 @media (min-width: 421px) and (max-width: 1001px) {
-.demo-con {
-	margin: 25px 0;
-}
+	#demo-container {
+		margin: 25px 0;
+	}
 }
 
 .stylish-demo-btn {
     color: #367fa9;
     border-color: #367fa9;
-    background: transparent;
-    border-width: 2px;
-    text-transform: uppercase;
-    font-weight: 700;
-    font-family: raleway !important;
-    letter-spacing: 0.2em;
-    border-radius: 0 !important;
     margin: 10px;
 }
 
 @media (max-width: 420px) {
-.demo-btn-poz {	
-	text-align: center;	
-}
+	.demo-btn-poz {	
+		text-align: center;	
+	}
 }
 
 .stylish-demo-btn:hover {
@@ -301,33 +290,25 @@ margin: 0 auto;
 
 /*Contact*/
 
-.agent-sec {
+#agent-section {
 	padding: 40px 0;
 }
 
-.agent-con {
+#agent-container {
 	padding: 0 30px 23px 30px;
 }
 
 @media (max-width: 420px) {
-.agent-con {	
-	padding: 0 10px 10px 10px;
-}
+	#agent-container {	
+		padding: 0 10px 10px 10px;
+	}
 }
 
 @media (min-width: 421px) and (max-width: 750px) {
-.agent-con {	
-	padding: 0 20px 20px 20px;
+	#agent-container {	
+		padding: 0 20px 20px 20px;
+	}
 }
-}
-
-.form-f {
-	height: 48px;
-	border-radius: 0;
-	padding: 10px;
-	margin: 10px 0 10px 0;
-}
-
 
 /*alerts*/
 
@@ -340,24 +321,17 @@ margin: 0 auto;
 }
 
 @media (max-width: 700px) {
-.alert-style {
-	position: fixed;
-    bottom: 0;
-    width: 90%;   
-}
+	.alert-style {
+		position: fixed;
+	    bottom: 0;
+	    width: 90%;   
+	}
 }
 
 @media (max-width: 700px) {
-.container-style {
-	margin: 0 auto;   
-}
-}
-
-/*Registration*/
-
-#registration-container {
-    margin-top: 80px;
-    padding-left: 20px;
+	.container-style {
+		margin: 0 auto;   
+	}
 }
 
 .section-entry-content {
@@ -368,13 +342,13 @@ margin: 0 auto;
 }
 
 .section-entry-content h1{
-  margin-bottom: 30px;
-  margin-bottom: 1.875rem;
+    margin-bottom: 30px;
+    margin-bottom: 1.875rem;
 }
 
 .section-entry-content h4 {
-  margin-bottom: 60px;
-  margin-bottom: 3.75rem;
+    margin-bottom: 60px;
+    margin-bottom: 3.75rem;
 }
 
 .home-section-wrapper {
@@ -393,8 +367,8 @@ margin: 0 auto;
     background-color: rgba(0, 0, 0, 0.2); /*dim the background*/
 }
 
-
 /*icons*/
+
 .aboutus-icon {
     background: url(../images/aboutus.svg);
     background-repeat: no-repeat;

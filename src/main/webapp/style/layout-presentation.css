@@ -1,5 +1,5 @@
 body {
-        -webkit-font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-weight: 400;
@@ -26,9 +26,9 @@ p {
 }
 
 @media (max-width: 420px) {
-p {
-	font-size: 16px;
-  }
+	p {
+	   font-size: 16px;
+    }
 }
 
 #header-container {
@@ -86,7 +86,6 @@ p {
     color: white;
     background: #367fa9;
 }
-
 
 .bg-red,
 .callout.callout-danger,

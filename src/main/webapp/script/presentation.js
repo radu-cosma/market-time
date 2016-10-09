@@ -14,26 +14,21 @@ $("#log-in").click(function() {
      var navMain = $("#myNavbar").collapse('hide');
 });
 
-
-
 /*alerts*/
 
-$("#agent-success-message").show();
-window.setTimeout(function () {
-    $("#agent-success-message").slideUp(500, function () {
-         $("#agent-success-message").hide();
-     });
-}, 9000);
-
-
-
-$("#agent-error-message").show();
-window.setTimeout(function () {
-    $("#agent-error-message").slideUp(400, function () {
-         $("#agent-error-message").hide();
-     });
-}, 6000);
-
+//$("#agent-success-message").show();
+//window.setTimeout(function () {
+//    $("#agent-success-message").slideUp(500, function () {
+//         $("#agent-success-message").hide();
+//     });
+//}, 9000);
+//
+//$("#agent-error-message").show();
+//window.setTimeout(function () {
+//    $("#agent-error-message").slideUp(400, function () {
+//         $("#agent-error-message").hide();
+//     });
+//}, 6000);
 
 /*validations*/
 
@@ -86,4 +81,3 @@ $('form').on('submit', function(evt) {
         evt.preventDefault();
     }
 });
-	    
