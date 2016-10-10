@@ -29,7 +29,7 @@ public class LogoutService {
     }
 
     private void invalidateSession(String uuid) {
-        UserSessionEntity userSessionEntity = userSessionRepository.find(uuid);
+        UserSessionEntity userSessionEntity = userSessionRepository.findActive(uuid);
         userSessionEntity.setActive(Boolean.FALSE);
     }
 
