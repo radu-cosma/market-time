@@ -94,7 +94,7 @@
                         </div>
                         <div class="panel-footer">
                             <h4>Standard</h4>
-                            <a href="#user-login" class="stylish-btn stylish-sav-btn btn button-default" data-toggle="modal" >More details</a>
+                            <a href="/market-time/subscribe" class="stylish-btn stylish-sav-btn btn button-default" data-toggle="modal" >More details</a>
                         </div>
                     </div> 
                 </div>  
@@ -112,7 +112,7 @@
                         </div>
                         <div class="panel-footer">
                             <h4>Basic</h4>
-                            <a href="#user-login" class="stylish-btn stylish-sav-btn btn button-default" data-toggle="modal" >More details</a>
+                            <a href="/market-time/subscribe" class="stylish-btn stylish-sav-btn btn button-default" data-toggle="modal" >More details</a>
                         </div>
                     </div> 
                 </div> 
@@ -130,7 +130,7 @@
                         </div>
                         <div class="panel-footer">
                             <h4>Free for 30 days</h4>
-                            <a href="#user-login" class="stylish-btn stylish-sav-btn btn button-default" data-toggle="modal" >More details</a>
+                            <a href="/market-time/subscribe" class="stylish-btn stylish-sav-btn btn button-default" data-toggle="modal" >More details</a>
                         </div>
                     </div> 
                 </div> 

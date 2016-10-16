@@ -3,7 +3,7 @@
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b>MT</b></span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b>MarketTime</b></span>
+        <img class="logo-lg" src="./images/marketime_logo_i_icon_white.svg" alt="marketime logo" />
     </a>
     <nav class="navbar navbar-static-top" role="navigation">
         <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">

@@ -12,6 +12,12 @@
     box-shadow: 0 1px 0 0 #3c8dbc,0 2px 5px 0 rgba(0,0,0,0.4);
 }
 
+.logo-lg {
+	display: block;
+	height: 50px;
+	margin: 8px auto;
+}
+
 .navbar li a, .navbar .navbar-brand {
     color: #fff !important;
     padding-top: 20px;
