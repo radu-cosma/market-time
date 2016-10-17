@@ -62,7 +62,7 @@
 					<div class="col-sm-5 subscription-price">
 						<div class="price">
 							<h4>1 month subscription</h4>
-							<h4><span>&euro;100</span>/month</h4>
+							<h4>for <span>&euro;100</span>/month</h4>
 							<br>
                             <a class="stylish-btn stylish-sav-btn btn button-default" data-toggle="modal"> Book now </a>
 						</div>
@@ -139,7 +139,7 @@
 					<div class="col-sm-5 subscription-price">
 						<div class="price">
 							<h4>1 month subscription</h4>
-							<h4><span>&euro;90</span>/month</h4>
+							<h4>for <span>&euro;90</span>/month</h4>
 							<br>
                             <a class="stylish-btn stylish-sav-btn btn button-default" data-toggle="modal"> Book now </a>
 						</div>
