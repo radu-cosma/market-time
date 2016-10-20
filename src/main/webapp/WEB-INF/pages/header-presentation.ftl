@@ -6,7 +6,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>                        
             </button>
-            <a href="/market-time/home"><img class="logo-lg" src="./images/marketime_logo_i_icon_white.svg" alt="marketime logo" /></a>
+            <a href="/market-time/home"><img class="logo-lg" src="/market-time/images/marketime_logo_i_icon_white.svg" alt="marketime logo" /></a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
