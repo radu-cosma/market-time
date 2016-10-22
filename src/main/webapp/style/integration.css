@@ -1,0 +1,66 @@
+#integration-page-header {
+	margin: 70px 25px 25px 25px;
+	text-align: center;
+}
+
+@media (max-width: 420px) {
+    #integration-page-header {
+		margin: 35px 10px 10px 10px;
+    }
+}
+
+.integration-header {
+	background-color: #3c8dbc;
+	height: auto;
+	border-radius: 4px 4px 0 0;
+	padding:1px;
+	margin-top: 30px;
+    margin-bottom: 20px;	
+}
+
+@media (max-width: 420px) {
+    .integration-header {
+		margin: 15px -15px;
+		border-radius: 0;
+    }
+}
+
+#integration-page-body {
+	margin-bottom: 15px;
+}
+
+.integration-title {
+	color: #fff;
+	text-align: center;
+}
+
+.integration-title h3 {
+	margin: 4px;	
+	font-weight: 600;
+	font-size: 30px;
+}
+
+.market-integration-section {
+	margin: 0 auto; 
+}
+.market-integration {
+    border: solid 1px #3c8dbc;
+    margin-bottom: 20px; 
+}
+
+.market-integration:hover {
+    box-shadow: 5px 0px 20px rgba(0,0,0, .3);   
+}
+
+.market-integration-image {
+	height: 100px;
+	width: 100%;
+	padding: 10px;
+}
+
+@media (min-width: 420px) and  (max-width: 736px) {
+    .integration-section-mobile {
+		width: 60%;
+		margin: 0 auto;
+    }
+}
