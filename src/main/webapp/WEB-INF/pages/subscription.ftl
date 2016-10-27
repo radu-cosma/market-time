@@ -15,8 +15,8 @@
 	<div class="row">
 	    <@createGroupTitle groupTitle="Save BIG on you next subcription" />
 		<div class="col-md-10 col-md-offset-1">
-        	<@subscriptionSavePriceModule save="save" currency="&euro;" saveValue="75" saveContent="3 months subscription for" priceValue="22" period="/month" only="" procentValue="" procentContent="" />          
-		    <@subscriptionSavePriceModule save="" currency="" saveValue="" saveContent="" priceValue="" period="" only="Only" procentValue="5%" procentContent="from products sold" />          
+        	<@createPriceModule save="save" currency="&euro;" saveValue="75" saveContent="3 months subscription for" priceValue="22" period="/month" only="" percentValue="" percentContent="" />          
+		    <@createPriceModule save="" currency="" saveValue="" saveContent="" priceValue="" period="" only="Only" percentValue="5%" percentContent="from products sold" />          
 		</div>
 	</div>
 </div>
@@ -31,15 +31,15 @@
 	</div>
 </#macro>
 
-<#macro subscriptionSavePriceModule save currency saveValue saveContent priceValue period only procentValue procentContent>
+<#macro createPriceModule save currency saveValue saveContent priceValue period only percentValue percentContent>
     <div class="price-section">
 		<div class="row">
 			<div class="col-sm-5 subscription-price">
 		       <div class="price">
 					<h3>${save} <span>${currency}${saveValue}</span></h3>
 					<h4>${saveContent} <span>${currency}${priceValue}</span>${period}</h4>
-					<h3>${only} <span>${procentValue}</span></h3>
-		            <h4>${procentContent} </h4>
+					<h3>${only} <span>${percentValue}</span></h3>
+		            <h4>${percentContent} </h4>
 				    <a class="stylish-btn stylish-sav-btn btn button-default" data-toggle="modal"> Book now </a>
 				</div>
 			</div>
