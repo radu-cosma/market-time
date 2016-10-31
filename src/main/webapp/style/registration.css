@@ -3,36 +3,6 @@
 	margin: 25px 0;
 }
 
-.md-title {
-    font-size: 35px;
-    line-height: 50px;
-    margin-bottom: 15px;
-    transition: all .3s cubic-bezier(0.215,0.61,0.355,1);
-    font-weight: 600;
-    color: #3c8dbc;
-}
-
-@media (max-width: 420px) {
-	.md-title{
-		font-size: 25px;
-	    line-height: 30px;
-	    margin-bottom: 10px;
-	}
-}
-
-@media (min-width: 421px) and (max-width: 736px) {
-	.md-title{
-		font-size: 30px;
-	    line-height: 40px;
-	}
-}
-
-.xs-title {
-	font-size: 20px;
-	margin-bottom: 20px;
-    color: #3c8dbc;
-}
-
 #general-error-message {
 	background-color: #dd4b39;
 }

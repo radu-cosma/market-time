@@ -4,7 +4,7 @@
             <div class="md-title">
                 Contact
             </div>
-            <div class="xs-title">
+            <div class="sub-title">
                 Contact us and we'll get back to you within 24 hours.
             </div>
         </div>
