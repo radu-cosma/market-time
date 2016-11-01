@@ -59,29 +59,6 @@ body {
 	}
 }
 
-.md-title {
-    font-size: 35px;
-    line-height: 50px;
-    margin-bottom: 23px;
-    transition: all .3s cubic-bezier(0.215,0.61,0.355,1);
-    font-weight: 600;
-}
-
-@media (max-width: 420px) {
-	.md-title{
-		font-size: 25px;
-	    line-height: 30px;
-	    margin-bottom: 20px;
-	}
-}
-
-@media (min-width: 421px) and (max-width: 736px) {
-	.md-title{
-		font-size: 30px;
-	    line-height: 40px;
-	}
-}
-
 /*integration*/
 
 .integration-section-description {

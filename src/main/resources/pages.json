@@ -61,6 +61,20 @@
 			"cssResources": ["layout", "skin-blue", "header"],
 			"jsResources": ["market-time"]
 		},
+		# subscription page - logged out
+		{
+			"criteria": {
+				"name": "subscription",
+				"loggedIn": false
+			},
+			"sections": {
+				"header": "header-presentation",
+				"main": "subscription",
+				"footer": "footer-presentation"
+			},
+			"cssResources": ["layout-presentation", "presentation", "header-presentation", "subscription", "login"],
+			"jsResources": ["presentation", "login"]
+		},
 		# integration page - logged out
 		{
 			"criteria": {
