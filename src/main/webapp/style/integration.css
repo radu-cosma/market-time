@@ -37,7 +37,13 @@
 .integration-title h3 {
 	margin: 4px;	
 	font-weight: 600;
-	font-size: 30px;
+	font-size: 25px;
+}
+
+@media (max-width: 420px) {
+    .integration-title h3 {
+		font-size: 28px;
+    }
 }
 
 .market-integration-section {
@@ -48,6 +54,14 @@
     margin-bottom: 20px; 
 }
 
+.market-integration-active {
+    border-top: solid 3px #3c8dbc;
+    border-left: solid 3px #3c8dbc;
+    border-right: solid 3px #3c8dbc;
+    border-bottom: none;   
+	box-shadow: 5px 0px 20px rgba(0,0,0, .3);
+}
+
 .market-integration:hover {
     box-shadow: 5px 0px 20px rgba(0,0,0, .3);   
 }
@@ -56,11 +70,140 @@
 	height: 100px;
 	width: 100%;
 	padding: 10px;
+	
 }
 
 @media (min-width: 420px) and  (max-width: 736px) {
     .integration-section-mobile {
-		width: 60%;
+		width: 70%;
 		margin: 0 auto;
     }
+}
+
+
+/*details*/
+
+.details-market-img {
+	margin-top: 30px;
+}
+
+@media (max-width: 420px) {
+    .details-market-img {
+		margin-top: 20px;
+    }
+}
+
+.integration-details  {
+	display: inline-block;
+	position: relative;	
+	width: 100%;
+    padding: 0px;
+}
+
+.info-details {
+ 	position: relative;
+}
+
+.info-details .info {
+	background-color: #fff !important;
+	width: 100%;
+	display: none;
+	position: absolute;
+	z-index: 1000;
+	padding: 15px;
+    box-shadow: 5px 5px 20px rgba(0,0,0, .3); 
+    margin-bottom: 30px;
+    border-top: solid 3px #3c8dbc;   
+}
+
+@media (max-width: 736px) {
+	.info-details .info {
+		padding: 15px 0;
+		margin: 0px;
+	}
+}
+
+.info-position1 .info {
+	top:103px;
+}
+
+.info-position2 .info{
+	top: 225px;
+}
+
+@media (max-width: 767px){
+    .info-position2 .info {
+		top: 103px;
+    }
+}
+
+.close-market-details {
+	position: absolute;
+    float: right;
+    right: 20px;
+    top: 20px;
+}
+
+@media (max-width: 420px) {
+    .close-market-details {
+    	top: 10px;
+    }	
+}
+
+.market-details-title {
+	text-align: center;
+    margin-top: 30px;
+}
+
+.market-details-subtitle {
+	text-align: center;
+}
+
+.details-section-title {
+	color: #3c8dbc;
+	font-size: 25px;
+	margin: 25px 0 15px 0;
+}
+
+#backgroung-integration-contact {
+    background-image: url(../images/contact-background.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0 -15px -15px -15px;
+}
+
+@media (max-width: 736px) {
+	#backgroung-integration-contact {
+		margin: 0px;
+	}
+}
+
+#integration-about-contact {
+	background: rgba(54, 127, 169, 0.9);	
+	padding: 20px;
+	color: #fff;
+}
+
+@media (max-width: 736px) {
+	#integration-about-contact {
+		padding: 0px;
+	}
+}
+
+#integration-about-contact .details-section-title {
+	color: #fff;
+}
+
+#integration-contact p {
+	font-size: 22px;
+}
+
+.details-section-title strong {
+	padding-top: 10px;
+	line-height: 1.2;
+}
+
+#how-works {
+	text-align: center;
 }
