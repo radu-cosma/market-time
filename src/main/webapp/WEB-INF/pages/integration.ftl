@@ -124,8 +124,8 @@ detailsMarketFlowTitleKey detailsMarketFlowP1Key >
     				<p><@spring.message detailsMarketFlowP1Key/></p>
     			</div>
     		</div>		
-            <div class="col-md-12">
-		    	<img class="img-responsive" src="./images/markettime-diagram.png" alt="Test" />
+            <div class="col-md-8 col-md-offset-2 col-xs-12">
+		    	<img class="img-responsive" src="./images/MarketTimeDiagram.png" alt="Test" />
 		    </div>
 		</div>
 		
