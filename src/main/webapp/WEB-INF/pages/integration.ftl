@@ -23,7 +23,7 @@
 				    detailsMarketFirstSectionP2Key='WISH.DETAILS.MARKET.FIRST.SECTION.PARAGRAPH.2' detailsMarketFirstSectionP3Key='WISH.DETAILS.MARKET.FIRST.SECTION.PARAGRAPH.3'
 				    detailsMarketSecondSectionTitleKey='WISH.DETAILS.MARKET.SECOND.SECTION.TITLE' detailsMarketSecondSectionP1Key='WISH.DETAILS.MARKET.SECOND.SECTION.PARAGRAPH.1' 
 				    detailsMarketSecondSectionP2Key='WISH.DETAILS.MARKET.SECOND.SECTION.PARAGRAPH.2' detailsMarketSecondSectionP3Key='WISH.DETAILS.MARKET.SECOND.SECTION.PARAGRAPH.3'
-				    detailsMarketFlowTitleKey='WISH.DETAILS.MARKET.FLOW.TITLE' detailsMarketFlowP1Key='WISH.DETAILS.MARKET.FLOW.PARAGRAPH' />				  	
+				    marketDiagramImg="MarketTime_wish_Diagram.png" altImg="market time diagrame" detailsMarketFlowTitleKey='WISH.DETAILS.MARKET.FLOW.TITLE' detailsMarketFlowP1Key='WISH.DETAILS.MARKET.FLOW.PARAGRAPH' />				  	
 				</div> 
 				<div class="info-details info-position1">	
 				    <a class="toggle-description"><@createMarketIntegrated marketId="amazon" marketImg="amazon-logo.png" altImg="amazon image" /></a> 
@@ -32,7 +32,7 @@
 				    detailsMarketFirstSectionP2Key='WISH.DETAILS.MARKET.FIRST.SECTION.PARAGRAPH.2' detailsMarketFirstSectionP3Key='WISH.DETAILS.MARKET.FIRST.SECTION.PARAGRAPH.3'
 				    detailsMarketSecondSectionTitleKey='WISH.DETAILS.MARKET.SECOND.SECTION.TITLE' detailsMarketSecondSectionP1Key='WISH.DETAILS.MARKET.SECOND.SECTION.PARAGRAPH.1' 
 				    detailsMarketSecondSectionP2Key='WISH.DETAILS.MARKET.SECOND.SECTION.PARAGRAPH.2' detailsMarketSecondSectionP3Key='WISH.DETAILS.MARKET.SECOND.SECTION.PARAGRAPH.3' 
-				    detailsMarketFlowTitleKey='WISH.DETAILS.MARKET.FLOW.TITLE' detailsMarketFlowP1Key='WISH.DETAILS.MARKET.FLOW.PARAGRAPH' />	 
+				    marketDiagramImg="MarketTime_wish_Diagram.png" altImg="market time diagrame" detailsMarketFlowTitleKey='WISH.DETAILS.MARKET.FLOW.TITLE' detailsMarketFlowP1Key='WISH.DETAILS.MARKET.FLOW.PARAGRAPH' />	 
 				</div> 
 				<div class="info-details info-position1">	
 				    <a class="toggle-description"><@createMarketIntegrated marketId="ebay" marketImg="ebay-logo.png" altImg="ebay image" /></a>
@@ -41,7 +41,7 @@
 				    detailsMarketFirstSectionP2Key='WISH.DETAILS.MARKET.FIRST.SECTION.PARAGRAPH.2' detailsMarketFirstSectionP3Key='WISH.DETAILS.MARKET.FIRST.SECTION.PARAGRAPH.3'
 				    detailsMarketSecondSectionTitleKey='WISH.DETAILS.MARKET.SECOND.SECTION.TITLE' detailsMarketSecondSectionP1Key='WISH.DETAILS.MARKET.SECOND.SECTION.PARAGRAPH.1' 
 				    detailsMarketSecondSectionP2Key='WISH.DETAILS.MARKET.SECOND.SECTION.PARAGRAPH.2' detailsMarketSecondSectionP3Key='WISH.DETAILS.MARKET.SECOND.SECTION.PARAGRAPH.3' 
-				    detailsMarketFlowTitleKey='WISH.DETAILS.MARKET.FLOW.TITLE' detailsMarketFlowP1Key='WISH.DETAILS.MARKET.FLOW.PARAGRAPH' />	
+				    marketDiagramImg="MarketTime_wish_Diagram.png" altImg="market time diagrame" detailsMarketFlowTitleKey='WISH.DETAILS.MARKET.FLOW.TITLE' detailsMarketFlowP1Key='WISH.DETAILS.MARKET.FLOW.PARAGRAPH' />	
 			    </div>
 				<div class="info-details info-position1">	
 				    <a class="toggle-description"><@createMarketIntegrated marketId="spartoo" marketImg="spartoo-logo.png" altImg="spartoo image" /></a>
@@ -50,7 +50,7 @@
 				    detailsMarketFirstSectionP2Key='WISH.DETAILS.MARKET.FIRST.SECTION.PARAGRAPH.2' detailsMarketFirstSectionP3Key='WISH.DETAILS.MARKET.FIRST.SECTION.PARAGRAPH.3'
 				    detailsMarketSecondSectionTitleKey='WISH.DETAILS.MARKET.SECOND.SECTION.TITLE' detailsMarketSecondSectionP1Key='WISH.DETAILS.MARKET.SECOND.SECTION.PARAGRAPH.1' 
 				    detailsMarketSecondSectionP2Key='WISH.DETAILS.MARKET.SECOND.SECTION.PARAGRAPH.2' detailsMarketSecondSectionP3Key='WISH.DETAILS.MARKET.SECOND.SECTION.PARAGRAPH.3' 
-				    detailsMarketFlowTitleKey='WISH.DETAILS.MARKET.FLOW.TITLE' detailsMarketFlowP1Key='WISH.DETAILS.MARKET.FLOW.PARAGRAPH' />	 
+				    marketDiagramImg="MarketTime_spartoo_Diagram.png" altImg="market time diagrame" detailsMarketFlowTitleKey='WISH.DETAILS.MARKET.FLOW.TITLE' detailsMarketFlowP1Key='WISH.DETAILS.MARKET.FLOW.PARAGRAPH' />	 
 				</div>    
 				<div class="info-details info-position2">	
 				    <a class="toggle-description"><@createMarketIntegrated marketId="ebay1" marketImg="ebay-logo.png" altImg="ebay image" /></a>
@@ -59,7 +59,7 @@
 				    detailsMarketFirstSectionP2Key='WISH.DETAILS.MARKET.FIRST.SECTION.PARAGRAPH.2' detailsMarketFirstSectionP3Key='WISH.DETAILS.MARKET.FIRST.SECTION.PARAGRAPH.3'
 				    detailsMarketSecondSectionTitleKey='WISH.DETAILS.MARKET.SECOND.SECTION.TITLE' detailsMarketSecondSectionP1Key='WISH.DETAILS.MARKET.SECOND.SECTION.PARAGRAPH.1' 
 				    detailsMarketSecondSectionP2Key='WISH.DETAILS.MARKET.SECOND.SECTION.PARAGRAPH.2' detailsMarketSecondSectionP3Key='WISH.DETAILS.MARKET.SECOND.SECTION.PARAGRAPH.3' 
-				    detailsMarketFlowTitleKey='WISH.DETAILS.MARKET.FLOW.TITLE' detailsMarketFlowP1Key='WISH.DETAILS.MARKET.FLOW.PARAGRAPH' />	
+				    marketDiagramImg="MarketTime_wish_Diagram.png" altImg="market time diagrame" detailsMarketFlowTitleKey='WISH.DETAILS.MARKET.FLOW.TITLE' detailsMarketFlowP1Key='WISH.DETAILS.MARKET.FLOW.PARAGRAPH' />	
 			    </div> 
 				</div> 	  
 			</div>    
@@ -87,7 +87,7 @@
 
 <#macro createMarketInfo forMarket detailsTitleKey detailsSubtitleKey detailsMarketFirstSectionTitleKey detailsMarketFirstSectionP1Key detailsMarketFirstSectionP2Key 
 detailsMarketFirstSectionP3Key detailsMarketSecondSectionTitleKey detailsMarketSecondSectionP1Key detailsMarketSecondSectionP2Key detailsMarketSecondSectionP3Key 
-detailsMarketFlowTitleKey detailsMarketFlowP1Key >
+marketDiagramImg altImg detailsMarketFlowTitleKey detailsMarketFlowP1Key >
 	<div class="info" for-market='${forMarket}'>
     	<a 	class="close close-market-details"> <@spring.message 'INTEGRATION.DETAILS.CLOSE.BUTTON'/> </a>
     	<div class="md-title market-details-title">
@@ -125,7 +125,7 @@ detailsMarketFlowTitleKey detailsMarketFlowP1Key >
     			</div>
     		</div>		
             <div class="col-md-8 col-md-offset-2 col-xs-12">
-		    	<img class="img-responsive" src="./images/MarketTimeDiagram.png" alt="Test" />
+		    	<img class="img-responsive" src="./images/${marketDiagramImg}" alt="${altImg}" />
 		    </div>
 		</div>
 		
