@@ -123,16 +123,16 @@
 	}
 }
 
-.info-position1 .info {
+.first-level-markets .info {
 	top:103px;
 }
 
-.info-position2 .info{
+.second-level-markets .info{
 	top: 225px;
 }
 
 @media (max-width: 767px){
-    .info-position2 .info {
+    .second-level-markets .info {
 		top: 103px;
     }
 }

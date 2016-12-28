@@ -13,11 +13,11 @@
 
 <div id="integration-page-body">
 	<div class="row">
-	    <@createIntegrationTitleModul />
+	    <@createIntegrationTitle />
 		<div class="col-md-10 col-md-offset-1 integration-section-mobile">
 			<div class="integration-details">
-				<div class="info-details info-position1">
-				    <a class="toggle-description"><@createMarketIntegrated marketId="wish" marketImg="wish-logo.png" altImg="wish image" /></a>
+				<div class="info-details first-level-markets">
+				    <a class="toggle-description"><@createIntegratedMarket marketId="wish" marketImg="wish-logo.png" altImg="wish image" /></a>
 				    <@createMarketInfo forMarket='wish' detailsTitleKey='WISH.DETAILS.TITLE' detailsSubtitleKey='WISH.DETAILS.SUBTITLE' 
 				    detailsMarketFirstSectionTitleKey='WISH.DETAILS.MARKET.FIRST.SECTION.TITLE' detailsMarketFirstSectionP1Key='WISH.DETAILS.MARKET.FIRST.SECTION.PARAGRAPH.1'
 				    detailsMarketFirstSectionP2Key='WISH.DETAILS.MARKET.FIRST.SECTION.PARAGRAPH.2' detailsMarketFirstSectionP3Key='WISH.DETAILS.MARKET.FIRST.SECTION.PARAGRAPH.3'
@@ -25,8 +25,8 @@
 				    detailsMarketSecondSectionP2Key='WISH.DETAILS.MARKET.SECOND.SECTION.PARAGRAPH.2' detailsMarketSecondSectionP3Key='WISH.DETAILS.MARKET.SECOND.SECTION.PARAGRAPH.3'
 				    marketDiagramImg="MarketTime_wish_Diagram.png" altImg="market time diagrame" detailsMarketFlowTitleKey='WISH.DETAILS.MARKET.FLOW.TITLE' detailsMarketFlowP1Key='WISH.DETAILS.MARKET.FLOW.PARAGRAPH' />				  	
 				</div> 
-				<div class="info-details info-position1">	
-				    <a class="toggle-description"><@createMarketIntegrated marketId="amazon" marketImg="amazon-logo.png" altImg="amazon image" /></a> 
+				<div class="info-details info-first-position">	
+				    <a class="toggle-description"><@createIntegratedMarket marketId="amazon" marketImg="amazon-logo.png" altImg="amazon image" /></a> 
 				    <@createMarketInfo forMarket='amazon' detailsTitleKey='WISH.DETAILS.TITLE' detailsSubtitleKey='WISH.DETAILS.SUBTITLE' 
 				    detailsMarketFirstSectionTitleKey='WISH.DETAILS.MARKET.FIRST.SECTION.TITLE'detailsMarketFirstSectionP1Key='WISH.DETAILS.MARKET.FIRST.SECTION.PARAGRAPH.1'
 				    detailsMarketFirstSectionP2Key='WISH.DETAILS.MARKET.FIRST.SECTION.PARAGRAPH.2' detailsMarketFirstSectionP3Key='WISH.DETAILS.MARKET.FIRST.SECTION.PARAGRAPH.3'
@@ -34,8 +34,8 @@
 				    detailsMarketSecondSectionP2Key='WISH.DETAILS.MARKET.SECOND.SECTION.PARAGRAPH.2' detailsMarketSecondSectionP3Key='WISH.DETAILS.MARKET.SECOND.SECTION.PARAGRAPH.3' 
 				    marketDiagramImg="MarketTime_wish_Diagram.png" altImg="market time diagrame" detailsMarketFlowTitleKey='WISH.DETAILS.MARKET.FLOW.TITLE' detailsMarketFlowP1Key='WISH.DETAILS.MARKET.FLOW.PARAGRAPH' />	 
 				</div> 
-				<div class="info-details info-position1">	
-				    <a class="toggle-description"><@createMarketIntegrated marketId="ebay" marketImg="ebay-logo.png" altImg="ebay image" /></a>
+				<div class="info-details first-level-markets">	
+				    <a class="toggle-description"><@createIntegratedMarket marketId="ebay" marketImg="ebay-logo.png" altImg="ebay image" /></a>
 				    <@createMarketInfo forMarket='ebay' detailsTitleKey='WISH.DETAILS.TITLE' detailsSubtitleKey='WISH.DETAILS.SUBTITLE' 
 				    detailsMarketFirstSectionTitleKey='WISH.DETAILS.MARKET.FIRST.SECTION.TITLE' detailsMarketFirstSectionP1Key='WISH.DETAILS.MARKET.FIRST.SECTION.PARAGRAPH.1'
 				    detailsMarketFirstSectionP2Key='WISH.DETAILS.MARKET.FIRST.SECTION.PARAGRAPH.2' detailsMarketFirstSectionP3Key='WISH.DETAILS.MARKET.FIRST.SECTION.PARAGRAPH.3'
@@ -43,8 +43,8 @@
 				    detailsMarketSecondSectionP2Key='WISH.DETAILS.MARKET.SECOND.SECTION.PARAGRAPH.2' detailsMarketSecondSectionP3Key='WISH.DETAILS.MARKET.SECOND.SECTION.PARAGRAPH.3' 
 				    marketDiagramImg="MarketTime_wish_Diagram.png" altImg="market time diagrame" detailsMarketFlowTitleKey='WISH.DETAILS.MARKET.FLOW.TITLE' detailsMarketFlowP1Key='WISH.DETAILS.MARKET.FLOW.PARAGRAPH' />	
 			    </div>
-				<div class="info-details info-position1">	
-				    <a class="toggle-description"><@createMarketIntegrated marketId="spartoo" marketImg="spartoo-logo.png" altImg="spartoo image" /></a>
+				<div class="info-details first-level-markets">	
+				    <a class="toggle-description"><@createIntegratedMarket marketId="spartoo" marketImg="spartoo-logo.png" altImg="spartoo image" /></a>
 					<@createMarketInfo forMarket='spartoo' detailsTitleKey='WISH.DETAILS.TITLE' detailsSubtitleKey='WISH.DETAILS.SUBTITLE' 
 					detailsMarketFirstSectionTitleKey='WISH.DETAILS.MARKET.FIRST.SECTION.TITLE' detailsMarketFirstSectionP1Key='WISH.DETAILS.MARKET.FIRST.SECTION.PARAGRAPH.1'
 				    detailsMarketFirstSectionP2Key='WISH.DETAILS.MARKET.FIRST.SECTION.PARAGRAPH.2' detailsMarketFirstSectionP3Key='WISH.DETAILS.MARKET.FIRST.SECTION.PARAGRAPH.3'
@@ -52,8 +52,8 @@
 				    detailsMarketSecondSectionP2Key='WISH.DETAILS.MARKET.SECOND.SECTION.PARAGRAPH.2' detailsMarketSecondSectionP3Key='WISH.DETAILS.MARKET.SECOND.SECTION.PARAGRAPH.3' 
 				    marketDiagramImg="MarketTime_spartoo_Diagram.png" altImg="market time diagrame" detailsMarketFlowTitleKey='WISH.DETAILS.MARKET.FLOW.TITLE' detailsMarketFlowP1Key='WISH.DETAILS.MARKET.FLOW.PARAGRAPH' />	 
 				</div>    
-				<div class="info-details info-position2">	
-				    <a class="toggle-description"><@createMarketIntegrated marketId="ebay1" marketImg="ebay-logo.png" altImg="ebay image" /></a>
+				<div class="info-details second-level-markets">	
+				    <a class="toggle-description"><@createIntegratedMarket marketId="ebay1" marketImg="ebay-logo.png" altImg="ebay image" /></a>
 				    <@createMarketInfo forMarket='ebay1' detailsTitleKey='WISH.DETAILS.TITLE' detailsSubtitleKey='WISH.DETAILS.SUBTITLE' 
 				    detailsMarketFirstSectionTitleKey='WISH.DETAILS.MARKET.FIRST.SECTION.TITLE' detailsMarketFirstSectionP1Key='WISH.DETAILS.MARKET.FIRST.SECTION.PARAGRAPH.1'
 				    detailsMarketFirstSectionP2Key='WISH.DETAILS.MARKET.FIRST.SECTION.PARAGRAPH.2' detailsMarketFirstSectionP3Key='WISH.DETAILS.MARKET.FIRST.SECTION.PARAGRAPH.3'
@@ -67,7 +67,7 @@
 	</div>
 </div>
 
-<#macro createIntegrationTitleModul>
+<#macro createIntegrationTitle>
 	<div class="col-md-10 col-md-offset-1">
 		<div class="integration-header">
 			<div class="integration-title">
@@ -77,7 +77,7 @@
 	</div>
 </#macro>
 
-<#macro createMarketIntegrated marketId marketImg altImg>
+<#macro createIntegratedMarket marketId marketImg altImg>
 	<div class="col-sm-4 col-md-3 market-integration-section">
 		<div class="market-integration" id="${marketId}">
 		    <img class="market-integration-image img-responsive" src="/market-time/images/${marketImg}" alt="${altImg}">
