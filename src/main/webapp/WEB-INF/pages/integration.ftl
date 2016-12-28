@@ -25,7 +25,7 @@
 				    detailsMarketSecondSectionP2Key='WISH.DETAILS.MARKET.SECOND.SECTION.PARAGRAPH.2' detailsMarketSecondSectionP3Key='WISH.DETAILS.MARKET.SECOND.SECTION.PARAGRAPH.3'
 				    marketDiagramImg="MarketTime_wish_Diagram.png" altImg="market time diagrame" detailsMarketFlowTitleKey='WISH.DETAILS.MARKET.FLOW.TITLE' detailsMarketFlowP1Key='WISH.DETAILS.MARKET.FLOW.PARAGRAPH' />				  	
 				</div> 
-				<div class="info-details info-first-position">	
+				<div class="info-details first-level-markets">	
 				    <a class="toggle-description"><@createIntegratedMarket marketId="amazon" marketImg="amazon-logo.png" altImg="amazon image" /></a> 
 				    <@createMarketInfo forMarket='amazon' detailsTitleKey='WISH.DETAILS.TITLE' detailsSubtitleKey='WISH.DETAILS.SUBTITLE' 
 				    detailsMarketFirstSectionTitleKey='WISH.DETAILS.MARKET.FIRST.SECTION.TITLE'detailsMarketFirstSectionP1Key='WISH.DETAILS.MARKET.FIRST.SECTION.PARAGRAPH.1'
