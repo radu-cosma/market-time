@@ -14,6 +14,7 @@ $(function() {
 	google.maps.event.addDomListener(window, 'load', initialize);
 });
 
+
 /*validations*/
 
 var validationConfig = {
@@ -40,7 +41,7 @@ var validationConfig = {
             'invalidRegexp' : 'Invalid email format.'
         }
     },
-    'comment' : {
+    'comments' : {
         'required' : true,
         'minLength' : 2,
         'maxLength' : 2000,
@@ -57,6 +58,8 @@ $('form').on('submit', function(evt) {
         return this.id;
     }).get();
 
+    inputIds.push('comments');
+    
     var isValid = validator.validateForm(inputIds, validationConfig);
 
     if (!isValid) {

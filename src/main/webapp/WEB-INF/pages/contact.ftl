@@ -2,38 +2,38 @@
 
 <div id="contact-container">
 	<div class="contact-container-background">
-		<div class="container-fluid">
-		    <div class="row">
-		    
+		<div class="details-container container-fluid">
+		    <div class="row">		    
 		        <div class="col-xs-12 col-md-8 col-md-offset-2">
 		            <div class="contact-title md-title">
-		                Contact us
+		                <@spring.message 'CONTACT.US.TITTLE'/>
 		            </div>
-		        </div>
-		        
+		        </div>		        
 		        <div id="details-contact" class="col-xs-12 col-md-8 col-md-offset-2">
-		        	<div class="col-md-2 col-xs-12">
+		        	<div class="col-md-2 col-xs-1">
 			            <p><span class="contact-icon glyphicon glyphicon-map-marker">      
 		            </div>
-		            <div class="contact-message col-md-5 col-xs-12">
+		            <div class="address-contact contact-message col-md-4 col-xs-10">
 			            <p>Cluj-Napoca, RO</p>
 			            <p>Eroilor</p>
 			            <p>Postal code: 400129</p>      
 		            </div>
-		            <div class="contact-message col-md-5 col-xs-12">
+		            <div class="contact-message col-md-6 col-xs-12">
 			            <p><span class="glyphicon glyphicon-phone"></span> 0040 747123123</p>
 		                <p>&nbsp; &nbsp; &nbsp; 0040 747123123</p>
 			            <p><span class="glyphicon glyphicon-envelope"></span> office@markettime.com</p>      
 		            </div>
-		        </div>	       
-		        
+		        </div>	       		        
 		        <div class="contact-form col-md-4 col-md-offset-2 col-xs-12">
 			        <form>
 				    	<div class="form-group">
                             <@createInputSection 'name' /> 
 				            <@createInputSection 'email' />
-				            <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="10"></textarea>
-				            <button type="submit" id="contact-us-button"class="contact-btn btn stylish-btn">Send</button> 
+				            <textarea class="form-control" id="comments" name="comments" placeholder="comment" rows="10"></textarea>
+				            <div class="textarea-tooltip tooltip-wrapper">
+				                <span id="comments-tooltip" class="error-tooltip"></span>
+				            </div>
+				            <button type="submit" id="contact-btn"class="contact-btn btn stylish-btn"><@spring.message 'CONTACT.US.SEND.BUTTON'/></button> 
 				        </div>
 			        </form>
 		        </div> 
