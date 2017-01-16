@@ -49,7 +49,7 @@
             <br>
             biggest in the world
         </div>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor <a href="/market-time/integ">see all integrated markets</a>.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor <a href="/market-time/integration">see all integrated markets</a>.</p>
         <div class="row">
            <div class="col-sm-6 col-md-3">
                 <a href="/market-time/integration"><img class="integration-image img-responsive" src="./images/amazon-logo.png"></a>

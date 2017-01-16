@@ -87,7 +87,7 @@
 				"footer": "footer-presentation"
 			},
 			"cssResources": ["layout-presentation", "presentation", "header-presentation", "integration", "login"],
-			"jsResources": ["presentation", "login"]
+			"jsResources": ["presentation", "login", "integration"]
 		},
 		# contact page - logged out
 		{
