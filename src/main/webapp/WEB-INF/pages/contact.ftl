@@ -29,9 +29,9 @@
 				    	<div class="form-group">
                             <@createInputSection 'name' /> 
 				            <@createInputSection 'email' />
-				            <textarea class="form-control" id="comments" name="comments" placeholder="comment" rows="10"></textarea>
+				            <textarea class="form-control" id="comment" name="comment" placeholder="comment" rows="10"></textarea>
 				            <div class="textarea-tooltip tooltip-wrapper">
-				                <span id="comments-tooltip" class="error-tooltip"></span>
+				                <span id="comment-tooltip" class="error-tooltip"></span>
 				            </div>
 				            <button type="submit" id="contact-btn"class="contact-btn btn stylish-btn"><@spring.message 'CONTACT.US.SEND.BUTTON'/></button> 
 				        </div>

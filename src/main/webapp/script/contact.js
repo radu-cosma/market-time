@@ -41,7 +41,7 @@ var validationConfig = {
             'invalidRegexp' : 'Invalid email format.'
         }
     },
-    'comments' : {
+    'comment' : {
         'required' : true,
         'minLength' : 2,
         'maxLength' : 2000,
@@ -58,7 +58,7 @@ $('form').on('submit', function(evt) {
         return this.id;
     }).get();
 
-    inputIds.push('comments');
+    inputIds.push('comment');
     
     var isValid = validator.validateForm(inputIds, validationConfig);
 
