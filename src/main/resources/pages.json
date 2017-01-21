@@ -100,8 +100,8 @@
 				"main": "contact",
 				"footer": "footer-presentation"
 			},
-			"cssResources": ["layout-presentation", "presentation", "header-presentation", "contact", "login"],
-			"jsResources": ["presentation", "google-maps", "contact", "login"]
+			"cssResources": ["layout-presentation", "presentation", "header-presentation", "contact", "login", "validation"],
+			"jsResources": ["presentation", "google-maps", "contact", "login", "validation"]
 		},
 		# profile page - logged in
 		{
