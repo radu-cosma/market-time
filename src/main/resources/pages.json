@@ -189,7 +189,7 @@
 			"sections": {
 				"header": "header",
 				"menu": "menu",
-				"main": "order-details",
+				"main": "messages",
 				"footer": "footer"
 			},
 			"cssResources": ["layout", "skin-blue", "header", "messages"],
