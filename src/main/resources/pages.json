@@ -103,7 +103,7 @@
 				"footer": "footer"
 			},
 			"cssResources": ["layout", "skin-blue", "header", "validation", "add-product"],
-			"jsResources": ["market-time", "validation", "add-product"]
+			"jsResources": ["market-time", "dragndrop", "validation", "add-product"]
 		},
 		# error 500 page - logged in
 		{

@@ -42,6 +42,7 @@ public class ProductController extends BaseController {
 
     @RequestMapping(value = "add", method = RequestMethod.GET)
     public String getAddProduct() {
+        productService.prepareCache();
         return "add-product";
     }
 
