@@ -180,6 +180,21 @@
 			"cssResources": ["layout", "skin-blue", "header","validation", "order-details"],
 			"jsResources": ["market-time", "validation", "orders"]
 		},
+		# messages page - logged in
+		{
+			"criteria": {
+				"name": "messages",
+				"loggedIn": true
+			},
+			"sections": {
+				"header": "header",
+				"menu": "menu",
+				"main": "order-details",
+				"footer": "footer"
+			},
+			"cssResources": ["layout", "skin-blue", "header", "messages"],
+			"jsResources": ["market-time", "messages"]
+		},
 		# error 500 page - logged in
 		{
 			"criteria": {
