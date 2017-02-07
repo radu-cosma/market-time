@@ -192,8 +192,8 @@
 				"main": "messages",
 				"footer": "footer"
 			},
-			"cssResources": ["layout", "skin-blue", "header", "messages"],
-			"jsResources": ["market-time", "messages"]
+			"cssResources": ["layout", "skin-blue", "header", "validation", "messages"],
+			"jsResources": ["market-time", "validation", "messages"]
 		},
 		# error 500 page - logged in
 		{
