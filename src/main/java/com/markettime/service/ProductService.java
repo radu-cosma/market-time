@@ -1,14 +1,18 @@
 package com.markettime.service;
 
+import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
 import com.markettime.aop.LoggedIn;
 import com.markettime.context.UserContext;
 import com.markettime.exception.ServiceValidationException;
@@ -56,6 +60,15 @@ public class ProductService {
 
     @Autowired
     private ImageCache imageCache;
+
+    @Value("#{cloudinary.cloud.name}")
+    private String cloudinaryCloudName;
+
+    @Value("#{cloudinary.api.key}")
+    private String cloudinaryApiKey;
+
+    @Value("#{cloudinary.api.secret}")
+    private String cloudinaryApiSecret;
 
     /**
      *
@@ -162,6 +175,12 @@ public class ProductService {
                 productTagRepository.persist(productTagEntity);
         });
         // @formatter:on
+    }
+
+    public void uploadImage(AddProductImageDto addProductImageDto) {
+        Cloudinary cloudinary = new Cloudinary(ObjectUtils.asMap("cloud_name", cloudinaryCloudName, "api_key",
+                cloudinaryApiKey, "api_secret", cloudinaryApiSecret));
+        File file = new File
     }
 
 }

@@ -47,6 +47,10 @@ public class RestProductController {
             throw new ValidationErrorsException(bindingResult.getAllErrors());
         }
 
+        if (addProductImageDto.getImageData() != null) {
+            productService.uploadImage(addProductImageDto);
+        }
+
         productService.cacheImage(addProductImageDto);
 
         LOGGER.info("completed addProductImage; returned: []");

@@ -151,11 +151,9 @@ input[type=radio] {
 
 .product-image-container {
 	margin-right: 10px;
-	padding: 4px;
 	position: relative;
     width: 140px;
-    height: 120px;
-    border: 1px solid #e1e1e1;
+    height: 140px;
     overflow: hidden;
     float: left;
 }
@@ -190,6 +188,22 @@ input[type=radio] {
 }
 
 .remove-image-button {
-	float: right;
-	font-weight: 700;
+	background-image: url("../images/sprite.png");
+	background-repeat: no-repeat;
+    background-size: 24px 12px;
+	background-position: 0px 0px;
+	position: absolute;
+	top: 6px;
+	right: 6px;
+	height: 12px;
+	width: 12px;
+}
+
+.remove-image-button:hover {
+    background-size: 24px 12px;
+    background-position: -12px 0px;
+}
+
+.faded {
+	opacity: 0.3;
 }

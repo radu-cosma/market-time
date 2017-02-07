@@ -114,6 +114,7 @@ var
 	        }
 	    }
 	},
+	
 	//validation rules for add image url input
 	imageUrlValidationConfig = {
 		'add-image-url-input' : {
@@ -125,6 +126,7 @@ var
 	        }
 	    }
 	},
+	
 	//function that checks the existence of at least a product image
 	checkForImages = function() {
 		if ($('.product-image-container').length > 0) {
@@ -134,23 +136,22 @@ var
 			return false;
 		}
 	},
+	
 	//function that handles the addition of a new product image, by updating the UI and calling the backend web service.
 	addProductImage = function(imageData, successCallback) {
-		var imageWeight = imageData.weight,
-			productImagesContainer = $('#product-images-container'),
-			imageContainer = $('<div></div>').attr('id', 'product-image-' + imageWeight + '-container').addClass('product-image-container').attr('weight', imageWeight),
-			imageThumbnail = $('<img></img').attr('id', 'product-image-' + imageWeight + '-thumbnail').addClass('image-thumbnail').attr('draggable', 'false'),
-			uploadStatus = $('<span></span>').attr('id', 'product-image-' + imageWeight + '-status'),
-			removeImageButton = $('<a></a>').addClass('remove-image-button').html('&times;');
+		var productImagesContainer = $('#product-images-container'),
+			imageContainer = $('<div></div>').addClass('product-image-container').attr('weight', imageData.weight),
+			imageThumbnail = $('<img></img').addClass('image-thumbnail faded').attr('draggable', 'false'),
+			removeImageButton = $('<a></a>').addClass('remove-image-button').attr('title', 'Remove');
 		 	
 		removeImageButton.on('click', removeImage);
-		imageContainer.append(imageThumbnail);
 		imageContainer.append(removeImageButton);
+		imageContainer.append(imageThumbnail);
 		productImagesContainer.append(imageContainer);
 		
 		if (typeof imageData.imageData !== 'undefined') {
 			imageThumbnail.attr('src', imageData.imageData);
-			imageData.imageData = imageData.replace('data:'+ imageData.type + ';base64,', '');
+			imageData.imageData = imageData.imageData.replace('data:'+ imageData.type + ';base64,', '');
 		} else if (typeof imageData.url !== 'undefined') {
 			imageThumbnail.attr('src', imageData.url);
 		}
@@ -162,26 +163,28 @@ var
 		    contentType: 'application/json',
 		    data: JSON.stringify(imageData),
 		    success: function(response) {
-		        if (response.generalError || response.validationErrors) {
-		        	uploadStatus.append('ERROR');
+		        if (response.generalError) {
+		        	alert(response.generalError);
+		        } else if(response.validationErrors) {
+		        	alert(response.validationErrors);
 		        } else {
-		        	uploadStatus.append('DONE');
-		        	if (successCallback !== 'undefined') {
+		        	imageThumbnail.removeClass('faded');
+		        	if (typeof successCallback !== 'undefined') {
 		        		successCallback();
 		        	}
 		        }
-		        imageContainer.append(uploadStatus);
 		    },  
-		    error: function(e) {  
-		    	uploadStatus.append('ERROR');
-		    	imageContainer.append(uploadStatus);
+		    error: function(e) {
+		    	console.log(e);
 		    }  
 		});
 	},
+	
 	//success callback function used when adding an image by url
 	addImageByUrlSuccessCallback = function() {
 		$('#add-image-url-input').val('');
 	},
+	
 	//function that handles the addition of an image by selecting it from the file system or by dragging and dropping it in the browser window
 	uploadFile = function(file) {
 		var reader = new FileReader();
@@ -196,6 +199,7 @@ var
 	    };
 	    reader.readAsDataURL(file);
 	},
+	
 	//function that calls the remove image web service
 	removeImage = function() {
 		var imageContainer = $(this).parent(),
@@ -213,9 +217,10 @@ var
 		    }  
 		});
 	},
+	
 	//default image types
-	defaultImageTypes = ["image/gif", "image/jpg", "image/jpeg", "image/png", "gif", "jpg", "jpeg", "png"], 
-	imageTypes = defaultImageTypes;
+	defaultValidImageTypes = ["image/gif", "image/jpg", "image/jpeg", "image/png", "gif", "jpg", "jpeg", "png"],
+	validImageTypes = defaultValidImageTypes;
 
 $('form').on('submit', function(evt) {
     var inputIds = $(this).find('input').map(function() {
@@ -236,7 +241,7 @@ $('.close').on('click', function(evt) {
 });
 
 $('#add-image-url-button').on('click', function(evt) {
-	var isValid = validator.validateForm(['image-url'], imageUrlValidationConfig);
+	var isValid = validator.validateForm(['add-image-url-input'], imageUrlValidationConfig);
 	if (isValid) {
 		var imageUrl = $('#add-image-url-input').val(),
 		 	fullImageName = imageUrl.slice(imageUrl.lastIndexOf('/') + 1, imageUrl.lastIndexOf('?') != -1 ? imageUrl.lastIndexOf('?') : imageUrl.length),
@@ -252,13 +257,21 @@ $('#add-image-url-button').on('click', function(evt) {
 	}
 });
 
+$('#file-box-file').on('change', function(evt) {
+	$.each(this.files, function(i, file) {
+		if ($.inArray(file.type, validImageTypes) > -1) {
+			uploadFile(file);
+		}
+	});
+});
+
 $.ajax({
 	type: 'GET',
     url: '/market-time/rest/products/getImageTypes',
     contentType: 'application/json',
     success: function(response) {
         if (!response.generalError && !response.validationErrors) {
-        	imageTypes = response.result;
+        	validImageTypes = response.result;
         }
     },  
     error: function(e) {
@@ -266,4 +279,4 @@ $.ajax({
     }  
 });
 dragndrop.setUploadFileCallback(uploadFile);
-dragndrop.setValidFileTypes(imageTypes);
+dragndrop.setValidFileTypes(validImageTypes);

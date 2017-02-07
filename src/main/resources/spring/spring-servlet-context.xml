@@ -34,10 +34,10 @@
     <!-- <default-servlet-handler/> -->
     <!-- <mvc:resources mapping="/resources/**" location="/"/> -->
     
-    <bean id="configProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+    <bean id="applicationProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
     	<property name="locations">
     		<list>
-    			<value>classpath:config.properties</value>
+    			<value>classpath:application.properties</value>
     		</list>
     	</property>
     </bean>
