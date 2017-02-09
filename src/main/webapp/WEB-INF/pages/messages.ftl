@@ -27,14 +27,60 @@
                 	<div class="tab-content">
 						<ul class="nav nav-tabs">
 							<li id="inbox-tab" class="active"><a data-toggle="tab" href="#inbox"><@spring.message 'MESSAGES.INBOX.TAB'/></a></li>
+							<li id="compose-tab"><a data-toggle="tab" href="#sent"><@spring.message 'MESSAGES.SENT.TAB'/></a></li>
 							<li id="compose-tab"><a data-toggle="tab" href="#compose"><@spring.message 'MESSAGES.COMPOSE.TAB'/></a></li>
 						</ul>
 						
 						<div id="inbox" class="tab-pane active">
 						    <div class="panel-body">
-						    	<div id="select-check">
-			                    	<label><input  id="select-all" class="panel-heading-check" type="checkbox" name="select all" value="">   <@spring.message 'MESSAGE.COMPOSE.SELECT.ALL.EMAIL'/></label>
-                                    <div id="delete-mail" class="btn form-btn delete-btn"><@spring.message 'MESSAGE.COMPOSE.DELETE.EMAIL.BTN'/></div>						    	</div>						    					    
+						    	<div>
+			                    	<label><input class="select-all panel-heading-check" type="checkbox" name="select all" value="">   <@spring.message 'MESSAGE.COMPOSE.SELECT.ALL.EMAIL'/></label>
+                                    <div class="btn form-btn delete-btn"><@spring.message 'MESSAGE.COMPOSE.DELETE.EMAIL.BTN'/></div>
+							    </div>						    					    
+							    <#if inboxes??>
+                      				<#list inboxes as inbox>
+									    <ul class="event-list">
+				                            <li>
+				                                <div class="details-container">		                                	
+				                                	<div class="panel message-details">
+			                            	            <div class="panel-heading email-hover">
+			                            	            	<aside class="heading-check">
+				                                        		<input class="mail-check" type="checkbox" name="message" value="" />
+				                                            </aside>
+				                                            <div class="heading-title title-align">
+				                                            	<#if inbox.title>
+				                                            		${inbox.title}
+				                                            	</#if>
+				                                            </div>	
+			                                            	<aside class="heading-date">
+				                                            	<span class="glyphicon-mob pull-right clickable"><i class="glyphicon glyphicon-chevron-down"></i></span>
+				                                        	    <#if inbox.date??>
+				                                        	        <span class="date-poz">${inbox.date}</span>
+			                                        	        </#if>
+				                                        	</aside>
+				                                        </div>
+				                                        <div class="panel-collapse collapse">
+				                                            <div class="product-panel-body">
+				                                                <#if inbox.content>
+				                                                	${inbox.content}
+				                                            	</#if>
+				                                            </div>
+				                                        </div>
+				                                    </div> 	                          		 
+				                                </div>
+				                            </li>
+				                        </ul>
+			                        </#list>
+								</#if>					    							    
+						    </div>
+						</div>
+				
+		                <div id="sent" class="tab-pane fade">
+		                    <div class="panel-body">
+		                    	<div>
+			                    	<label><input class="select-all panel-heading-check" type="checkbox" name="select all" value="">   <@spring.message 'MESSAGE.COMPOSE.SELECT.ALL.EMAIL'/></label>
+                                    <div class="btn form-btn delete-btn"><@spring.message 'MESSAGE.COMPOSE.DELETE.EMAIL.BTN'/></div>						    	
+                                </div>						    					   						    
 							    <ul class="event-list">
 		                            <li>
 		                                <div class="details-container">		                                	
@@ -43,48 +89,48 @@
 	                            	            	<aside class="heading-check">
 		                                        		<input class="mail-check" type="checkbox" name="message" value="" />
 		                                            </aside>
-		                                            <div class="heading-title">
-		                                            	test1
+		                                            <div class="heading-title title-align">
+		                                            	titlu 
 		                                            </div>	
 	                                            	<aside class="heading-date">
-		                                            	<span class="glyphicon-mob pull-right clickable"><i class="glyphicon glyphicon-chevron-down"></i></span>
-		                                        	    <span class="date-poz">Jan 15</span>
+		                                            	<span class="glyphicon-mob pull-right clickable"><i class="glyphicon glyphicon-chevron-down"></i></span> 
+		                                        	    <span class="date-poz">12.12.2017</span>   
 		                                        	</aside>
 		                                        </div>
 		                                        <div class="panel-collapse collapse">
 		                                            <div class="product-panel-body">
-		                                                test 1
+		                                                content
 		                                            </div>
 		                                        </div>
-		                                    </div>
-	                          		
-		                                    <div class="panel message-details">
+		                                    </div> 	                          		 
+		                                </div>
+		                                
+		                                <div class="details-container">		                                	
+		                                	<div class="panel message-details">
 	                            	            <div class="panel-heading email-hover">
 	                            	            	<aside class="heading-check">
 		                                        		<input class="mail-check" type="checkbox" name="message" value="" />
 		                                            </aside>
-		                                            <div class="heading-title">
-		                                            	test2 fsdjfhjkdsh sdfjdfjdslkjflkds sdjflksdjfsdljf lkdsjflksdfjdssdjfk fsdfdf fdsfsdf
-		                                            	dsfsdf f ddsfsdf fdsfsdf sdfdsf fsdfsdfsdf sdfsdfsdf fdsfsdfsdf dsfsdfsdf fdsfsdfdsfsd
+		                                            <div class="heading-title title-align">
+		                                            	titlu 
 		                                            </div>	
 	                                            	<aside class="heading-date">
-		                                            	<span class="glyphicon-mob pull-right clickable"><i class="glyphicon glyphicon-chevron-down"></i></span>
-		                                        	    <span class="date-poz">12/09/2016</span>
+		                                            	<span class="glyphicon-mob pull-right clickable"><i class="glyphicon glyphicon-chevron-down"></i></span> 
+		                                        	    <span class="date-poz">12.12.2017</span>   
 		                                        	</aside>
 		                                        </div>
 		                                        <div class="panel-collapse collapse">
 		                                            <div class="product-panel-body">
-		                                                test 1
+		                                                content
 		                                            </div>
 		                                        </div>
-		                                    </div>  
-		                                     
+		                                    </div> 	                          		 
 		                                </div>
+		                                
 		                            </li>
-		                        </ul>					    							    
-						    </div>
-						</div>
-				
+		                        </ul> 
+		                    </div>
+		                </div>
 		                
 		                <div id="compose" class="tab-pane fade">
 		                    <div class="panel-body">

@@ -40,7 +40,7 @@
                                       <#if order.id??>
                                         <a href="orders/${order.id}"><div class="btn form-btn blue go-right"><@spring.message 'ORDERS.DETAILS.VIEW.BUTTON'/></div></a>
                                         <h2 class="order-nr-title"><@spring.message 'ORDERS.DETAILS.NUMBER'/>: ${order.id}</h2> 
-                                    </#if>
+                                      </#if>
                                       <#if order.date??>
                                         <p><@spring.message 'ORDERS.DETAILS.DATE'/>: ${order.date?date}</p>
                                       </#if>

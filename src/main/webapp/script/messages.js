@@ -33,10 +33,12 @@ $(document)
 .on('show.bs.collapse', '.panel-collapse', function () {
     var $span = $(this).parents('.panel').find('.heading-title, .heading-date');
     $span.find('i').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
+    $span.removeClass('title-align');
 })
 .on('hide.bs.collapse', '.panel-collapse', function () {
     var $span = $(this).parents('.panel').find('.heading-title, .heading-date');
     $span.find('i').removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
+    $span.addClass('title-align');
 })
 
 //Change color when a mail is checked
@@ -50,7 +52,7 @@ $(".panel-heading").click(function() {
 });
 
 //Select all
-$("#select-all").change(function() {
+$(".select-all").change(function() {
     if($(this).is(":checked")){
     $(":checkbox").prop("checked", true);
     $(".panel-heading").addClass("panel-heading-check");

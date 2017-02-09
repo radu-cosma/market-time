@@ -88,13 +88,8 @@
 	width: 30px;
 }
 
-.heading-date {
-	width: 100px;	
-}
-
-.date-poz {
-	float: right;
-	margin-right: 10px;
+.mail-check {
+	cursor: pointer;
 }
 
 .heading-title {
@@ -102,6 +97,10 @@
 	padding-right: 10px;
 	text-overflow:ellipsis;
     overflow: hidden;
+    cursor: pointer;
+}
+
+.title-align {	
     white-space:nowrap;
 }
 
@@ -111,10 +110,20 @@
   	}
 }
 
+.date-poz {
+	float: right;
+	margin-right: 10px;
+}
+
 @media (max-width: 480px) {
 	.date-poz {
 		margin-right: 0;       
   	}
+}
+
+.heading-date {
+	width: 100px;	
+	cursor: pointer;
 }
 
 @media (max-width: 480px) {
@@ -126,4 +135,5 @@
 .panel-heading-check {
 	background: #ffffe6;
     border-radius: 4px;
+    cursor: pointer;
 }
