@@ -37,8 +37,8 @@
 			                    	<label><input class="select-all panel-heading-check" type="checkbox" name="select all" value="">   <@spring.message 'MESSAGE.COMPOSE.SELECT.ALL.EMAIL'/></label>
                                     <div class="btn form-btn delete-btn"><@spring.message 'MESSAGE.COMPOSE.DELETE.EMAIL.BTN'/></div>
 							    </div>						    					    
-							    <#if inboxes??>
-                      				<#list inboxes as inbox>
+							    <#if messages??>
+                      				<#list messages as receivedMessage>
 									    <ul class="event-list">
 				                            <li>
 				                                <div class="details-container">		                                	
@@ -48,21 +48,21 @@
 				                                        		<input class="mail-check" type="checkbox" name="message" value="" />
 				                                            </aside>
 				                                            <div class="heading-title title-align">
-				                                            	<#if inbox.title>
-				                                            		${inbox.title}
+				                                            	<#if receivedMessage.title??>
+				                                            		${receivedMessage.title}
 				                                            	</#if>
 				                                            </div>	
 			                                            	<aside class="heading-date">
 				                                            	<span class="glyphicon-mob pull-right clickable"><i class="glyphicon glyphicon-chevron-down"></i></span>
-				                                        	    <#if inbox.date??>
-				                                        	        <span class="date-poz">${inbox.date}</span>
+				                                        	    <#if receivedMessage.date??>
+				                                        	        <span class="date-poz">${receivedMessage.date}</span>
 			                                        	        </#if>
 				                                        	</aside>
 				                                        </div>
 				                                        <div class="panel-collapse collapse">
 				                                            <div class="product-panel-body">
-				                                                <#if inbox.content>
-				                                                	${inbox.content}
+				                                                <#if receivedMessage.content??>
+				                                                	${receivedMessage.content}
 				                                            	</#if>
 				                                            </div>
 				                                        </div>
