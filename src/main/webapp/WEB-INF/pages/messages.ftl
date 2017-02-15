@@ -47,11 +47,15 @@
 			                            	            	<aside class="heading-check">
 				                                        		<input class="mail-check" type="checkbox" name="message" value="" />
 				                                            </aside>
-				                                            <div class="heading-title title-align">
-				                                            	<#if receivedMessage.title??>
-				                                            		${receivedMessage.title}
-				                                            	</#if>
-				                                            </div>	
+			                                            	<#if receivedMessage.read??>		
+                                                            	<div class="heading-title title-align read">
+                                                            <#else>
+                                                            	<div class="heading-title title-align">
+			                                            	</#if>
+			                                            	<#if receivedMessage.title??>
+			                                            		${receivedMessage.title}
+			                                            	</#if>
+		                                            		</div>	
 			                                            	<aside class="heading-date">
 				                                            	<span class="glyphicon-mob pull-right clickable"><i class="glyphicon glyphicon-chevron-down"></i></span>
 				                                        	    <#if receivedMessage.date??>
@@ -80,55 +84,42 @@
 		                    	<div>
 			                    	<label><input class="select-all panel-heading-check" type="checkbox" name="select all" value="">   <@spring.message 'MESSAGE.COMPOSE.SELECT.ALL.EMAIL'/></label>
                                     <div class="btn form-btn delete-btn"><@spring.message 'MESSAGE.COMPOSE.DELETE.EMAIL.BTN'/></div>						    	
-                                </div>						    					   						    
-							    <ul class="event-list">
-		                            <li>
-		                                <div class="details-container">		                                	
-		                                	<div class="panel message-details">
-	                            	            <div class="panel-heading email-hover">
-	                            	            	<aside class="heading-check">
-		                                        		<input class="mail-check" type="checkbox" name="message" value="" />
-		                                            </aside>
-		                                            <div class="heading-title title-align">
-		                                            	titlu 
-		                                            </div>	
-	                                            	<aside class="heading-date">
-		                                            	<span class="glyphicon-mob pull-right clickable"><i class="glyphicon glyphicon-chevron-down"></i></span> 
-		                                        	    <span class="date-poz">12.12.2017</span>   
-		                                        	</aside>
-		                                        </div>
-		                                        <div class="panel-collapse collapse">
-		                                            <div class="product-panel-body">
-		                                                content
-		                                            </div>
-		                                        </div>
-		                                    </div> 	                          		 
-		                                </div>
-		                                
-		                                <div class="details-container">		                                	
-		                                	<div class="panel message-details">
-	                            	            <div class="panel-heading email-hover">
-	                            	            	<aside class="heading-check">
-		                                        		<input class="mail-check" type="checkbox" name="message" value="" />
-		                                            </aside>
-		                                            <div class="heading-title title-align">
-		                                            	titlu 
-		                                            </div>	
-	                                            	<aside class="heading-date">
-		                                            	<span class="glyphicon-mob pull-right clickable"><i class="glyphicon glyphicon-chevron-down"></i></span> 
-		                                        	    <span class="date-poz">12.12.2017</span>   
-		                                        	</aside>
-		                                        </div>
-		                                        <div class="panel-collapse collapse">
-		                                            <div class="product-panel-body">
-		                                                content
-		                                            </div>
-		                                        </div>
-		                                    </div> 	                          		 
-		                                </div>
-		                                
-		                            </li>
-		                        </ul> 
+                                </div>
+                                <#if messages??>
+                      				<#list messages as receivedMessage>						    					   						    
+									    <ul class="event-list">
+				                            <li>
+				                                <div class="details-container">		                                	
+				                                	<div class="panel message-details">
+			                            	            <div class="panel-heading email-hover">
+			                            	            	<aside class="heading-check">
+				                                        		<input class="mail-check" type="checkbox" name="message" value="" />
+				                                            </aside>
+				                                            <div class="heading-title title-align read">
+				                                            	<#if receivedMessage.title??>
+				                                            		${receivedMessage.title}
+				                                            	</#if>
+				                                            </div>	
+			                                            	<aside class="heading-date">
+				                                            	<span class="glyphicon-mob pull-right clickable"><i class="glyphicon glyphicon-chevron-down"></i></span>
+				                                        	    <#if receivedMessage.date??>
+				                                        	        <span class="date-poz">${receivedMessage.date}</span>
+			                                        	        </#if>
+				                                        	</aside>
+				                                        </div>
+				                                        <div class="panel-collapse collapse">
+				                                            <div class="product-panel-body">
+				                                                <#if receivedMessage.content??>
+				                                                	${receivedMessage.content}
+				                                            	</#if>
+				                                            </div>
+				                                        </div>
+				                                    </div> 	                          		 
+				                                </div>
+				                            </li>
+				                        </ul>
+		                        	</#list>
+								</#if>	 
 		                    </div>
 		                </div>
 		                

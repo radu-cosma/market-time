@@ -33,7 +33,7 @@ $(document)
 .on('show.bs.collapse', '.panel-collapse', function () {
     var $span = $(this).parents('.panel').find('.heading-title, .heading-date');
     $span.find('i').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
-    $span.removeClass('title-align');
+    $span.removeClass('title-align, read');
 })
 .on('hide.bs.collapse', '.panel-collapse', function () {
     var $span = $(this).parents('.panel').find('.heading-title, .heading-date');

@@ -59,7 +59,7 @@
 }
 
 .event-list {
-    margin: 0px;
+    margin: 5px 0 0 0;
     padding: 0px;
     padding-top: 10px;
     list-style-type: none;  
@@ -90,6 +90,10 @@
 
 .mail-check {
 	cursor: pointer;
+}
+
+.read {
+	font-weight: bold;
 }
 
 .heading-title {
@@ -136,4 +140,14 @@
 	background: #ffffe6;
     border-radius: 4px;
     cursor: pointer;
+}
+
+.product-panel-body {
+	padding: 10px;
+}
+
+@media (max-width: 480px) {
+	.product-panel-body {
+		padding: 5px;       
+  	}
 }
