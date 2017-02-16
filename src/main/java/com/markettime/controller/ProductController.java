@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -40,10 +41,14 @@ public class ProductController extends BaseController {
     @Autowired
     private ProductService productService;
 
+    /**
+     *
+     * @return
+     */
     @RequestMapping(value = "add", method = RequestMethod.GET)
-    public String getAddProduct() {
-        productService.prepareCache();
-        return "add-product";
+    public ModelAndView getAddProduct() {
+        String addProductSessionId = productService.prepareCache();
+        return new ModelAndView("add-product", "addProductSessionId", addProductSessionId);
     }
 
     /**

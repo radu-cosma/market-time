@@ -193,7 +193,8 @@ var
 				'name' : file.name,
 				'type' : file.type,
 				'weight': $('.product-image-container').length + 1,
-				'imageData': evt.target.result
+				'imageData': evt.target.result,
+				'addProductSessionId': $('#add-product-session').val()
 			};
 	    	addProductImage(imageData);
 	    };
@@ -206,15 +207,29 @@ var
 			imageWeight = imageContainer.attr('weight');
 		$.ajax({
 			type: 'POST',
-		    url: '/market-time/rest/products/removeImage/' + imageWeight,
+		    url: '/market-time/rest/products/removeImage',
+		    dataType: 'json',
+		    contentType: 'application/json',
+		    data: JSON.stringify({
+		    	'weight': imageWeight,
+		    	'addProductSessionId': $('#add-product-session').val()
+		    }),
 		    success: function(response) {
 		        if (!response.generalError && !response.validationErrors) {
 		        	imageContainer.remove();
+		        	recalibrateWeights();
 		        }
 		    },  
 		    error: function(e) {
 		    	console.log(e)
 		    }  
+		});
+	},
+	
+	recalibrateWeights = function() {
+		var previousImageWeight = 0;
+		$('.product-image-container').each(function() {
+			$(this).attr('weight', ++previousImageWeight);
 		});
 	},
 	
@@ -251,7 +266,8 @@ $('#add-image-url-button').on('click', function(evt) {
 				'name' : imageName, 
 				'type' : imageType, 
 				'weight': $('.product-image-container').length + 1,
-				'url': imageUrl
+				'url': imageUrl,
+				'addProductSessionId': $('#add-product-session').val()
 			};
 		addProductImage(imageData, addImageByUrlSuccessCallback);
 	}

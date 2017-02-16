@@ -37,6 +37,9 @@
             </div>
             <div class="row">
                 <div class="col-md-1"></div>
+                <#if addProductSessionId??>
+                   <input id="add-product-session" name="addProductSessionId" type="hidden" value="${addProductSessionId}"/> 
+                </#if>
                 <div class="col-md-5 col-sm-12">
                     <@createLeftColumn />
                 </div>

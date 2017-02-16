@@ -8,7 +8,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.markettime.exception.ValidationErrorsException;
 import com.markettime.model.dto.request.AddProductImageDto;
+import com.markettime.model.dto.request.RemoveProductImageDto;
 import com.markettime.service.ProductService;
 
 /**
@@ -47,10 +47,6 @@ public class RestProductController {
             throw new ValidationErrorsException(bindingResult.getAllErrors());
         }
 
-        if (addProductImageDto.getImageData() != null) {
-            productService.uploadImage(addProductImageDto);
-        }
-
         productService.cacheImage(addProductImageDto);
 
         LOGGER.info("completed addProductImage; returned: []");
@@ -59,14 +55,20 @@ public class RestProductController {
 
     /**
      *
-     * @param imageWeight
+     * @param removeProductImageDto
+     * @param bindingResult
      * @return
      */
-    @RequestMapping(value = "removeImage/{imageWeight}", method = RequestMethod.POST)
-    public Object removeProductImage(@PathVariable(value = "imageWeight") Integer imageWeight) {
-        LOGGER.info("started removeProductImage[imageWeight: {}]", imageWeight);
+    @RequestMapping(value = "removeImage", method = RequestMethod.POST)
+    public Object removeProductImage(@Valid @RequestBody RemoveProductImageDto removeProductImageDto,
+            BindingResult bindingResult) {
+        LOGGER.info("started removeProductImage[removeProductImageDto: {}]", removeProductImageDto);
 
-        productService.uncacheImage(imageWeight);
+        if (bindingResult.hasErrors()) {
+            throw new ValidationErrorsException(bindingResult.getAllErrors());
+        }
+
+        productService.uncacheImage(removeProductImageDto);
 
         LOGGER.info("completed removeProductImage; returned: []");
         return null;

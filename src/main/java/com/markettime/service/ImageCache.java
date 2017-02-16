@@ -1,6 +1,6 @@
 package com.markettime.service;
 
-import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,7 +10,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+import com.markettime.exception.ApplicationException;
 import com.markettime.model.dto.request.AddProductImageDto;
+import com.markettime.model.dto.request.RemoveProductImageDto;
+import com.markettime.service.model.AddProductSession;
+import com.markettime.service.model.ProductImagesList;
 
 /**
  *
@@ -22,82 +26,86 @@ public class ImageCache {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ImageCache.class);
 
-    private static Map<Long, UserImages> imageCache;
+    private static Map<AddProductSession, ProductImagesList> imageCache;
     static {
         imageCache = new HashMap<>();
     }
 
     /**
      *
-     * @return
+     * @param userId
      */
     public String initialize(Long userId) {
-        String accessKey = UUID.randomUUID().toString();
-        UserImages userImages = new UserImages();
-        // userImages.accessKey = accessKey;
-        userImages.images = new ArrayList<>();
-        imageCache.put(userId, userImages);
-        return accessKey;
+        String addProductSessionId = UUID.randomUUID().toString();
+        imageCache.put(new AddProductSession(userId, addProductSessionId), new ProductImagesList());
+        return addProductSessionId;
     }
 
     /**
      *
+     * @param addProductSession
      */
-    public void clear(Long userId) {
-        if (imageCache.containsKey(userId)) {
-            imageCache.remove(userId);
+    public void clear(Long userId, String addProductSessionId) {
+        AddProductSession addProductSession = new AddProductSession(userId, addProductSessionId);
+        if (imageCache.containsKey(addProductSession)) {
+            imageCache.remove(addProductSession);
         } else {
-            LOGGER.info("No cached images for user with id={}", userId);
+            LOGGER.info("No cached images for {}", addProductSession);
         }
     }
 
     /**
      *
+     * @param addProductSession
      * @param addProductImageDto
      */
     public void addImage(Long userId, AddProductImageDto addProductImageDto) {
-        UserImages userImages = imageCache.get(userId);
-        if (userImages != null) {
-            userImages.images.add(addProductImageDto);
+        AddProductSession addProductSession = new AddProductSession(userId,
+                addProductImageDto.getAddProductSessionId());
+        ProductImagesList productImagesList = imageCache.get(addProductSession);
+        productImagesList.setLastAccess(new Date());
+        List<AddProductImageDto> productImages = productImagesList.getProductImages();
+        if (productImages != null) {
+            productImages.add(addProductImageDto);
         } else {
-            LOGGER.error("Image cache is not initialized for user with id={}", userId);
+            throw new ApplicationException(String.format("Image cache is not initialized for %s", addProductSession));
         }
     }
 
     /**
      *
-     * @param userId
+     * @param addProductSession
      * @param weight
      */
-    public void removeImage(Long userId, int weight) {
-        UserImages userImages = imageCache.get(userId);
-        // @formatter:off
-        userImages.images.removeIf(productImage -> productImage.getWeight() == weight);
-        // @formatter:on
+    public void removeImage(Long userId, RemoveProductImageDto removeProductImageDto) {
+        AddProductSession addProductSession = new AddProductSession(userId,
+                removeProductImageDto.getAddProductSessionId());
+        ProductImagesList productImagesList = imageCache.get(addProductSession);
+        productImagesList.setLastAccess(new Date());
+        List<AddProductImageDto> productImages = productImagesList.getProductImages();
+        if (productImages != null) {
+            productImages.removeIf(productImage -> productImage.getWeight() == removeProductImageDto.getWeight());
+            recalibrateWeights(productImages);
+        } else {
+            throw new ApplicationException(String.format("Image cache is not initialized for %s", addProductSession));
+        }
+    }
+
+    private void recalibrateWeights(List<AddProductImageDto> productImages) {
+        int previousImageWeight = 0;
+        for (AddProductImageDto addProductImageDto : productImages) {
+            addProductImageDto.setWeight(++previousImageWeight);
+        }
     }
 
     /**
      *
-     * @param userId
-     */
-    public void recalibrateWeights(Long userId) {
-        UserImages userImages = imageCache.get(userId);
-        // userImages.images.
-    }
-
-    /**
-     *
+     * @param addProductSession
      * @return
      */
-    public List<AddProductImageDto> getImages(Long userId) {
-        return imageCache.get(userId).images;
-    }
-
-    private class UserImages {
-
-        // private String accessKey;
-        private List<AddProductImageDto> images;
-
+    public List<AddProductImageDto> getImages(Long userId, String addProductSessionId) {
+        AddProductSession addProductSession = new AddProductSession(userId, addProductSessionId);
+        return imageCache.get(addProductSession).getProductImages();
     }
 
 }

@@ -13,15 +13,13 @@ public class AddProductImageDto {
 
     @NotEmpty(message = VALIDATION_NOT_EMPTY)
     private String name;
-
     @NotEmpty(message = VALIDATION_NOT_EMPTY)
     private String type;
-
     private int weight;
-
     private String url;
-
     private byte[] imageData;
+    @NotEmpty(message = VALIDATION_NOT_EMPTY)
+    private String addProductSessionId;
 
     public String getName() {
         return name;
@@ -63,11 +61,20 @@ public class AddProductImageDto {
         this.imageData = imageData;
     }
 
+    public String getAddProductSessionId() {
+        return addProductSessionId;
+    }
+
+    public void setAddProductSessionId(String addProductSessionId) {
+        this.addProductSessionId = addProductSessionId;
+    }
+
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
         builder.append("AddProductImageDto [name=").append(name).append(", type=").append(type).append(", weight=")
-                .append(weight).append(", url=").append(url).append("]");
+                .append(weight).append(", url=").append(url).append(", addProductSessionId=")
+                .append(addProductSessionId).append("]");
         return builder.toString();
     }
 

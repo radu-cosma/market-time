@@ -1,13 +1,14 @@
 package com.markettime.service;
 
-import java.io.File;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
-import java.util.UUID;
+import java.util.Map;
 import java.util.stream.Collectors;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,6 +19,7 @@ import com.markettime.context.UserContext;
 import com.markettime.exception.ServiceValidationException;
 import com.markettime.model.dto.request.AddProductImageDto;
 import com.markettime.model.dto.request.AddProductRequestDto;
+import com.markettime.model.dto.request.RemoveProductImageDto;
 import com.markettime.model.entity.ImageTypeEntity;
 import com.markettime.model.entity.ProductEntity;
 import com.markettime.model.entity.ProductImageEntity;
@@ -38,7 +40,7 @@ import com.markettime.util.BeanMapperUtil;
 @Transactional
 public class ProductService {
 
-    private static final String TEMP_IMAGE_URL = "http://smilecreations-music-label.com/wp-content/uploads/2016/07/new2.png";
+    private static final Logger LOGGER = LoggerFactory.getLogger(ProductService.class);
 
     @Autowired
     private UserContext userContext;
@@ -61,14 +63,8 @@ public class ProductService {
     @Autowired
     private ImageCache imageCache;
 
-    @Value("#{cloudinary.cloud.name}")
-    private String cloudinaryCloudName;
-
-    @Value("#{cloudinary.api.key}")
-    private String cloudinaryApiKey;
-
-    @Value("#{cloudinary.api.secret}")
-    private String cloudinaryApiSecret;
+    @Autowired
+    private Cloudinary cloudinary;
 
     /**
      *
@@ -86,12 +82,12 @@ public class ProductService {
 
     /**
      *
+     * @return
      */
     @LoggedIn
-    public void prepareCache() {
+    public String prepareCache() {
         Long userId = userContext.getUserId();
-        imageCache.clear(userId);
-        imageCache.initialize(userId);
+        return imageCache.initialize(userId);
     }
 
     /**
@@ -115,6 +111,9 @@ public class ProductService {
         if (!isValidType) {
             throw new ServiceValidationException(String.format("Unknown image type: %s", imageType));
         }
+        if (!(addProductImageDto.getImageData() == null ^ addProductImageDto.getUrl() == null)) {
+            throw new ServiceValidationException("Image data and image URL cannot be both present or absent.");
+        }
     }
 
     /**
@@ -122,10 +121,9 @@ public class ProductService {
      * @param weight
      */
     @LoggedIn
-    public void uncacheImage(int weight) {
+    public void uncacheImage(RemoveProductImageDto removeProductImageDto) {
         Long userId = userContext.getUserId();
-        imageCache.removeImage(userId, weight);
-        imageCache.recalibrateWeights(userId);
+        imageCache.removeImage(userId, removeProductImageDto);
     }
 
     /**
@@ -141,27 +139,40 @@ public class ProductService {
 
         productRepository.persist(productEntity);
 
-        saveProductImages(productEntity);
+        saveProductImages(productEntity, addProductRequestDto.getAddProductSessionId());
         saveProductTags(addProductRequestDto.getTags(), productEntity);
     }
 
-    private void saveProductImages(ProductEntity productEntity) {
+    private void saveProductImages(ProductEntity productEntity, String addProductSessionId) {
         Long userId = userContext.getUserId();
-        List<AddProductImageDto> productImages = imageCache.getImages(userId);
+        List<AddProductImageDto> productImages = imageCache.getImages(userId, addProductSessionId);
         for (AddProductImageDto addProductImageDto : productImages) {
             ProductImageEntity productImageEntity = BeanMapperUtil.map(addProductImageDto, ProductImageEntity.class);
             productImageEntity.setProduct(productEntity);
             productImageEntity.setImageType(imageTypeRepository.findByType(addProductImageDto.getType()));
             if (addProductImageDto.getImageData() != null) {
-                String imageUuid = saveImageToDisk(addProductImageDto);
-                productImageEntity.setUrl(TEMP_IMAGE_URL + imageUuid);
+                String cloudinaryImageUrl = uploadImageToCloudinary(addProductImageDto);
+                if (cloudinaryImageUrl != null) {
+                    addProductImageDto.setUrl(cloudinaryImageUrl);
+                } else {
+                    // save on disk
+                }
             }
         }
     }
 
-    private String saveImageToDisk(AddProductImageDto addProductImageDto) {
-        String imageUuid = UUID.nameUUIDFromBytes(addProductImageDto.getImageData()).toString();
-        return imageUuid;
+    private String uploadImageToCloudinary(AddProductImageDto addProductImageDto) {
+        String cloudinaryImageUrl = null;
+        try {
+            Map uploadResult = cloudinary.uploader().upload(addProductImageDto.getImageData(),
+                    ObjectUtils.asMap("filename", addProductImageDto.getName()));
+            if (uploadResult.containsKey("url")) {
+                cloudinaryImageUrl = (String) uploadResult.get("url");
+            }
+        } catch (IOException e) {
+            LOGGER.error(String.format("An exception occurred when uploading %s", addProductImageDto), e);
+        }
+        return cloudinaryImageUrl;
     }
 
     private void saveProductTags(String tags, ProductEntity productEntity) {
@@ -175,12 +186,6 @@ public class ProductService {
                 productTagRepository.persist(productTagEntity);
         });
         // @formatter:on
-    }
-
-    public void uploadImage(AddProductImageDto addProductImageDto) {
-        Cloudinary cloudinary = new Cloudinary(ObjectUtils.asMap("cloud_name", cloudinaryCloudName, "api_key",
-                cloudinaryApiKey, "api_secret", cloudinaryApiSecret));
-        File file = new File
     }
 
 }
