@@ -34,7 +34,7 @@
 						<div id="inbox" class="tab-pane active">
 						    <div class="panel-body">
 						    	<div>
-			                    	<label><input class="select-all panel-heading-check" type="checkbox" name="select all" value="">   <@spring.message 'MESSAGE.COMPOSE.SELECT.ALL.EMAIL'/></label>
+			                    	<label><input id="select-all-inbox" class="select-all panel-heading-check" type="checkbox" name="select all" value=""> <@spring.message 'MESSAGE.COMPOSE.SELECT.ALL.EMAIL'/></label>
                                     <div class="btn form-btn delete-btn"><@spring.message 'MESSAGE.COMPOSE.DELETE.EMAIL.BTN'/></div>
 							    </div>						    					    
 							    <#if messages??>
@@ -79,10 +79,10 @@
 						    </div>
 						</div>
 				
-		                <div id="sent" class="tab-pane fade">
+		                <div id="outbox" class="tab-pane fade">
 		                    <div class="panel-body">
 		                    	<div>
-			                    	<label><input class="select-all panel-heading-check" type="checkbox" name="select all" value="">   <@spring.message 'MESSAGE.COMPOSE.SELECT.ALL.EMAIL'/></label>
+			                    	<label><input id="select-all-outbox" class="select-all panel-heading-check" type="checkbox" name="select all" value=""> <@spring.message 'MESSAGE.COMPOSE.SELECT.ALL.EMAIL'/></label>
                                     <div class="btn form-btn delete-btn"><@spring.message 'MESSAGE.COMPOSE.DELETE.EMAIL.BTN'/></div>						    	
                                 </div>
                                 <#if messages??>

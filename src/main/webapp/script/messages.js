@@ -102,3 +102,17 @@ $('form').on('submit', function(evt) {
         evt.preventDefault();
     }
 });
+
+$('#inbox .mail-check').on('click', function() {
+	var selectAllInboxCheckbox = $('#select-all-inbox');
+	if (!$(this).is(':checked') && $('#inbox .mail-check:checked').length === 0 && selectAllInboxCheckbox.is(':checked')) {
+		selectAllInboxCheckbox.prop('checked', false);
+	}
+});
+
+$('#outbox .mail-check').on('click', function() {
+	var selectAllOutboxCheckbox = $('#select-all-outbox');
+	if (!$(this).is(':checked') && $('#outbox .mail-check:checked').length === 0 && selectAllOutboxCheckbox.is(':checked')) {
+		selectAllOutboxCheckbox.prop('checked', false);
+	}
+});
