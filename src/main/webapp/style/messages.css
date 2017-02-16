@@ -151,3 +151,6 @@
 		padding: 5px;       
   	}
 }
+.textarea-tooltip {
+    bottom: 180px;
+}

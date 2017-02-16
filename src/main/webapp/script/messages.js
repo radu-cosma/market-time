@@ -62,3 +62,43 @@ $(".select-all").change(function() {
     $(".panel-heading").removeClass("panel-heading-check");
     }
 });
+
+/*validations*/
+
+var validationConfig = {
+    'subject' : {
+        'required' : true,
+        'minLength' : 3,
+        'maxLength' : 100,
+        'messages' : {
+            'required' : 'This field is required.',
+            'lessThan' : 'First name should have at least 3 characters.',
+            'moreThan' : 'First name should have at most 100 characters',
+            'invalidRegexp' : 'Invalid format.'
+        }
+    },
+    'comment' : {
+        'required' : true,
+        'minLength' : 2,
+        'maxLength' : 2000,
+        'messages' : {
+            'required' : 'This field is required.',
+            'lessThan' : 'Comment should have at least 2 characters.',
+            'moreThan' : 'Comment should have at most 2000 characters'
+        }
+    }
+}
+
+$('form').on('submit', function(evt) {
+    var inputIds = $(this).find('input').map(function() {
+        return this.id;
+    }).get();
+
+    inputIds.push('comment');
+    
+    var isValid = validator.validateForm(inputIds, validationConfig);
+
+    if (!isValid) {
+        evt.preventDefault();
+    }
+});
