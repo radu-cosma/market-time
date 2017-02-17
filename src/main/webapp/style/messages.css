@@ -32,6 +32,9 @@
     padding-left: 0;
     padding-right: 0;
 }
+.textarea-tooltip {
+    bottom: 180px;
+}
 
 
 /*Inbox*/
@@ -150,7 +153,4 @@
 	.product-panel-body {
 		padding: 5px;       
   	}
-}
-.textarea-tooltip {
-    bottom: 180px;
 }

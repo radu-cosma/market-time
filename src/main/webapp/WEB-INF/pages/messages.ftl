@@ -27,7 +27,7 @@
                 	<div class="tab-content">
 						<ul class="nav nav-tabs">
 							<li id="inbox-tab" class="active"><a data-toggle="tab" href="#inbox"><@spring.message 'MESSAGES.INBOX.TAB'/></a></li>
-							<li id="compose-tab"><a data-toggle="tab" href="#sent"><@spring.message 'MESSAGES.SENT.TAB'/></a></li>
+							<li id="compose-tab"><a data-toggle="tab" href="#outbox"><@spring.message 'MESSAGES.SENT.TAB'/></a></li>
 							<li id="compose-tab"><a data-toggle="tab" href="#compose"><@spring.message 'MESSAGES.COMPOSE.TAB'/></a></li>
 						</ul>
 						
@@ -42,7 +42,7 @@
 									    <ul class="event-list">
 				                            <li>
 				                                <div class="details-container">		                                	
-				                                	<div class="panel message-details">
+				                                	<div id="x" class="panel message-details">
 			                            	            <div class="panel-heading email-hover">
 			                            	            	<aside class="heading-check">
 				                                        		<input class="mail-check" type="checkbox" name="message" value="" />
@@ -91,7 +91,7 @@
 				                            <li>
 				                                <div class="details-container">		                                	
 				                                	<div class="panel message-details">
-			                            	            <div class="panel-heading email-hover">
+			                            	            <div id="z" class="panel-heading email-hover">
 			                            	            	<aside class="heading-check">
 				                                        		<input class="mail-check" type="checkbox" name="message" value="" />
 				                                            </aside>

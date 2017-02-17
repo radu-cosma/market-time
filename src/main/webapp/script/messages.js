@@ -51,20 +51,46 @@ $(".panel-heading").click(function() {
     }
 });
 
-//Select all
-$(".select-all").change(function() {
+//Select all inbox
+$("#select-all-inbox").change(function() {
     if($(this).is(":checked")){
-    $(":checkbox").prop("checked", true);
-    $(".panel-heading").addClass("panel-heading-check");
+    $("#inbox .mail-check").prop("checked", true);
+    $("#inbox .panel-heading").addClass("panel-heading-check");
     }
     else{
-    $(":checkbox").prop("checked", false);
-    $(".panel-heading").removeClass("panel-heading-check");
+    $("#inbox .mail-check").prop("checked", false);
+    $("#inbox .panel-heading").removeClass("panel-heading-check");
     }
 });
 
-/*validations*/
+//Select all outbox
+$("#select-all-outbox").change(function() {
+    if($(this).is(":checked")){
+    $("#outbox .mail-check").prop("checked", true);
+    $("#outbox .panel-heading").addClass("panel-heading-check");
+    }
+    else{
+    $("#outbox .mail-check").prop("checked", false);
+    $("#outbox .panel-heading").removeClass("panel-heading-check");
+    }
+});
 
+//Un-check select all
+$('#inbox .mail-check').on('click', function() {
+	var selectAllInboxCheckbox = $('#select-all-inbox');
+	if (!$(this).is(':checked') && $('#inbox .mail-check:checked').length === 0 && selectAllInboxCheckbox.is(':checked')) {
+		selectAllInboxCheckbox.prop('checked', false);
+	}
+});
+
+$('#outbox .mail-check').on('click', function() {
+	var selectAllOutboxCheckbox = $('#select-all-outbox');
+	if (!$(this).is(':checked') && $('#outbox .mail-check:checked').length === 0 && selectAllOutboxCheckbox.is(':checked')) {
+		selectAllOutboxCheckbox.prop('checked', false);
+	}
+});
+
+//validations
 var validationConfig = {
     'subject' : {
         'required' : true,
@@ -101,18 +127,4 @@ $('form').on('submit', function(evt) {
     if (!isValid) {
         evt.preventDefault();
     }
-});
-
-$('#inbox .mail-check').on('click', function() {
-	var selectAllInboxCheckbox = $('#select-all-inbox');
-	if (!$(this).is(':checked') && $('#inbox .mail-check:checked').length === 0 && selectAllInboxCheckbox.is(':checked')) {
-		selectAllInboxCheckbox.prop('checked', false);
-	}
-});
-
-$('#outbox .mail-check').on('click', function() {
-	var selectAllOutboxCheckbox = $('#select-all-outbox');
-	if (!$(this).is(':checked') && $('#outbox .mail-check:checked').length === 0 && selectAllOutboxCheckbox.is(':checked')) {
-		selectAllOutboxCheckbox.prop('checked', false);
-	}
 });
