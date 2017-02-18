@@ -42,7 +42,7 @@
 									    <ul class="event-list">
 				                            <li>
 				                                <div class="details-container">		                                	
-				                                	<div id="x" class="panel message-details">
+				                                	<div class="panel message-details">
 			                            	            <div class="panel-heading email-hover">
 			                            	            	<aside class="heading-check">
 				                                        		<input class="mail-check" type="checkbox" name="message" value="" />
@@ -91,7 +91,7 @@
 				                            <li>
 				                                <div class="details-container">		                                	
 				                                	<div class="panel message-details">
-			                            	            <div id="z" class="panel-heading email-hover">
+			                            	            <div class="panel-heading email-hover">
 			                            	            	<aside class="heading-check">
 				                                        		<input class="mail-check" type="checkbox" name="message" value="" />
 				                                            </aside>

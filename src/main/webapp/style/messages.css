@@ -26,7 +26,6 @@
 	color: #ffffff;
 }
 
-
 /*Contact*/
 .contact-form {
     padding-left: 0;
@@ -35,7 +34,6 @@
 .textarea-tooltip {
     bottom: 180px;
 }
-
 
 /*Inbox*/
 @media (max-width: 567px) {
