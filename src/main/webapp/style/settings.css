@@ -1,0 +1,55 @@
+.settings-list {
+    padding: 0;
+    padding-top: 10px;
+    list-style-type: none;  
+}
+.settings-details {
+    border: 1px solid #367fa9;
+    padding: 5px 5px 0 5px;	
+}
+@media (max-width: 480px) {
+    .settings-details {
+        margin-left: 5px;
+        margin-right: 5px;
+        padding-bottom: 5px;
+    }
+}
+.market-img {
+	width: 80px;
+	float: left;
+}
+.img-style {
+    width: 100%;
+    height: 100%;	
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+.save-btn {
+    color: #FFFFFF;
+    background-color: #367fa9;
+    border-color: #367fa9;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-family: Montserrat, Arial, sans-serif;
+}
+.details-style {
+	margin: 0;
+}
+.form-style {
+	margin: 10px 0 0 0;
+	padding-left: 0;
+}
+@media (max-width: 480px) {
+    .form-style {
+	margin-right: -15px;
+	margin-left: -15px;
+	}
+}
+.remove-btn {
+	color: #FFFFFF;
+    background-color: #367fa9;
+    border-color: #367fa9;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-family: Montserrat, Arial, sans-serif;
+}
