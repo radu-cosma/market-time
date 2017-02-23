@@ -5,7 +5,7 @@
     <ol class="breadcrumb">
         <li><a href="/market-time/dashboard"><i class="fa fa-dashboard"></i><@spring.message 'NAVIGATION.HOME'/></a></li>
         <li class="active">
-            <@spring.message 'ADD.PRODUCT.NAVIGATION.PAGE'/>
+            <@spring.message 'NAVIGATION.ADD.PRODUCT.PAGE'/>
         </li>
     </ol>
 </section>

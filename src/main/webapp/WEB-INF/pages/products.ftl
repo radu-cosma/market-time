@@ -4,11 +4,11 @@
         <li><a href="/market-time/dashboard"><i class="fa fa-dashboard"></i><@spring.message 'NAVIGATION.HOME'/></a></li>
         <li>
             <a href="/market-time/products?status=published">
-                <@spring.message 'PRODUCTS.NAVIGATION.PUBLISHED'/>
+                <@spring.message 'NAVIGATION.PRODUCTS.PUBLISHED'/>
             </a>
         </li>
         <li class="active">
-            <@spring.message 'PRODUCTS.NAVIGATION.PAGE'/>
+            <@spring.message 'NAVIGATION.PRODUCTS.PAGE'/>
         </li>
     </ol>
 </section>

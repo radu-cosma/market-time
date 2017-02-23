@@ -4,8 +4,8 @@
     </#if>
     <ol class="breadcrumb">
         <li><a href="/market-time/dashboard"><i class="fa fa-dashboard"></i><@spring.message 'NAVIGATION.HOME'/></a></li>
-        <li><a href="/market-time/orders"><@spring.message 'ORDERS.NAVIGATION.PAGE'/></a></li>
-        <li class="active"><@spring.message 'ORDER.DETAILS.NAVIGATION.PAGE'/></li>
+        <li><a href="/market-time/orders"><@spring.message 'NAVIGATION.ORDERS.PAGE'/></a></li>
+        <li class="active"><@spring.message 'NAVIGATION.ORDER.DETAILS.PAGE'/></li>
     </ol>
 </section>
 

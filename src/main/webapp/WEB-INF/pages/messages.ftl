@@ -4,7 +4,7 @@
       <h1><@spring.message 'MESSAGES.PAGE.TITLE'/></h1>
       <ol class="breadcrumb">
         <li><a href="/market-time/dashboard"><i class="fa fa-dashboard"></i><@spring.message 'NAVIGATION.HOME'/></a></li>
-        <li class="active"><@spring.message 'MESSAGES.NAVIGATION.PAGE'/></li>
+        <li class="active"><@spring.message 'NAVIGATION.MESSAGES.PAGE'/></li>
       </ol>
 </section>
 
@@ -32,7 +32,7 @@
 						    <div class="panel-body">
 						    	<div>
 			                    	<label><input id="select-all-inbox" class="select-all panel-heading-check" type="checkbox" name="select all" value=""> <@spring.message 'MESSAGE.COMPOSE.SELECT.ALL.EMAIL'/></label>
-                                    <div class="btn form-btn delete-btn"><@spring.message 'MESSAGE.COMPOSE.DELETE.EMAIL.BTN'/></div>
+                                    <div class="btn form-btn delete-btn"><@spring.message 'MESSAGE.COMPOSE.DELETE.EMAIL.BUTTON'/></div>
 							    </div>						    					    
 							    <#if messages??>
 								    <ul class="event-list">									        
@@ -45,7 +45,7 @@
 		                    <div class="panel-body">
 		                    	<div>
 			                    	<label><input id="select-all-outbox" class="select-all panel-heading-check" type="checkbox" name="select all" value=""> <@spring.message 'MESSAGE.COMPOSE.SELECT.ALL.EMAIL'/></label>
-                                    <div class="btn form-btn delete-btn"><@spring.message 'MESSAGE.COMPOSE.DELETE.EMAIL.BTN'/></div>						    	
+                                    <div class="btn form-btn delete-btn"><@spring.message 'MESSAGE.COMPOSE.DELETE.EMAIL.BUTTON'/></div>						    	
                                 </div>
                                 <#if messages??>
                                     <ul class="event-list">                                         
@@ -56,8 +56,7 @@
 		                </div>		                
 		                <div id="compose" class="tab-pane fade">
 		                    <div class="panel-body">
-		                    	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+		                    	<p><@spring.message 'MESSAGE.COMPOSE.TEXT'/></p>
 			                    <div class="contact-form col-md-6 col-xs-12">
 							        <form>
 								    	<div class="form-group">
