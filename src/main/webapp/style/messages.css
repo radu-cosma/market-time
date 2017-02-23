@@ -27,15 +27,18 @@
 }
 
 /*Contact*/
+
 .contact-form {
     padding-left: 0;
     padding-right: 0;
 }
+
 .textarea-tooltip {
     bottom: 180px;
 }
 
-/*Inbox*/
+/*Inbox - Outbox*/
+
 @media (max-width: 567px) {
     .panel-body {
         padding-left: 0;

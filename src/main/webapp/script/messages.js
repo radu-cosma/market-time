@@ -1,81 +1,50 @@
-//Browse 
-$(function() {
-
-  $(document).on('change', ':file', function() {
-    var input = $(this),
-        numFiles = input.get(0).files ? input.get(0).files.length : 1,
-        label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-    input.trigger('fileselect', [numFiles, label]);
-  }); 
-
-  $(document).ready( function() {
-      $(':file').on('fileselect', function(event, numFiles, label) {
-
-          var input = $(this).parents('.input-group').find(':text'),
-              log = numFiles > 1 ? numFiles + ' files selected' : label;
-
-          if( input.length ) {
-              input.val(log);
-          } else {
-              if( log ) alert(log);
-          }
-
-      });
-  });
-  
-});
-
 //Collapse section
-$(document)
-.on('click', '.heading-title, .heading-date', function(e) {
+$('.heading-title, .heading-date').click( function(e) {
     $(this).parents('.panel').find('.panel-collapse').collapse('toggle');
 })
-.on('show.bs.collapse', '.panel-collapse', function () {
-    var $span = $(this).parents('.panel').find('.heading-title, .heading-date');
-    $span.find('i').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
-    $span.removeClass('title-align, read');
+$('.panel-collapse').on('show.bs.collapse',  function () {
+    var span = $(this).parents('.panel').find('.heading-title, .heading-date');
+    span.find('i').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
+    span.removeClass('title-align, read');
 })
-.on('hide.bs.collapse', '.panel-collapse', function () {
-    var $span = $(this).parents('.panel').find('.heading-title, .heading-date');
-    $span.find('i').removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
-    $span.addClass('title-align');
-})
+$('.panel-collapse').on('hide.bs.collapse', function () {
+    var span = $(this).parents('.panel').find('.heading-title, .heading-date');
+    span.find('i').removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
+    span.addClass('title-align');
+});
 
 //Change color when a mail is checked
 $(".panel-heading").click(function() {
-    if($(this).find(".mail-check").is(":checked")){
-    $(this).addClass("panel-heading-check");
-    }
-    else{
-    $(this).removeClass('panel-heading-check');
-    }
+	if ($(this).find(".mail-check").is(":checked")) {
+		$(this).addClass("panel-heading-check");
+	} else {
+		$(this).removeClass('panel-heading-check');
+	}
 });
 
 //Select all inbox
 $("#select-all-inbox").change(function() {
-    if($(this).is(":checked")){
-    $("#inbox .mail-check").prop("checked", true);
-    $("#inbox .panel-heading").addClass("panel-heading-check");
-    }
-    else{
-    $("#inbox .mail-check").prop("checked", false);
-    $("#inbox .panel-heading").removeClass("panel-heading-check");
-    }
+	if ($(this).is(":checked")) {
+		$("#inbox .mail-check").prop("checked", true);
+		$("#inbox .panel-heading").addClass("panel-heading-check");
+	} else {
+		$("#inbox .mail-check").prop("checked", false);
+		$("#inbox .panel-heading").removeClass("panel-heading-check");
+	}
 });
 
-//Select all outbox
+// Select all outbox
 $("#select-all-outbox").change(function() {
-    if($(this).is(":checked")){
-    $("#outbox .mail-check").prop("checked", true);
-    $("#outbox .panel-heading").addClass("panel-heading-check");
-    }
-    else{
-    $("#outbox .mail-check").prop("checked", false);
-    $("#outbox .panel-heading").removeClass("panel-heading-check");
-    }
+	if ($(this).is(":checked")) {
+		$("#outbox .mail-check").prop("checked", true);
+		$("#outbox .panel-heading").addClass("panel-heading-check");
+	} else {
+		$("#outbox .mail-check").prop("checked", false);
+		$("#outbox .panel-heading").removeClass("panel-heading-check");
+	}
 });
 
-//Un-check select all
+// Un-check select all
 $('#inbox .mail-check').on('click', function() {
 	var selectAllInboxCheckbox = $('#select-all-inbox');
 	if (!$(this).is(':checked') && $('#inbox .mail-check:checked').length === 0 && selectAllInboxCheckbox.is(':checked')) {

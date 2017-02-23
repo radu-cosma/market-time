@@ -1,8 +1,8 @@
 <section class="content-header">
       <h1><@spring.message 'ORDERS.PAGE.TITLE'/></h1>
       <ol class="breadcrumb">
-        <li><a href="/market-time/dashboard"><i class="fa fa-dashboard"></i><@spring.message 'NAV.HOME'/></a></li>
-        <li class="active"><@spring.message 'ORDERS.NAV.PAGE'/></li>
+        <li><a href="/market-time/dashboard"><i class="fa fa-dashboard"></i><@spring.message 'NAVIGATION.HOME'/></a></li>
+        <li class="active"><@spring.message 'ORDERS.NAVIGATION.PAGE'/></li>
       </ol>
 </section>
 

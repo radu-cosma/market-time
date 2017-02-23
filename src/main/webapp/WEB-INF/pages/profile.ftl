@@ -3,8 +3,8 @@
 <section class="content-header">
     <h1><@spring.message 'PROFILE.HEADER.TITLE'/></h1>
     <ol class="breadcrumb">
-        <li><a href="/market-time/dashboard"><i class="fa fa-dashboard"></i><@spring.message 'NAV.HOME'/></a></li>
-        <li class="active"><@spring.message 'NAV.MY.PROFILE'/></li>
+        <li><a href="/market-time/dashboard"><i class="fa fa-dashboard"></i><@spring.message 'NAVIGATION.HOME'/></a></li>
+        <li class="active"><@spring.message 'NAVIGATION.MY.PROFILE'/></li>
     </ol>
 </section>
 
