@@ -3,80 +3,80 @@
 <section class="content-header">
       <h1><@spring.message 'MESSAGES.PAGE.TITLE'/></h1>
       <ol class="breadcrumb">
-        <li><a href="/market-time/dashboard"><i class="fa fa-dashboard"></i><@spring.message 'NAVIGATION.HOME'/></a></li>
-        <li class="active"><@spring.message 'NAVIGATION.MESSAGES.PAGE'/></li>
+          <li><a href="/market-time/dashboard"><i class="fa fa-dashboard"></i><@spring.message 'NAVIGATION.HOME'/></a></li>
+          <li class="active"><@spring.message 'NAVIGATION.MESSAGES.PAGE'/></li>
       </ol>
 </section>
 
 <section class="content">
-	<div class="box box-success">
-		<div class="box-header with-border"></div>
+    <div class="box box-success">
+        <div class="box-header with-border"></div>
         <div class="row-style row">
-        	<div class="padding-5 col-xs-12 col-sm-offset-1 col-sm-10">
-				<div class="inbox-head">
-				    <form action="#" class="pull-right position">
-				        <div class="input-append">
-				            <input type="text" class="search-input" placeholder="<@spring.message 'MESSAGES.SEARCH.PLACEHOLDER'/>">
-				            <button class="btn search-btn" type="button"><i class="fa fa-search"></i></button>
-				    	</div>
-					</form>
-				</div>			
+            <div class="padding-5 col-xs-12 col-sm-offset-1 col-sm-10">
+                <div class="inbox-head">
+                    <form action="#" class="pull-right position">
+                        <div class="input-append">
+                            <input type="text" class="search-input" placeholder="<@spring.message 'MESSAGES.SEARCH.PLACEHOLDER'/>">
+                            <button class="btn search-btn" type="button"><i class="fa fa-search"></i></button>
+                        </div>
+                    </form>
+                </div>            
                 <div class="col-sm-12 container">
-                	<div class="tab-content">
-						<ul class="nav nav-tabs">
-							<li id="inbox-tab" class="active"><a data-toggle="tab" href="#inbox"><@spring.message 'MESSAGES.INBOX.TAB'/></a></li>
-							<li id="compose-tab"><a data-toggle="tab" href="#outbox"><@spring.message 'MESSAGES.SENT.TAB'/></a></li>
-							<li id="compose-tab"><a data-toggle="tab" href="#compose"><@spring.message 'MESSAGES.COMPOSE.TAB'/></a></li>
-						</ul>						
-						<div id="inbox" class="tab-pane active">
-						    <div class="panel-body">
-						    	<div>
-			                    	<label><input id="select-all-inbox" class="select-all panel-heading-check" type="checkbox" name="select all" value=""> <@spring.message 'MESSAGE.COMPOSE.SELECT.ALL.EMAIL'/></label>
+                    <div class="tab-content">
+                        <ul class="nav nav-tabs">
+                            <li id="inbox-tab" class="active"><a data-toggle="tab" href="#inbox"><@spring.message 'MESSAGES.INBOX.TAB'/></a></li>
+                            <li id="compose-tab"><a data-toggle="tab" href="#outbox"><@spring.message 'MESSAGES.SENT.TAB'/></a></li>
+                            <li id="compose-tab"><a data-toggle="tab" href="#compose"><@spring.message 'MESSAGES.COMPOSE.TAB'/></a></li>
+                        </ul>                        
+                        <div id="inbox" class="tab-pane active">
+                            <div class="panel-body">
+                                <div>
+                                    <label><input id="select-all-inbox" class="select-all panel-heading-check" type="checkbox" name="select all" value=""> <@spring.message 'MESSAGE.COMPOSE.SELECT.ALL.EMAIL'/></label>
                                     <div class="btn form-btn delete-btn"><@spring.message 'MESSAGE.COMPOSE.DELETE.EMAIL.BUTTON'/></div>
-							    </div>						    					    
-							    <#if messages??>
-								    <ul class="event-list">									        
-	                  					<@createMail />
-			                        </ul>
-								</#if>					    							    
-						    </div>
-						</div>				
-		                <div id="outbox" class="tab-pane fade">
-		                    <div class="panel-body">
-		                    	<div>
-			                    	<label><input id="select-all-outbox" class="select-all panel-heading-check" type="checkbox" name="select all" value=""> <@spring.message 'MESSAGE.COMPOSE.SELECT.ALL.EMAIL'/></label>
-                                    <div class="btn form-btn delete-btn"><@spring.message 'MESSAGE.COMPOSE.DELETE.EMAIL.BUTTON'/></div>						    	
+                                </div>                                                    
+                                <#if messages??>
+                                    <ul class="event-list">                                            
+                                          <@createMail />
+                                    </ul>
+                                </#if>                                                        
+                            </div>
+                        </div>                
+                        <div id="outbox" class="tab-pane fade">
+                            <div class="panel-body">
+                                <div>
+                                    <label><input id="select-all-outbox" class="select-all panel-heading-check" type="checkbox" name="select all" value=""> <@spring.message 'MESSAGE.COMPOSE.SELECT.ALL.EMAIL'/></label>
+                                    <div class="btn form-btn delete-btn"><@spring.message 'MESSAGE.COMPOSE.DELETE.EMAIL.BUTTON'/></div>                                
                                 </div>
                                 <#if messages??>
                                     <ul class="event-list">                                         
                                         <@createMail />
                                     </ul>
-                                </#if>	 
-		                    </div>
-		                </div>		                
-		                <div id="compose" class="tab-pane fade">
-		                    <div class="panel-body">
-		                    	<p><@spring.message 'MESSAGE.COMPOSE.TEXT'/></p>
-			                    <div class="contact-form col-md-6 col-xs-12">
-							        <form>
-								    	<div class="form-group">
-								    		<div class="form-control message-form" disabled>To: Market Time</div>
-								            <@createInputSection 'subject' />
-								            <textarea class="form-control message-form" id="comment" name="comment" placeholder="comment" rows="10"></textarea>
-								            <div class="textarea-tooltip tooltip-wrapper">
-								                <span id="comment-tooltip" class="error-tooltip"></span>
-								            </div>
-								            <button type="submit" id="message-btn" class="btn btn-default"><@spring.message 'MESSAGE.COMPOSE.SEND.BUTTON'/></button> 
-								        </div>
-							        </form>
-						        </div> 
-		                    </div>
-		                </div>
-               		</div> 
-				</div> 
-        	</div>
-		</div>
-	</div>
+                                </#if>     
+                            </div>
+                        </div>                        
+                        <div id="compose" class="tab-pane fade">
+                            <div class="panel-body">
+                                <p><@spring.message 'MESSAGE.COMPOSE.TEXT'/></p>
+                                <div class="contact-form col-md-6 col-xs-12">
+                                    <form>
+                                        <div class="form-group">
+                                            <div class="form-control message-form" disabled>To: Market Time</div>
+                                            <@createInputSection 'subject' />
+                                            <textarea class="form-control message-form" id="comment" name="comment" placeholder="comment" rows="10"></textarea>
+                                            <div class="textarea-tooltip tooltip-wrapper">
+                                                <span id="comment-tooltip" class="error-tooltip"></span>
+                                            </div>
+                                            <button type="submit" id="message-btn" class="btn btn-default"><@spring.message 'MESSAGE.COMPOSE.SEND.BUTTON'/></button> 
+                                        </div>
+                                    </form>
+                                </div> 
+                            </div>
+                        </div>
+                    </div> 
+                </div> 
+            </div>
+        </div>
+    </div>
 </section>
 
 <#macro createInputSection fieldId>
