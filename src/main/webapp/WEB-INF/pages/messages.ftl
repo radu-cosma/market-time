@@ -4,7 +4,7 @@
       <h1><@spring.message 'MESSAGES.PAGE.TITLE'/></h1>
       <ol class="breadcrumb">
         <li><a href="/market-time/dashboard"><i class="fa fa-dashboard"></i><@spring.message 'NAVIGATION.HOME'/></a></li>
-        <li class="active"><@spring.message 'NAVIGATION.MESSAGES.PAGE'/></li>
+        <li class="active"><@spring.message 'NAVIGATION.MESSAGES'/></li>
       </ol>
 </section>
 
@@ -28,32 +28,8 @@
 							<li id="compose-tab"><a data-toggle="tab" href="#outbox"><@spring.message 'MESSAGES.SENT.TAB'/></a></li>
 							<li id="compose-tab"><a data-toggle="tab" href="#compose"><@spring.message 'MESSAGES.COMPOSE.TAB'/></a></li>
 						</ul>						
-						<div id="inbox" class="tab-pane active">
-						    <div class="panel-body">
-						    	<div>
-			                    	<label><input id="select-all-inbox" class="select-all panel-heading-check" type="checkbox" name="select all" value=""> <@spring.message 'MESSAGE.COMPOSE.SELECT.ALL.EMAIL'/></label>
-                                    <div class="btn form-btn delete-btn"><@spring.message 'MESSAGE.COMPOSE.DELETE.EMAIL.BUTTON'/></div>
-							    </div>						    					    
-							    <#if messages??>
-								    <ul class="event-list">									        
-	                  					<@createMail />
-			                        </ul>
-								</#if>					    							    
-						    </div>
-						</div>				
-		                <div id="outbox" class="tab-pane fade">
-		                    <div class="panel-body">
-		                    	<div>
-			                    	<label><input id="select-all-outbox" class="select-all panel-heading-check" type="checkbox" name="select all" value=""> <@spring.message 'MESSAGE.COMPOSE.SELECT.ALL.EMAIL'/></label>
-                                    <div class="btn form-btn delete-btn"><@spring.message 'MESSAGE.COMPOSE.DELETE.EMAIL.BUTTON'/></div>						    	
-                                </div>
-                                <#if messages??>
-                                    <ul class="event-list">                                         
-                                        <@createMail />
-                                    </ul>
-                                </#if>	 
-		                    </div>
-		                </div>		                
+						<@createMessagesSection sectionId='inbox' isActive='active'/>				
+		                <@createMessagesSection sectionId='outbox' isActive=''/>		                
 		                <div id="compose" class="tab-pane fade">
 		                    <div class="panel-body">
 		                    	<p><@spring.message 'MESSAGE.COMPOSE.TEXT'/></p>
@@ -94,44 +70,48 @@
         </div>   
 </#macro>
 
-<#macro createMail>
-    <#list messages as receivedMessage>
-        <li>
-            <div class="details-container">                                         
-                <div class="panel message-details">
-                    <div class="panel-heading email-hover">
-                        <aside class="heading-check">
-                            <input class="mail-check" type="checkbox" name="message" value="" />
-                        </aside>
-                        <#if receivedMessage.read??>        
-                            <div class="heading-title title-align read">
-                        <#else>
-                            <div class="heading-title title-align">
-                        </#if>
-                        <#if receivedMessage.title??>
-                            ${receivedMessage.title}
-                        </#if>
-                        </div>  
-                        <#if receivedMessage.read??>
-                            <aside class="heading-date read">
-                        <#else>
-                            <aside class="heading-date">
-                        </#if>
-                        <span class="glyphicon-mob pull-right clickable"><i class="glyphicon glyphicon-chevron-down"></i></span>
-                        <#if receivedMessage.date??>
-                            <span class="date-poz">${receivedMessage.date}</span>
-                        </#if>
-                        </aside>
-                    </div>
-                    <div class="panel-collapse collapse">
-                        <div class="product-panel-body">
-                            <#if receivedMessage.content??>
-                                ${receivedMessage.content}
-                            </#if>
-                        </div>
-                    </div>
-                </div>                                   
-            </div>
-        </li> 
-    </#list>
+<#macro createMessagesSection sectionId isActive>
+    <div id="${sectionId}" class="tab-pane ${isActive}">
+        <div class="panel-body">
+            <div>
+                <label><input id="select-all-inbox" class="select-all panel-message-check" type="checkbox" name="select all" value="check messages"> <@spring.message 'MESSAGE.COMPOSE.SELECT.ALL.EMAIL'/></label>
+                <div class="btn form-btn delete-btn"><@spring.message 'MESSAGE.COMPOSE.DELETE.EMAIL.BUTTON'/></div>
+            </div>                                                  
+            <#if messages??>
+                <ul class="messages-list">
+                    <#list messages as message>
+                        <li>
+                            <div class="details-container">                                         
+                                <div class="panel message-details">
+                                    <div class="panel-heading message">
+                                        <aside class="message-check">
+                                            <input class="check" type="checkbox" name="select message" value="check message" />
+                                        </aside>      
+                                        <div class="message-title title-align <#if message.read??>read</#if>">
+                                            <#if message.title??>
+                                                ${message.title}
+                                            </#if>
+                                        </div>
+                                        <aside class="message-date <#if message.read??>read</#if>">
+                                            <span class="glyphicon-mob pull-right clickable"><i class="glyphicon glyphicon-chevron-down"></i></span>
+                                            <#if message.date??>
+                                                <span class="date-poz">${message.date}</span>
+                                            </#if>
+                                        </aside>
+                                    </div>
+                                    <div class="panel-collapse collapse">
+                                        <div class="product-panel-body">
+                                            <#if message.content??>
+                                                ${message.content}
+                                            </#if>
+                                        </div>
+                                    </div>
+                                </div>                                   
+                            </div>
+                        </li> 
+                    </#list>
+                </ul>
+            </#if>                                                      
+        </div>
+    </div>      
 </#macro>

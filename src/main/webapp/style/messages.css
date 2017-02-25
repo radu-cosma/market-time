@@ -62,7 +62,7 @@
   	}
 }
 
-.event-list {
+.messages-list {
     margin: 5px 0 0 0;
     padding: 0px;
     padding-top: 10px;
@@ -80,19 +80,19 @@
     width: 100%;
 }
 
-.email-hover {
+.message {
 	border-left: 3px solid transparent;
 }
 
-.email-hover:hover {
+.message:hover {
 	border-left: 3px solid #3c8dbc;
 }
 
-.heading-check {
+.message-check {
 	width: 30px;
 }
 
-.mail-check {
+.check {
 	cursor: pointer;
 }
 
@@ -100,7 +100,7 @@
 	font-weight: bold;
 }
 
-.heading-title {
+.message-title {
 	flex: 2;
 	padding-right: 10px;
 	text-overflow:ellipsis;
@@ -129,18 +129,18 @@
   	}
 }
 
-.heading-date {
+.message-date {
 	width: 100px;	
 	cursor: pointer;
 }
 
 @media (max-width: 480px) {
-	.heading-date {
+	.message-date {
 		width: 70px;       
   	}
 }
 
-.panel-heading-check {
+.panel-message-check {
 	background: #ffffe6;
     border-radius: 4px;
     cursor: pointer;

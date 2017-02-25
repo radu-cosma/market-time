@@ -1,60 +1,60 @@
 //Collapse section
-$('.heading-title, .heading-date').click( function(e) {
+$('.message-title, .message-date').click( function(e) {
     $(this).parents('.panel').find('.panel-collapse').collapse('toggle');
 })
 $('.panel-collapse').on('show.bs.collapse',  function () {
-    var span = $(this).parents('.panel').find('.heading-title, .heading-date');
+    var span = $(this).parents('.panel').find('.message-title, .message-date');
     span.find('i').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
     span.removeClass('title-align, read');
 })
 $('.panel-collapse').on('hide.bs.collapse', function () {
-    var span = $(this).parents('.panel').find('.heading-title, .heading-date');
+    var span = $(this).parents('.panel').find('.message-title, .message-date');
     span.find('i').removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
     span.addClass('title-align');
 });
 
 //Change color when a mail is checked
 $(".panel-heading").click(function() {
-	if ($(this).find(".mail-check").is(":checked")) {
-		$(this).addClass("panel-heading-check");
+	if ($(this).find(".check").is(":checked")) {
+		$(this).addClass("panel-message-check");
 	} else {
-		$(this).removeClass('panel-heading-check');
+		$(this).removeClass('panel-message-check');
 	}
 });
 
 //Select all inbox
 $("#select-all-inbox").change(function() {
 	if ($(this).is(":checked")) {
-		$("#inbox .mail-check").prop("checked", true);
-		$("#inbox .panel-heading").addClass("panel-heading-check");
+		$("#inbox .check").prop("checked", true);
+		$("#inbox .panel-heading").addClass("panel-message-check");
 	} else {
-		$("#inbox .mail-check").prop("checked", false);
-		$("#inbox .panel-heading").removeClass("panel-heading-check");
+		$("#inbox .check").prop("checked", false);
+		$("#inbox .panel-heading").removeClass("panel-message-check");
 	}
 });
 
 // Select all outbox
 $("#select-all-outbox").change(function() {
 	if ($(this).is(":checked")) {
-		$("#outbox .mail-check").prop("checked", true);
-		$("#outbox .panel-heading").addClass("panel-heading-check");
+		$("#outbox .check").prop("checked", true);
+		$("#outbox .panel-heading").addClass("panel-message-check");
 	} else {
-		$("#outbox .mail-check").prop("checked", false);
-		$("#outbox .panel-heading").removeClass("panel-heading-check");
+		$("#outbox .check").prop("checked", false);
+		$("#outbox .panel-heading").removeClass("panel-message-check");
 	}
 });
 
 // Un-check select all
-$('#inbox .mail-check').on('click', function() {
+$('#inbox .check').on('click', function() {
 	var selectAllInboxCheckbox = $('#select-all-inbox');
-	if (!$(this).is(':checked') && $('#inbox .mail-check:checked').length === 0 && selectAllInboxCheckbox.is(':checked')) {
+	if (!$(this).is(':checked') && $('#inbox .check:checked').length === 0 && selectAllInboxCheckbox.is(':checked')) {
 		selectAllInboxCheckbox.prop('checked', false);
 	}
 });
 
-$('#outbox .mail-check').on('click', function() {
+$('#outbox .check').on('click', function() {
 	var selectAllOutboxCheckbox = $('#select-all-outbox');
-	if (!$(this).is(':checked') && $('#outbox .mail-check:checked').length === 0 && selectAllOutboxCheckbox.is(':checked')) {
+	if (!$(this).is(':checked') && $('#outbox .check:checked').length === 0 && selectAllOutboxCheckbox.is(':checked')) {
 		selectAllOutboxCheckbox.prop('checked', false);
 	}
 });

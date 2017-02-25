@@ -2,7 +2,7 @@
       <h1><@spring.message 'ORDERS.PAGE.TITLE'/></h1>
       <ol class="breadcrumb">
         <li><a href="/market-time/dashboard"><i class="fa fa-dashboard"></i><@spring.message 'NAVIGATION.HOME'/></a></li>
-        <li class="active"><@spring.message 'NAVIGATION.ORDERS.PAGE'/></li>
+        <li class="active"><@spring.message 'NAVIGATION.ORDERS'/></li>
       </ol>
 </section>
 

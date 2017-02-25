@@ -8,7 +8,7 @@
             </a>
         </li>
         <li class="active">
-            <@spring.message 'NAVIGATION.PRODUCTS.PAGE'/>
+            <@spring.message 'NAVIGATION.PRODUCTS'/>
         </li>
     </ol>
 </section>
