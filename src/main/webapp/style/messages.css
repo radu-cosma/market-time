@@ -1,4 +1,4 @@
-.inbox-head {
+.messages-head {
     margin: 0 0 40px 0;;
 }
 
@@ -81,19 +81,19 @@
 }
 
 .message {
-	border-left: 3px solid transparent;
+    border-left: 3px solid transparent;
 }
 
 .message:hover {
-	border-left: 3px solid #3c8dbc;
+    border-left: 3px solid #3c8dbc;
 }
 
 .message-check {
-	width: 30px;
+    width: 30px;
 }
 
 .check {
-	cursor: pointer;
+    cursor: pointer;
 }
 
 .read {
@@ -101,9 +101,9 @@
 }
 
 .message-title {
-	flex: 2;
-	padding-right: 10px;
-	text-overflow:ellipsis;
+    flex: 2;
+    padding-right: 10px;
+    text-overflow:ellipsis;
     overflow: hidden;
     cursor: pointer;
 }
@@ -130,18 +130,18 @@
 }
 
 .message-date {
-	width: 100px;	
-	cursor: pointer;
+    width: 100px;    
+    cursor: pointer;
 }
 
 @media (max-width: 480px) {
-	.message-date {
-		width: 70px;       
-  	}
+    .message-date {
+        width: 70px;       
+      }
 }
 
 .panel-message-check {
-	background: #ffffe6;
+    background: #ffffe6;
     border-radius: 4px;
     cursor: pointer;
 }
