@@ -13,78 +13,46 @@
     	<div class="box-header with-border"></div>
     	<div class="row">
         	<div class="col-md-offset-1 col-md-10 col-xs-12 ">
-				 <ul class="settings-list">
-		            <li>	
-		            	<div class="settings-details">
-		            		<div class="row details-style">
-	        	            	<div class="market-img">
-	        	            		<img class="img-responsive img-style" src="images/wish-logo.png" alt="" />
-	                            </div>
-	                            <div class="col-2"> 
-	                            <p>
-	                            <a href="https://merchant.wish.com/" target="_blank">wish.com</a> 
-	                            </p>
-	                            <input type="checkbox" name="message" value=""/> Set this market as default
-	                            </div>   
-					        </div>
+        	   <div class="panel settings-details">
+                    <div class="panel-heading market">
+                        <aside  class="market-img">
+                            <img class="img-responsive img-style" src="images/wish-logo.png" alt="" />
+                        </aside>
+                        <div class="market-settings market-display">
+                            <p>
+                            <a href="https://merchant.wish.com/" target="_blank">wish.com</a> 
+                            </p>
+                            <input type="checkbox" name="check as default " value="default"/> Set this market as default
+                        </div>
+                            <aside class="market-status">
+                        <span class="glyphicon-mob pull-right clickable"><i class="glyphicon glyphicon-chevron-down"></i></span>
+                            <i class="fa fa-check result-icon" aria-hidden="true"></i>
+                        </aside>
+                    </div>
+                    <div class="panel-collapse collapse">
+                        <div class="settings-form">
                             <form>
-					            <div class="row form-style">
-				                    <div class="col-sm-4 col-md-4 text-center">
-				                        <@createInputSection 'username/email address' /> 
-				                    </div>
-				                    <div class="col-sm-4 col-md-4 text-center">
-				                        <@createInputSection 'password' />
-				                    </div>
-				                    <div class="col-xs-6 col-sm-2 col-md-1">
-				                        <button type="submit" class="btn save-btn">Save</button>            
-				                    </div>
-				                    <div class="col-xs-6 col-sm-2 col-md-3">
-				                        <button type="submit" class="btn remove-btn">Remove</button>            
-				                    </div>    
-					            </div>
-					        </form>
-                   		</div> 
-		            </li>
-		        </ul>
-		        
-		        
-		        
-
-
-                                       
-                        <div class="panel settings-details">
-                            <div class="panel-heading market-hover">
-                                <aside  class="market-img">
-                                    <img class="img-responsive img-style" src="images/wish-logo.png" alt="" />
-                                </aside>
-                                <div class="heading-title title-align">
-                                    <p>
-                                    <a href="https://merchant.wish.com/" target="_blank">wish.com</a> 
-                                    </p>
-                                    <input type="checkbox" name="settings" value=""/> Set this market as default
+                                <div class="row form-style">
+                                    <div class="col-sm-4 col-md-4 text-center">
+                                        <@createInputSection 'username/email address' /> 
+                                    </div>
+                                    <div class="col-sm-4 col-md-4 text-center">
+                                        <@createInputSection 'password' />
+                                    </div>
+                                    <div class="col-xs-6 col-sm-2 col-md-1">
+                                        <button type="submit" class="btn save-btn">Save</button>            
+                                    </div>
+                                    <div class="col-xs-6 col-sm-2 col-md-3">
+                                        <button type="submit" class="btn remove-btn">Remove</button>            
+                                    </div>    
                                 </div>
-                                    <aside class="heading-status">
-                                <span class="glyphicon-mob pull-right clickable"><i class="glyphicon glyphicon-chevron-down"></i></span>
-                                    <i class="fa fa-check result-icon" aria-hidden="true"></i>
-                                </aside>
-                            </div>
-                            <div class="panel-collapse collapse">
-                                <div class="settings-form">
-                                    test
-                                </div>
-                            </div>
-                        </div>                                   
-
-
-
- 
+                            </form>
+                        </div>
+                    </div>
+                </div>     
 	        </div>
         </div>
 	</div>
-
-
-
-
 </section>
 
 <#macro createInputSection fieldId>
