@@ -1,0 +1,157 @@
+.messages-head {
+    margin: 0 0 40px 0;;
+}
+
+.search-input {
+    border: 1px solid #367fa9;
+    border-radius: 4px 0 0 4px;
+    box-shadow: none;
+    color: #8a8a8a;
+    float: left;
+    height: 34px;
+    padding: 0 10px;
+}
+
+.search-btn {
+    background: #367fa9;
+    border: 1px solid #367fa9;
+    border-radius: 0 4px 4px 0;
+    color: #ffffff;
+    height: 34px;
+    padding: 0 20px;
+}
+
+.search-btn:hover{
+    background: #3c8dbc;
+    color: #ffffff;
+}
+
+/*Contact*/
+
+.contact-form {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.textarea-tooltip {
+    bottom: 180px;
+}
+
+/*Inbox - Outbox*/
+
+@media (max-width: 567px) {
+    .panel-body {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+.message-form {
+    margin:10px 0;
+}
+
+#select-check {
+    margin-left: 18px;
+    color: #337ab7;
+    margin-bottom: 5px;
+}
+
+@media (max-width: 480px) {
+    .delete-btn {
+        float: right;      
+    }
+}
+
+.messages-list {
+    margin: 5px 0 0 0;
+    padding: 0px;
+    padding-top: 10px;
+    list-style-type: none;  
+}
+
+.message-details {
+    border: 1px solid #367fa9;
+    margin-bottom: 10px;    
+}
+
+.panel-heading {    
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+}
+
+.message {
+    border-left: 3px solid transparent;
+}
+
+.message:hover {
+    border-left: 3px solid #3c8dbc;
+}
+
+.message-check {
+    width: 30px;
+}
+
+.check {
+    cursor: pointer;
+}
+
+.read {
+    font-weight: bold;
+}
+
+.message-title {
+    flex: 2;
+    padding-right: 10px;
+    text-overflow:ellipsis;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.title-align {    
+    white-space:nowrap;
+}
+
+@media (max-width: 480px) {
+    .glyphicon-mob {
+        display: none;       
+    }
+}
+
+.date-poz {
+    float: right;
+    margin-right: 10px;
+}
+
+@media (max-width: 480px) {
+    .date-poz {
+        margin-right: 0;       
+    }
+}
+
+.message-date {
+    width: 100px;    
+    cursor: pointer;
+}
+
+@media (max-width: 480px) {
+    .message-date {
+        width: 70px;       
+      }
+}
+
+.panel-message-check {
+    background: #ffffe6;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.product-panel-body {
+    padding: 10px;
+}
+
+@media (max-width: 480px) {
+    .product-panel-body {
+        padding: 5px;       
+    }
+}

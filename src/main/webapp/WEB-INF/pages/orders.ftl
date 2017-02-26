@@ -1,13 +1,13 @@
 <section class="content-header">
       <h1><@spring.message 'ORDERS.PAGE.TITLE'/></h1>
       <ol class="breadcrumb">
-        <li><a href="/market-time/dashboard"><i class="fa fa-dashboard"></i><@spring.message 'NAV.HOME'/></a></li>
-        <li class="active"><@spring.message 'ORDERS.NAV.PAGE'/></li>
+        <li><a href="/market-time/dashboard"><i class="fa fa-dashboard"></i><@spring.message 'NAVIGATION.HOME'/></a></li>
+        <li class="active"><@spring.message 'NAVIGATION.ORDERS'/></li>
       </ol>
 </section>
 
 <section class="content">
-      <div class="box box-success">
+	<div class="box box-success">
         <div class="box-header with-border"></div>
         <div id="orders-id" class="row-style row">
               <div class="padding-0 col-xs-12 col-sm-offset-1 col-sm-10">
@@ -40,7 +40,7 @@
                                       <#if order.id??>
                                         <a href="orders/${order.id}"><div class="btn form-btn blue go-right"><@spring.message 'ORDERS.DETAILS.VIEW.BUTTON'/></div></a>
                                         <h2 class="order-nr-title"><@spring.message 'ORDERS.DETAILS.NUMBER'/>: ${order.id}</h2> 
-                                    </#if>
+                                      </#if>
                                       <#if order.date??>
                                         <p><@spring.message 'ORDERS.DETAILS.DATE'/>: ${order.date?date}</p>
                                       </#if>

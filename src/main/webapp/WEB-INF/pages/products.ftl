@@ -1,14 +1,14 @@
 <section class="content-header">
     <h1><@spring.message 'PRODUCTS.PAGE.TITLE'/></h1>
     <ol class="breadcrumb">
-        <li><a href="/market-time/dashboard"><i class="fa fa-dashboard"></i><@spring.message 'NAV.HOME'/></a></li>
+        <li><a href="/market-time/dashboard"><i class="fa fa-dashboard"></i><@spring.message 'NAVIGATION.HOME'/></a></li>
         <li>
             <a href="/market-time/products?status=published">
-                <@spring.message 'PRODUCTS.NAV.PUBLISHED'/>
+                <@spring.message 'NAVIGATION.PRODUCTS.PUBLISHED'/>
             </a>
         </li>
         <li class="active">
-            <@spring.message 'PRODUCTS.NAV.PAGE'/>
+            <@spring.message 'NAVIGATION.PRODUCTS'/>
         </li>
     </ol>
 </section>
