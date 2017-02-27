@@ -14,6 +14,6 @@ $('.panel-collapse').on('hide.bs.collapse', function () {
 });
 
 //Check do not collapse
-$(".check").click(function() {
-	$(this).collapse('hide');
+$(".check").click(function(event) {
+	  event.stopPropagation();
 });

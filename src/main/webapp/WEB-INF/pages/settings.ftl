@@ -4,7 +4,7 @@
       <h1><@spring.message 'SETTINGS.PAGE.TITLE'/></h1>
       <ol class="breadcrumb">
         <li><a href="/market-time/dashboard"><i class="fa fa-dashboard"></i><@spring.message 'NAV.HOME'/></a></li>
-        <li class="active"><@spring.message 'SETTINGS.NAV.PAGE'/></li>
+        <li class="active"><@spring.message 'NAVIGATION.SETTINGS'/></li>
       </ol>
 </section>
 
