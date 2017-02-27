@@ -3,9 +3,9 @@
 <section class="content-header">
     <h1><@spring.message 'ADD.PRODUCT.PAGE.TITLE'/></h1>
     <ol class="breadcrumb">
-        <li><a href="/market-time/dashboard"><i class="fa fa-dashboard"></i><@spring.message 'NAV.HOME'/></a></li>
+        <li><a href="/market-time/dashboard"><i class="fa fa-dashboard"></i><@spring.message 'NAVIGATION.HOME'/></a></li>
         <li class="active">
-            <@spring.message 'ADD.PRODUCT.NAV.PAGE'/>
+            <@spring.message 'NAVIGATION.ADD.PRODUCT'/>
         </li>
     </ol>
 </section>

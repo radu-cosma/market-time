@@ -178,20 +178,35 @@
 			"cssResources": ["layout", "skin-blue", "header", "validation", "order-details"],
 			"jsResources": ["market-time", "validation", "orders"]
 		},
+<<<<<<< HEAD
 		# settings page - logged in
 		{
 			"criteria": {
 				"name": "settings",
+=======
+		# messages page - logged in
+		{
+			"criteria": {
+				"name": "messages",
+>>>>>>> develop
 				"loggedIn": true
 			},
 			"sections": {
 				"header": "header",
 				"menu": "menu",
+<<<<<<< HEAD
 				"main": "settings",
 				"footer": "footer"
 			},
 			"cssResources": ["layout", "skin-blue", "header", "settings"],
 			"jsResources": ["market-time", "settings"]
+=======
+				"main": "messages",
+				"footer": "footer"
+			},
+			"cssResources": ["layout", "skin-blue", "header", "validation", "messages"],
+			"jsResources": ["market-time", "validation", "messages"]
+>>>>>>> develop
 		},
 		# error 500 page - logged in
 		{
