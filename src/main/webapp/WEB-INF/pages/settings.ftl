@@ -22,10 +22,10 @@
                             <p>
                             <a href="https://merchant.wish.com/" target="_blank">wish.com</a> 
                             </p>
-                            <input type="checkbox" name="check as default " value="default"/> Set this market as default
+                            <input class="check" type="checkbox" name="check as default " value="default"/> Set this market as default
                         </div>
-                            <aside class="market-status">
-                        <span class="glyphicon-mob pull-right clickable"><i class="glyphicon glyphicon-chevron-down"></i></span>
+                        <aside class="market-status">
+                            <span class="glyphicon-mob pull-right clickable"><i class="glyphicon glyphicon-chevron-down"></i></span>
                             <i class="fa fa-check result-icon" aria-hidden="true"></i>
                         </aside>
                     </div>
