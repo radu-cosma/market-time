@@ -190,8 +190,8 @@
 				"main": "settings",
 				"footer": "footer"
 			},
-			"cssResources": ["layout", "skin-blue", "header", "settings"],
-			"jsResources": ["market-time", "settings"]
+			"cssResources": ["layout", "skin-blue", "header", "validation", "settings"],
+			"jsResources": ["market-time", "validation", "settings"]
         },
         # messages page - logged in
         {

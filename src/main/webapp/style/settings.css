@@ -2,6 +2,7 @@
     border: 1px solid #367fa9;
     margin-bottom: 10px;    
 }
+
 @media (max-width: 480px) {
     .settings-details {
         margin-left: 5px;
@@ -9,6 +10,7 @@
         padding-bottom: 5px;
     }
 }
+
 .market {
     border-left: 3px solid transparent;
 }
@@ -16,19 +18,29 @@
 .market:hover {
     border-left: 3px solid #3c8dbc;
 }
+
 .panel-heading {  
     padding: 5px;
     display: flex;
     flex-flow: row wrap;
     width: 100%;
 }
+
 .market-img {
 	width: 80px;
 }
+
+@media (max-width: 480px) {
+    .market-img {
+        width: 60px;
+    }
+}
+
 .img-style {
     width: 100%;
     height: 100%;
 }
+
 .market-settings {
     flex: 2;
     padding-right: 10px;
@@ -36,29 +48,16 @@
     overflow: hidden;
     cursor: pointer;
 }
-.market-display {  
-    white-space:nowrap;
+
+.market-url {
+	font-size: 16px;
 }
-.market-status {
-    width: 100px;   
+
+.collapse-btn {
+    width: auto;   
     cursor: pointer;
 }
 
-@media (max-width: 480px) {
-    .market-status {
-        width: 70px;       
-    }
-}
-.status-position {
-    float: right;
-    margin-right: 10px;
-}
-
-@media (max-width: 480px) {
-    .status-position {
-        margin-right: 0;       
-    }
-}
 .settings-form {
     padding: 10px;
 }
@@ -68,37 +67,54 @@
         padding: 5px;       
     }
 }
-.result-icon {
-	color: green;
-	width: 50px;
-	height: 50px;
+
+.details {
+	fornt-size: 25px;
+	font-weight: 600;
+	color: #3c8dbc;
 }
-.save-btn {
-    color: #FFFFFF;
-    background-color: #367fa9;
-    border-color: #367fa9;
-    text-transform: uppercase;
-    font-weight: 700;
-    font-family: Montserrat, Arial, sans-serif;
+
+.details:hover {
+    color: #367fa9;
 }
+
+.message-success {
+	width: 100%;
+    background-color: #00a65a !important;
+    color: #fff !important;;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 5px 20px 5px 20px;
+}
+
+.message-error {
+    width: 100%;
+    background-color: #dd4b39 !important;
+    color: #fff !important;;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 5px 20px 5px 20px;
+}
+
+@media (max-width: 480px) {
+	.display-btn {
+	   float: right;
+    }
+}
+
 .details-style {
 	margin: 0;
 }
+
 .form-style {
 	margin: 10px 0 0 0;
 	padding-left: 0;
 }
+
 @media (max-width: 480px) {
     .form-style {
 	margin-right: -15px;
 	margin-left: -15px;
 	}
 }
-.remove-btn {
-	color: #FFFFFF;
-    background-color: #367fa9;
-    border-color: #367fa9;
-    text-transform: uppercase;
-    font-weight: 700;
-    font-family: Montserrat, Arial, sans-serif;
-}
+

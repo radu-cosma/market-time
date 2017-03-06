@@ -74,7 +74,7 @@
         <div class="panel-body">
             <div>
                 <label><input id="select-all-${sectionId}" class="select-all panel-message-check" type="checkbox" name="select all" value="check messages"> <@spring.message 'MESSAGE.COMPOSE.SELECT.ALL.EMAIL'/></label>
-                <div class="btn form-btn delete-btn"><@spring.message 'MESSAGE.COMPOSE.DELETE.EMAIL.BUTTON'/></div>
+                <div class="btn form-btn delete-btn display-btn"><@spring.message 'MESSAGE.COMPOSE.DELETE.EMAIL.BUTTON'/></div>
             </div>                                                  
             <#if messages??>
                 <ul class="messages-list">
