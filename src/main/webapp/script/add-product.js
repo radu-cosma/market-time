@@ -132,7 +132,7 @@ var
 		if ($('.product-image-container').length > 0) {
 			return true;
 		} else {
-			$('#file-box').addClass('has-error');
+			$('#file-box').addClass('error');
 			return false;
 		}
 	},
@@ -142,13 +142,11 @@ var
 		var productImagesContainer = $('#product-images-container'),
 			imageContainer = $('<div></div>').addClass('product-image-container').attr('weight', imageData.weight),
 			imageThumbnail = $('<img></img').addClass('image-thumbnail faded').attr('draggable', 'false'),
-			removeImageButton = $('<a></a>').addClass('remove-image-button').attr('title', 'Remove');
+			removeImageButton = $('<a></a>').addClass('remove-image-button').attr('title', 'Remove'),
+			retryButton = $('<a></a>').addClass('retry-button').attr('title', 'Retry'),
+			errorTooltip = $('<span></span>').addClass('error-tooltip').addClass('image-error-tooltip'),
+			tooltipWrapper = $('<div></div>').addClass('tooltip-wrapper');
 		 	
-		removeImageButton.on('click', removeImage);
-		imageContainer.append(removeImageButton);
-		imageContainer.append(imageThumbnail);
-		productImagesContainer.append(imageContainer);
-		
 		if (typeof imageData.imageData !== 'undefined') {
 			imageThumbnail.attr('src', imageData.imageData);
 			imageData.imageData = imageData.imageData.replace('data:'+ imageData.type + ';base64,', '');
@@ -156,28 +154,50 @@ var
 			imageThumbnail.attr('src', imageData.url);
 		}
 		
-		$.ajax({
-		    type: 'POST',
-		    url: '/market-time/rest/products/addImage',
-		    dataType: 'json',
-		    contentType: 'application/json',
-		    data: JSON.stringify(imageData),
-		    success: function(response) {
-		        if (response.generalError) {
-		        	alert(response.generalError);
-		        } else if(response.validationErrors) {
-		        	alert(response.validationErrors);
-		        } else {
-		        	imageThumbnail.removeClass('faded');
-		        	if (typeof successCallback !== 'undefined') {
-		        		successCallback();
-		        	}
-		        }
-		    },  
-		    error: function(e) {
-		    	console.log(e);
-		    }  
+		var addImageAjaxData = {
+			    type: 'POST',
+			    url: '/market-time/rest/products/addImage',
+			    dataType: 'json',
+			    contentType: 'application/json',
+			    data: JSON.stringify(imageData),
+			    success: function(response) {
+			        if (response.generalError) {
+		        		imageThumbnail.addClass('has-error');
+			        	errorTooltip.html(response.generalError);
+			        	imageContainer.append(tooltipWrapper);
+			        	imageContainer.append(retryButton);
+			        } else if(response.validationErrors) {
+			        	imageThumbnail.addClass('has-error');
+			        	errorTooltip.html('Invalid image!');
+			        	imageContainer.append(tooltipWrapper);
+			        } else {
+			        	hideGeneralErrorMessage();
+			        	imageThumbnail.removeClass('faded');
+			        	imageContainer.remove(tooltipWrapper);
+			        	imageContainer.remove(retryButton);
+			        	if (typeof successCallback !== 'undefined') {
+			        		successCallback();
+			        	}
+			        }
+			    },  
+			    error: function(e) {
+			    	imageThumbnail.addClass('has-error');
+		        	errorTooltip.html('Something went wrong! Please retry in a few moments.');
+		        	imageContainer.append(tooltipWrapper);
+		        	imageContainer.append(retryButton);
+			    }  
+			};
+			
+		removeImageButton.on('click', removeImage);
+		retryButton.on('click', function() {
+			$.ajax(addImageAjaxData);
 		});
+		imageContainer.append(removeImageButton);
+		imageContainer.append(imageThumbnail);
+		tooltipWrapper.append(errorTooltip);
+		productImagesContainer.append(imageContainer);
+		
+		$.ajax(addImageAjaxData);
 	},
 	
 	//success callback function used when adding an image by url
@@ -215,13 +235,19 @@ var
 		    	'addProductSessionId': $('#add-product-session').val()
 		    }),
 		    success: function(response) {
-		        if (!response.generalError && !response.validationErrors) {
+		        if (response.generalError) {
+		        	showGeneralErrorMessage(response.generalError);
+		        } else if (response.validationErrors) {
+		        	//TODO: handle validation error
+		        }
+		        else {
+		        	hideGeneralErrorMessage();
 		        	imageContainer.remove();
 		        	recalibrateWeights();
 		        }
 		    },  
-		    error: function(e) {
-		    	console.log(e)
+		    error: function() {
+		    	showGeneralErrorMessage('Something went wrong! Please retry later.');
 		    }  
 		});
 	},
@@ -233,19 +259,36 @@ var
 		});
 	},
 	
+	showGeneralErrorMessage = function(message) {
+		$('#general-error-message .message').html(message);
+		$('#general-error-message').removeClass('hidden');
+		window.scrollTo(0,0);
+	},
+	
+	hideGeneralErrorMessage = function() {
+		$('#general-error-message .message').html('');
+		$('#general-error-message').addClass('hidden');
+	},
+	
 	//default image types
 	defaultValidImageTypes = ["image/gif", "image/jpg", "image/jpeg", "image/png", "gif", "jpg", "jpeg", "png"],
 	validImageTypes = defaultValidImageTypes;
 
 $('form').on('submit', function(evt) {
-    var inputIds = $(this).find('input').map(function() {
-        return this.id;
-    }).get();
+    var addImageUrlInput = $('#add-image-url-input'),
+    	inputIds = $(this).find('input').map(function() {
+	        return this.id;
+	    }).get();
 
+    //remove the validation mark from the add-image-url-input
+    if (addImageUrlInput.hasClass('has-error')) {
+    	addImageUrlInput.removeClass('has-error');
+    }
+    
     var hasImages = checkForImages(),
     	isValid = validator.validateForm(inputIds, validationConfig);
 
-    if (!isValid && !hasImages) {
+    if (!isValid || !hasImages) {
         evt.preventDefault();
     }
 });
@@ -286,12 +329,14 @@ $.ajax({
     url: '/market-time/rest/products/getImageTypes',
     contentType: 'application/json',
     success: function(response) {
-        if (!response.generalError && !response.validationErrors) {
+        if (response.generalError) {
+	    	showGeneralErrorMessage(response.generalError);
+        } else {
         	validImageTypes = response.result;
         }
     },  
     error: function(e) {
-    	console.log(e)
+    	showGeneralErrorMessage('Something went wrong! Please retry later.');
     }  
 });
 dragndrop.setUploadFileCallback(uploadFile);

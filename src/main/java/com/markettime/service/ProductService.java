@@ -1,6 +1,5 @@
 package com.markettime.service;
 
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -26,6 +25,7 @@ import com.markettime.model.entity.ProductImageEntity;
 import com.markettime.model.entity.ProductTagEntity;
 import com.markettime.model.entity.UserEntity;
 import com.markettime.repository.ImageTypeRepository;
+import com.markettime.repository.ProductImageRepository;
 import com.markettime.repository.ProductRepository;
 import com.markettime.repository.ProductTagRepository;
 import com.markettime.repository.UserRepository;
@@ -57,8 +57,8 @@ public class ProductService {
     @Autowired
     private ImageTypeRepository imageTypeRepository;
 
-    // @Autowired
-    // private ProductImageRepository productImageRepository;
+    @Autowired
+    private ProductImageRepository productImageRepository;
 
     @Autowired
     private ImageCache imageCache;
@@ -146,6 +146,7 @@ public class ProductService {
     private void saveProductImages(ProductEntity productEntity, String addProductSessionId) {
         Long userId = userContext.getUserId();
         List<AddProductImageDto> productImages = imageCache.getImages(userId, addProductSessionId);
+        imageCache.remove(userId, addProductSessionId);
         for (AddProductImageDto addProductImageDto : productImages) {
             ProductImageEntity productImageEntity = BeanMapperUtil.map(addProductImageDto, ProductImageEntity.class);
             productImageEntity.setProduct(productEntity);
@@ -155,22 +156,24 @@ public class ProductService {
                 if (cloudinaryImageUrl != null) {
                     addProductImageDto.setUrl(cloudinaryImageUrl);
                 } else {
-                    // save on disk
+                    // TODO: save on disk for retrying later
                 }
             }
+            productImageRepository.persist(productImageEntity);
         }
     }
 
     private String uploadImageToCloudinary(AddProductImageDto addProductImageDto) {
         String cloudinaryImageUrl = null;
         try {
+            @SuppressWarnings("rawtypes")
             Map uploadResult = cloudinary.uploader().upload(addProductImageDto.getImageData(),
                     ObjectUtils.asMap("filename", addProductImageDto.getName()));
             if (uploadResult.containsKey("url")) {
                 cloudinaryImageUrl = (String) uploadResult.get("url");
             }
-        } catch (IOException e) {
-            LOGGER.error(String.format("An exception occurred when uploading %s", addProductImageDto), e);
+        } catch (Exception e) {
+            LOGGER.error(String.format("An exception occurred while uploading %s", addProductImageDto), e);
         }
         return cloudinaryImageUrl;
     }

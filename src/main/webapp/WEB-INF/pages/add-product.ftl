@@ -12,28 +12,20 @@
 
 <section class="content">
     <div class="box box-success">
-        <div class="box-header with-border"> </div>
+        <div class="box-header with-border"></div>
         <form name="addProduct" action="add" method="POST">
             <div class="row">
                 <div class="col-md-1"></div>
-                <#if successMessage??>
-                    <div class="col-xs-10 col-sm-10 col-md-10">
-                         <div id="success-message" class="success-message alert alert-success">
-                            <a href="#" class="close-message close">&times;</a>
-                            <strong>!</strong>
-                            <@spring.message successMessage/>
-                        </div>
+                <div class="col-xs-10 col-sm-10 col-md-10">
+                     <div id="success-message" class="success-message alert alert-success<#if !successMessage??> hidden</#if>">
+                        <a href="#" class="close-message close">&times;</a>
+                        <span class="message"><#if successMessage??><@spring.message successMessage/></#if><span>
                     </div>
-                </#if>
-                <#if generalErrorMessage??>
-                    <div class="col-xs-10 col-sm-10 col-md-10">
-                         <div id="general-error-message" class="error-message alert alert-danger">
-                            <a href="#" class="close-message close">&times;</a>
-                            <strong>!</strong>
-                            ${generalErrorMessage}
-                        </div>
+                     <div id="general-error-message" class="error-message alert alert-danger<#if !generalErrorMessage??> hidden</#if>">
+                        <a href="#" class="close-message close">&times;</a>
+                        <span class="message"><#if generalErrorMessage??>${generalErrorMessage}</#if><span>
                     </div>
-                </#if>
+                </div>
             </div>
             <div class="row">
                 <div class="col-md-1"></div>
@@ -65,10 +57,10 @@
                                 <span>or</span>
                                 <div id="file-box-url">
                                     <input id="add-image-url-input" class="form-control" placeholder="Type the URL of an image of your product"></input>
-                                    <a id="add-image-url-button"></a>
                                     <div class="tooltip-wrapper">
                                         <span id="add-image-url-input-tooltip" class="error-tooltip"></span>
                                     </div>
+                                    <a id="add-image-url-button"></a>
                                 </div>
                             </div>
                         </div>
@@ -127,7 +119,7 @@
     </#if>
     <div class="form-group form-icon-poz">
         <label for="${fieldId}"><@spring.message 'ADD.PRODUCT.${fieldKey}.LABEL' /><#if mandatory>*</#if></label>
-        <input <#if !hasError && fieldValue?? && fieldValue != "">value="${fieldValue}"</#if> class="form-control <#if hasError>has-error</#if>" name="${fieldName}" id="${fieldId}" type="text" placeholder="<@spring.message 'ADD.PRODUCT.${fieldKey}.PLACEHOLDER'/>">
+        <input <#if !hasError && fieldValue?? && fieldValue != "">value="${fieldValue}"</#if> class="form-control<#if hasError> has-error</#if>" name="${fieldName}" id="${fieldId}" type="text" placeholder="<@spring.message 'ADD.PRODUCT.${fieldKey}.PLACEHOLDER'/>">
         <div class="tooltip-wrapper">
             <span id="${fieldId}-tooltip" class="error-tooltip"><#if hasError><@spring.message '${validationErrors["${fieldName}"]}'/></#if></span>
         </div>
