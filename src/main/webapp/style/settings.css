@@ -78,21 +78,15 @@
     color: #367fa9;
 }
 
-.message-success {
+.success-message {
 	width: 100%;
-    background-color: #00a65a !important;
-    color: #fff !important;;
-    font-size: 16px;
-    font-weight: 600;
+    background-color: #00a65a;
     padding: 5px 20px 5px 20px;
 }
 
-.message-error {
+.error-message {
     width: 100%;
-    background-color: #dd4b39 !important;
-    color: #fff !important;;
-    font-size: 16px;
-    font-weight: 600;
+    background-color: #dd4b39;
     padding: 5px 20px 5px 20px;
 }
 
@@ -116,5 +110,10 @@
 	margin-right: -15px;
 	margin-left: -15px;
 	}
+}
+
+.form-control[readonly] {
+    cursor: text;
+    background-color: #fff;
 }
 
