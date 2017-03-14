@@ -1612,3 +1612,28 @@ strong {
     font-weight: 600;
 }
 
+/* ---- Search button ----*/
+
+.search-input {
+    border: 1px solid #367fa9;
+    border-radius: 4px 0 0 4px;
+    box-shadow: none;
+    color: #8a8a8a;
+    float: left;
+    height: 34px;
+    padding: 0 10px;
+}
+
+.search-btn {
+    background: #367fa9;
+    border: 1px solid #367fa9;
+    border-radius: 0 4px 4px 0;
+    color: #ffffff;
+    height: 34px;
+    padding: 0 20px;
+}
+
+.search-btn:hover {
+    background: #3c8dbc;
+    color: #ffffff;
+}
