@@ -70,8 +70,7 @@ var validationConfig = {
         'messages' : {
             'required' : 'This field is required.',
             'lessThan' : 'First name should have at least 3 characters.',
-            'moreThan' : 'First name should have at most 100 characters',
-            'invalidRegexp' : 'Invalid format.'
+            'moreThan' : 'First name should have at most 100 characters'
         }
     },
     'comment' : {

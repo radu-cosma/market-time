@@ -38,8 +38,8 @@
                 </a>
             </li>
             <li>
-                <a href="/market-time/marketplace">
-                    <i class="fa fa-pie-chart"></i> <span>Marketplace</span>
+                <a href="/market-time/settings">
+                    <i class="fa fa-cog"></i> <span>Settings</span>
                 </a>
             </li>
             <li>
@@ -49,7 +49,7 @@
             </li>
             <li>
                 <a href="/market-time/aboutUs">
-                    <i class="fa fa-cog"></i> <span> About Us </span>
+                    <i class="fa fa-info-circle"></i> <span> About Us </span>
                 </a>
             </li>
         </ul>
