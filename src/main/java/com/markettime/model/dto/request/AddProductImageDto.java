@@ -1,6 +1,9 @@
 package com.markettime.model.dto.request;
 
 import static com.markettime.util.Constants.VALIDATION_NOT_EMPTY;
+import static com.markettime.util.Constants.VALIDATION_SIZE;
+
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -12,10 +15,12 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class AddProductImageDto {
 
     @NotEmpty(message = VALIDATION_NOT_EMPTY)
+    @Size(max = 255, message = VALIDATION_SIZE)
     private String name;
     @NotEmpty(message = VALIDATION_NOT_EMPTY)
     private String type;
     private int weight;
+    @Size(max = 255, message = VALIDATION_SIZE)
     private String url;
     private byte[] imageData;
     @NotEmpty(message = VALIDATION_NOT_EMPTY)

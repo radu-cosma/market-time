@@ -154,7 +154,7 @@ public class ProductService {
             if (addProductImageDto.getImageData() != null) {
                 String cloudinaryImageUrl = uploadImageToCloudinary(addProductImageDto);
                 if (cloudinaryImageUrl != null) {
-                    addProductImageDto.setUrl(cloudinaryImageUrl);
+                    productImageEntity.setUrl(cloudinaryImageUrl);
                 } else {
                     // TODO: save on disk for retrying later
                 }

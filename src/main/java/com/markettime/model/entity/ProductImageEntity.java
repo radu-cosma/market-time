@@ -36,7 +36,7 @@ public class ProductImageEntity {
         this.id = id;
     }
 
-    @Column(length = 30, nullable = false)
+    @Column(length = 255, nullable = false)
     public String getName() {
         return name;
     }
@@ -45,7 +45,7 @@ public class ProductImageEntity {
         this.name = name;
     }
 
-    @Column(length = 50, nullable = false)
+    @Column(length = 255, nullable = false)
     public String getUrl() {
         return url;
     }

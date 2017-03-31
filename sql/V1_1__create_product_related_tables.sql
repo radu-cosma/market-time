@@ -41,7 +41,7 @@ DROP TABLE IF EXISTS `product_image`;
 CREATE TABLE IF NOT EXISTS `product_image` (
 	`id` BIGINT NOT NULL AUTO_INCREMENT,
 	`title` VARCHAR(30) NOT NULL,
-  	`url` VARCHAR(50) NOT NULL,
+  	`url` VARCHAR(255) NOT NULL,
   	`product_id` BIGINT NOT NULL,
   	PRIMARY KEY (`id`),
 	KEY `product_image_product_id_idx` (`product_id`),
