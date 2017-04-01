@@ -197,7 +197,7 @@ a:focus {
 }
 
 a:hover {
-	cursor: pointer;
+    cursor: pointer;
 }
 
 /*
@@ -1334,6 +1334,7 @@ a:hover {
     color: #fff !important;
 }
 
+
 .bg-red,
 .callout.callout-danger,
 .alert-danger,
@@ -1390,6 +1391,7 @@ a:hover {
 .nav-tabs {
     border-bottom: 1px solid #367fa9;
 }
+
 
 /*
  * General: Dropdown list
@@ -1466,7 +1468,7 @@ a:hover {
     }
 }
 
-@media (min-width: 768px) {
+@media only screen and (min-width: 361px) and (max-width: 768px) {
     .dropdown-select {
         width: 50%;
     }
@@ -1530,9 +1532,19 @@ a:hover {
     background: #519cc8;
 }
 
+.delete-btn {
+    color: #dd4b39;
+    border: 1px solid #dd4b39;
+}
+
+.delete-btn:hover {
+    color: #fff;
+    background: #dd4b39;
+}
+
 /* ---- General classes ----*/
 .box-header {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .container {
@@ -1540,12 +1552,29 @@ a:hover {
     line-height: 1.2;
 }
 
-.row {
-    margin: 0px;
+.content {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.row-style {
+    margin-right: 10px;
+    margin-left: 10px; 
+}
+
+@media (max-width: 768px) {
+   .row-style {
+       margin-right: 5px;
+       margin-left: 5px; 
+   }
 }
 
 .padding-5 {
     padding: 5px;
+}
+
+.padding-0 {
+    padding: 0px;
 }
 
 .no-padding-left {
@@ -1576,5 +1605,9 @@ a:hover {
     .textarea-style {
         width: 70%;
     }
+}
+
+strong {
+    font-weight: 600;
 }
 

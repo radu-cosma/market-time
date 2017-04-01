@@ -5,6 +5,8 @@ import java.util.Arrays;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,23 +24,36 @@ import com.markettime.service.LogoutService;
 @RequestMapping("logout")
 public class LogoutController extends BaseController {
 
-	private static final String UUID_COOKIE_NAME = "uuid";
+    private static final Logger LOGGER = LoggerFactory.getLogger(LogoutController.class);
 
-	@Autowired
-	private LogoutService logoutService;
+    private static final String UUID_COOKIE_NAME = "uuid";
 
-	@RequestMapping(method = RequestMethod.GET)
-	public View logout(HttpServletRequest request) {
+    @Autowired
+    private LogoutService logoutService;
 
-		Cookie[] cookies = request.getCookies();
+    /**
+     *
+     * @param request
+     * @return
+     */
+    @RequestMapping(method = RequestMethod.GET)
+    public View logout(HttpServletRequest request) {
 
-		if (cookies != null) {
-			Arrays.stream(cookies).filter(cookie -> UUID_COOKIE_NAME.equals(cookie.getName())).forEach(cookie -> {
-				logoutService.logout(cookie.getValue());
-				cookie.setMaxAge(0);
-			});
-		}
+        LOGGER.info("started logout[]");
 
-		return simpleRedirect("home");
-	}
+        Cookie[] cookies = request.getCookies();
+
+        if (cookies != null) {
+            Arrays.stream(cookies).filter(cookie -> UUID_COOKIE_NAME.equals(cookie.getName())).forEach(cookie -> {
+                logoutService.logout(cookie.getValue());
+                cookie.setMaxAge(0);
+                cookie.setValue("");
+                cookie.setPath("/");
+            });
+        }
+
+        String viewName = "home";
+        LOGGER.info("completed logout; returned: {}", viewName);
+        return simpleRedirect(viewName);
+    }
 }

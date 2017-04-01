@@ -25,12 +25,12 @@ import javax.persistence.UniqueConstraint;
 @Entity
 @Table(name = "user_session", uniqueConstraints = { @UniqueConstraint(columnNames = "uuid") })
 @NamedQueries(value = {
-        @NamedQuery(name = UserSessionEntity.FIND_BY_UUID, query = "SELECT us FROM UserSessionEntity us WHERE us.uuid=:uuid AND us.active=true"),
-        @NamedQuery(name = UserSessionEntity.FIND_BY_USER_ID, query = "SELECT us FROM UserSessionEntity us WHERE us.user.id=:userId AND us.active=true") })
+        @NamedQuery(name = UserSessionEntity.FIND_ACTIVE_BY_UUID, query = "SELECT us FROM UserSessionEntity us WHERE us.uuid=:uuid AND us.active=true"),
+        @NamedQuery(name = UserSessionEntity.FIND_ACTIVE_BY_USER_ID, query = "SELECT us FROM UserSessionEntity us WHERE us.user.id=:userId AND us.active=true") })
 public class UserSessionEntity {
 
-    public static final String FIND_BY_UUID = "UserSessionEntity.findByUuid";
-    public static final String FIND_BY_USER_ID = "UserSessionEntity.findByUserId";
+    public static final String FIND_ACTIVE_BY_UUID = "UserSessionEntity.findActiveByUuid";
+    public static final String FIND_ACTIVE_BY_USER_ID = "UserSessionEntity.findActiveByUserId";
 
     private Long id;
     private UserEntity user;

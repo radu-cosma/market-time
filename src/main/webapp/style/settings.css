@@ -1,0 +1,119 @@
+.settings-details {
+    border: 1px solid #367fa9;
+    margin-bottom: 10px;    
+}
+
+@media (max-width: 480px) {
+    .settings-details {
+        margin-left: 5px;
+        margin-right: 5px;
+        padding-bottom: 5px;
+    }
+}
+
+.market {
+    border-left: 3px solid transparent;
+}
+
+.market:hover {
+    border-left: 3px solid #3c8dbc;
+}
+
+.panel-heading {  
+    padding: 5px;
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+}
+
+.market-img {
+	width: 80px;
+}
+
+@media (max-width: 480px) {
+    .market-img {
+        width: 60px;
+    }
+}
+
+.img-style {
+    width: 100%;
+    height: 100%;
+}
+
+.market-settings {
+    flex: 2;
+    padding-right: 10px;
+    text-overflow:ellipsis;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.market-url {
+	font-size: 16px;
+}
+
+.collapse-btn {
+    width: auto;   
+    cursor: pointer;
+}
+
+.settings-form {
+    padding: 10px;
+}
+
+@media (max-width: 480px) {
+    .settings-form {
+        padding: 5px;       
+    }
+}
+
+.details {
+	fornt-size: 25px;
+	font-weight: 600;
+	color: #3c8dbc;
+}
+
+.details:hover {
+    color: #367fa9;
+}
+
+.success-message {
+	width: 100%;
+    background-color: #00a65a;
+    padding: 5px 20px 5px 20px;
+}
+
+.error-message {
+    width: 100%;
+    background-color: #dd4b39;
+    padding: 5px 20px 5px 20px;
+}
+
+@media (max-width: 480px) {
+	.display-btn {
+	   float: right;
+    }
+}
+
+.details-style {
+	margin: 0;
+}
+
+.form-style {
+	margin: 10px 0 0 0;
+	padding-left: 0;
+}
+
+@media (max-width: 480px) {
+    .form-style {
+	margin-right: -15px;
+	margin-left: -15px;
+	}
+}
+
+.form-control[readonly] {
+    cursor: text;
+    background-color: #fff;
+}
+

@@ -2,6 +2,9 @@ package com.markettime.controller;
 
 import static com.markettime.util.Constants.ADD_PRODUCT_SUCCESS_MESSAGE_KEY;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
@@ -15,12 +18,14 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.markettime.context.RequestContext;
 import com.markettime.exception.ValidationErrorsException;
+import com.markettime.model.dto.ProductDto;
 import com.markettime.model.dto.request.AddProductRequestDto;
 import com.markettime.service.ProductService;
 
@@ -46,9 +51,13 @@ public class ProductController extends BaseController {
      * @return
      */
     @RequestMapping(value = "add", method = RequestMethod.GET)
-    public ModelAndView getAddProduct() {
-        String addProductSessionId = productService.prepareCache();
-        return new ModelAndView("add-product", "addProductSessionId", addProductSessionId);
+    public String getAddProduct() {
+
+        LOGGER.info("started getAddProduct[]");
+
+        String viewName = "add-product";
+        LOGGER.info("completed getAddProduct; returned: {}", viewName);
+        return viewName;
     }
 
     /**
@@ -60,7 +69,8 @@ public class ProductController extends BaseController {
     @RequestMapping(value = "add", method = RequestMethod.POST)
     public View addProduct(@ModelAttribute @Valid AddProductRequestDto addProductRequestDto,
             BindingResult bindingResult, RedirectAttributes redirectAttributes) {
-        LOGGER.info("addProduct: {}", addProductRequestDto);
+
+        LOGGER.info("started addProduct[addProductRequestDto: {}]", addProductRequestDto);
 
         requestContext.setReturnToViewName("add-product");
         requestContext.setModelObjectName("addProduct");
@@ -70,7 +80,9 @@ public class ProductController extends BaseController {
         }
         productService.addProduct(addProductRequestDto);
         redirectAttributes.addFlashAttribute("successMessage", ADD_PRODUCT_SUCCESS_MESSAGE_KEY);
-        return simpleRedirect("add");
+        String viewName = "add";
+        LOGGER.info("completed addProduct; returned: {}", viewName);
+        return simpleRedirect(viewName);
     }
 
     /**
@@ -81,6 +93,73 @@ public class ProductController extends BaseController {
     @InitBinder
     public void initBinder(WebDataBinder binder) {
         binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
+    }
+
+    /**
+     *
+     * @param productStatus
+     * @return
+     */
+    @RequestMapping(method = RequestMethod.GET)
+    public ModelAndView getProducts(@RequestParam("status") String productStatus) {
+
+        LOGGER.info("started getProducts[productStatus: {}]", productStatus);
+
+        List<ProductDto> products = createProductsList();
+        LOGGER.info("completed getProducts; returned: {}", products);
+        return new ModelAndView("products", "products", products);
+    }
+
+    private List<ProductDto> createProductsList() {
+        List<ProductDto> products = new ArrayList<>();
+        ProductDto product = new ProductDto();
+        product.setName("product 1");
+        product.setDescription("description 1");
+        product.setTags("tags 1");
+        product.setShipping("shipping 1");
+        product.setShippingTime("shipping time 1");
+        product.setColor("color 1");
+        product.setSize("size 1");
+        product.setInventory("inventory 1");
+        product.setPrice("price 1");
+        product.setBrand("brand 1");
+        product.setLandingPageUrl("landing page url 1");
+        product.setUpc("upc 1");
+        product.setMarketplace("marketplace 1 ");
+        products.add(product);
+
+        product = new ProductDto();
+        product.setName("product 2");
+        product.setDescription("description 2");
+        product.setTags("tags 2");
+        product.setShipping("shipping 2");
+        product.setShippingTime("shipping time 2");
+        product.setColor("color 2");
+        product.setSize("size 2");
+        product.setInventory("inventory 2");
+        product.setPrice("price 2");
+        product.setBrand("brand 2");
+        product.setLandingPageUrl("landing page url 2");
+        product.setUpc("upc 2");
+        product.setMarketplace("marketplace 2 ");
+        products.add(product);
+
+        product = new ProductDto();
+        product.setName("product 3");
+        product.setDescription("description 3");
+        product.setTags("tags 3");
+        product.setShipping("shipping 3");
+        product.setShippingTime("shipping time 3");
+        product.setColor("color 3");
+        product.setInventory("inventory 3");
+        product.setPrice("price 3");
+        product.setSize("size 3");
+        product.setBrand("brand 3");
+        product.setLandingPageUrl("landing page url 3");
+        product.setUpc("upc 3");
+        product.setMarketplace("marketplace 3 ");
+        products.add(product);
+        return products;
     }
 
 }

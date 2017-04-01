@@ -14,8 +14,8 @@
 				"main": "presentation",
 				"footer": "footer-presentation"
 			},
-			"cssResources": ["layout-presentation", "presentation", "header-presentation", "login"],
-			"jsResources": ["presentation", "login"]
+			"cssResources": ["layout-presentation", "presentation", "header-presentation", "login", "validation"],
+			"jsResources": ["presentation", "login", "validation"]
 		},
 		# home page - logged in
 		{
@@ -61,6 +61,34 @@
 			"cssResources": ["layout", "skin-blue", "header"],
 			"jsResources": ["market-time"]
 		},
+		# subscription page - logged out
+		{
+			"criteria": {
+				"name": "subscription",
+				"loggedIn": false
+			},
+			"sections": {
+				"header": "header-presentation",
+				"main": "subscription",
+				"footer": "footer-presentation"
+			},
+			"cssResources": ["layout-presentation", "presentation", "header-presentation", "subscription", "login"],
+			"jsResources": ["presentation", "login"]
+		},
+		# integration page - logged out
+		{
+			"criteria": {
+				"name": "integration",
+				"loggedIn": false
+			},
+			"sections": {
+				"header": "header-presentation",
+				"main": "integration",
+				"footer": "footer-presentation"
+			},
+			"cssResources": ["layout-presentation", "presentation", "header-presentation", "integration", "login"],
+			"jsResources": ["presentation", "login", "integration"]
+		},
 		# contact page - logged out
 		{
 			"criteria": {
@@ -72,8 +100,8 @@
 				"main": "contact",
 				"footer": "footer-presentation"
 			},
-			"cssResources": ["layout-presentation", "presentation", "header-presentation", "contact", "login"],
-			"jsResources": ["presentation", "google-maps", "contact"]
+			"cssResources": ["layout-presentation", "presentation", "header-presentation", "contact", "login", "validation"],
+			"jsResources": ["presentation", "google-maps", "contact", "login", "validation"]
 		},
 		# profile page - logged in
 		{
@@ -104,6 +132,81 @@
 			},
 			"cssResources": ["layout", "skin-blue", "header", "validation", "add-product"],
 			"jsResources": ["market-time", "dragndrop", "validation", "add-product"]
+		},
+		# products list page - logged in
+		{
+			"criteria": {
+				"name": "products",
+				"loggedIn": true
+			},
+			"sections": {
+				"header": "header",
+				"menu": "menu",
+				"main": "products",
+				"footer": "footer"
+			},
+			"cssResources": ["layout", "skin-blue", "header", "products"],
+			"jsResources": ["market-time", "products"]
+		},
+		# orders list page - logged in
+		{
+			"criteria": {
+				"name": "orders",
+				"loggedIn": true
+			},
+			"sections": {
+				"header": "header",
+				"menu": "menu",
+				"main": "orders",
+				"footer": "footer"
+			},
+			"cssResources": ["layout", "skin-blue", "header", "validation", "orders"],
+			"jsResources": ["market-time", "validation", "orders"]
+		},
+		# order details page - logged in
+		{
+			"criteria": {
+				"name": "order-details",
+				"loggedIn": true
+			},
+			"sections": {
+				"header": "header",
+				"menu": "menu",
+				"main": "order-details",
+				"footer": "footer"
+			},
+			"cssResources": ["layout", "skin-blue", "header", "validation", "order-details"],
+			"jsResources": ["market-time", "validation", "orders"]
+		},
+		# settings page - logged in
+		{
+			"criteria": {
+				"name": "settings",
+				"loggedIn": true
+			},
+			"sections": {
+				"header": "header",
+				"menu": "menu",
+				"main": "settings",
+				"footer": "footer"
+			},
+			"cssResources": ["layout", "skin-blue", "header", "validation", "settings"],
+			"jsResources": ["market-time", "validation", "settings"]
+        },
+        # messages page - logged in
+        {
+            "criteria": {
+                "name": "messages",
+                "loggedIn": true
+            },
+            "sections": {
+                "header": "header",
+                "menu": "menu",
+                "main": "messages",
+                "footer": "footer"
+			},
+			"cssResources": ["layout", "skin-blue", "header", "validation", "messages"],
+			"jsResources": ["market-time", "validation", "messages"]
 		},
 		# error 500 page - logged in
 		{

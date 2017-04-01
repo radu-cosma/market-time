@@ -73,6 +73,10 @@
     font-family: fontAwesome;
 }
 
+#header-container .sidebar-toggle:before {
+    content: "\f0c9";
+}
+
 #header-container .sidebar-toggle:hover {
     color: #fff;
 }
@@ -121,14 +125,12 @@
 
 #header-container .logo .logo-lg {
     display: block;
+    height: 45px;
+    margin: 4px auto;
 }
 
 #header-container .logo .logo-mini {
     display: none;
-}
-
-#header-container .navbar-brand {
-    color: #fff;
 }
 
 .content-header {

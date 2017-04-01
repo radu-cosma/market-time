@@ -1,42 +1,6 @@
-@media screen and (max-width: 768px) {
-	.col-sm-4 {
-		text-align: center;
-		margin: 5px 0;
-	}
-	.col-sm-6 {
-		margin-bottom: 30px;
-	}
-	.cont-style {
-		padding: 60px 30px;
-	}
-	.aboutus-icon {
-		width: 90%;
-		height: 130px;
-	}
-	.btn-lg {
-		width: 100%;
-		margin-bottom: 35px;
-	}
-	h4 {
-		font-size: 25px;
-	}
-	h2 {
-		font-size: 35px;
-	}
-	p {
-		font-size: 16px;
-	}
-	.services-icon {
-		width: 25%;
-		height: 25%;
-	}
-}
-
-@media screen and (max-width: 480px) {
-	.services-icon {
-		width: 50%;
-		height: 50%;
-	}
+#registration-container {
+    padding-left: 20px;
+	margin: 25px 0;
 }
 
 #general-error-message {
