@@ -96,7 +96,9 @@ public class CustomExceptionHandler {
         e.printStackTrace();
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("userContext", userContext);
-        modelAndView.setViewName("error500");
+        modelAndView.addObject("generalErrorMessage", "Oops! It seems we're having some issues... Please try again.");
+        modelAndView.setViewName(
+                requestContext.getReturnToViewName() != null ? requestContext.getReturnToViewName() : "error500");
         return modelAndView;
     }
 

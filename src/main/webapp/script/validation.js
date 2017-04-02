@@ -1,3 +1,5 @@
+"use strict";
+
 var validator = {
     validationConfig: {},
         
@@ -8,8 +10,8 @@ var validator = {
         
         this.validationConfig = validationConfig;
 
-        for (var i in fields) {
-            inputId = fields[i];
+        for (var field in fields) {
+            inputId = fields[field];
             if (validationConfig[inputId] !== undefined) {
                 validationResponse = this.validateInput(inputId);
                 this.markValidation(inputId, validationResponse);

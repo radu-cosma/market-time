@@ -56,6 +56,9 @@ public class AddProductRequestDto {
     @Size(min = 12, max = 12, message = VALIDATION_SIZE)
     private String upc;
 
+    @NotEmpty(message = VALIDATION_NOT_EMPTY)
+    private String addProductSessionId;
+
     public String getName() {
         return name;
     }
@@ -152,6 +155,14 @@ public class AddProductRequestDto {
         this.upc = upc;
     }
 
+    public String getAddProductSessionId() {
+        return addProductSessionId;
+    }
+
+    public void setAddProductSessionId(String addProductSessionId) {
+        this.addProductSessionId = addProductSessionId;
+    }
+
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
@@ -160,7 +171,7 @@ public class AddProductRequestDto {
                 .append(shippingTime).append(", color=").append(color).append(", size=").append(size)
                 .append(", inventory=").append(inventory).append(", price=").append(price).append(", brand=")
                 .append(brand).append(", presentationPageUrl=").append(presentationPageUrl).append(", upc=").append(upc)
-                .append("]");
+                .append(", addProductSessionId=").append(addProductSessionId).append("]");
         return builder.toString();
     }
 
