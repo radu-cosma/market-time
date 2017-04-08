@@ -50,9 +50,4 @@ public class MarketTimeController extends BaseController {
         return viewName;
     }
 
-    @RequestMapping(value = "test", method = RequestMethod.GET)
-    public String getTest() {
-        return "test";
-    }
-
 }

@@ -3,7 +3,8 @@ package com.markettime;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.servlet.Filter;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,13 +14,9 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import com.cloudinary.Cloudinary;
-import com.markettime.interceptor.UserContextInterceptor;
-import com.markettime.web.servlet.view.CustomFreeMarkerViewResolver;
+import com.markettime.handler.NoCacheFilter;
 
 /**
  *
@@ -32,7 +29,7 @@ import com.markettime.web.servlet.view.CustomFreeMarkerViewResolver;
 @EnableWebMvc
 @EnableTransactionManagement
 // @EnableLoadTimeWeaving
-public class MarketTimeApplication extends WebMvcConfigurerAdapter {
+public class MarketTimeApplication {
 
     @Value("${cloudinary.cloud.name}")
     private String cloudName;
@@ -42,51 +39,6 @@ public class MarketTimeApplication extends WebMvcConfigurerAdapter {
 
     @Value("${cloudinary.api.secret}")
     private String apiSecret;
-
-    @Autowired
-    private UserContextInterceptor userContextInterceptor;
-
-    // @Override
-    // public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
-    // configurer.enable();
-    // }
-
-    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(userContextInterceptor).addPathPatterns("/**");
-    }
-
-    // @Override
-    // public void addResourceHandlers(ResourceHandlerRegistry registry) {
-    // registry.addResourceHandler("*.css");
-    // registry.addResourceHandler("*.js");
-    // registry.addResourceHandler("*.png");
-    // registry.addResourceHandler("*.svg");
-    // registry.addResourceHandler("*.eot");
-    // registry.addResourceHandler("*.ttf");
-    // registry.addResourceHandler("*.woff");
-    // registry.addResourceHandler("*.woff2");
-    // }
-
-    @Override
-    public void configureViewResolvers(ViewResolverRegistry registry) {
-        registry.viewResolver(customFreeMarkerViewResolver());
-        // registry.freeMarker();
-    }
-
-    @Bean
-    public CustomFreeMarkerViewResolver customFreeMarkerViewResolver() {
-        return new CustomFreeMarkerViewResolver();
-    }
-
-    // @Bean
-    // public FreeMarkerConfigurer getFreeMarkerConfigurer() throws IOException, TemplateException {
-    // FreeMarkerConfigurer configurer = new FreeMarkerConfigurer();
-    // Properties properties = new Properties();
-    // properties.setProperty("auto_import", "spring.ftl as spring");
-    // configurer.setFreemarkerSettings(properties);
-    // return configurer;
-    // }
 
     @Bean
     public Cloudinary cloudinary() {
@@ -98,12 +50,17 @@ public class MarketTimeApplication extends WebMvcConfigurerAdapter {
     }
 
     @Bean
-    public ReloadableResourceBundleMessageSource getMessageSource() {
+    public ReloadableResourceBundleMessageSource messageSource() {
         ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
         messageSource.setBasename("classpath:messages/messages");
         messageSource.setFallbackToSystemLocale(false);
         messageSource.setDefaultEncoding("UTF-8");
         return messageSource;
+    }
+
+    @Bean
+    public Filter noCacheFilter() {
+        return new NoCacheFilter();
     }
 
     public static void main(String[] args) {

@@ -10,6 +10,7 @@
          </#list>
     </head>
     <body>
+        <#import "spring.ftl" as spring>
         <#if sections??>
             <div class="wrapper">
                 <#list sections?keys as sectionName>
