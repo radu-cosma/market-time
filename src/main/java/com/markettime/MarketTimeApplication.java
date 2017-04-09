@@ -63,6 +63,11 @@ public class MarketTimeApplication {
         return new NoCacheFilter();
     }
 
+    // @Bean
+    // public InstrumentationLoadTimeWeaver loadTimeWeaver() {
+    // return new InstrumentationLoadTimeWeaver();
+    // }
+
     public static void main(String[] args) {
         SpringApplication.run(MarketTimeApplication.class, args);
     }
