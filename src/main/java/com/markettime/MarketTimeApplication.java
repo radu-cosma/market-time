@@ -11,7 +11,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.context.annotation.EnableLoadTimeWeaving;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
@@ -28,7 +30,7 @@ import com.markettime.handler.NoCacheFilter;
 @EnableAspectJAutoProxy
 @EnableWebMvc
 @EnableTransactionManagement
-// @EnableLoadTimeWeaving
+@EnableLoadTimeWeaving
 public class MarketTimeApplication {
 
     @Value("${cloudinary.cloud.name}")
@@ -63,10 +65,10 @@ public class MarketTimeApplication {
         return new NoCacheFilter();
     }
 
-    // @Bean
-    // public InstrumentationLoadTimeWeaver loadTimeWeaver() {
-    // return new InstrumentationLoadTimeWeaver();
-    // }
+    @Bean
+    public InstrumentationLoadTimeWeaver loadTimeWeaver() {
+        return new InstrumentationLoadTimeWeaver();
+    }
 
     public static void main(String[] args) {
         SpringApplication.run(MarketTimeApplication.class, args);
