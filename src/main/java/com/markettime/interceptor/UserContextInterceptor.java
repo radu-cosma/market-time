@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.markettime.service.UserContextService;
@@ -13,6 +14,7 @@ import com.markettime.service.UserContextService;
  * @author Radu Cosma
  *
  */
+@Component
 public class UserContextInterceptor extends HandlerInterceptorAdapter {
 
     @Autowired

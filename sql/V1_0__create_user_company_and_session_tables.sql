@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `user_session` (
   	`id` BIGINT NOT NULL AUTO_INCREMENT,
   	`user_id` BIGINT NOT NULL,
   	`uuid` VARCHAR(36) NOT NULL,
-  	`active` TINYINT NOT NULL,
+  	`active` TINYINT(1) NOT NULL,
   	`creation_time` DATETIME NOT NULL,
   	`last_access` DATETIME NOT NULL,
   	PRIMARY KEY (`id`),
