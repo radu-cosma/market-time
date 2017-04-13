@@ -20,8 +20,17 @@ import com.markettime.web.servlet.view.CustomFreeMarkerViewResolver;
 @EnableWebMvc
 public class MarketTimeMvcConfiguration extends WebMvcConfigurerAdapter {
 
-    private static final String[] RESOURCE_LOCATIONS = { "classpath:/static/fonts", "classpath:/static/images",
-            "classpath:/static/script", "classpath:/static/style" };
+    private static final String FONTS_MAPPING = "fonts/**";
+    private static final String FONTS_LOCATION = "classpath:/static/fonts/";
+
+    private static final String IMAGES_MAPPING = "images/**";
+    private static final String IMAGES_LOCATION = "classpath:/static/images/";
+
+    private static final String SCRIPTS_MAPPING = "scripts/**";
+    private static final String SCRIPTS_LOCATION = "classpath:/static/scripts/";
+
+    private static final String STYLES_MAPPING = "styles/**";
+    private static final String STYLES_LOCATION = "classpath:/static/styles/";
 
     @Autowired
     private UserContextInterceptor userContextInterceptor;
@@ -33,8 +42,17 @@ public class MarketTimeMvcConfiguration extends WebMvcConfigurerAdapter {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        if (!registry.hasMappingForPattern("/**")) {
-            registry.addResourceHandler("/**").addResourceLocations(RESOURCE_LOCATIONS);
+        if (!registry.hasMappingForPattern(FONTS_MAPPING)) {
+            registry.addResourceHandler(FONTS_MAPPING).addResourceLocations(FONTS_LOCATION);
+        }
+        if (!registry.hasMappingForPattern(IMAGES_MAPPING)) {
+            registry.addResourceHandler(IMAGES_MAPPING).addResourceLocations(IMAGES_LOCATION);
+        }
+        if (!registry.hasMappingForPattern(SCRIPTS_MAPPING)) {
+            registry.addResourceHandler(SCRIPTS_MAPPING).addResourceLocations(SCRIPTS_LOCATION);
+        }
+        if (!registry.hasMappingForPattern(STYLES_MAPPING)) {
+            registry.addResourceHandler(STYLES_MAPPING).addResourceLocations(STYLES_LOCATION);
         }
     }
 

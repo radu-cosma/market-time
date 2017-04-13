@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css"/>
         <#list cssResources as cssResource>
-             <link rel="stylesheet" href="${baseURL}/style/${cssResource}.css"/>    
+             <link rel="stylesheet" href="${baseURL}/styles/${cssResource}.css"/>    
          </#list>
     </head>
     <body>
@@ -21,7 +21,7 @@
             </div>
         </#if>
         <#list jsResources as jsResource>
-            <script src="${baseURL}/script/${jsResource}.js"></script>
+            <script src="${baseURL}/scripts/${jsResource}.js"></script>
          </#list>
     </body>
 </html>

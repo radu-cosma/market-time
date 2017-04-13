@@ -76,7 +76,7 @@ public class CustomExceptionHandler {
      */
     @ExceptionHandler(NoHandlerFoundException.class)
     public ModelAndView handleNoHandlerFoundException(HttpServletRequest request, NoHandlerFoundException e) {
-        LOGGER.error("An exception occured!", e);
+        LOGGER.warn(e.getMessage());
         userContextService.initializeUserContext(request);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("userContext", userContext);
