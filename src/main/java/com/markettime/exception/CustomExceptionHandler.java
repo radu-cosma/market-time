@@ -93,7 +93,6 @@ public class CustomExceptionHandler {
     @ExceptionHandler(Exception.class)
     public ModelAndView handleException(HttpServletRequest request, Exception e) {
         LOGGER.error("An exception occured!", e);
-        e.printStackTrace();
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("userContext", userContext);
         modelAndView.addObject("generalErrorMessage", "Oops! It seems we're having some issues... Please try again.");
