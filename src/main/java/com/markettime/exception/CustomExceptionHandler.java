@@ -76,7 +76,7 @@ public class CustomExceptionHandler {
      */
     @ExceptionHandler(NoHandlerFoundException.class)
     public ModelAndView handleNoHandlerFoundException(HttpServletRequest request, NoHandlerFoundException e) {
-        LOGGER.error("An exception occured!", e);
+        LOGGER.warn(e.getMessage());
         userContextService.initializeUserContext(request);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("userContext", userContext);
@@ -93,10 +93,11 @@ public class CustomExceptionHandler {
     @ExceptionHandler(Exception.class)
     public ModelAndView handleException(HttpServletRequest request, Exception e) {
         LOGGER.error("An exception occured!", e);
-        e.printStackTrace();
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("userContext", userContext);
-        modelAndView.setViewName("error500");
+        modelAndView.addObject("generalErrorMessage", "Oops! It seems we're having some issues... Please try again.");
+        modelAndView.setViewName(
+                requestContext.getReturnToViewName() != null ? requestContext.getReturnToViewName() : "error500");
         return modelAndView;
     }
 

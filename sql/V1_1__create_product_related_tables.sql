@@ -3,19 +3,19 @@
 --
 DROP TABLE IF EXISTS `product`;
 CREATE TABLE IF NOT EXISTS `product` (
-	`id` BIGINT(20) NOT NULL AUTO_INCREMENT, 
+	`id` BIGINT NOT NULL AUTO_INCREMENT, 
 	`name` VARCHAR(30) NOT NULL,
 	`description` VARCHAR(1000) NOT NULL,
 	`shipping` VARCHAR(10) NOT NULL,
 	`shipping_time` VARCHAR(5) DEFAULT NULL, 
 	`color` VARCHAR(20) DEFAULT NULL,
 	`size` VARCHAR(10) DEFAULT NULL,
-	`inventory` INT(11) NOT NULL,
-	`price` INT(11) NOT NULL,
+	`inventory` INT NOT NULL,
+	`price` INT NOT NULL,
 	`brand` VARCHAR(30) DEFAULT NULL,
 	`presentation_page_url` VARCHAR(50) DEFAULT NULL,
 	`upc` VARCHAR(12) DEFAULT NULL,
-	`user_id` BIGINT(20) NOT NULL,
+	`user_id` BIGINT NOT NULL,
 	PRIMARY KEY (`id`),
 	KEY `product_user_id_idx` (`user_id`),
   	CONSTRAINT `product_user_id_fk` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -26,9 +26,9 @@ CREATE TABLE IF NOT EXISTS `product` (
 --
 DROP TABLE IF EXISTS `product_tag`;
 CREATE TABLE IF NOT EXISTS `product_tag` (
-	`id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+	`id` BIGINT NOT NULL AUTO_INCREMENT,
   	`name` VARCHAR(20) NOT NULL,
-  	`product_id` BIGINT(20) NOT NULL,
+  	`product_id` BIGINT NOT NULL,
   	PRIMARY KEY (`id`),
 	KEY `product_tag_product_id_idx` (`product_id`),
   	CONSTRAINT `product_tag_product_id_fk` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -39,10 +39,10 @@ CREATE TABLE IF NOT EXISTS `product_tag` (
 --
 DROP TABLE IF EXISTS `product_image`;
 CREATE TABLE IF NOT EXISTS `product_image` (
-	`id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+	`id` BIGINT NOT NULL AUTO_INCREMENT,
 	`title` VARCHAR(30) NOT NULL,
-  	`url` VARCHAR(50) NOT NULL,
-  	`product_id` BIGINT(20) NOT NULL,
+  	`url` VARCHAR(255) NOT NULL,
+  	`product_id` BIGINT NOT NULL,
   	PRIMARY KEY (`id`),
 	KEY `product_image_product_id_idx` (`product_id`),
   	CONSTRAINT `product_image_product_id_fk` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION

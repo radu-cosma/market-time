@@ -131,7 +131,7 @@
 				"footer": "footer"
 			},
 			"cssResources": ["layout", "skin-blue", "header", "validation", "add-product"],
-			"jsResources": ["market-time", "validation", "add-product"]
+			"jsResources": ["market-time", "dragndrop", "validation", "add-product"]
 		},
 		# products list page - logged in
 		{

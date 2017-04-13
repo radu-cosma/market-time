@@ -15,9 +15,9 @@ import com.markettime.context.UserContext;
  *
  */
 @Controller
-public class MainController extends BaseController {
+public class MarketTimeController extends BaseController {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(MainController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(MarketTimeController.class);
 
     @Autowired
     private UserContext userContext;
@@ -28,14 +28,10 @@ public class MainController extends BaseController {
      */
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String getRoot() {
-
         LOGGER.info("started getRoot[]");
 
-        String viewName = "redirect:home";
+        String viewName = userContext.isLoggedIn() ? "redirect:dashboard" : "redirect:home";
 
-        if (userContext.isLoggedIn()) {
-            viewName = "redirect:dashboard";
-        }
         LOGGER.info("completed getRoot; returned: {}", viewName);
         return viewName;
     }
@@ -46,14 +42,10 @@ public class MainController extends BaseController {
      */
     @RequestMapping(value = "home", method = RequestMethod.GET)
     public String getHome() {
-
         LOGGER.info("started getHome[]");
 
-        String viewName = "home";
+        String viewName = userContext.isLoggedIn() ? "redirect:dashboard" : "home";
 
-        if (userContext.isLoggedIn()) {
-            viewName = "redirect:dashboard";
-        }
         LOGGER.info("completed getHome; returned: {}", viewName);
         return viewName;
     }

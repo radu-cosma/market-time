@@ -1,0 +1,232 @@
+form {
+    margin-top: 15px;    
+}
+
+input[type="file" i] {
+    display: flex;
+    align-items: flex-end;
+    color: inherit;
+    text-align: right;
+}
+
+input[type="file"] {
+    height: 32px;
+    width: 320px;
+}
+
+#publish-checkbox, #unpublish-checkbox {
+    -webkit-appearance: checkbox;
+}
+
+.row,
+.form-pad {
+    margin-right: -5px;
+    margin-left: -5px;
+}
+
+input[type=checkbox],
+input[type=radio] {
+    margin-right: 10px;
+    margin-bottom: 10px;
+    width: 15px;
+    height: 15px;
+}
+
+.info-icon {
+    position: absolute;
+    top: 29px;
+    right: 10px;
+}
+
+.ion-ios-information-outline {
+    font-size: 20px;
+}
+
+.form-icon-poz {
+    position: relative;
+}
+
+.form-icon-poz .form-control {
+    padding-right: 35px;
+}
+
+#add-image-info-icon {
+    padding-right: 16px;
+}
+
+.info-icon + .tooltip > .tooltip-inner {
+    background-color: #bee4f4;
+    color: #0077b3;
+    border: 1px solid #bee4f4;
+    padding: 2px;
+    width: 350px;
+    text-align: left;
+    opacity: 8;
+}
+
+.info-icon + .tooltip.top > .tooltip-arrow {
+    border-top: 5px solid #bee4f4;
+}
+
+#file-box {
+	position: relative;
+	padding: 80px 20px;
+	text-align: center;
+}
+
+#file-box-file {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+#file-box-input {
+    color: #97A1A8;
+}
+
+#file-box-dragndrop {
+    display: none;
+}
+
+#file-box-url {
+	position: relative;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 30%;
+	width: 40%;
+}
+
+#file-box.has-advanced-upload {
+    background-color: white;
+    outline: 2px dashed #c8cbce;
+    outline-offset: -2px;
+}
+
+#file-box.has-advanced-upload #file-box-dragndrop {
+    display: inline;
+}
+
+#file-box.is-dragover {
+    outline: 2px dashed #e3e2e4;
+    outline-offset: -8px;
+    background: #f9f9f9;
+}
+
+#file-box.error {
+	border: none;
+	outline: 2px dashed red;
+}
+
+#browse-files-button {
+	margin: 10px 0px;
+	color: #367fa9;
+    border: 1px solid #367fa9;
+    display: inline-block;
+    padding: 8px 14px;
+    outline: none;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    white-space: nowrap;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 3px;
+    vertical-align: middle;
+    background-color: #fff;
+    box-shadow: 0px 1px 5px rgba(0,0,0,0.05);
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+#browse-files-button:hover,
+#browse-files-button:active {
+	background: #519cc8;
+    border-color: transparent;
+    color: #fff;
+}
+
+.product-image-container {
+	margin-right: 10px;
+	position: relative;
+    width: 140px;
+    height: 122px;
+    // overflow: hidden;
+    float: left;
+}
+
+.image-thumbnail {
+	width: 100%;
+	height: 100%;
+}
+
+#add-image-url-input {
+    text-align: center;
+    padding-right: 34px;
+}
+
+#add-image-url-button {
+	background: #eeeeee;
+	position: absolute;
+	height: 100%;
+	width: 34px;
+	right: 0px;
+	top: 0px;
+	border: 1px solid #c8c8c8;
+	border-left: 2px solid #367fa9;
+	border-top-right-radius: 4px;
+	border-bottom-right-radius: 4px;
+}
+
+#add-image-url-button:hover, 
+#add-image-url-button:active {
+    background: #367fa9;
+    border-color: #367fa9;
+}
+
+.remove-image-button {
+	background-image: url("../images/sprite.png");
+	background-repeat: no-repeat;
+    background-size: 24px 24px;
+	background-position: 0px 0px;
+	position: absolute;
+	top: 6px;
+	right: 6px;
+	height: 12px;
+	width: 12px;
+	z-index: 2;
+}
+
+.remove-image-button:hover {
+    background-size: 24px 24px;
+    background-position: -12px 0px;
+}
+
+.retry-button {
+    background-image: url("../images/sprite.png");
+    background-repeat: no-repeat;
+    background-size: 24px 24px;
+    background-position: 0px -12px;
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    height: 12px;
+    width: 12px;
+    z-index: 2;
+}
+
+.retry-button:hover {
+    background-size: 24px 24px;
+    background-position: -12px -12px;
+}
+
+.faded {
+	opacity: 0.3;
+}
+
+.image-error-tooltip {
+	bottom: 132px;
+}

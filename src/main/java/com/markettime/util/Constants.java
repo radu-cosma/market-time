@@ -22,6 +22,7 @@ public class Constants {
     public static final String VALIDATION_NOT_EMPTY = "NotEmpty";
     public static final String VALIDATION_SIZE = "Size";
     public static final String VALIDATION_PATTERN = "Pattern";
+    public static final String VALIDATION_MIN = "Min";
 
     /**
      * message keys
