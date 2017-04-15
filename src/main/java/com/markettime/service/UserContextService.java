@@ -1,7 +1,9 @@
 package com.markettime.service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -12,11 +14,14 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
 import com.markettime.context.UserContext;
 import com.markettime.model.entity.UserEntity;
 import com.markettime.model.entity.UserSessionEntity;
 import com.markettime.repository.UserSessionRepository;
+import com.markettime.service.model.Menu;
+import com.markettime.service.model.MenuItem;
 import com.markettime.util.Constants;
 import com.markettime.util.DateUtil;
 
@@ -47,7 +52,11 @@ public class UserContextService {
      * @param request
      */
     public void initializeUserContext(HttpServletRequest request) {
-        Cookie[] cookies = request.getCookies();
+        processCookies(request.getCookies());
+        createMenu(getRequestPath(request));
+    }
+
+    private void processCookies(Cookie[] cookies) {
         if (cookies != null) {
             Arrays.stream(cookies).filter(cookie -> UUID_COOKIE_NAME.equals(cookie.getName()))
                     .forEach(this::processUuidCookie);
@@ -91,4 +100,54 @@ public class UserContextService {
         cookie.setPath(path);
         response.addCookie(cookie);
     }
+
+    private String getRequestPath(HttpServletRequest request) {
+        String requestPath = request.getContextPath().concat(request.getServletPath());
+        if (!StringUtils.isEmpty(request.getQueryString())) {
+            requestPath = requestPath.concat("?").concat(request.getQueryString());
+        }
+        return requestPath;
+    }
+
+    private void createMenu(String requestPath) {
+        Menu menu = new Menu();
+        menu.add(new MenuItem("MENU.DASHBOARD", "/market-time/dashboard", "fa-dashboard", null));
+        menu.add(new MenuItem("MENU.ADD.PRODUCT", "/market-time/products/add", "fa-edit", null));
+        menu.add(new MenuItem("MENU.PRODUCTS.LIST", "/market-time/#", "fa-table", createProductsSubMenu()));
+        menu.add(new MenuItem("MENU.ORDERS", "/market-time/orders", "fa-money", null));
+        menu.add(new MenuItem("MENU.MESSAGES", "/market-time/messages", "fa-envelope-o", null));
+        menu.add(new MenuItem("MENU.CALENDAR.EVENTS", "/market-time/calendarEvents", "fa-calendar", null));
+        menu.add(new MenuItem("MENU.SETTINGS", "/market-time/settings", "fa-cog", null));
+        menu.add(new MenuItem("MENU.MY.PROFILE", "/market-time/profile", "fa-user", null));
+        menu.add(new MenuItem("MENU.ABOUT.US", "/market-time/aboutUs", "fa-info-circle", null));
+
+        setSelectedItem(menu.getMenuItems(), requestPath);
+
+        userContext.setMenu(menu);
+    }
+
+    private List<MenuItem> createProductsSubMenu() {
+        List<MenuItem> productsSubMenu = new ArrayList<>(2);
+        productsSubMenu.add(
+                new MenuItem("MENU.PUBLISHED.PRODUCTS", "/market-time/products?status=published", "fa-circle-o", null));
+        productsSubMenu.add(new MenuItem("MENU.UNPUBLISHED.PRODUCTS", "/market-time/products?status=unpublished",
+                "fa-circle-o", null));
+        return productsSubMenu;
+    }
+
+    private boolean setSelectedItem(List<MenuItem> menuItems, String requestPath) {
+        boolean foundActive = Boolean.FALSE;
+        for (MenuItem menuItem : menuItems) {
+            List<MenuItem> subMenuItems = menuItem.getSubMenuItems();
+            if (subMenuItems != null && !subMenuItems.isEmpty()) {
+                foundActive = setSelectedItem(subMenuItems, requestPath);
+            }
+            if (foundActive || requestPath.equals(menuItem.getUrl())) {
+                menuItem.setActive(Boolean.TRUE);
+                return Boolean.TRUE;
+            }
+        }
+        return foundActive;
+    }
+
 }
