@@ -131,7 +131,7 @@
 				"footer": "footer"
 			},
 			"cssResources": ["layout", "skin-blue", "header", "validation", "add-product"],
-			"jsResources": ["market-time", "validation", "add-product"]
+			"jsResources": ["market-time", "dragndrop", "validation", "add-product"]
 		},
 		# products list page - logged in
 		{
@@ -175,20 +175,35 @@
 				"main": "order-details",
 				"footer": "footer"
 			},
-			"cssResources": ["layout", "skin-blue", "header","validation", "order-details"],
+			"cssResources": ["layout", "skin-blue", "header", "validation", "order-details"],
 			"jsResources": ["market-time", "validation", "orders"]
 		},
-		# messages page - logged in
+		# settings page - logged in
 		{
 			"criteria": {
-				"name": "messages",
+				"name": "settings",
 				"loggedIn": true
 			},
 			"sections": {
 				"header": "header",
 				"menu": "menu",
-				"main": "messages",
+				"main": "settings",
 				"footer": "footer"
+			},
+			"cssResources": ["layout", "skin-blue", "header", "validation", "settings"],
+			"jsResources": ["market-time", "validation", "settings"]
+        },
+        # messages page - logged in
+        {
+            "criteria": {
+                "name": "messages",
+                "loggedIn": true
+            },
+            "sections": {
+                "header": "header",
+                "menu": "menu",
+                "main": "messages",
+                "footer": "footer"
 			},
 			"cssResources": ["layout", "skin-blue", "header", "validation", "messages"],
 			"jsResources": ["market-time", "validation", "messages"]

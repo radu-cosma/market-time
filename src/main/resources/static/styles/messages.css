@@ -15,6 +15,10 @@
 
 /*Inbox - Outbox*/
 
+.display-btn {	
+    margin-left: 30px;
+}
+
 @media (max-width: 567px) {
     .panel-body {
         padding-left: 0;

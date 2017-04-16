@@ -43,7 +43,8 @@ public class RestAspect {
             restResponseDto.setValidationErrors(ValidationUtil.extractValidationErrors(e.getErrors()));
         } catch (Exception e) {
             LOGGER.error("An exception occurred!", e);
-            restResponseDto.setGeneralError(e.getMessage());
+            restResponseDto.setGeneralError(
+                    "Oops! It seems we're having some issues... Please refresh the page and try again.");
         }
         return restResponseDto;
     }

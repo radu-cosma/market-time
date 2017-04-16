@@ -69,7 +69,7 @@ public class UserSessionEntity {
         this.uuid = uuid;
     }
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "bit")
     public boolean isActive() {
         return active;
     }

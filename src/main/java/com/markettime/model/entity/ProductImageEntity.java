@@ -19,8 +19,10 @@ import javax.persistence.Table;
 public class ProductImageEntity {
 
     private Long id;
-    private String title;
+    private String name;
     private String url;
+    private int weight;
+    private ImageTypeEntity imageType;
     private ProductEntity product;
 
     @Id
@@ -34,22 +36,41 @@ public class ProductImageEntity {
         this.id = id;
     }
 
-    @Column(length = 30, nullable = false)
-    public String getTitle() {
-        return title;
+    @Column(length = 255, nullable = false)
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    @Column(length = 50, nullable = false)
+    @Column(length = 255, nullable = false)
     public String getUrl() {
         return url;
     }
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    @Column(nullable = false)
+    public int getWeight() {
+        return weight;
+    }
+
+    public void setWeight(int weight) {
+        this.weight = weight;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "image_type_id")
+    public ImageTypeEntity getImageType() {
+        return imageType;
+    }
+
+    public void setImageType(ImageTypeEntity imageType) {
+        this.imageType = imageType;
     }
 
     @ManyToOne
@@ -65,8 +86,8 @@ public class ProductImageEntity {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        builder.append("ProductImageEntity [id=").append(id).append(", title=").append(title).append(", url=")
-                .append(url).append(", product=").append(product).append("]");
+        builder.append("ProductImageEntity [id=").append(id).append(", name=").append(name).append(", url=").append(url)
+                .append(", weight=").append(weight).append(", imageType=").append(imageType).append("]");
         return builder.toString();
     }
 
