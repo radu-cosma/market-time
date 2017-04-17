@@ -208,6 +208,36 @@
 			"cssResources": ["layout", "skin-blue", "header", "validation", "messages"],
 			"jsResources": ["market-time", "validation", "messages"]
 		},
+		# users page - logged in
+		{
+			"criteria": {
+				"name": "users",
+				"loggedIn": true
+			},
+			"sections": {
+				"header": "header",
+				"menu": "admin-menu",
+				"main": "users",
+				"footer": "footer"
+			},
+			"cssResources": ["layout", "skin-blue", "header", "users"],
+			"jsResources": ["market-time", "users"]
+		},
+		# user details page - logged in
+		{
+			"criteria": {
+				"name": "user-details",
+				"loggedIn": true
+			},
+			"sections": {
+				"header": "header",
+				"menu": "admin-menu",
+				"main": "user-details",
+				"footer": "footer"
+			},
+			"cssResources": ["layout", "skin-blue", "header", "user-details"],
+			"jsResources": ["market-time", "user-details"]
+		},
 		# error 500 page - logged in
 		{
 			"criteria": {
