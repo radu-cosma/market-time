@@ -20,18 +20,16 @@
                         </select>
                     </div>
                 </div>
-                <form action="#" class=" pull-right search-form">
-                    <div class="input-append">
-                        <input type="text" class="search-input search" placeholder="<@spring.message 'USERS.SEARCH.PLACEHOLDER'/>">
-                        <button class="btn search-btn" type="button"><i class="fa fa-search"></i></button>
-                    </div>
-                </form>
-                <ul class="user-list">
+                <div class="input-append pull-right search-form">
+                    <input type="text" class="search-input search" placeholder="<@spring.message 'USERS.SEARCH.PLACEHOLDER'/>">
+                    <button class="btn search-btn"><i class="fa fa-search"></i></button>
+                </div>
+                <ul id="users-list">
                     <li>
                         <div class="user-box user-status">
                             <div class="user-details">
                                 <aside class="col-sm-7 col-xs-12 user-profile">
-                                    <h2 class="company-name">Healthysoft Consulting SRL </h2>
+                                    <h2 class="company-name">Healthysoft Consulting SRL</h2>
                                     <p>Daniel Huluban</p>
                                 </aside>
                                 <aside class="col-sm-5 col-xs-12 user-info">
@@ -39,7 +37,7 @@
                                     <p>0747858585</p>
                                 </aside>
                             </div>
-                            <a href="users/details"><div class="btn form-btn blue go-right"><@spring.message 'USERS.DETAILS.VIEW.BUTTON'/></div></a>
+                            <a href="users/details"><div class="btn form-btn blue pull-right"><@spring.message 'USERS.DETAILS.VIEW.BUTTON'/></div></a>
                         </div>
                     </li>
                 </ul>

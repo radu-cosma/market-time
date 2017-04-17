@@ -35,11 +35,11 @@
     margin-bottom: 10px;   
 }
 
-.inactive-section {
+#inactive-subscriptions-section {
     padding-left: 15px; 
 }
 
-.style-list {
+#active-subscriptions-list, #inactive-subscriptions-list {
     list-style-type: none;
     padding-left: 0;    
     margin-top: 10px;
@@ -47,16 +47,16 @@
 }
 
 /*Orders*/
-.orders {
-	padding-left: 15px;
-	padding-right: 15px;
+#orders {
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
-.view-all-orders {
+#view-all-orders {
     padding-left: 15px;
 }
 
-.order-list {
+#orders-list {
     margin: 0px;
     padding-left: 15px;
     padding-right: 15px;
@@ -65,7 +65,7 @@
     list-style-type: none;
 }
 
-.order-list > li {
+#orders-list > li {
     background-color: rgb(255, 255, 255);
     box-shadow: 0px 0px 5px rgb(51, 51, 51);
     box-shadow: 0px 0px 5px rgba(51, 51, 51, 0.7);
@@ -117,17 +117,17 @@
 }
 
 /*Invoice*/
-.invoices {
+#invoices {
     padding-left: 15px;
     padding-right: 15px;
 }
 
-.view-all-invoices {
-	padding-left: 15px;
+#view-all-invoices {
+    padding-left: 15px;
 }
 
-.invoice-list {
-	margin: 0px;
+#invoices-list {
+    margin: 0px;
     padding-left: 15px;
     padding-right: 15px;
     padding-top: 5px;
@@ -135,7 +135,7 @@
     list-style-type: none;	
 }
 
-.invoice-list > li {
+#invoices-list > li {
     background-color: rgb(255, 255, 255);
     box-shadow: 0px 0px 5px rgb(51, 51, 51);
     box-shadow: 0px 0px 5px rgba(51, 51, 51, 0.7);

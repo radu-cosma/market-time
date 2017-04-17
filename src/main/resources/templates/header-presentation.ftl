@@ -16,17 +16,17 @@
                 <li><a href="/market-time/contact">CONTACT</a></li>
                 <li class="dropdown language">
                     <a id="flag" href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="images/united-kingdom.png" alt="English" class="country-flag">
+                        <img src="/market-time/images/united-kingdom.png" alt="English" class="country-flag">
                     </a>
                     <ul class="dropdown-menu dropdown-menu-ul" role="menu">
                         <li>
                             <a href="#">
                             <span class="country-mob-name">English</span>
-                                <img src="images/united-kingdom.png" class="country-flag" alt="English">  
+                                <img src="/market-time/images/united-kingdom.png" class="country-flag" alt="English">  
                             </a>
                             <a href="#">
                             <span class="country-mob-name">Romana</span>
-                                <img src="images/romania.png" class="country-flag" alt="Romania">  
+                                <img src="/market-time/images/romania.png" class="country-flag" alt="Romania">  
                             </a>
                         </li>
                     </ul>
