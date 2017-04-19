@@ -18,31 +18,9 @@
     width: 100%;
 }
 
-.order-head {
-    padding: 10px 10px 5px 10px;
-}
-
-.order-body {
-    padding: 10px 10px 5px 10px;
-}
-
-.order-separator {
-    border-bottom: 1px solid #cecece;
-    margin-left: 10px;
-    margin-right: 10px;
-}
-
-@media (max-width: 360px) {
-    .order-head {
-        padding: 5px 5px 5px 5px;
-    }
-    .order-body {
-        padding: 5px 5px 5px 5px;
-    }
-    .order-separator {
-        margin-left: 5px;
-        margin-right: 5px;
-    }
+.order {
+    padding: 5px;
+    padding-bottom: 0;
 }
 
 .order-nr-title {
@@ -54,17 +32,9 @@
 .order-status {
     font-weight: bold;
     color: #10B2F8;
-    font-size: 13pt;
+    font-size: 12pt;
 }
 
 .go-right {
     float: right;
-}
-
-.edit-shipping-padding {
-    padding-left: 15px;
-}
-
-.edit-shipping-button-padding {
-    padding-left: 30px;
 }

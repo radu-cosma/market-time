@@ -33,30 +33,40 @@
                       </select>
                 </div>
                 <#if orders??>
-                      <#list orders as order>
+                    <#list orders as order>
                         <ul class="order-list">
-                              <li>
-                                <div class="order-head">
-                                      <#if order.id??>
+                            <li>
+                                <div class="order">
+                                    <#if order.id??>
                                         <a href="orders/${order.id}"><div class="btn form-btn blue go-right"><@spring.message 'ORDERS.DETAILS.VIEW.BUTTON'/></div></a>
                                         <h2 class="order-nr-title"><@spring.message 'ORDERS.DETAILS.NUMBER'/>: ${order.id}</h2> 
-                                      </#if>
-                                      <#if order.date??>
-                                        <p><@spring.message 'ORDERS.DETAILS.DATE'/>: ${order.date?date}</p>
-                                      </#if>
+                                    </#if>
+                                    <div class="row"> 
+                                    <#if order.date??>
+                                        <div class="col-sm-2 col-xs-4"> 
+                                            <strong><@spring.message 'ORDERS.DETAILS.DATE'/></strong> 
+                                            <p>${order.date?date}</p>
+                                        </div>
+                                    </#if> 
+                                    <#if order.marketplace??>
+                                        <div class="col-sm-4 col-xs-8">
+                                            <strong><@spring.message 'ORDERS.DETAILS.MARKETPLACE'/></strong>
+                                            <p>${order.marketplace}</p>
+                                        </div>
+                                    </#if>
+                                    <#if order.total??>
+                                        <div class="col-sm-2 col-xs-4">
+                                            <strong><@spring.message 'ORDERS.DETAILS.TOTAL'/>
+                                            <p>${order.total}</strong>
+                                        </div>
+                                    </#if>
+                                    <#if order.status??>
+                                        <div class="col-sm-4 col-xs-8">
+                                            <strong><@spring.message 'ORDERS.DETAILS.STATUS'/></strong>
+                                            <p class="order-status">${order.status}</p>
+                                        </div>
+                                    </#if>
                                 </div>
-                                <div class="order-separator"></div>
-                                <div class="order-body">  
-                                      <#if order.marketplace??>
-                                        <p>${order.marketplace}</p>
-                                      </#if>
-                                      <#if order.total??>
-                                        <strong><@spring.message 'ORDERS.DETAILS.TOTAL'/>: ${order.total}</strong>
-                                      </#if>
-                                      <#if order.status??>
-                                        <p class="order-status">${order.status}</p>
-                                      </#if>
-                                  </div>
                             </li>
                         </ul>
                     </#list>
