@@ -208,6 +208,21 @@
 			"cssResources": ["layout", "skin-blue", "header", "validation", "messages"],
 			"jsResources": ["market-time", "validation", "messages"]
 		},
+		# invoices page - logged in
+        {
+            "criteria": {
+                "name": "invoices",
+                "loggedIn": true
+            },
+            "sections": {
+                "header": "header",
+                "menu": "menu",
+                "main": "invoices",
+                "footer": "footer"
+			},
+			"cssResources": ["layout", "skin-blue", "header", "invoices"],
+			"jsResources": ["market-time", "invoices"]
+		},
 		# users page - logged in
 		{
 			"criteria": {
