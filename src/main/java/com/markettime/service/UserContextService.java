@@ -118,6 +118,7 @@ public class UserContextService {
         menu.add(new MenuItem("MENU.MESSAGES", "/market-time/messages", "fa-envelope-o", null));
         menu.add(new MenuItem("MENU.CALENDAR.EVENTS", "/market-time/calendarEvents", "fa-calendar", null));
         menu.add(new MenuItem("MENU.SETTINGS", "/market-time/settings", "fa-cog", null));
+        menu.add(new MenuItem("MENU.INVOICES", "/market-time/invoices", "fa-money", null));
         menu.add(new MenuItem("MENU.MY.PROFILE", "/market-time/profile", "fa-user", null));
         menu.add(new MenuItem("MENU.ABOUT.US", "/market-time/aboutUs", "fa-info-circle", null));
 
