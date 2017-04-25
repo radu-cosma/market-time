@@ -52,15 +52,15 @@
 
 .product-img {
     float: left;
-    width: 110px;
-    height: 120px;
-    margin: 0 5px 10px 0;
+    width: 70px;
+    height: 85px;
+    margin-right: 5px;
 }
 
 @media (max-width: 360px) {
     .product-img {
-        width: 80px;
-        height: 90px;
+        width: 60px;
+        height: 75px;
     }
 }
 
@@ -97,7 +97,6 @@
 }
 
 .title {
-    padding-top: 10px;
     padding-bottom: 10px;
 }
 
@@ -112,20 +111,8 @@
 .event-list > li > .info > .title {
     color: #3C8DBC;
     font-size: 16pt;
-    font-weight: 700;
-    margin: 0px;
-}
-
-.product-desc {
-    font-size: 12pt;
-    font-weight: 400;
-    padding-left: 0;
-}
-
-.product-label {
-    font-size: 12pt;
     font-weight: 600;
-    padding-left: 0;
+    margin: 0px;
 }
 
 .event-list > li > .info > ul,
@@ -199,6 +186,7 @@
     .event-list > li > img {
         display: inline-block;
     }
+    
     .event-list > li > img {
         float: left;
         width: 100px;
@@ -206,6 +194,7 @@
         padding: 0px;
         margin: 0px;
     }
+    
     .event-list > li > .info {
         background-color: #FFFFFF;
         position: relative;
@@ -213,14 +202,13 @@
         text-align: left;
         padding-right: 40px;
     }
-    .event-list > li > .info > .title {
-        padding: 15px 5px 10px 5px;
-    }
+    
     .event-list > li > .info > ul {
         position: absolute;
         left: 0px;
         bottom: 0px;
     }
+    
     .event-list > li > .product-edit-delete {
         position: absolute;
         top: 0px;
@@ -228,14 +216,16 @@
         display: block;
         width: 40px;
     }
+    
     .event-list > li > .product-edit-delete > ul > li {
         display: block;
         padding: 0px;
     }
+    
     .event-list > li > .product-edit-delete > ul > li > a {
         display: block;
         width: 40px;
-        padding: 50% 0 50%;
+        padding: 35% 0 35%;
     }
 }
 
@@ -255,7 +245,7 @@
 }
 
 .details-btn {
-    margin-top: 10px;
+    margin-top: 5px;
     margin-right: 50px;
     position: absolute;
     top: 0;
@@ -436,4 +426,35 @@
 }
 .fade {
     background-color: rgba(60, 141, 188, 0.5);
+}
+
+.product-details {
+	display: flex;
+	flex-flow: row wrap;
+	margin-left: 0;
+    margin-right: 0;
+}
+
+.inside-label {
+	padding-left: 0;
+	padding-right: 10px;
+    display: block;
+}
+
+.inside {
+	overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.separator-line {
+    border-bottom: 1px solid #cecece;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.variation-title {
+    font-size: 14pt;
+    margin-top: 5px;
+    font-weight: 600;
 }

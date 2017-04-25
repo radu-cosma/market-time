@@ -7,7 +7,7 @@ $('.details-btn').on('click', function(e) {
         $(this).html('close details &#9650');
     } else {
         detailsContainer.addClass('hidden');
-        $(this).html('details &#9660');
+        $(this).html('product details &#9660');
     }
 });
 

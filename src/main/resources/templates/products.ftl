@@ -54,18 +54,27 @@
                                     <#if product.name??>
                                         <h2 class="title">${product.name}</h2>
                                     </#if>
-                                    <#if product.price??>
-                                        <div class="product-label col-md-2 col-xs-3 col-sm-3">
-                                        <@spring.message 'PRODUCTS.DETAILS.PRICE'/>:</div><div class="product-desc col-md-7 col-xs-5 col-sm-5"> ${product.price}</div>
-                                    </#if>
-                                    <#if product.inventory??>
-                                        <div class="product-label col-md-2 col-xs-3 col-sm-3">
-                                        <@spring.message 'PRODUCTS.DETAILS.INVENTORY'/>:</div><div class="product-desc col-md-7 col-xs-5 col-sm-5"> ${product.inventory}</div>
-                                    </#if>
-                                    <#if product.marketplace??>
-                                        <div class="product-desc col-md-9 col-xs-8 col-sm-9"> ${product.marketplace}</div>
-                                    </#if>
-                                    <a class="form-btn blue details-btn" href="#">details &#9660</a>
+                                    <div class="row product-details">
+                                        <#if product.price??>
+                                            <div class="col-sm-2 col-xs-6 inside-label">
+                                                <strong><@spring.message 'PRODUCTS.DETAILS.PRICE'/></strong>
+                                                <p class="inside"> ${product.price}</p>
+                                            </div>
+                                        </#if>
+                                        <#if product.inventory??>
+                                            <div class="col-sm-3 col-xs-6 inside-label">
+                                                <strong><@spring.message 'PRODUCTS.DETAILS.INVENTORY'/></strong>
+                                                <p class="inside">${product.inventory}</p>
+                                            </div>
+                                        </#if>
+                                        <#if product.brand??>
+                                            <div class="col-sm-7 col-xs-12 inside-label">
+                                                <strong><@spring.message 'PRODUCTS.DETAILS.BRAND'/></strong>
+                                                <p class="inside">${product.brand}</p>
+                                            </div>
+                                        </#if>
+                                    </div>
+                                    <a class="form-btn blue details-btn" href="#">product details &#9660</a>
                                     <div class="details-container hidden">
                                         <div class="panel panel-details">
                                             <div class="panel-heading">
@@ -74,60 +83,78 @@
                                             </div>
                                             <div class="panel-collapse collapse in">
                                                 <div class="product-panel-body">
+                                                    <#if product.marketplace??>
+                                                        <div  class="row">
+                                                            <div class="col-md-2 col-xs-12"><strong><@spring.message 'PRODUCT.DETAILS.MARKETPLACE'/></strong></div>
+                                                            <div class="col-md-10 col-xs-12"> ${product.marketplace}</div>
+                                                        </div>
+                                                    </#if>
                                                     <#if product.shipping??>
                                                         <div  class="row">
-                                                            <div class="product-label col-md-3 col-xs-5 col-sm-3"><@spring.message 'PRODUCTS.DETAILS.SHIPPING'/>:</div>
-                                                            <div class="product-desc col-md-9 col-xs-7 col-sm-3">${product.shipping}</div>
+                                                            <div class="col-md-2 col-xs-12"><strong><@spring.message 'PRODUCTS.DETAILS.SHIPPING'/>:</strong></div>
+                                                            <div class="col-md-10 col-xs-12">${product.shipping}</div>
                                                         </div>
                                                     </#if>
                                                     <#if product.tags??>
                                                         <div class="row">
-                                                            <div class="product-label col-md-3 col-xs-5 col-sm-3"><@spring.message 'PRODUCTS.DETAILS.TAGS'/>:</div>
-                                                            <div class="product-desc col-md-9 col-xs-7 col-sm-3">${product.tags}</div>
+                                                            <div class="col-md-2 col-xs-12"><strong><@spring.message 'PRODUCTS.DETAILS.TAGS'/>:</strong></div>
+                                                            <div class="col-md-10 col-xs-12">${product.tags}</div>
                                                         </div>
-                                                    </#if>
+                                                    </#if> 
                                                     <#if product.shippingTime??>
                                                         <div class="row">
-                                                            <div class="product-label col-md-3 col-xs-5 col-sm-3"><@spring.message 'PRODUCTS.DETAILS.SHIPPING-TIME'/>:</div>
-                                                            <div class="product-desc col-md-9 col-xs-7 col-sm-3">${product.shippingTime}</div>
+                                                            <div class="col-md-2 col-xs-12"><strong><@spring.message 'PRODUCTS.DETAILS.SHIPPING-TIME'/>:</strong></div>
+                                                            <div class="col-md-10 col-xs-12">${product.shippingTime}</div>
                                                         </div>
                                                     </#if>
                                                     <#if product.color??>
                                                         <div class="row">
-                                                            <div class="product-label col-md-3 col-xs-5 col-sm-3"><@spring.message 'PRODUCTS.DETAILS.COLOR'/>:</div>
-                                                            <div class="product-desc col-md-9 col-xs-7 col-sm-3">${product.color}</div>
+                                                            <div class="col-md-2 col-xs-12"><strong><@spring.message 'PRODUCTS.DETAILS.COLOR'/>:</strong></div>
+                                                            <div class="col-md-10 col-xs-12">${product.color}</div>
                                                         </div>
                                                     </#if>
                                                     <#if product.size??>
                                                         <div class="row">
-                                                            <div class="product-label col-md-3 col-xs-5 col-sm-3"><@spring.message 'PRODUCTS.DETAILS.SIZE'/>:</div>
-                                                            <div class="product-desc col-md-9 col-xs-7 col-sm-3">${product.size}</div>
-                                                        </div>
-                                                    </#if>
-                                                    <#if product.brand??>
-                                                        <div class="row">
-                                                            <div class="product-label col-md-3 col-xs-5 col-sm-3"><@spring.message 'PRODUCTS.DETAILS.BRAND'/>:</div>
-                                                            <div class="product-desc col-md-9 col-xs-7 col-sm-3">${product.brand}</div>
+                                                            <div class="col-md-2 col-xs-12"><strong><@spring.message 'PRODUCTS.DETAILS.SIZE'/>:</strong></div>
+                                                            <div class="col-md-10 col-xs-12">${product.size}</div>
                                                         </div>
                                                     </#if>
                                                     <#if product.landingPageUrl??>
                                                         <div class="row">
-                                                            <div class="product-label col-md-3 col-xs-5 col-sm-3"><@spring.message 'PRODUCTS.DETAILS.LANDING-PAGE-URL'/>:</div>
-                                                            <div class="product-desc col-md-9 col-xs-7 col-sm-3">${product.landingPageUrl}</div>
+                                                            <div class="col-md-2 col-xs-12"><strong><@spring.message 'PRODUCTS.DETAILS.LANDING-PAGE-URL'/>:</strong></div>
+                                                            <div class="col-md-10 col-xs-12">${product.landingPageUrl}</div>
                                                         </div>
                                                     </#if>
                                                     <#if product.upc??>
                                                         <div class="row">
-                                                            <div class="product-label col-md-3 col-xs-5 col-sm-3"><@spring.message 'PRODUCTS.DETAILS.UPC'/>:</div>
-                                                            <div class="product-desc col-md-9 col-xs-7 col-sm-3">${product.upc}</div>
+                                                            <div class="col-md-2 col-xs-12"><strong><@spring.message 'PRODUCTS.DETAILS.UPC'/>:</strong></div>
+                                                            <div class="col-md-10 col-xs-12">${product.upc}</div>
                                                         </div>
                                                     </#if>
                                                     <#if product.description??>
                                                         <div class="row">
-                                                            <div class="product-label col-md-3 col-xs-5 col-sm-3"><@spring.message 'PRODUCTS.DETAILS.DESCRIPTION'/>:</div>
-                                                            <div class="product-desc col-md-9 col-xs-7 col-sm-3">${product.description}</div>
+                                                            <div class="col-md-2 col-xs-12"><strong><@spring.message 'PRODUCTS.DETAILS.DESCRIPTION'/>:</strong></div>
+                                                            <div class="col-md-10 col-xs-12">${product.description}</div>
                                                         </div>
                                                     </#if>
+                                                    <div class="variation-title"><@spring.message 'PRODUCTS.DETAILS.VARIATION.TITLE'/></div>
+                                                    <div class="row">
+                                                        <div class="col-md-4 col-xs-4"><strong><@spring.message 'PRODUCTS.DETAILS.INVENTORY'/></strong></div>
+                                                        <div class="col-md-4 col-xs-4"><strong><@spring.message 'PRODUCTS.DETAILS.SIZE'/></strong></div>
+                                                        <div class="col-md-4 col-xs-4"><strong><@spring.message 'PRODUCTS.DETAILS.COLOR'/></strong></div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-4 col-xs-3">${product.inventory}</div>
+                                                        <div class="col-md-4 col-xs-4">${product.size}</div>
+                                                        <div class="col-md-4 col-xs-5">${product.color}</div>
+                                                        <div class="separator-line"></div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-4 col-xs-3">${product.inventory}</div>
+                                                        <div class="col-md-4 col-xs-4">${product.size}</div>
+                                                        <div class="col-md-4 col-xs-5">${product.color}</div>
+                                                        <div class="separator-line"></div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
