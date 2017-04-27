@@ -71,12 +71,11 @@ public class CustomExceptionHandler {
     @ExceptionHandler(NotLoggedInException.class)
     public String handleAuthenticationException(HttpServletRequest request, HttpServletResponse response,
             NotLoggedInException e) throws UnsupportedEncodingException, IOException {
-        String defaultRedirect = "redirect:/login";
+        String baseRedirect = "redirect:/login";
         String referrer = request.getHeader("referer");
-        String redirect = referrer != null
-                ? String.format("%s?return=%s", defaultRedirect, URLEncoder.encode(referrer, "UTF-8"))
-                : defaultRedirect;
-        return redirect;
+        String requestUrl = request.getRequestURL().toString();
+        String returnParameter = referrer != null ? referrer : requestUrl;
+        return String.format("%s?return=%s", baseRedirect, URLEncoder.encode(returnParameter, "UTF-8"));
     }
 
     /**
