@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.markettime.aop.LoggedIn;
 import com.markettime.exception.ValidationErrorsException;
 import com.markettime.model.dto.request.UpdateEmailRequestDto;
 import com.markettime.model.dto.request.UpdatePasswordRequestDto;
@@ -36,6 +37,7 @@ public class RestProfileController {
      * @param updateProfileRequestDto
      * @param bindingResult
      */
+    @LoggedIn
     @RequestMapping(path = "updateProfile", method = RequestMethod.POST)
     public Object updateProfile(@Valid @RequestBody UpdateProfileRequestDto updateProfileRequestDto,
             BindingResult bindingResult) {
@@ -55,6 +57,7 @@ public class RestProfileController {
      * @param updateEmailRequestDto
      * @param bindingResult
      */
+    @LoggedIn
     @RequestMapping(path = "updateEmail", method = RequestMethod.POST)
     public Object updateEmail(@Valid @RequestBody UpdateEmailRequestDto updateEmailRequestDto,
             BindingResult bindingResult) {
@@ -74,6 +77,7 @@ public class RestProfileController {
      * @param updatePasswordRequestDto
      * @param bindingResult
      */
+    @LoggedIn
     @RequestMapping(path = "updatePassword", method = RequestMethod.POST)
     public Object updatePassword(@Valid @RequestBody UpdatePasswordRequestDto updatePasswordRequestDto,
             BindingResult bindingResult) {

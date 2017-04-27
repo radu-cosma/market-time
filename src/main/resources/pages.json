@@ -21,7 +21,8 @@
 		{
 			"criteria": {
 				"name": "dashboard",
-				"loggedIn": true
+				"loggedIn": true,
+				"userRole": "REGULAR_USER"
 			},
 			"sections": {
 				"header": "header",
@@ -50,7 +51,8 @@
 		{
 			"criteria": {
 				"name": "register",
-				"loggedIn": true
+				"loggedIn": true,
+				"userRole": "REGULAR_USER"
 			},
 			"sections": {
 				"header": "header",
@@ -107,7 +109,8 @@
 		{
 			"criteria": {
 				"name": "profile",
-				"loggedIn": true
+				"loggedIn": true,
+				"userRole": "REGULAR_USER"
 			},
 			"sections": {
 				"header": "header",
@@ -122,7 +125,8 @@
 		{
 			"criteria": {
 				"name": "add-product",
-				"loggedIn": true
+				"loggedIn": true,
+				"userRole": "REGULAR_USER"
 			},
 			"sections": {
 				"header": "header",
@@ -137,7 +141,8 @@
 		{
 			"criteria": {
 				"name": "products",
-				"loggedIn": true
+				"loggedIn": true,
+				"userRole": "REGULAR_USER"
 			},
 			"sections": {
 				"header": "header",
@@ -152,7 +157,8 @@
 		{
 			"criteria": {
 				"name": "orders",
-				"loggedIn": true
+				"loggedIn": true,
+				"userRole": "REGULAR_USER"
 			},
 			"sections": {
 				"header": "header",
@@ -167,7 +173,8 @@
 		{
 			"criteria": {
 				"name": "order-details",
-				"loggedIn": true
+				"loggedIn": true,
+				"userRole": "REGULAR_USER"
 			},
 			"sections": {
 				"header": "header",
@@ -182,7 +189,8 @@
 		{
 			"criteria": {
 				"name": "settings",
-				"loggedIn": true
+				"loggedIn": true,
+				"userRole": "REGULAR_USER"
 			},
 			"sections": {
 				"header": "header",
@@ -197,7 +205,8 @@
         {
             "criteria": {
                 "name": "messages",
-                "loggedIn": true
+                "loggedIn": true,
+				"userRole": "REGULAR_USER"
             },
             "sections": {
                 "header": "header",
@@ -212,11 +221,12 @@
 		{
 			"criteria": {
 				"name": "users",
-				"loggedIn": true
+				"loggedIn": true,
+				"userRole": "ADMIN"
 			},
 			"sections": {
 				"header": "header",
-				"menu": "admin-menu",
+				"menu": "menu",
 				"main": "users",
 				"footer": "footer"
 			},
@@ -227,16 +237,30 @@
 		{
 			"criteria": {
 				"name": "user-details",
-				"loggedIn": true
+				"loggedIn": true,
+				"userRole": "ADMIN"
 			},
 			"sections": {
 				"header": "header",
-				"menu": "admin-menu",
+				"menu": "menu",
 				"main": "user-details",
 				"footer": "footer"
 			},
 			"cssResources": ["layout", "skin-blue", "header", "user-details"],
 			"jsResources": ["market-time", "user-details"]
+		},
+		# login page
+		{
+			"criteria": {
+				"name": "login"
+			},
+			"sections": {
+				"header": "header-lite",
+				"main": "login",
+				"footer": "footer-presentation"
+			},
+			"cssResources": ["layout-presentation", "header-presentation", "login"],
+			"jsResources": ["login"]
 		},
 		# error 500 page - logged in
 		{

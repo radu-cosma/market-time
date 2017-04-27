@@ -1,5 +1,7 @@
 package com.markettime.web.servlet.view;
 
+import com.markettime.model.entity.UserRole;
+
 /**
  *
  * @author Radu Cosma
@@ -9,6 +11,7 @@ public class ViewCriteria {
 
     private String name;
     private Boolean loggedIn;
+    private UserRole userRole;
 
     public String getName() {
         return name;
@@ -24,6 +27,14 @@ public class ViewCriteria {
 
     public void setLoggedIn(Boolean loggedIn) {
         this.loggedIn = loggedIn;
+    }
+
+    public UserRole getUserRole() {
+        return userRole;
+    }
+
+    public void setUserRole(UserRole userRole) {
+        this.userRole = userRole;
     }
 
     @Override

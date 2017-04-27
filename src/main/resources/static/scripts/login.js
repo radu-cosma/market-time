@@ -31,7 +31,12 @@ $('#login-button').click(function() {
                     show(passwordErrorMessage);
                 }
             } else if (response.result != undefined && response.result.loggedIn) {
-                window.location = '/market-time/dashboard';
+            	var returnUrl = $.urlParam('return');
+            	if (returnUrl !== null) {
+            		window.location = decodeURIComponent(returnUrl);
+            	} else {
+            		window.location = '/market-time';
+            	}
             }
         },  
         error: function(e) {  
@@ -52,5 +57,14 @@ function show(element) {
 function hide(element) {
     if (!element.hasClass('hidden')) {
         element.addClass('hidden');
+    }
+}
+
+$.urlParam = function(name) {
+    var results = new RegExp('[\?&]' + name + '=([^]*)').exec(window.location.href);
+    if (results == null) {
+       return null;
+    } else {
+       return results[1] || 0;
     }
 }

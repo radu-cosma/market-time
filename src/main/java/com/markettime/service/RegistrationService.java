@@ -8,8 +8,11 @@ import com.markettime.exception.ApplicationException;
 import com.markettime.model.dto.request.RegistrationRequestDto;
 import com.markettime.model.entity.CompanyEntity;
 import com.markettime.model.entity.UserEntity;
+import com.markettime.model.entity.UserRole;
+import com.markettime.model.entity.UserRoleEntity;
 import com.markettime.repository.CompanyRepository;
 import com.markettime.repository.UserRepository;
+import com.markettime.repository.UserRoleRepository;
 
 /**
  *
@@ -25,6 +28,9 @@ public class RegistrationService {
 
     @Autowired
     private CompanyRepository companyRepository;
+
+    @Autowired
+    private UserRoleRepository userRoleRepository;
 
     public void registerUser(RegistrationRequestDto registrationRequestDto) {
         UserEntity user = userRepository.find(registrationRequestDto.getEmail());
@@ -47,12 +53,15 @@ public class RegistrationService {
     }
 
     private UserEntity createUser(RegistrationRequestDto registrationRequestDto, CompanyEntity companyEntity) {
+        UserRoleEntity userRoleEntity = userRoleRepository.findByRole(UserRole.REGULAR_USER);
+
         UserEntity userEntity = new UserEntity();
         userEntity.setFirstName(registrationRequestDto.getFirstName());
         userEntity.setLastName(registrationRequestDto.getLastName());
         userEntity.setEmail(registrationRequestDto.getEmail());
         userEntity.setPassword(registrationRequestDto.getPassword());
         userEntity.setCompany(companyEntity);
+        userEntity.setUserRole(userRoleEntity);
         userRepository.persist(userEntity);
         return userEntity;
     }

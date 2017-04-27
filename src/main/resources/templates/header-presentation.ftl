@@ -6,11 +6,11 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>                        
             </button>
-            <a href="/market-time/home"><img class="logo-lg" src="/market-time/images/marketime_logo.svg" alt="marketime logo" /></a>
+            <a href="/market-time"><img class="logo-lg" src="/market-time/images/marketime_logo.svg" alt="marketime logo" /></a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/market-time/home#about-us">ABOUT US</a></li>
+                <li><a href="#about-us">ABOUT US</a></li>
                 <li><a href="/market-time/integration">INTEGRATION</a></li>
                 <li><a id="log-in" href="#user-login" data-toggle="modal">LOGIN</a></li>
                 <li><a href="/market-time/contact">CONTACT</a></li>
@@ -35,4 +35,6 @@
         </div>
     </div>
 </nav>
-<#include "login-form.ftl">
+<div class="modal fade" id="user-login" role="dialog">
+    <#include "login-form.ftl">
+</div>

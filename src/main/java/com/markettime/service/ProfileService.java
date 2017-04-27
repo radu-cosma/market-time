@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.markettime.aop.LoggedIn;
 import com.markettime.context.UserContext;
 import com.markettime.exception.AuthenticationException;
 import com.markettime.model.dto.request.UpdateEmailRequestDto;
@@ -36,7 +35,6 @@ public class ProfileService {
      *
      * @return
      */
-    @LoggedIn
     public GetProfileResponseDto getProfile() {
         UserEntity userEntity = userRepository.find(userContext.getUserId());
         return buildGetProfileResponseDto(userEntity);
@@ -46,7 +44,6 @@ public class ProfileService {
      *
      * @param updateProfileRequestDto
      */
-    @LoggedIn
     public void updateProfile(UpdateProfileRequestDto updateProfileRequestDto) {
         UserEntity userEntity = userRepository.find(userContext.getUserId());
         checkPassword(userEntity, updateProfileRequestDto.getProfileCurrentPassword());
@@ -57,7 +54,6 @@ public class ProfileService {
      *
      * @param updateEmailRequestDto
      */
-    @LoggedIn
     public void updateEmail(UpdateEmailRequestDto updateEmailRequestDto) {
         UserEntity userEntity = userRepository.find(userContext.getUserId());
         checkPassword(userEntity, updateEmailRequestDto.getEmailCurrentPassword());
@@ -68,7 +64,6 @@ public class ProfileService {
      *
      * @param updatePasswordRequestDto
      */
-    @LoggedIn
     public void updatePassword(UpdatePasswordRequestDto updatePasswordRequestDto) {
         UserEntity userEntity = userRepository.find(userContext.getUserId());
         checkPassword(userEntity, updatePasswordRequestDto.getPasswordCurrentPassword());

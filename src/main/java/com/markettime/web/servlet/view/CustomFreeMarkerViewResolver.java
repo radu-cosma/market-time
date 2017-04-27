@@ -87,7 +87,8 @@ public class CustomFreeMarkerViewResolver extends FreeMarkerViewResolver {
     private ViewConfig getViewConfig(String viewName) {
         ViewConfig bestMatch = getBestMatch(viewName);
         if (bestMatch == null) {
-            LOGGER.error(String.format("No config was found for view with name '%s'", viewName));
+            LOGGER.error(String.format("No config was found for view with name=%s, loggedIn=%s and userRole=%s",
+                    viewName, userContext.isLoggedIn(), userContext.getUserRole()));
             bestMatch = getBestMatch(ERROR_404_VIEW);
         }
         return bestMatch;
@@ -101,6 +102,7 @@ public class CustomFreeMarkerViewResolver extends FreeMarkerViewResolver {
         return pagesConfig.getViews().stream()
                 .filter(view -> view.getCriteria().getName().equals(viewName))
                 .filter(view -> view.getCriteria().isLoggedIn() == null || view.getCriteria().isLoggedIn().equals(userContext.isLoggedIn()))
+                .filter(view -> view.getCriteria().getUserRole() == null || view.getCriteria().getUserRole().equals(userContext.getUserRole()))
                 .findFirst().orElse(null);
         // @formatter:on
     }

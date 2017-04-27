@@ -41,12 +41,7 @@ public class RegistrationController extends BaseController {
      */
     @RequestMapping(method = RequestMethod.GET)
     public String getRegistration() {
-
-        LOGGER.info("started getRegistration[]");
-
-        String viewName = "register";
-        LOGGER.info("completed getRegistration; returned: {}", viewName);
-        return viewName;
+        return "register";
     }
 
     /**

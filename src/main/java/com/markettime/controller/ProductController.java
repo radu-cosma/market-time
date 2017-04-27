@@ -7,8 +7,6 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
@@ -23,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.markettime.aop.LoggedIn;
 import com.markettime.context.RequestContext;
 import com.markettime.exception.ValidationErrorsException;
 import com.markettime.model.dto.ProductDto;
@@ -35,10 +34,8 @@ import com.markettime.service.ProductService;
  *
  */
 @Controller
-@RequestMapping(value = "products")
+@RequestMapping("products")
 public class ProductController extends BaseController {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(ProductController.class);
 
     @Autowired
     private RequestContext requestContext;
@@ -50,14 +47,10 @@ public class ProductController extends BaseController {
      *
      * @return
      */
+    @LoggedIn
     @RequestMapping(value = "add", method = RequestMethod.GET)
     public String getAddProduct() {
-
-        LOGGER.info("started getAddProduct[]");
-
-        String viewName = "add-product";
-        LOGGER.info("completed getAddProduct; returned: {}", viewName);
-        return viewName;
+        return "add-product";
     }
 
     /**
@@ -66,11 +59,10 @@ public class ProductController extends BaseController {
      * @param bindingResult
      * @return
      */
+    @LoggedIn
     @RequestMapping(value = "add", method = RequestMethod.POST)
     public View addProduct(@ModelAttribute @Valid AddProductRequestDto addProductRequestDto,
             BindingResult bindingResult, RedirectAttributes redirectAttributes) {
-
-        LOGGER.info("started addProduct[addProductRequestDto: {}]", addProductRequestDto);
 
         requestContext.setReturnToViewName("add-product");
         requestContext.setModelObjectName("addProduct");
@@ -80,9 +72,7 @@ public class ProductController extends BaseController {
         }
         productService.addProduct(addProductRequestDto);
         redirectAttributes.addFlashAttribute("successMessage", ADD_PRODUCT_SUCCESS_MESSAGE_KEY);
-        String viewName = "add";
-        LOGGER.info("completed addProduct; returned: {}", viewName);
-        return simpleRedirect(viewName);
+        return simpleRedirect("add");
     }
 
     /**
@@ -102,12 +92,7 @@ public class ProductController extends BaseController {
      */
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView getProducts(@RequestParam("status") String productStatus) {
-
-        LOGGER.info("started getProducts[productStatus: {}]", productStatus);
-
-        List<ProductDto> products = createProductsList();
-        LOGGER.info("completed getProducts; returned: {}", products);
-        return new ModelAndView("products", "products", products);
+        return new ModelAndView("products", "products", createProductsList());
     }
 
     private List<ProductDto> createProductsList() {

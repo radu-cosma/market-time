@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.markettime.aop.LoggedIn;
 import com.markettime.model.dto.DetailedOrderDto;
 import com.markettime.model.dto.OrderDto;
 import com.markettime.model.dto.ProductDto;
@@ -24,7 +25,7 @@ import com.markettime.model.dto.ShippingDto;
  *
  */
 @Controller
-@RequestMapping(value = "orders")
+@RequestMapping("orders")
 public class OrderController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(OrderController.class);
@@ -33,15 +34,10 @@ public class OrderController {
      *
      * @return
      */
+    @LoggedIn
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView getOrders() {
-
-        LOGGER.info("started getOrders[]");
-
-        List<OrderDto> orders = createOrdersList();
-
-        LOGGER.info("completed getOrders; returned: {}", orders);
-        return new ModelAndView("orders", "orders", orders);
+        return new ModelAndView("orders", "orders", createOrdersList());
     }
 
     /**
@@ -49,6 +45,7 @@ public class OrderController {
      * @param orderId
      * @return
      */
+    @LoggedIn
     @RequestMapping(method = RequestMethod.GET, value = "{orderId}")
     public ModelAndView getOrder(@PathVariable("orderId") int orderId) {
 

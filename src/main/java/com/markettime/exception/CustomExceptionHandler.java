@@ -1,6 +1,11 @@
 package com.markettime.exception;
 
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -49,6 +54,29 @@ public class CustomExceptionHandler {
         modelAndView.setViewName(
                 requestContext.getReturnToViewName() != null ? requestContext.getReturnToViewName() : "error500");
         return modelAndView;
+    }
+
+    /**
+     * For all requests that require the user to be logged in, but this condition is not satisfied, this method sends a
+     * redirect to the absolute path {@code /market-time/login}. If a referrer is available, it is passed on as a query
+     * parameter.
+     *
+     * @param request
+     * @param response
+     * @param e
+     * @return
+     * @throws UnsupportedEncodingException
+     * @throws IOException
+     */
+    @ExceptionHandler(NotLoggedInException.class)
+    public String handleAuthenticationException(HttpServletRequest request, HttpServletResponse response,
+            NotLoggedInException e) throws UnsupportedEncodingException, IOException {
+        String defaultRedirect = "redirect:/login";
+        String referrer = request.getHeader("referer");
+        String redirect = referrer != null
+                ? String.format("%s?return=%s", defaultRedirect, URLEncoder.encode(referrer, "UTF-8"))
+                : defaultRedirect;
+        return redirect;
     }
 
     /**

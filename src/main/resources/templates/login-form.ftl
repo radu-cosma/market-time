@@ -1,29 +1,27 @@
-<div class="modal fade" id="user-login" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" id="close-button" class="close-btn close" data-dismiss="modal">&times;</button>
-                <h2 class="mod-title">Existing User</h2>
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" id="close-button" class="close-btn close" data-dismiss="modal">&times;</button>
+            <h2 class="mod-title">Existing User</h2>
+        </div>
+        <div class="modal-body">
+            <div id="modal-header">
+                <p>Have a MarketTime Account?</p>
+                <p>Sign in to manage your products.</p>
+                <br>
             </div>
-            <div class="modal-body">
-                <div id="modal-header">
-                    <p>Have a MarketTime Account?</p>
-                    <p>Sign in to manage your products.</p>
-                    <br>
-                </div>
-                <label id="general-error-message" class="error-message alert-danger log-message hidden""></label>
-                <div id="email-div">
-                    <@createInputSection 'login-email' 'EMAIL'/>
-                </div>
-                <div id="password-div">
-                    <@createInputSection 'login-password' 'PASSWORD' 'password'/>
-                </div>
-                <div class="checkbox">
-                    <label><input type="checkbox">Remember me</label>
-                </div>
-                <p>Not a member? <a href="/market-time/register">Register now</a></p>
-                <button id="login-button" type="submit" class="btn stylish-pz-p-btn">Login</button>
+            <label id="general-error-message" class="error-message alert-danger log-message hidden""></label>
+            <div id="email-div">
+                <@createInputSection 'login-email' 'EMAIL'/>
             </div>
+            <div id="password-div">
+                <@createInputSection 'login-password' 'PASSWORD' 'password'/>
+            </div>
+            <div class="checkbox">
+                <label><input type="checkbox">Remember me</label>
+            </div>
+            <p>Not a member? <a href="/market-time/register">Register now</a></p>
+            <button id="login-button" type="submit" class="btn stylish-pz-p-btn">Login</button>
         </div>
     </div>
 </div>

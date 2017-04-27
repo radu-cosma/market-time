@@ -13,7 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
-import com.markettime.aop.LoggedIn;
 import com.markettime.context.UserContext;
 import com.markettime.exception.ServiceValidationException;
 import com.markettime.model.dto.request.AddProductImageDto;
@@ -70,7 +69,6 @@ public class ProductService {
      *
      * @return
      */
-    @LoggedIn
     public List<String> getImageTypes() {
         // @formatter:off
         return imageTypeRepository.findAll()
@@ -84,7 +82,6 @@ public class ProductService {
      *
      * @return
      */
-    @LoggedIn
     public String prepareCache() {
         Long userId = userContext.getUserId();
         return imageCache.initialize(userId);
@@ -94,7 +91,6 @@ public class ProductService {
      *
      * @param addProductImageDto
      */
-    @LoggedIn
     public void cacheImage(AddProductImageDto addProductImageDto) {
         validateImage(addProductImageDto);
         Long userId = userContext.getUserId();
@@ -120,7 +116,6 @@ public class ProductService {
      *
      * @param weight
      */
-    @LoggedIn
     public void uncacheImage(RemoveProductImageDto removeProductImageDto) {
         Long userId = userContext.getUserId();
         imageCache.removeImage(userId, removeProductImageDto);
@@ -130,7 +125,6 @@ public class ProductService {
      *
      * @param addProductRequestDto
      */
-    @LoggedIn
     public void addProduct(AddProductRequestDto addProductRequestDto) {
         UserEntity userEntity = userRepository.find(userContext.getUserId());
 

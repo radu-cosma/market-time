@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,6 +33,7 @@ public class UserEntity {
     private String email;
     private String password;
     private CompanyEntity company;
+    private UserRoleEntity userRole;
     private List<ProductEntity> products;
 
     @Id
@@ -91,7 +93,17 @@ public class UserEntity {
         this.company = company;
     }
 
-    @OneToMany(mappedBy = "user")
+    @ManyToOne
+    @JoinColumn(name = "user_role_id", nullable = false)
+    public UserRoleEntity getUserRole() {
+        return userRole;
+    }
+
+    public void setUserRole(UserRoleEntity userRole) {
+        this.userRole = userRole;
+    }
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     public List<ProductEntity> getProducts() {
         return products;
     }
@@ -104,8 +116,8 @@ public class UserEntity {
     public String toString() {
         StringBuilder builder = new StringBuilder();
         builder.append("UserEntity [id=").append(id).append(", firstName=").append(firstName).append(", lastName=")
-                .append(lastName).append(", email=").append(email).append(", password=").append(password)
-                .append(", company=").append(company).append("]");
+                .append(lastName).append(", email=").append(email).append(", company=").append(company)
+                .append(", userRole=").append(userRole).append("]");
         return builder.toString();
     }
 

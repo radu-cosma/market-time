@@ -26,11 +26,7 @@ public class ContactController extends BaseController {
      */
     @RequestMapping(method = RequestMethod.GET)
     public String getContact() {
-        LOGGER.info("started getContact[]");
-
-        String viewName = "contact";
-        LOGGER.info("completed getContact; returned: {}", viewName);
-        return viewName;
+        return "contact";
     }
 
     /**
@@ -40,6 +36,5 @@ public class ContactController extends BaseController {
     @RequestMapping(method = RequestMethod.POST)
     public void sendEmail(@ModelAttribute MessageDto messageDto) {
         LOGGER.info("started sendEmail[messageDto: {}]", messageDto);
-        LOGGER.info("completed sendEmail; returned: []");
     }
 }

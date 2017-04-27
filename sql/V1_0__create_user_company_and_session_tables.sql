@@ -23,8 +23,8 @@ CREATE TABLE IF NOT EXISTS `user` (
   	`company_id` BIGINT NOT NULL,
   	PRIMARY KEY (`id`),
   	UNIQUE KEY `email_unique` (`email`),
-  	KEY `user_company_id_idx` (`company_id`),
-  	CONSTRAINT `user_company_id_fk` FOREIGN KEY (`company_id`) REFERENCES `company` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  	KEY `fk_user_company_idx` (`company_id`),
+  	CONSTRAINT `fk_user_company` FOREIGN KEY (`company_id`) REFERENCES `company` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -40,6 +40,6 @@ CREATE TABLE IF NOT EXISTS `user_session` (
   	`last_access` DATETIME NOT NULL,
   	PRIMARY KEY (`id`),
   	UNIQUE KEY `user_session_uuid_unique` (`uuid`),
-  	KEY `user_session_user_id_idx` (`user_id`),
-  	CONSTRAINT `user_session_user_id_fk` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  	KEY `fk_user_session_user_idx` (`user_id`),
+  	CONSTRAINT `fk_user_session_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

@@ -53,7 +53,9 @@ public class UserContextService {
      */
     public void initializeUserContext(HttpServletRequest request) {
         processCookies(request.getCookies());
-        createMenu(getRequestPath(request));
+        if (userContext.getUserId() != null) {
+            createMenu(getRequestPath(request));
+        }
     }
 
     private void processCookies(Cookie[] cookies) {
@@ -71,18 +73,19 @@ public class UserContextService {
             if (isSessionValid(userSessionEntity, currentDate)) {
                 UserEntity userEntity = userSessionEntity.getUser();
                 renewUserSession(userSessionEntity, currentDate);
-                updateCookie(cookie, cookie.getValue(), cookie.getPath(), Constants.SESSION_LIFETIME_SECONDS);
+                updateCookie(cookie, cookie.getValue(), Constants.SESSION_LIFETIME_SECONDS);
                 userContext.setUserId(userEntity.getId());
                 userContext.setLoggedIn(Boolean.TRUE);
                 userContext.setEmail(userEntity.getEmail());
+                userContext.setUserRole(userEntity.getUserRole().getRole());
             } else {
                 LOGGER.debug("Invalid session: lastAccess={}, currentTime={}", userSessionEntity.getLastAccess(),
                         currentDate);
                 userSessionEntity.setActive(Boolean.FALSE);
-                updateCookie(cookie, "", "/", 0);
+                updateCookie(cookie, "", 0);
             }
         } else {
-            updateCookie(cookie, "", "/", 0);
+            updateCookie(cookie, "", 0);
         }
     }
 
@@ -94,10 +97,10 @@ public class UserContextService {
         userSessionEntity.setLastAccess(currentDate);
     }
 
-    private void updateCookie(Cookie cookie, String value, String path, int maxAge) {
+    private void updateCookie(Cookie cookie, String value, int maxAge) {
         cookie.setMaxAge(maxAge);
         cookie.setValue(value);
-        cookie.setPath(path);
+        cookie.setPath("/");
         response.addCookie(cookie);
     }
 
@@ -111,6 +114,29 @@ public class UserContextService {
 
     private void createMenu(String requestPath) {
         Menu menu = new Menu();
+        switch (userContext.getUserRole()) {
+            case ADMIN:
+                menu = createAdminMenu();
+                break;
+            case REGULAR_USER:
+                menu = createRegularMenu();
+                break;
+            default:
+                LOGGER.error("Unexpected user role: {}", userContext.getUserRole());
+                break;
+        }
+        setSelectedItem(menu.getMenuItems(), requestPath);
+        userContext.setMenu(menu);
+    }
+
+    private Menu createAdminMenu() {
+        Menu menu = new Menu();
+        menu.add(new MenuItem("MENU.USERS", "/market-time/users", "fa-user", null));
+        return menu;
+    }
+
+    private Menu createRegularMenu() {
+        Menu menu = new Menu();
         menu.add(new MenuItem("MENU.DASHBOARD", "/market-time/dashboard", "fa-dashboard", null));
         menu.add(new MenuItem("MENU.ADD.PRODUCT", "/market-time/products/add", "fa-edit", null));
         menu.add(new MenuItem("MENU.PRODUCTS.LIST", "/market-time/#", "fa-table", createProductsSubMenu()));
@@ -120,10 +146,7 @@ public class UserContextService {
         menu.add(new MenuItem("MENU.SETTINGS", "/market-time/settings", "fa-cog", null));
         menu.add(new MenuItem("MENU.MY.PROFILE", "/market-time/profile", "fa-user", null));
         menu.add(new MenuItem("MENU.ABOUT.US", "/market-time/aboutUs", "fa-info-circle", null));
-
-        setSelectedItem(menu.getMenuItems(), requestPath);
-
-        userContext.setMenu(menu);
+        return menu;
     }
 
     private List<MenuItem> createProductsSubMenu() {

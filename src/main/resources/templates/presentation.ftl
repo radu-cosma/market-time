@@ -6,7 +6,7 @@
             <div class="jumbotron section-entry-content">
                 <h1>MarketTime</h1> 
                 <h4>We create bridges between people and technology</h4> 
-                 <a href="/market-time/home#about-us"><button type="submit" class="btn btn-lg stylish-btn">More details</button></a>
+                 <a class="btn btn-lg stylish-btn" href="#about-us">More details</a>
             </div>
         </div>
     </div>

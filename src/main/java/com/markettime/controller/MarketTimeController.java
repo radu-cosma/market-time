@@ -28,12 +28,21 @@ public class MarketTimeController extends BaseController {
      */
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String getRoot() {
-        LOGGER.info("started getRoot[]");
-
-        String viewName = userContext.isLoggedIn() ? "redirect:dashboard" : "redirect:home";
-
-        LOGGER.info("completed getRoot; returned: {}", viewName);
-        return viewName;
+        String nextView = "home";
+        if (userContext.isLoggedIn()) {
+            switch (userContext.getUserRole()) {
+                case REGULAR_USER:
+                    nextView = "redirect:dashboard";
+                    break;
+                case ADMIN:
+                    nextView = "redirect:users";
+                    break;
+                default:
+                    LOGGER.error("Unexpected user role: {}", userContext.getUserRole());
+                    break;
+            }
+        }
+        return nextView;
     }
 
     /**
@@ -42,12 +51,21 @@ public class MarketTimeController extends BaseController {
      */
     @RequestMapping(value = "home", method = RequestMethod.GET)
     public String getHome() {
-        LOGGER.info("started getHome[]");
-
-        String viewName = userContext.isLoggedIn() ? "redirect:dashboard" : "home";
-
-        LOGGER.info("completed getHome; returned: {}", viewName);
-        return viewName;
+        String nextView = "home";
+        if (userContext.isLoggedIn()) {
+            switch (userContext.getUserRole()) {
+                case REGULAR_USER:
+                    nextView = "dashboard";
+                    break;
+                case ADMIN:
+                    nextView = "users";
+                    break;
+                default:
+                    LOGGER.error("Unexpected user role: {}", userContext.getUserRole());
+                    break;
+            }
+        }
+        return nextView;
     }
 
 }

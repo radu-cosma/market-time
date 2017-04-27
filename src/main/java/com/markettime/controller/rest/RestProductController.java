@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.markettime.aop.LoggedIn;
 import com.markettime.exception.ValidationErrorsException;
 import com.markettime.model.dto.request.AddProductImageDto;
 import com.markettime.model.dto.request.RemoveProductImageDto;
@@ -38,6 +39,7 @@ public class RestProductController {
      * @param bindingResult
      * @return
      */
+    @LoggedIn
     @RequestMapping(value = "addImage", method = RequestMethod.POST)
     public Object addProductImage(@Valid @RequestBody AddProductImageDto addProductImageDto,
             BindingResult bindingResult) {
@@ -59,6 +61,7 @@ public class RestProductController {
      * @param bindingResult
      * @return
      */
+    @LoggedIn
     @RequestMapping(value = "removeImage", method = RequestMethod.POST)
     public Object removeProductImage(@Valid @RequestBody RemoveProductImageDto removeProductImageDto,
             BindingResult bindingResult) {
@@ -78,6 +81,7 @@ public class RestProductController {
      *
      * @return
      */
+    @LoggedIn
     @RequestMapping(value = "getImageTypes", method = RequestMethod.GET)
     public Object getImageTypes() {
         LOGGER.info("started getImageTypes[]");

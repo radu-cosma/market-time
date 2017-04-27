@@ -1,5 +1,5 @@
 <header>
-    <a href="/market-time/home" class="logo">
+    <a href="/market-time" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b>MT</b></span>
         <!-- logo for regular state and mobile devices -->

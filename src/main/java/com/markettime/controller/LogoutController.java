@@ -5,8 +5,6 @@ import java.util.Arrays;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,8 +22,6 @@ import com.markettime.service.LogoutService;
 @RequestMapping("logout")
 public class LogoutController extends BaseController {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(LogoutController.class);
-
     private static final String UUID_COOKIE_NAME = "uuid";
 
     @Autowired
@@ -38,11 +34,7 @@ public class LogoutController extends BaseController {
      */
     @RequestMapping(method = RequestMethod.GET)
     public View logout(HttpServletRequest request) {
-
-        LOGGER.info("started logout[]");
-
         Cookie[] cookies = request.getCookies();
-
         if (cookies != null) {
             Arrays.stream(cookies).filter(cookie -> UUID_COOKIE_NAME.equals(cookie.getName())).forEach(cookie -> {
                 logoutService.logout(cookie.getValue());
@@ -51,9 +43,6 @@ public class LogoutController extends BaseController {
                 cookie.setPath("/");
             });
         }
-
-        String viewName = "home";
-        LOGGER.info("completed logout; returned: {}", viewName);
-        return simpleRedirect(viewName);
+        return simpleRedirect("home");
     }
 }

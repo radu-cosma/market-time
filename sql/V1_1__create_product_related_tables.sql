@@ -17,8 +17,8 @@ CREATE TABLE IF NOT EXISTS `product` (
 	`upc` VARCHAR(12) DEFAULT NULL,
 	`user_id` BIGINT NOT NULL,
 	PRIMARY KEY (`id`),
-	KEY `product_user_id_idx` (`user_id`),
-  	CONSTRAINT `product_user_id_fk` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+	KEY `fk_product_user_idx` (`user_id`),
+  	CONSTRAINT `fk_product_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -30,8 +30,8 @@ CREATE TABLE IF NOT EXISTS `product_tag` (
   	`name` VARCHAR(20) NOT NULL,
   	`product_id` BIGINT NOT NULL,
   	PRIMARY KEY (`id`),
-	KEY `product_tag_product_id_idx` (`product_id`),
-  	CONSTRAINT `product_tag_product_id_fk` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+	KEY `fk_product_tag_product_idx` (`product_id`),
+  	CONSTRAINT `fk_product_tag_product` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -44,6 +44,6 @@ CREATE TABLE IF NOT EXISTS `product_image` (
   	`url` VARCHAR(255) NOT NULL,
   	`product_id` BIGINT NOT NULL,
   	PRIMARY KEY (`id`),
-	KEY `product_image_product_id_idx` (`product_id`),
-  	CONSTRAINT `product_image_product_id_fk` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+	KEY `fk_product_image_product_idx` (`product_id`),
+  	CONSTRAINT `fk_product_image_product` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

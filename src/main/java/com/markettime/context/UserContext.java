@@ -5,6 +5,7 @@ import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.WebApplicationContext;
 
+import com.markettime.model.entity.UserRole;
 import com.markettime.service.model.Menu;
 
 /**
@@ -20,6 +21,7 @@ public class UserContext {
     private Long userId;
     private String email;
     private String uuid;
+    private UserRole userRole;
     private Menu menu;
 
     public boolean isLoggedIn() {
@@ -52,6 +54,14 @@ public class UserContext {
 
     public void setUuid(String uuid) {
         this.uuid = uuid;
+    }
+
+    public UserRole getUserRole() {
+        return userRole;
+    }
+
+    public void setUserRole(UserRole userRole) {
+        this.userRole = userRole;
     }
 
     public Menu getMenu() {

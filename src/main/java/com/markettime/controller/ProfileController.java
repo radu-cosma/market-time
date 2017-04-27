@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.markettime.aop.LoggedIn;
 import com.markettime.model.dto.response.GetProfileResponseDto;
 import com.markettime.service.ProfileService;
 
@@ -17,7 +18,7 @@ import com.markettime.service.ProfileService;
  *
  */
 @Controller
-@RequestMapping(path = "profile")
+@RequestMapping("profile")
 public class ProfileController extends BaseController {
 
     private Logger LOGGER = LoggerFactory.getLogger(ProfileController.class);
@@ -29,6 +30,7 @@ public class ProfileController extends BaseController {
      *
      * @return
      */
+    @LoggedIn
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView getProfile() {
         LOGGER.info("started getProfile[]");
