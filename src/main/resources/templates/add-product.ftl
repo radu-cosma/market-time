@@ -27,16 +27,17 @@
                     </div>
                 </div>
             </div>
+            <@createSubtitleSection 'Basic Information' />
             <div class="row">
                 <div class="col-md-1"></div>
                 <#if addProductSessionId??>
                    <input id="add-product-session" name="addProductSessionId" type="hidden" value="${addProductSessionId}"/> 
                 </#if>
                 <div class="col-md-5 col-sm-12">
-                    <@createLeftColumn />
+                    <@createBasicLeftColumn />
                 </div>
                 <div class="col-md-5 col-sm-12">
-                    <@createRightColumn />
+                    <@createBasicRightColumn />
                 </div>
             </div>
             <div class="row">
@@ -69,9 +70,27 @@
                     </div>
                 </div>
             </div>
+            <@createSubtitleSection 'Optional Information' />
             <div class="row">
                 <div class="col-md-1"></div>
-                <div class="col-md-10 col-sm-12">
+                <div class="col-md-5 col-sm-12">
+                    <@createOptionalLeftColumn />
+                </div>
+                <div class="col-md-5 col-sm-12">
+                    <@createOptionalRightColumn />
+                </div>
+            </div>
+            <@createSubtitleSection 'Product Variations' />
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <a href="#" class='addvariation fa fa-plus'> Add product variations</a>
+                </div>
+            </div>
+            <@createProductVariationSection />
+            <@createSubtitleSection 'Options' />
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1 col-sm-12">
                     <@spring.message 'ADD.PRODUCT.OPTION.LABEL'/>
                     <br>
                     <input type="radio" id="publish-checkbox" name="action" value="publish" checked="checked" />
@@ -89,22 +108,28 @@
     </div>
 </section>
 
-<#macro createLeftColumn>
+<#macro createBasicLeftColumn>
     <@createInputSection 'name' />
     <@createInputSection 'description' />
-    <@createInputSection 'tags' />
-    <@createInputSection 'shipping' />
-    <@createInputSection 'shipping-time' false />
-    <@createInputSection 'color' false />
+    <@createInputSection 'inventory' />
 </#macro>
 
-<#macro createRightColumn>
-    <@createInputSection 'size' false />
-    <@createInputSection 'inventory' />
+<#macro createBasicRightColumn>
     <@createInputSection 'price' />
-    <@createInputSection 'brand' false />
+    <@createInputSection 'tags' />
+    <@createInputSection 'shipping' />
+</#macro>
+
+<#macro createOptionalLeftColumn>
     <@createInputSection 'presentation-page-url' false />
     <@createInputSection 'upc' false />
+    <@createInputSection 'shipping-time' false />
+</#macro>
+
+<#macro createOptionalRightColumn>
+    <@createInputSection 'size' false />
+    <@createInputSection 'color' false />
+    <@createInputSection 'brand' false />
 </#macro>
 
 <#macro createInputSection fieldId mandatory=true>
@@ -126,5 +151,43 @@
         <a class="info-icon" data-toggle="tooltip" title="<@spring.message 'ADD.PRODUCT.${fieldKey}.INFO'/>">
             <span class="ion-ios-information-outline"></span>
         </a>
+    </div>
+</#macro>
+
+<#macro createSubtitleSection subtitleName>
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <h2 class="subtitle">${subtitleName}</h2>
+            <div class="separator-line"></div>
+        </div>
+    </div>
+</#macro>
+
+<#macro createProductVariationSection>
+    <div id="variations">
+        <div class="variation">
+            <div class="col-md-10 col-md-offset-1 col-sm-12">
+                <div class="row product-variation">        
+                    <div class="col-md-12 col-xs-12 remove-variation">                       
+                        <a href="#" class="remove fa fa-times"> Remove</a>
+                    </div>
+                    <div class="col-md-3 col-xs-6">
+                        <@createInputSection 'size' false />
+                    </div>
+                    <div class="col-md-3 col-xs-6">
+                        <@createInputSection 'color' false />
+                    </div>
+                    <div class="col-md-2 col-xs-6">
+                        <@createInputSection 'price' />
+                    </div>
+                    <div class="col-md-2 col-xs-6">
+                        <@createInputSection 'inventory' false />
+                    </div>
+                    <div class="col-md-2 col-xs-6">
+                        <@createInputSection 'tags' />  
+                    </div>
+                </div> 
+            </div>
+        </div>
     </div>
 </#macro>

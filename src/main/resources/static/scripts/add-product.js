@@ -341,3 +341,46 @@ $.ajax({
 });
 dragndrop.setUploadFileCallback(uploadFile);
 dragndrop.setValidFileTypes(validImageTypes);
+
+
+//define template
+var template = $('#variations .variation:first').clone();
+
+//define counter
+var variationsCount = 1;
+
+//add new section
+$('body').on('click', '.addvariation', function() {
+
+    //increment
+    variationsCount++;
+
+    //loop through each input
+    var variation = template.clone().find(':input').each(function(){
+
+        //set id to store the updated section number
+        var newId = this.id + variationsCount;
+
+        //update for label
+        $(this).prev().attr('for', newId);
+
+        //update id
+        this.id = newId;
+
+    }).end()
+
+    //inject new section
+    .appendTo('#variations');
+    return false;
+});
+
+//remove section
+$('#variations').on('click', '.remove-variation', function() {
+    //fade out section
+    $(this).parent().fadeOut(300, function(){
+        //remove parent element (main section)
+        $(this).parent().parent().remove();
+        return false;
+    });
+    return false;
+});
